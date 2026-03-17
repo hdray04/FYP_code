@@ -23,6 +23,9 @@ __pycache__/
 # Project data files
 Data/*
 
+# Generated plots
+*.png
+
 # Data files (comment out if you want to track them)
 # *.csv
 # *.json
