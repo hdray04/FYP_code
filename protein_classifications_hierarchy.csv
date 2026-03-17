@@ -1,0 +1,611 @@
+uniprot_id,gene,protein_name,structural_class,root_ipr,entry_type_used,n_ipr_entries,n_unique_roots,is_te,is_noncanonical
+A0AVK6,E2F8,Transcription factor E2F8,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,4,2,False,False
+A6NCS4,NKX2-6,Homeobox protein Nkx-2.6,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+A6NJ46,NKX6-3,Homeobox protein Nkx-6.3,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+A8MTJ6,FOXI3,Forkhead box protein I3,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,6,2,False,False
+A8MTQ0,NOTO,Homeobox protein notochord,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,3,1,False,False
+A8MZ59,LEUTX,Paired-like homeodomain transcription factor LEUTX,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,3,1,False,False
+B2RPK0,HMGB1P1,High mobility group protein B1-like 1,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,3,1,False,False
+O00321,ETV2,ETS translocation variant 2,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,4,2,False,False
+O00358,FOXE1,Forkhead box protein E1,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,6,2,False,False
+O00409,FOXN3,Forkhead box protein N3,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,7,2,False,False
+O00470,MEIS1,Homeobox protein Meis1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+O00482,NR5A2,Nuclear receptor subfamily 5 group A member 2,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,6,2,False,False
+O00712,NFIB,Nuclear factor 1 B-type,"CTF transcription factor/nuclear factor 1, DNA-binding domain",IPR020604,Domain,5,3,False,False
+O00716,E2F3,Transcription factor E2F3,E2F-DP heterodimerization region,IPR037241,Homologous_superfamily,6,3,False,False
+O14529,CUX2,Homeobox protein cut-like 2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,2,False,False
+O14627,CDX4,Homeobox protein CDX-4,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,1,False,False
+O14770,MEIS2,Homeobox protein Meis2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+O14813,PHOX2A,Paired mesoderm homeobox protein 2A,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False
+O14896,IRF6,Interferon regulatory factor 6,SMAD-like domain superfamily,IPR017855,Homologous_superfamily,7,4,False,False
+O15119,TBX3,T-box transcription factor TBX3,"p53-like transcription factor, DNA-binding domain superfamily",IPR008967,Homologous_superfamily,7,2,False,False
+O15178,TBXT,T-box transcription factor T,"p53-like transcription factor, DNA-binding domain superfamily",IPR008967,Homologous_superfamily,6,2,False,False
+O15226,NKRF,NF-kappa-B-repressing factor,R3H domain superfamily,IPR036867,Homologous_superfamily,6,1,False,False
+O15266,SHOX,Short stature homeobox protein,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+O15347,HMGB3,High mobility group protein B3,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,4,1,False,False
+O15353,FOXN1,Forkhead box protein N1,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,6,2,False,False
+O15370,SOX12,Transcription factor SOX-12,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,4,1,False,False
+O15405,TOX3,TOX high mobility group box family member 3,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,3,1,False,False
+O15409,FOXP2,Forkhead box protein P2,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,7,2,False,False
+O15499,GSC2,Homeobox protein goosecoid-2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False
+O15522,NKX2-8,Homeobox protein Nkx-2.8,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+O43167,ZBTB24,Zinc finger and BTB domain-containing protein 24,SKP1/BTB/POZ domain superfamily,IPR011333,Homologous_superfamily,5,2,False,False
+O43186,CRX,Cone-rod homeobox protein,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False
+O43248,HOXC11,Homeobox protein Hox-C11,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+O43316,PAX4,Paired box protein Pax-4,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,2,False,False
+O43364,HOXA2,Homeobox protein Hox-A2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+O43365,HOXA3,Homeobox protein Hox-A3,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+O43435,TBX1,T-box transcription factor TBX1,"p53-like transcription factor, DNA-binding domain superfamily",IPR008967,Homologous_superfamily,5,2,False,False
+O43524,FOXO3,Forkhead box protein O3,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,6,2,False,False
+O43711,TLX3,T-cell leukemia homeobox protein 3,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+O43763,TLX2,T-cell leukemia homeobox protein 2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+O60248,SOX15,Transcription factor SOX-15,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,3,1,False,False
+O60315,ZEB2,Zinc finger E-box-binding homeobox 2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,2,False,False
+O60381,HBP1,HMG box-containing protein 1,"Ataxin, AXH domain superfamily",IPR036096,Homologous_superfamily,5,2,False,False
+O60393,NOBOX,Homeobox protein NOBOX,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,3,1,False,False
+O60479,DLX3,Homeobox protein DLX-3,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,1,False,False
+O60548,FOXD2,Forkhead box protein D2,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,6,2,False,False
+O60663,LMX1B,LIM homeobox transcription factor 1-beta,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+O60806,TBX19,T-box transcription factor TBX19,"p53-like transcription factor, DNA-binding domain superfamily",IPR008967,Homologous_superfamily,6,2,False,False
+O60869,EDF1,Endothelial differentiation-related factor 1,Homeodomain-like superfamily,IPR010982,Homologous_superfamily,3,1,False,False
+O60902,SHOX2,Short stature homeobox protein 2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+O75360,PROP1,Homeobox protein prophet of Pit-1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+O75364,PITX3,Pituitary homeobox 3,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+O75461,E2F6,Transcription factor E2F6,E2F-DP heterodimerization region,IPR037241,Homologous_superfamily,6,3,False,False
+O75469,NR1I2,Nuclear receptor subfamily 1 group I member 2,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,6,2,False,False
+O75478,TADA2A,Transcriptional adapter 2-alpha,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,11,3,False,False
+O75564,JRK,Jerky protein homolog,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+O75593,FOXH1,Forkhead box protein H1,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,6,2,False,False
+O75603,GCM2,Chorion-specific transcription factor GCMb,GCM domain superfamily,IPR036115,Homologous_superfamily,5,3,False,False
+O75717,WDHD1,WD repeat and HMG-box DNA-binding protein 1,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,10,3,False,False
+O94842,TOX4,TOX high mobility group box family member 4,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,3,1,False,False
+O94900,TOX,Thymocyte selection-associated high mobility group box protein TOX,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,3,1,False,False
+O94916,NFAT5,Nuclear factor of activated T-cells 5,Immunoglobulin-like fold,IPR013783,Homologous_superfamily,9,4,False,False
+O94983,CAMTA2,Calmodulin-binding transcription activator 2,Ankyrin repeat-containing domain superfamily,IPR036770,Homologous_superfamily,5,3,False,False
+O94993,SOX30,Transcription factor SOX-30,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,3,1,False,False
+O95096,NKX2-2,Homeobox protein Nkx-2.2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+O95231,VENTX,Homeobox protein VENTX,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False
+O95238,SPDEF,SAM pointed domain-containing Ets transcription factor,Sterile alpha motif/pointed domain superfamily,IPR013761,Homologous_superfamily,6,3,False,False
+O95343,SIX3,Homeobox protein SIX3,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,3,1,False,False
+O95416,SOX14,Transcription factor SOX-14,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,4,1,False,False
+O95475,SIX6,Homeobox protein SIX6,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,3,1,False,False
+O95644,NFATC1,"Nuclear factor of activated T-cells, cytoplasmic 1",Immunoglobulin-like fold,IPR013783,Homologous_superfamily,8,4,False,False
+O95718,ESRRB,Steroid hormone receptor ERR2,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,8,2,False,False
+O95935,TBX18,T-box transcription factor TBX18,"p53-like transcription factor, DNA-binding domain superfamily",IPR008967,Homologous_superfamily,5,2,False,False
+O95936,EOMES,Eomesodermin homolog,"p53-like transcription factor, DNA-binding domain superfamily",IPR008967,Homologous_superfamily,6,2,False,False
+O95947,TBX6,T-box transcription factor TBX6,"p53-like transcription factor, DNA-binding domain superfamily",IPR008967,Homologous_superfamily,6,2,False,False
+O95948,ONECUT2,One cut domain family member 2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,2,False,False
+O96028,NSD2,Histone-lysine N-methyltransferase NSD2,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,26,4,False,False
+P02751,FN1,Fibronectin,Fibronectin type III superfamily,IPR036116,Homologous_superfamily,8,4,False,True
+P03372,ESR1,Estrogen receptor,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,10,2,False,False
+P04150,NR3C1,Glucocorticoid receptor,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,7,2,False,False
+P04637,TP53,Cellular tumor antigen p53,"p53-like transcription factor, DNA-binding domain superfamily",IPR008967,Homologous_superfamily,9,3,False,False
+P06401,PGR,Progesterone receptor,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,7,2,False,False
+P07199,CENPB,Major centromere autoantigen B,"CENP-B, dimerisation domain superfamily",IPR034882,Homologous_superfamily,7,2,False,False
+P07992,ERCC1,DNA excision repair protein ERCC-1,Restriction endonuclease type II-like,IPR011335,Homologous_superfamily,4,2,False,False
+P08235,NR3C2,Mineralocorticoid receptor,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,5,2,False,False
+P08651,NFIC,Nuclear factor 1 C-type,"CTF transcription factor/nuclear factor 1, DNA-binding domain",IPR020604,Domain,5,3,False,False
+P09016,HOXD4,Homeobox protein Hox-D4,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,1,False,False
+P09017,HOXC4,Homeobox protein Hox-C4,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,1,False,False
+P09067,HOXB5,Homeobox protein Hox-B5,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,1,False,False
+P09086,POU2F2,"POU domain, class 2, transcription factor 2",Homeodomain-like superfamily,IPR009057,Homologous_superfamily,8,2,False,False
+P09429,HMGB1,High mobility group protein B1,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,4,1,False,False
+P09629,HOXB7,Homeobox protein Hox-B7,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,1,False,False
+P0CB47,UBTFL1,Upstream-binding factor 1-like protein 1,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,3,1,False,False
+P10242,MYB,Transcriptional activator Myb,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+P10243,MYBL1,Myb-related protein A,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+P10244,MYBL2,Myb-related protein B,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+P10275,AR,Androgen receptor,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,6,2,False,False
+P10276,RARA,Retinoic acid receptor alpha,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,8,2,False,False
+P10588,NR2F6,Nuclear receptor subfamily 2 group F member 6,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,6,2,False,False
+P10589,NR2F1,COUP transcription factor 1,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,6,2,False,False
+P10826,RARB,Retinoic acid receptor beta,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,8,2,False,False
+P10827,THRA,Thyroid hormone receptor alpha,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,7,2,False,False
+P10828,THRB,Thyroid hormone receptor beta,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,7,2,False,False
+P10914,IRF1,Interferon regulatory factor 1,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,5,2,False,False
+P11308,ERG,Transcriptional regulator ERG,Sterile alpha motif/pointed domain superfamily,IPR013761,Homologous_superfamily,6,3,False,False
+P11473,VDR,Vitamin D3 receptor,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,8,2,False,False
+P11474,ESRRA,Steroid hormone receptor ERR1,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,8,2,False,False
+P11831,SRF,Serum response factor,"Transcription factor, MADS-box superfamily",IPR036879,Homologous_superfamily,4,1,False,False
+P12004,PCNA,DNA sliding clamp PCNA,DNA clamp superfamily,IPR046938,Homologous_superfamily,5,1,False,False
+P13056,NR2C1,Nuclear receptor subfamily 2 group C member 1,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,8,2,False,False
+P13378,HOXD8,Homeobox protein Hox-D8,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+P13631,RARG,Retinoic acid receptor gamma,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,8,2,False,False
+P14316,IRF2,Interferon regulatory factor 2,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,5,2,False,False
+P14651,HOXB3,Homeobox protein Hox-B3,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+P14652,HOXB2,Homeobox protein Hox-B2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+P14653,HOXB1,Homeobox protein Hox-B1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+P14859,POU2F1,"POU domain, class 2, transcription factor 1",Homeodomain-like superfamily,IPR009057,Homologous_superfamily,9,2,False,False
+P14921,ETS1,Protein C-ets-1,Sterile alpha motif/pointed domain superfamily,IPR013761,Homologous_superfamily,9,3,False,False
+P15036,ETS2,Protein C-ets-2,Sterile alpha motif/pointed domain superfamily,IPR013761,Homologous_superfamily,9,3,False,False
+P15863,PAX1,Paired box protein Pax-1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,2,False,False
+P15918,RAG1,V(D)J recombination-activating protein 1,Zinc finger superfamily,IPR036236,Homologous_superfamily,16,2,False,False
+P15927,RPA2,Replication protein A 32 kDa subunit,"Nucleic acid-binding, OB-fold",IPR012340,Homologous_superfamily,6,3,False,False
+P17096,HMGA1,High mobility group protein HMG-I/HMG-Y,AT-hook motif,IPR000116,Family,3,1,False,False
+P17480,UBTF,Nucleolar transcription factor 1,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,4,1,False,False
+P17481,HOXB8,Homeobox protein Hox-B8,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,1,False,False
+P17482,HOXB9,Homeobox protein Hox-B9,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+P17483,HOXB4,Homeobox protein Hox-B4,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,1,False,False
+P17509,HOXB6,Homeobox protein Hox-B6,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,1,False,False
+P17947,SPI1,Transcription factor PU.1,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,4,2,False,False
+P19419,ELK1,ETS domain-containing protein Elk-1,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,4,2,False,False
+P19622,EN2,Homeobox protein engrailed-2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,8,1,False,False
+P19793,RXRA,Retinoic acid receptor RXR-alpha,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,8,2,False,False
+P20264,POU3F3,"POU domain, class 3, transcription factor 3",Homeodomain-like superfamily,IPR009057,Homologous_superfamily,8,2,False,False
+P20265,POU3F2,"POU domain, class 3, transcription factor 2",Homeodomain-like superfamily,IPR009057,Homologous_superfamily,8,2,False,False
+P20393,NR1D1,Nuclear receptor subfamily 1 group D member 1,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,6,2,False,False
+P20719,HOXA5,Homeobox protein Hox-A5,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,1,False,False
+P20823,HNF1A,Hepatocyte nuclear factor 1-alpha,"Hepatocyte nuclear factor 1, N-terminal domain superfamily",IPR023219,Homologous_superfamily,10,3,False,False
+P21675,TAF1,Transcription initiation factor TFIID subunit 1,Bromodomain-like superfamily,IPR036427,Homologous_superfamily,9,2,False,False
+P22670,RFX1,MHC class II regulatory factor RFX1,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,6,2,False,False
+P22736,NR4A1,Nuclear receptor subfamily 4immunitygroup A member 1,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,7,2,False,False
+P23497,SP100,Nuclear autoantigen Sp-100,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,6,2,False,False
+P23511,NFYA,Nuclear transcription factor Y subunit alpha,Nuclear transcription factor Y subunit A,IPR001289,Family,2,1,False,False
+P23759,PAX7,Paired box protein Pax-7,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,9,2,False,False
+P23760,PAX3,Paired box protein Pax-3,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,8,2,False,False
+P24468,NR2F2,COUP transcription factor 2,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,6,2,False,False
+P25208,NFYB,Nuclear transcription factor Y subunit beta,Histone-fold,IPR009072,Homologous_superfamily,4,1,False,False
+P26367,PAX6,Paired box protein Pax-6,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,2,False,False
+P26583,HMGB2,High mobility group protein B2,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,4,1,False,False
+P27694,RPA1,Replication protein A 70 kDa DNA-binding subunit,"Nucleic acid-binding, OB-fold",IPR012340,Homologous_superfamily,7,1,False,False
+P28069,POU1F1,Pituitary-specific positive transcription factor 1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,2,False,False
+P28324,ELK4,ETS domain-containing protein Elk-4,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,4,2,False,False
+P28347,TEAD1,Transcriptional enhancer factor TEF-1,TEA/ATTS domain superfamily,IPR038096,Homologous_superfamily,5,1,False,False
+P28356,HOXD9,Homeobox protein Hox-D9,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+P28358,HOXD10,Homeobox protein Hox-D10,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+P28360,MSX1,Homeobox protein MSX-1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+P28482,MAPK1,Mitogen-activated protein kinase 1,Protein kinase-like domain superfamily,IPR011009,Homologous_superfamily,7,1,False,False
+P28702,RXRB,Retinoic acid receptor RXR-beta,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,7,2,False,False
+P29084,GTF2E2,Transcription initiation factor IIE subunit beta,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,5,2,False,False
+P31249,HOXD3,Homeobox protein Hox-D3,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+P31260,HOXA10,Homeobox protein Hox-A10,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+P31268,HOXA7,Homeobox protein Hox-A7,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,1,False,False
+P31269,HOXA9,Homeobox protein Hox-A9,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+P31270,HOXA11,Homeobox protein Hox-A11,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+P31271,HOXA13,Homeobox protein Hox-A13,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+P31273,HOXC8,Homeobox protein Hox-C8,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,1,False,False
+P31274,HOXC9,Homeobox protein Hox-C9,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+P31276,HOXC13,Homeobox protein Hox-C13,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+P31314,TLX1,T-cell leukemia homeobox protein 1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+P32242,OTX1,Homeobox protein OTX1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+P32243,OTX2,Homeobox protein OTX2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+P32519,ELF1,ETS-related transcription factor Elf-1,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,5,2,False,False
+P35398,RORA,Nuclear receptor ROR-alpha,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,7,2,False,False
+P35452,HOXD12,Homeobox protein Hox-D12,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False
+P35453,HOXD13,Homeobox protein Hox-D13,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+P35548,MSX2,Homeobox protein MSX-2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+P35659,DEK,Protein DEK,"DEK, C-terminal",IPR014876,Domain,3,2,False,False
+P35680,HNF1B,Hepatocyte nuclear factor 1-beta,"Hepatocyte nuclear factor 1, N-terminal domain superfamily",IPR023219,Homologous_superfamily,9,3,False,False
+P35711,SOX5,Transcription factor SOX-5,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,3,1,False,False
+P35712,SOX6,Transcription factor SOX-6,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,3,1,False,False
+P35713,SOX18,Transcription factor SOX-18,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,5,1,False,False
+P35716,SOX11,Transcription factor SOX-11,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,4,1,False,False
+P36402,TCF7,Transcription factor 7,Catenin binding domain superfamily,IPR027397,Homologous_superfamily,5,2,False,False
+P37231,PPARG,Peroxisome proliferator-activated receptor gamma,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,9,2,False,False
+P37275,ZEB1,Zinc finger E-box-binding homeobox 1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,2,False,False
+P39880,CUX1,Homeobox protein cut-like 1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,2,False,False
+P40424,PBX1,Pre-B-cell leukemia transcription factor 1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+P40425,PBX2,Pre-B-cell leukemia transcription factor 2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+P40426,PBX3,Pre-B-cell leukemia transcription factor 3,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+P41161,ETV5,ETS translocation variant 5,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,5,2,False,False
+P41162,ETV3,ETS translocation variant 3,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,4,2,False,False
+P41212,ETV6,Transcription factor ETV6,Sterile alpha motif/pointed domain superfamily,IPR013761,Homologous_superfamily,6,3,False,False
+P41225,SOX3,Transcription factor SOX-3,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,4,1,False,False
+P41235,HNF4A,Hepatocyte nuclear factor 4-alpha,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,8,2,False,False
+P41970,ELK3,ETS domain-containing protein Elk-3,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,4,2,False,False
+P43268,ETV4,ETS translocation variant 4,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,5,2,False,False
+P43351,RAD52,DNA repair protein RAD52 homolog,DNA repair protein Rad52/59/22 superfamily,IPR042525,Homologous_superfamily,4,1,False,False
+P43354,NR4A2,Nuclear receptor subfamily 4 group A member 2,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,7,2,False,False
+P43699,NKX2-1,Homeobox protein Nkx-2.1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+P47902,CDX1,Homeobox protein CDX-1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,1,False,False
+P48378,RFX2,DNA-binding protein RFX2,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,6,2,False,False
+P48380,RFX3,Transcription factor RFX3,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,6,2,False,False
+P48382,RFX5,DNA-binding protein RFX5,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,5,2,False,False
+P48431,SOX2,Transcription factor SOX-2,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,4,1,False,False
+P48436,SOX9,Transcription factor SOX-9,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,4,1,False,False
+P48443,RXRG,Retinoic acid receptor RXR-gamma,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,8,2,False,False
+P48742,LHX1,LIM/homeobox protein Lhx1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,1,False,False
+P49116,NR2C2,Nuclear receptor subfamily 2 group C member 2,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,8,2,False,False
+P49335,POU3F4,"POU domain, class 3, transcription factor 4",Homeodomain-like superfamily,IPR009057,Homologous_superfamily,8,2,False,False
+P49639,HOXA1,Homeobox protein Hox-A1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+P49640,EVX1,Homeobox even-skipped homolog protein 1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+P49715,CEBPA,CCAAT/enhancer-binding protein alpha,Basic-leucine zipper domain superfamily,IPR046347,Homologous_superfamily,4,1,False,False
+P50219,MNX1,Motor neuron and pancreas homeobox protein 1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+P50221,MEOX1,Homeobox protein MOX-1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+P50222,MEOX2,Homeobox protein MOX-2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+P50458,LHX2,LIM/homeobox protein Lhx2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+P50548,ERF,ETS domain-containing transcription factor ERF,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,4,2,False,False
+P50549,ETV1,ETS translocation variant 1,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,5,2,False,False
+P51449,RORC,Nuclear receptor ROR-gamma,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,7,2,False,False
+P51608,MECP2,Methyl-CpG-binding protein 2,DNA-binding domain superfamily,IPR016177,Homologous_superfamily,4,1,False,False
+P52926,HMGA2,High mobility group protein HMGI-C,AT-hook motif,IPR000116,Family,3,1,False,False
+P52945,PDX1,Pancreas/duodenum homeobox protein 1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+P52951,GBX2,Homeobox protein GBX-2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+P52952,NKX2-5,Homeobox protein Nkx-2.5,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+P52954,LBX1,Transcription factor LBX1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+P54274,TERF1,Telomeric repeat-binding factor 1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,2,False,False
+P54277,PMS1,PMS1 protein homolog 1,Histidine kinase/HSP90-like ATPase superfamily,IPR036890,Homologous_superfamily,9,4,False,False
+P54821,PRRX1,Paired mesoderm homeobox protein 1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+P55055,NR1H2,Oxysterols receptor LXR-beta,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,7,2,False,False
+P55316,FOXG1,Forkhead box protein G1,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,6,2,False,False
+P55317,FOXA1,Hepatocyte nuclear factor 3-alpha,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,8,2,False,False
+P55318,FOXA3,Hepatocyte nuclear factor 3-gamma,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,8,2,False,False
+P55347,PKNOX1,Homeobox protein PKNOX1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+P55771,PAX9,Paired box protein Pax-9,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,2,False,False
+P56177,DLX1,Homeobox protein DLX-1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+P56178,DLX5,Homeobox protein DLX-5,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,1,False,False
+P56179,DLX6,Homeobox protein DLX-6,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+P56693,SOX10,Transcription factor SOX-10,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,4,1,False,False
+P56915,GSC,Homeobox protein goosecoid,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False
+P57073,SOX8,Transcription factor SOX-8,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,4,1,False,False
+P57082,TBX4,T-box transcription factor TBX4,"p53-like transcription factor, DNA-binding domain superfamily",IPR008967,Homologous_superfamily,5,2,False,False
+P58012,FOXL2,Forkhead box protein L2,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,7,2,False,False
+P58304,VSX2,Visual system homeobox 2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+P61371,ISL1,Insulin gene enhancer protein ISL-1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+P62508,ESRRG,Estrogen-related receptor gamma,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,9,2,False,False
+P62805,H4C1,Histone H4,Histone-fold,IPR009072,Homologous_superfamily,5,1,False,False
+P78337,PITX1,Pituitary homeobox 1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+P78367,NKX3-2,Homeobox protein Nkx-3.2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+P78411,IRX5,Iroquois-class homeodomain protein IRX-5,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+P78412,IRX6,Iroquois-class homeodomain protein IRX-6,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+P78413,IRX4,Iroquois-class homeodomain protein IRX-4,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+P78415,IRX3,Iroquois-class homeodomain protein IRX-3,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+P78424,POU6F2,"POU domain, class 6, transcription factor 2",Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,2,False,False
+P78426,NKX6-1,Homeobox protein Nkx-6.1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+P78545,ELF3,ETS-related transcription factor Elf-3,Sterile alpha motif/pointed domain superfamily,IPR013761,Homologous_superfamily,7,3,False,False
+P80303,NUCB2,Nucleobindin-2,EF-hand domain pair,IPR011992,Homologous_superfamily,5,1,False,False
+P85037,FOXK1,Forkhead box protein K1,SMAD-like domain superfamily,IPR008984,Homologous_superfamily,8,3,False,False
+P98177,FOXO4,Forkhead box protein O4,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,6,2,False,False
+Q00056,HOXA4,Homeobox protein Hox-A4,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,1,False,False
+Q00059,TFAM,"Transcription factor A, mitochondrial",High mobility group box domain superfamily,IPR036910,Homologous_superfamily,3,1,False,False
+Q00444,HOXC5,Homeobox protein Hox-C5,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,1,False,False
+Q00978,IRF9,Interferon regulatory factor 9,SMAD-like domain superfamily,IPR017855,Homologous_superfamily,7,4,False,False
+Q01094,E2F1,Transcription factor E2F1,E2F-DP heterodimerization region,IPR037241,Homologous_superfamily,6,3,False,False
+Q01167,FOXK2,Forkhead box protein K2,SMAD-like domain superfamily,IPR008984,Homologous_superfamily,9,3,False,False
+Q01543,FLI1,Friend leukemia integration 1 transcription factor,Sterile alpha motif/pointed domain superfamily,IPR013761,Homologous_superfamily,7,3,False,False
+Q01826,SATB1,DNA-binding protein SATB1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,9,4,False,False
+Q01851,POU4F1,"POU domain, class 4, transcription factor 1",Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,2,False,False
+Q01860,POU5F1,"POU domain, class 5, transcription factor 1",Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,2,False,False
+Q01892,SPIB,Transcription factor Spi-B,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,4,2,False,False
+Q02078,MEF2A,Myocyte-specific enhancer factor 2A,"Transcription factor, MADS-box superfamily",IPR036879,Homologous_superfamily,4,1,False,False
+Q02080,MEF2B,Myocyte-specific enhancer factor 2B,"Transcription factor, MADS-box superfamily",IPR036879,Homologous_superfamily,3,1,False,False
+Q02548,PAX5,Paired box protein Pax-5,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,2,False,False
+Q02556,IRF8,Interferon regulatory factor 8,SMAD-like domain superfamily,IPR017855,Homologous_superfamily,7,4,False,False
+Q02818,NUCB1,Nucleobindin-1,EF-hand domain pair,IPR011992,Homologous_superfamily,5,1,False,False
+Q02962,PAX2,Paired box protein Pax-2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,2,False,False
+Q03014,HHEX,Hematopoietically-expressed homeobox protein HHEX,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q03052,POU3F1,"POU domain, class 3, transcription factor 1",Homeodomain-like superfamily,IPR009057,Homologous_superfamily,8,2,False,False
+Q03164,KMT2A,Histone-lysine N-methyltransferase 2A,Bromodomain-like superfamily,IPR036427,Homologous_superfamily,19,4,False,False
+Q03181,PPARD,Peroxisome proliferator-activated receptor delta,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,8,2,False,False
+Q03933,HSF2,Heat shock factor protein 2,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,4,2,False,False
+Q04741,EMX1,Homeobox protein EMX1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q04743,EMX2,Homeobox protein EMX2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+Q05066,SRY,Sex-determining region Y protein,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,4,1,False,False
+Q05925,EN1,Homeobox protein engrailed-1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,8,1,False,False
+Q06413,MEF2C,Myocyte-specific enhancer factor 2C,"Transcription factor, MADS-box superfamily",IPR036879,Homologous_superfamily,4,1,False,False
+Q06416,POU5F1B,"POU domain, class 5, transcription factor 1B",Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,2,False,False
+Q06546,GABPA,GA-binding protein alpha chain,Sterile alpha motif/pointed domain superfamily,IPR013761,Homologous_superfamily,9,4,False,False
+Q06710,PAX8,Paired box protein Pax-8,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,2,False,False
+Q06945,SOX4,Transcription factor SOX-4,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,4,1,False,False
+Q07687,DLX2,Homeobox protein DLX-2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,1,False,False
+Q07869,PPARA,Peroxisome proliferator-activated receptor alpha,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,8,2,False,False
+Q08050,FOXM1,Forkhead box protein M1,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,7,2,False,False
+Q08945,SSRP1,FACT complex subunit SSRP1,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,11,3,False,False
+Q12778,FOXO1,Forkhead box protein O1,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,7,2,False,False
+Q12837,POU4F2,"POU domain, class 4, transcription factor 2",Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,2,False,False
+Q12857,NFIA,Nuclear factor 1 A-type,"CTF transcription factor/nuclear factor 1, DNA-binding domain",IPR020604,Domain,5,3,False,False
+Q12946,FOXF1,Forkhead box protein F1,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,6,2,False,False
+Q12947,FOXF2,Forkhead box protein F2,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,6,2,False,False
+Q12948,FOXC1,Forkhead box protein C1,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,7,2,False,False
+Q12951,FOXI1,Forkhead box protein I1,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,6,2,False,False
+Q12952,FOXL1,Forkhead box protein L1,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,7,2,False,False
+Q12968,NFATC3,"Nuclear factor of activated T-cells, cytoplasmic 3",Immunoglobulin-like fold,IPR013783,Homologous_superfamily,8,4,False,False
+Q13133,NR1H3,Oxysterols receptor LXR-alpha,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,7,2,False,False
+Q13156,RPA4,Replication protein A 30 kDa subunit,"Nucleic acid-binding, OB-fold",IPR012340,Homologous_superfamily,6,3,False,False
+Q13207,TBX2,T-box transcription factor TBX2,"p53-like transcription factor, DNA-binding domain superfamily",IPR008967,Homologous_superfamily,8,2,False,False
+Q13285,NR5A1,Steroidogenic factor 1,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,6,2,False,False
+Q13461,FOXE3,Forkhead box protein E3,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,6,2,False,False
+Q13469,NFATC2,"Nuclear factor of activated T-cells, cytoplasmic 2",Immunoglobulin-like fold,IPR013783,Homologous_superfamily,8,4,False,False
+Q13568,IRF5,Interferon regulatory factor 5,SMAD-like domain superfamily,IPR017855,Homologous_superfamily,7,4,False,False
+Q14186,TFDP1,Transcription factor Dp-1,E2F-DP heterodimerization region,IPR037241,Homologous_superfamily,7,4,False,False
+Q14188,TFDP2,Transcription factor Dp-2,E2F-DP heterodimerization region,IPR037241,Homologous_superfamily,7,4,False,False
+Q14209,E2F2,Transcription factor E2F2,E2F-DP heterodimerization region,IPR037241,Homologous_superfamily,6,3,False,False
+Q14541,HNF4G,Hepatocyte nuclear factor 4-gamma,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,8,2,False,False
+Q14653,IRF3,Interferon regulatory factor 3,SMAD-like domain superfamily,IPR017855,Homologous_superfamily,7,4,False,False
+Q14774,HLX,H2.0-like homeobox protein,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+Q14781,CBX2,Chromobox protein homolog 2,Chromo-like domain superfamily,IPR016197,Homologous_superfamily,6,1,False,False
+Q14814,MEF2D,Myocyte-specific enhancer factor 2D,"Transcription factor, MADS-box superfamily",IPR036879,Homologous_superfamily,4,1,False,False
+Q14863,POU6F1,"POU domain, class 6, transcription factor 1",Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,2,False,False
+Q14934,NFATC4,"Nuclear factor of activated T-cells, cytoplasmic 4",Immunoglobulin-like fold,IPR013783,Homologous_superfamily,8,4,False,False
+Q14938,NFIX,Nuclear factor 1 X-type,"CTF transcription factor/nuclear factor 1, DNA-binding domain",IPR020604,Domain,5,3,False,False
+Q14966,ZNF638,Zinc finger protein 638,Nucleotide-binding alpha-beta plait domain superfamily,IPR012677,Homologous_superfamily,9,3,False,False
+Q14994,NR1I3,Nuclear receptor subfamily 1 group I member 3,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,7,2,False,False
+Q14995,NR1D2,Nuclear receptor subfamily 1 group D member 2,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,6,2,False,False
+Q15306,IRF4,Interferon regulatory factor 4,SMAD-like domain superfamily,IPR017855,Homologous_superfamily,7,4,False,False
+Q15319,POU4F3,"POU domain, class 4, transcription factor 3",Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,2,False,False
+Q15329,E2F5,Transcription factor E2F5,E2F-DP heterodimerization region,IPR037241,Homologous_superfamily,6,3,False,False
+Q15406,NR6A1,Nuclear receptor subfamily 6 group A member 1,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,6,2,False,False
+Q15475,SIX1,Homeobox protein SIX1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q15554,TERF2,Telomeric repeat-binding factor 2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,8,2,False,False
+Q15561,TEAD4,Transcriptional enhancer factor TEF-3,TEA/ATTS domain superfamily,IPR038096,Homologous_superfamily,6,1,False,False
+Q15562,TEAD2,Transcriptional enhancer factor TEF-4,TEA/ATTS domain superfamily,IPR038096,Homologous_superfamily,5,1,False,False
+Q15583,TGIF1,Homeobox protein TGIF1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False
+Q15699,ALX1,ALX homeobox protein 1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q15723,ELF2,ETS-related transcription factor Elf-2,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,5,2,False,False
+Q15906,VPS72,Vacuolar protein sorting-associated protein 72 homolog,"Vps72/YL1, C-terminal",IPR013272,Domain,2,2,False,False
+Q15911,ZFHX3,Zinc finger homeobox protein 3,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,2,False,False
+Q16254,E2F4,Transcription factor E2F4,E2F-DP heterodimerization region,IPR037241,Homologous_superfamily,6,3,False,False
+Q16594,TAF9,Transcription initiation factor TFIID subunit 9,Histone-fold,IPR009072,Homologous_superfamily,3,1,False,False
+Q16650,TBR1,T-box brain protein 1,"p53-like transcription factor, DNA-binding domain superfamily",IPR008967,Homologous_superfamily,6,2,False,False
+Q16656,NRF1,Nuclear respiratory factor 1,"Nuclear respiratory factor 1, NLS/DNA-binding, dimerisation domain",IPR019525,Domain,2,1,False,False
+Q16676,FOXD1,Forkhead box protein D1,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,6,2,False,False
+Q2KHR2,RFX7,DNA-binding protein RFX7,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,4,2,False,False
+Q33E94,RFX4,Transcription factor RFX4,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,5,2,False,False
+Q3SYB3,FOXD4L6,Forkhead box protein D4-like 6,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,6,2,False,False
+Q49A26,GLYR1,Cytokine-like nuclear factor N-PAC,AT-hook motif,IPR008927,Homologous_superfamily,8,3,False,False
+Q53H47,SETMAR,Histone-lysine N-methyltransferase SETMAR,Ribonuclease H superfamily,IPR036397,Homologous_superfamily,9,3,False,False
+Q5H9I0,TFDP3,Transcription factor Dp family member 3,E2F-DP heterodimerization region,IPR037241,Homologous_superfamily,7,4,False,False
+Q5SQQ9,VAX1,Ventral anterior homeobox 1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q5SXM2,SNAPC4,snRNA-activating protein complex subunit 4,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q5TGY3,AHDC1,Transcription factor Gibbin,Domain of unknown function DUF4683,IPR032757,Domain,2,1,False,False
+Q5XKR4,OTP,Homeobox protein orthopedia,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+Q63HK5,TSHZ3,Teashirt homolog 3,Homeodomain-like superfamily,IPR001356,Domain,4,2,False,False
+Q68CP9,ARID2,AT-rich interactive domain-containing protein 2,ARID DNA-binding domain superfamily,IPR036431,Homologous_superfamily,8,4,False,False
+Q68G74,LHX8,LIM/homeobox protein Lhx8,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q6NSI4,RADX,RPA-related protein RADX,"Nucleic acid-binding, OB-fold",IPR012340,Homologous_superfamily,2,1,False,False
+Q6NSW7,NANOGP8,Homeobox protein NANOGP8,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False
+Q6NT76,HMBOX1,Homeobox-containing protein 1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,8,2,False,False
+Q6PIV2,FOXR1,Forkhead box protein R1,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,4,2,False,False
+Q6RFH8,DUX4L9,Double homeobox protein 4C,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False
+Q6VB84,FOXD4L3,Forkhead box protein D4-like 3,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,6,2,False,False
+Q6ZRS2,SRCAP,Chromatin remodeling protein SRCAP,P-loop containing nucleoside triphosphate hydrolase,IPR027417,Homologous_superfamily,9,2,False,False
+Q6ZSZ6,TSHZ1,Teashirt homolog 1,Homeodomain-like superfamily,IPR001356,Domain,4,2,False,False
+Q7Z353,HDX,Highly divergent homeobox,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,3,1,False,False
+Q7Z591,AKNA,Microtubule organization protein AKNA,AKNA domain,IPR022150,Domain,2,1,False,False
+Q86U86,PBRM1,Protein polybromo-1,Bromo adjacent homology (BAH) domain superfamily,IPR043151,Homologous_superfamily,9,3,False,False
+Q86UP3,ZFHX4,Zinc finger homeobox protein 4,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,2,False,False
+Q86WS4,REDIC1,Regulator of DNA class I crossover intermediates 1,Regulator of DNA class I crossover intermediates 1-like,IPR027883,Family,1,1,False,False
+Q86WV5,TEN1,CST complex subunit TEN1,"Nucleic acid-binding, OB-fold",IPR012340,Homologous_superfamily,2,1,False,False
+Q8HWS3,RFX6,DNA-binding protein RFX6,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,5,2,False,False
+Q8IVH2,FOXP4,Forkhead box protein P4,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,7,2,False,False
+Q8IWI9,MGA,MAX gene-associated protein,Helix-loop-helix DNA-binding domain superfamily,IPR036638,Homologous_superfamily,9,3,False,False
+Q8IX15,HOMEZ,Homeobox and leucine zipper protein Homez,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,3,1,False,False
+Q8IYH5,ZZZ3,ZZ-type zinc finger-containing protein 3,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,2,False,False
+Q8N196,SIX5,Homeobox protein SIX5,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False
+Q8N635,MEIOB,Meiosis-specific with OB domain-containing protein,"Nucleic acid-binding, OB-fold",IPR012340,Homologous_superfamily,3,1,False,False
+Q8N693,ESX1,Homeobox protein ESX1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q8N7U7,TPRX1,Tetra-peptide repeat homeobox protein 1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,2,1,False,False
+Q8NEZ4,KMT2C,Histone-lysine N-methyltransferase 2C,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,20,4,False,False
+Q8NFC6,BOD1L1,Biorientation of chromosomes in cell division protein 1-like 1,BOD1/SHG1 domain,IPR055264,Domain,2,1,False,False
+Q8NFW5,DMBX1,Diencephalon/mesencephalon homeobox protein 1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q8NHV9,RHOXF1,Rhox homeobox family member 1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q8TAU0,NKX2-3,Homeobox protein Nkx-2.3,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q8TE12,LMX1A,LIM homeobox transcription factor 1-alpha,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+Q8WY36,BBX,HMG box transcription factor BBX,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,5,1,False,False
+Q8WYP5,AHCTF1,Protein ELYS,AT-hook motif,IPR011047,Homologous_superfamily,4,1,False,False
+Q92570,NR4A3,Nuclear receptor subfamily 4 group A member 3,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,7,2,False,False
+Q92731,ESR2,Estrogen receptor beta,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,9,2,False,False
+Q92753,RORB,Nuclear receptor ROR-beta,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,7,2,False,False
+Q92826,HOXB13,Homeobox protein Hox-B13,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q92949,FOXJ1,Forkhead box protein J1,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,7,2,False,False
+Q92985,IRF7,Interferon regulatory factor 7,SMAD-like domain superfamily,IPR017855,Homologous_superfamily,7,4,False,False
+Q92988,DLX4,Homeobox protein DLX-4,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+Q969G2,LHX4,LIM/homeobox protein Lhx4,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,1,False,False
+Q969G3,SMARCE1,SWI/SNF-related matrix-associated actin-dependent regulator of chromatin subfamily E member 1,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,2,1,False,False
+Q96AH0,NABP1,SOSS complex subunit B2,"Nucleic acid-binding, OB-fold",IPR012340,Homologous_superfamily,3,1,False,False
+Q96AV8,E2F7,Transcription factor E2F7,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,4,2,False,False
+Q96BD5,PHF21A,PHD finger protein 21A,Zinc finger superfamily,IPR011011,Homologous_superfamily,5,2,False,False
+Q96C55,ZNF524,Zinc finger protein 524,Zinc finger superfamily,IPR036236,Homologous_superfamily,2,1,False,False
+Q96E14,RMI2,RecQ-mediated genome instability protein 2,"Nucleic acid-binding, OB-fold",IPR012340,Homologous_superfamily,2,1,False,False
+Q96IS3,RAX2,Retina and anterior neural fold homeobox protein 2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False
+Q96JN0,LCOR,Ligand-dependent corepressor,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,2,1,False,False
+Q96JY0,MAEL,Protein maelstrom homolog,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,4,1,False,False
+Q96KN3,PKNOX2,Homeobox protein PKNOX2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q96LI6,HSFY1,"Heat shock transcription factor, Y-linked",Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,3,2,False,False
+Q96MA1,DMRTB1,Doublesex- and mab-3-related transcription factor B1,DM DNA-binding domain superfamily,IPR036407,Homologous_superfamily,3,1,False,False
+Q96NM4,TOX2,TOX high mobility group box family member 2,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,3,1,False,False
+Q96NZ1,FOXN4,Forkhead box protein N4,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,5,2,False,False
+Q96QS3,ARX,Homeobox protein ARX,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q96RI1,NR1H4,Bile acid receptor,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,8,2,False,False
+Q96RK0,CIC,Protein capicua homolog,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,6,1,False,False
+Q96SF7,TBX15,T-box transcription factor TBX15,"p53-like transcription factor, DNA-binding domain superfamily",IPR008967,Homologous_superfamily,5,2,False,False
+Q96T58,SPEN,Msx2-interacting protein,Nucleotide-binding alpha-beta plait domain superfamily,IPR012677,Homologous_superfamily,13,3,False,False
+Q99453,PHOX2B,Paired mesoderm homeobox protein 2B,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False
+Q99459,CDC5L,Cell division cycle 5-like protein,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+Q99581,FEV,Protein FEV,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,4,2,False,False
+Q99593,TBX5,T-box transcription factor TBX5,"p53-like transcription factor, DNA-binding domain superfamily",IPR008967,Homologous_superfamily,5,2,False,False
+Q99594,TEAD3,Transcriptional enhancer factor TEF-5,TEA/ATTS domain superfamily,IPR038096,Homologous_superfamily,6,1,False,False
+Q99607,ELF4,ETS-related transcription factor Elf-4,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,5,2,False,False
+Q99626,CDX2,Homeobox protein CDX-2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,1,False,False
+Q99687,MEIS3,Homeobox protein Meis3,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q99697,PITX2,Pituitary homeobox 2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q99801,NKX3-1,Homeobox protein Nkx-3.1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q99853,FOXB1,Forkhead box protein B1,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,7,2,False,False
+Q99958,FOXC2,Forkhead box protein C2,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,7,2,False,False
+Q9BPY8,HOPX,Homeodomain-only protein,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,3,1,False,False
+Q9BQ15,NABP2,SOSS complex subunit B1,"Nucleic acid-binding, OB-fold",IPR012340,Homologous_superfamily,3,1,False,False
+Q9BQY4,RHOXF2,Rhox homeobox family member 2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,3,1,False,False
+Q9BT81,SOX7,Transcription factor SOX-7,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,5,1,False,False
+Q9BVI0,PHF20,PHD finger protein 20,Zinc finger superfamily,IPR011011,Homologous_superfamily,9,2,False,False
+Q9BXR3,ERVK-6,Endogenous retrovirus group K member 6 Pol protein,⚠ Transposable element / ERV,TE,excluded,12,0,True,False
+Q9BYU1,PBX4,Pre-B-cell leukemia transcription factor 4,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q9BZM3,GSX2,GS homeobox 2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q9BZS1,FOXP3,Forkhead box protein P3,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,8,2,False,False
+Q9C056,NKX6-2,Homeobox protein Nkx-6.2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+Q9C0A1,ZFHX2,Zinc finger homeobox protein 2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,2,False,False
+Q9GZN2,TGIF2,Homeobox protein TGIF2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False
+Q9H147,DNTTIP1,Deoxynucleotidyltransferase terminal-interacting protein 1,"DNTTIP1, dimerisation domain",IPR041384,Domain,3,2,False,False
+Q9H161,ALX4,Homeobox protein aristaless-like 4,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q9H2C1,LHX5,LIM/homeobox protein Lhx5,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,1,False,False
+Q9H2P0,ADNP,Activity-dependent neuroprotector homeobox protein,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q9H2W2,MIXL1,Homeobox protein MIXL1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False
+Q9H334,FOXP1,Forkhead box protein P1,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,7,2,False,False
+Q9H3D4,TP63,Tumor protein 63,"p53-like transcription factor, DNA-binding domain superfamily",IPR008967,Homologous_superfamily,10,4,False,False
+Q9H4I2,ZHX3,Zinc fingers and homeoboxes protein 3,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,2,False,False
+Q9H4S2,GSX1,GS homeobox 1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q9H611,PIF1,ATP-dependent DNA helicase PIF1,P-loop containing nucleoside triphosphate hydrolase,IPR027417,Homologous_superfamily,6,1,False,False
+Q9H668,STN1,CST complex subunit STN1,"CST complex subunit Stn1, wHTH1 motif superfamily",IPR042082,Homologous_superfamily,8,4,False,False
+Q9H6I2,SOX17,Transcription factor SOX-17,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,5,1,False,False
+Q9H9S0,NANOG,Homeobox protein NANOG,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False
+Q9HBE1,PATZ1,"POZ-, AT hook-, and zinc finger-containing protein 1",SKP1/BTB/POZ domain superfamily,IPR011333,Homologous_superfamily,5,2,False,False
+Q9HBU1,BARX1,Homeobox protein BarH-like 1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+Q9HCS4,TCF7L1,Transcription factor 7-like 1,Catenin binding domain superfamily,IPR027397,Homologous_superfamily,5,2,False,False
+Q9NP08,HMX1,Homeobox protein HMX1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q9NP62,GCM1,Chorion-specific transcription factor GCMa,GCM domain superfamily,IPR036115,Homologous_superfamily,5,3,False,False
+Q9NP66,HMG20A,High mobility group protein 20A,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,3,1,False,False
+Q9NPC8,SIX2,Homeobox protein SIX2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False
+Q9NQ69,LHX9,LIM/homeobox protein Lhx9,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q9NQB0,TCF7L2,Transcription factor 7-like 2,Catenin binding domain superfamily,IPR027397,Homologous_superfamily,5,2,False,False
+Q9NQL9,DMRT3,Doublesex- and mab-3-related transcription factor 3,DM DNA-binding domain superfamily,IPR036407,Homologous_superfamily,5,2,False,False
+Q9NR48,ASH1L,Histone-lysine N-methyltransferase ASH1L,Bromo adjacent homology (BAH) domain superfamily,IPR043151,Homologous_superfamily,15,5,False,False
+Q9NRE2,TSHZ2,Teashirt homolog 2,Homeodomain-like superfamily,IPR001356,Domain,4,2,False,False
+Q9NTI5,PDS5B,Sister chromatid cohesion protein PDS5 homolog B,Armadillo-like helical,IPR011989,Homologous_superfamily,3,2,False,False
+Q9NU39,FOXD4L1,Forkhead box protein D4-like 1,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,6,2,False,False
+Q9NYD6,HOXC10,Homeobox protein Hox-C10,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q9NZC4,EHF,ETS homologous factor,Sterile alpha motif/pointed domain superfamily,IPR013761,Homologous_superfamily,7,3,False,False
+Q9NZR4,VSX1,Visual system homeobox 1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q9P0K8,FOXJ2,Forkhead box protein J2,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,6,2,False,False
+Q9P0W2,HMG20B,SWI/SNF-related matrix-associated actin-dependent regulator of chromatin subfamily E member 1-related,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,3,1,False,False
+Q9UBC0,ONECUT1,Hepatocyte nuclear factor 6,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,2,False,False
+Q9UBD0,HSFX1,"Heat shock transcription factor, X-linked",Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,3,2,False,False
+Q9UBR4,LHX3,LIM/homeobox protein Lhx3,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,1,False,False
+Q9UBX0,HESX1,Homeobox expressed in ES cells 1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False
+Q9UBX2,DUX4,Double homeobox protein 4,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False
+Q9UGU0,TCF20,Transcription factor 20,Zinc finger superfamily,IPR013083,Homologous_superfamily,5,1,False,False
+Q9UGU5,HMGXB4,HMG domain-containing protein 4,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,5,1,False,False
+Q9UIF9,BAZ2A,Bromodomain adjacent to zinc finger domain protein 2A,Bromodomain-like superfamily,IPR036427,Homologous_superfamily,15,4,False,False
+Q9UIU6,SIX4,Homeobox protein SIX4,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False
+Q9UIW0,VAX2,Ventral anterior homeobox 2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+Q9UJU2,LEF1,Lymphoid enhancer-binding factor 1,Catenin binding domain superfamily,IPR027397,Homologous_superfamily,5,2,False,False
+Q9UJU5,FOXD3,Forkhead box protein D3,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,7,2,False,False
+Q9UKI9,POU2F3,"POU domain, class 2, transcription factor 3",Homeodomain-like superfamily,IPR009057,Homologous_superfamily,8,2,False,False
+Q9UKW6,ELF5,ETS-related transcription factor Elf-5,Sterile alpha motif/pointed domain superfamily,IPR013761,Homologous_superfamily,6,3,False,False
+Q9UKY1,ZHX1,Zinc fingers and homeoboxes protein 1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,2,False,False
+Q9UL17,TBX21,T-box transcription factor TBX21,"p53-like transcription factor, DNA-binding domain superfamily",IPR008967,Homologous_superfamily,5,2,False,False
+Q9ULV5,HSF4,Heat shock factor protein 4,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,3,2,False,False
+Q9UMN6,KMT2B,Histone-lysine N-methyltransferase 2B,Bromodomain-like superfamily,IPR036427,Homologous_superfamily,15,4,False,False
+Q9UMQ3,BARX2,Homeobox protein BarH-like 2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+Q9UMR3,TBX20,T-box transcription factor TBX20,"p53-like transcription factor, DNA-binding domain superfamily",IPR008967,Homologous_superfamily,5,2,False,False
+Q9UN79,SOX13,Transcription factor SOX-13,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,3,1,False,False
+Q9UPM6,LHX6,LIM/homeobox protein Lhx6,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q9UPW0,FOXJ3,Forkhead box protein J3,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,6,2,False,False
+Q9UPW6,SATB2,DNA-binding protein SATB2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,9,4,False,False
+Q9WJR5,ERVK-19,Endogenous retrovirus group K member 19 Pol protein,⚠ Transposable element / ERV,TE,excluded,12,0,True,False
+Q9Y222,DMTF1,Cyclin-D-binding Myb-like transcription factor 1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q9Y261,FOXA2,Hepatocyte nuclear factor 3-beta,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,8,2,False,False
+Q9Y2G1,MYRF,Myelin regulatory factor,"NDT80, DNA-binding domain superfamily",IPR037141,Homologous_superfamily,7,2,False,False
+Q9Y2U8,LEMD3,Inner nuclear membrane protein Man1,LEM/LEM-like domain superfamily,IPR011015,Homologous_superfamily,8,4,False,False
+Q9Y2V3,RAX,Retinal homeobox protein Rx,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q9Y458,TBX22,T-box transcription factor TBX22,"p53-like transcription factor, DNA-binding domain superfamily",IPR008967,Homologous_superfamily,5,2,False,False
+Q9Y466,NR2E1,Nuclear receptor subfamily 2 group E member 1,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,6,2,False,False
+Q9Y5R5,DMRT2,Doublesex- and mab-3-related transcription factor 2,DM DNA-binding domain superfamily,IPR036407,Homologous_superfamily,3,1,False,False
+Q9Y5R6,DMRT1,Doublesex- and mab-3-related transcription factor 1,DM DNA-binding domain superfamily,IPR036407,Homologous_superfamily,4,1,False,False
+Q9Y5X4,NR2E3,Photoreceptor-specific nuclear receptor,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,7,2,False,False
+Q9Y603,ETV7,Transcription factor ETV7,Sterile alpha motif/pointed domain superfamily,IPR013761,Homologous_superfamily,6,3,False,False
+Q9Y6X0,SETBP1,SET-binding protein,No structural annotation,NONE,none,1,0,False,False
+Q9Y6X8,ZHX2,Zinc fingers and homeoboxes protein 2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,2,False,False
+Q9Y6Y1,CAMTA1,Calmodulin-binding transcription activator 1,Ankyrin repeat-containing domain superfamily,IPR036770,Homologous_superfamily,8,4,False,False
+A2RU54,HMX2,Homeobox protein HMX2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+A6NHT5,HMX3,Homeobox protein HMX3,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+A6NJT0,UNCX,Homeobox protein unc-4 homolog,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,3,1,False,False
+A6NLW8,DUXA,Double homeobox protein A,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False
+A6NNA5,DRGX,Dorsal root ganglia homeobox protein,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+O00570,SOX1,Transcription factor SOX-1,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,4,1,False,False
+O43638,FOXS1,Forkhead box protein S1,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,7,2,False,False
+O43812,DUX1,Double homeobox protein 1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+O60422,ONECUT3,One cut domain family member 3,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,2,False,False
+O95076,ALX3,Homeobox protein aristaless-like 3,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False
+P09630,HOXC6,Homeobox protein Hox-C6,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+P0C7M4,RHOXF2B,Rhox homeobox family member 2B,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,3,1,False,False
+P10266,ERVK-10,Endogenous retrovirus group K member 10 Pol protein,⚠ Transposable element / ERV,TE,excluded,13,0,True,False
+P31267,HOXA6,Homeobox protein Hox-A6,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,1,False,False
+P31277,HOXD11,Homeobox protein Hox-D11,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+P32314,FOXN2,Forkhead box protein N2,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,7,2,False,False
+P63132,HERVK_113,Endogenous retrovirus group K member 113 Pol protein,⚠ Transposable element / ERV,TE,excluded,12,0,True,False
+P63133,ERVK-8,Endogenous retrovirus group K member 8 Pol protein,⚠ Transposable element / ERV,TE,excluded,12,0,True,False
+P63135,ERVK-7,Endogenous retrovirus group K member 7 Pol protein,⚠ Transposable element / ERV,TE,excluded,14,0,True,False
+P63136,ERVK-25,Endogenous retrovirus group K member 25 Pol protein,⚠ Transposable element / ERV,TE,excluded,12,0,True,False
+P78414,IRX1,Iroquois-class homeodomain protein IRX-1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q03828,EVX2,Homeobox even-skipped homolog protein 2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q12950,FOXD4,Forkhead box protein D4,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,5,2,False,False
+Q17RH7,TPRXL,Tetra-peptide repeat homeobox-like protein,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,2,1,False,False
+Q2M1V0,ISX,Intestine-specific homeobox,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False
+Q3C1V8,BSX,Brain-specific homeobox protein homolog,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q4G112,HSF5,Heat shock factor protein 5,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,3,2,False,False
+Q5VZB9,DMRTA1,Doublesex- and mab-3-related transcription factor A1,DM DNA-binding domain superfamily,IPR036407,Homologous_superfamily,6,2,False,False
+Q6IQ32,ADNP2,Activity-dependent neuroprotector homeobox protein 2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q6PJQ5,FOXR2,Forkhead box protein R2,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,4,2,False,False
+Q6XYB7,LBX2,Transcription factor LBX2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,3,1,False,False
+Q8IUE0,TGIF2LY,Homeobox protein TGIF2LY,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False
+Q8IUE1,TGIF2LX,Homeobox protein TGIF2LX,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False
+Q8IXT2,DMRTC2,Doublesex- and mab-3-related transcription factor C2,DM DNA-binding domain superfamily,IPR036407,Homologous_superfamily,4,1,False,False
+Q8N3X6,LCORL,Ligand-dependent nuclear receptor corepressor-like protein,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,2,1,False,False
+Q96A47,ISL2,Insulin gene enhancer protein ISL-2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+Q96LU7,MYRFL,Myelin regulatory factor-like protein,"NDT80, DNA-binding domain superfamily",IPR037141,Homologous_superfamily,7,2,False,False
+Q96SC8,DMRTA2,Doublesex- and mab-3-related transcription factor A2,DM DNA-binding domain superfamily,IPR036407,Homologous_superfamily,6,2,False,False
+Q99525,H4C7,Histone H4-like protein type G,Histone-fold,IPR009072,Homologous_superfamily,2,1,False,False
+Q99811,PRRX2,Paired mesoderm homeobox protein 2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q9BZI1,IRX2,Iroquois-class homeodomain protein IRX-2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q9C009,FOXQ1,Forkhead box protein Q1,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,7,2,False,False
+Q9GZZ0,HOXD1,Homeobox protein Hox-D1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q9NY43,BARHL2,BarH-like 2 homeobox protein,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q9UJV8,PURG,Purine-rich element-binding protein gamma,Purine-rich element binding protein family,IPR006628,Family,1,1,False,False
+Q9UQG0,ERVK-11,Endogenous retrovirus group K member 11 Pol protein,⚠ Transposable element / ERV,TE,excluded,13,0,True,False
+Q9Y651,SOX21,Transcription factor SOX-21,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,4,1,False,False
+A0A1W2PPM1,CPHXL,Cytoplasmic polyadenylated homeobox-like protein,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,3,1,False,False
+A0A2Z4LIS9,FOXO3B,Forkhead box protein O3B,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,3,2,False,False
+A6NDR6,MEIS3P1,Putative homeobox protein Meis3-like 1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+A6NFQ7,DPRX,Divergent paired-related homeobox,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,3,1,False,False
+A6NJG6,ARGFX,Arginine-fifty homeobox,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,3,1,False,False
+A6NMT0,DBX1,Homeobox protein DBX1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+A8K0S8,MEIS3P2,Putative homeobox protein Meis3-like 2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+A8MYZ6,FOXO6,Forkhead box protein O6,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,6,2,False,False
+B2CW77,KLLN,Killin,No structural annotation,NONE,none,0,0,False,False
+C9JSJ3,MEIOSIN,Meiosis initiator protein,Helix-loop-helix DNA-binding domain superfamily,IPR036638,Homologous_superfamily,4,2,False,False
+O75333,TBX10,T-box transcription factor TBX10,"p53-like transcription factor, DNA-binding domain superfamily",IPR008967,Homologous_superfamily,5,2,False,False
+P0DV77,TPRX2,Tetrapeptide repeat homeobox protein 2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,3,1,False,False
+P31275,HOXC12,Homeobox protein Hox-C12,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False
+Q14549,GBX1,Homeobox protein GBX-1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q15270,NKX1-1,NK1 transcription factor-related protein 1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q53EQ6,TIGD5,Tigger transposable element-derived protein 5,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,2,False,False
+Q5VYV0,FOXB2,Forkhead box protein B2,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,7,2,False,False
+Q6B0B8,TIGD3,Tigger transposable element-derived protein 3,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q6NT04,TIGD7,Tigger transposable element-derived protein 7,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q6ZN32,ETV3L,ETS translocation variant 3-like protein,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,4,2,False,False
+Q6ZNG2,DBX2,Homeobox protein DBX2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
+Q6ZV50,RFX8,DNA-binding protein RFX8,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,5,2,False,False
+Q8IY51,TIGD4,Tigger transposable element-derived protein 4,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q8IYA7,MKX,Homeobox protein Mohawk,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False
+Q8N5J4,SPIC,Transcription factor Spi-C,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,4,2,False,False
+Q8N7G0,POU5F2,"POU domain, class 5, transcription factor 2",Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,2,False,False
+Q8WW32,HMGB4,High mobility group protein B4,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,3,1,False,False
+Q8WXT5,FOXD4L4,Forkhead box protein D4-like 4,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,6,2,False,False
+Q96PT3,DUX5,Double homeobox protein 5,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q96PT4,DUX3,Putative double homeobox protein 3,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False
+Q9BZE3,BARHL1,BarH-like 1 homeobox protein,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q9H2Z4,NKX2-4,Homeobox protein Nkx-2.4,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q9HB31,SEBOX,Homeobox protein SEBOX,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,3,1,False,False
+Q9UD57,NKX1-2,NK1 transcription factor-related protein 2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q9Y4A0,JRKL,Jerky protein homolog-like,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,2,False,False
+A0A1B0GTS1,HSFX4,"Heat shock transcription factor, X-linked member 4",Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,3,2,False,False
+A0A1B0GWH4,HSFX3,"Heat shock transcription factor, X-linked member 3",Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,3,2,False,False
+A0A1W2PPF3,DUXB,Double homeobox protein B,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False
+A0A1W2PPK0,CPHXL2,Cytoplasmic polyadenylated homeobox-like protein 2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,3,1,False,False
+A0A1W2PQ73,ERFL,ETS domain-containing transcription factor ERF-like,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,4,2,False,False
+A0A1W2PRP0,FOXL3,Forkhead box protein L3,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,5,2,False,False
+B2RD01,CENPBD1P,Putative CENPB DNA-binding domain-containing protein 1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,2,False,False
+E9PGG2,ANHX,Anomalous homeobox protein,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+P0CB48,UBTFL6,Putative upstream-binding factor 1-like protein 6,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,3,1,False,False
+P0CJ85,DUX4L2,Double homeobox protein 4-like protein 2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False
+P0CJ86,DUX4L3,Double homeobox protein 4-like protein 3,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False
+P0CJ87,DUX4L4,Double homeobox protein 4-like protein 4,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False
+P0CJ88,DUX4L5,Double homeobox protein 4-like protein 5,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False
+P0CJ89,DUX4L6,Double homeobox protein 4-like protein 6,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False
+P0CJ90,DUX4L7,Double homeobox protein 4-like protein 7,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False
+Q12766,HMGXB3,HMG domain-containing protein 3,High mobility group box domain superfamily,IPR036910,Homologous_superfamily,4,1,False,False
+Q17RP2,TIGD6,Tigger transposable element-derived protein 6,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q4W5G0,TIGD2,Tigger transposable element-derived protein 2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
+Q5VV16,FOXD4L5,Forkhead box protein D4-like 5,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,6,2,False,False
+Q6ZQN5,FOXI2,Forkhead box protein I2,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,6,2,False,False
+Q7Z5D8,NANOGNB,NANOG neighbor homeobox,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,2,1,False,False
+Q96MW7,TIGD1,Tigger transposable element-derived protein 1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,2,False,False

@@ -1,0 +1,612 @@
+uniprot_id,gene,protein_name,structural_class,n_interpro_domains,interpro_names
+A0AVK6,E2F8,Transcription factor E2F8,Winged-helix / Forkhead,4,E2F; E2F_WHTH_DNA-bd_dom; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+A6NCS4,NKX2-6,Homeobox protein Nkx-2.6,Homeodomain,5,HD; HD_metazoa; Homeobox_CS; Homeobox_NK-like; Homeodomain-like_sf
+A6NJ46,NKX6-3,Homeobox protein Nkx-6.3,Homeodomain,6,HD; HD_metazoa; Homeobox_CS; Homeobox_NK-like; Homeodomain-like_sf; HTH_motif
+A8MTJ6,FOXI3,Forkhead box protein I3,Winged-helix / Forkhead,6,Fork_head_dom; FOX_domain-containing; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+A8MTQ0,NOTO,Homeobox protein notochord,Homeodomain,3,EMX-VAX-Noto_Homeobox_TFs; HD; Homeodomain-like_sf
+A8MZ59,LEUTX,Paired-like homeodomain transcription factor LEUTX,Homeodomain,3,HD; Homeobox_CS; Homeodomain-like_sf
+B2RPK0,HMGB1P1,High mobility group protein B1-like 1,HMG box,3,HMG_box_dom; HMG_box_dom_sf; HMGB
+O00321,ETV2,ETS translocation variant 2,ETS domain,4,Ets_dom; ETS_fam; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+O00358,FOXE1,Forkhead box protein E1,Winged-helix / Forkhead,6,Fork_head_dom; FOX_domain-containing; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+O00409,FOXN3,Forkhead box protein N3,Winged-helix / Forkhead,7,FH_FOXN3; Fork_head_dom; FOXN2/3-like; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+O00470,MEIS1,Homeobox protein Meis1,Homeodomain,5,HD; Homeodomain-like_sf; KN_HD; PKNOX/Meis_N; TALE_homeobox
+O00482,NR5A2,Nuclear receptor subfamily 5 group A member 2,Nuclear receptor,6,NHR-like_dom_sf; NR5-like; Nucl_hrmn_rcpt_lig-bd; Nuclear_hrmn_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+O00712,NFIB,Nuclear factor 1 B-type,SMAD,5,CTF/NFI; CTF/NFI_DNA-bd-dom; CTF/NFI_DNA-bd_CS; CTF/NFI_DNA-bd_N; MAD_homology1_Dwarfin-type
+O00716,E2F3,Transcription factor E2F3,E2F / RB-associated,6,E2F; E2F-DP_heterodim; E2F_CC-MB; E2F_WHTH_DNA-bd_dom; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+O14529,CUX2,Homeobox protein cut-like 2,Homeodomain,6,CUT_dom; Cux_N; HD; Homeobox_CS; Homeodomain-like_sf; Lambda_DNA-bd_dom_sf
+O14627,CDX4,Homeobox protein CDX-4,Homeodomain,7,Caudal_activation_dom; Caudal_homeobox; HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; HTH_motif
+O14770,MEIS2,Homeobox protein Meis2,Homeodomain,5,HD; Homeodomain-like_sf; KN_HD; PKNOX/Meis_N; TALE_homeobox
+O14813,PHOX2A,Paired mesoderm homeobox protein 2A,Homeodomain,4,HD; Homeobox_CS; Homeodomain-like_sf; Paired_Homeobox_TFs
+O14896,IRF6,Interferon regulatory factor 6,SMAD,7,Interferon_reg_fac_CS; Interferon_reg_fact_DNA-bd_dom; Interferon_reg_factor-3; SMAD-like_dom_sf; SMAD_FHA_dom_sf; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+O15119,TBX3,T-box transcription factor TBX3,T-box,7,p53-like_TF_DNA-bd_sf; T-box_DNA-bd; T-box_sf; TBX2/3_TAD; TBX2_3_RD; TF_T-box; TF_T-box_CS
+O15178,TBXT,T-box transcription factor T,T-box,6,p53-like_TF_DNA-bd_sf; T-box_DNA-bd; T-box_sf; TF_Brachyury; TF_T-box; TF_T-box_CS
+O15226,NKRF,NF-kappa-B-repressing factor,E2F / RB-associated,6,dsRBD_dom; DSRM_CARF/NKRF; G_patch_dom; R3H_dom; R3H_dom_sf; R3H_NRF
+O15266,SHOX,Short stature homeobox protein,Homeodomain,6,HD; Homeobox_CS; Homeodomain-like_sf; HTH_motif; OAR_dom; Paired_homeobox_Bicoid
+O15347,HMGB3,High mobility group protein B3,HMG box,4,HMG_box_dom; HMG_box_dom_sf; HMG_boxA_CS; HMGB
+O15353,FOXN1,Forkhead box protein N1,Winged-helix / Forkhead,6,FH_FOXN1; Fork_head_dom; FOXN1_4; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+O15370,SOX12,Transcription factor SOX-12,HMG box,4,HMG_box_dom; HMG_box_dom_sf; SOX-12/11/4; SRY-related_HMG-box_TF-like
+O15405,TOX3,TOX high mobility group box family member 3,HMG box,3,HMG_box_dom; HMG_box_dom_sf; TOX_HMG-box_domain
+O15409,FOXP2,Forkhead box protein P2,Winged-helix / Forkhead,7,FH_FOXP1_P2; Fork_head_dom; FOXP; FOXP-CC; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+O15499,GSC2,Homeobox protein goosecoid-2,Homeodomain,4,Goosecoid-like_HB; HD; Homeobox_CS; Homeodomain-like_sf
+O15522,NKX2-8,Homeobox protein Nkx-2.8,Homeodomain,5,HD; HD_metazoa; Homeobox_CS; Homeobox_NK-like; Homeodomain-like_sf
+O43167,ZBTB24,Zinc finger and BTB domain-containing protein 24,Zinc finger – C2H2,5,BTB/POZ_dom; SKP1/BTB/POZ_sf; Znf_C2H2_sf; Znf_C2H2_type; ZnFinger_BTB_dom_contain
+O43186,CRX,Cone-rod homeobox protein,Homeodomain,4,HD; Homeobox_CS; Homeodomain-like_sf; Otx_TF_C
+O43248,HOXC11,Homeobox protein Hox-C11,Homeodomain,5,DUF3528; HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf
+O43316,PAX4,Paired box protein Pax-4,Homeodomain,7,HD; Homeobox_CS; Homeodomain-like_sf; PAIRED_DNA-bd_dom; Paired_dom; PAX_fam; WH-like_DNA-bd_sf
+O43364,HOXA2,Homeobox protein Hox-A2,Homeodomain,5,HD; HD_metazoa; Homeobox_Antennapedia_CS; Homeobox_CS; Homeodomain-like_sf
+O43365,HOXA3,Homeobox protein Hox-A3,Homeodomain,6,DUF4074; HD; HD_metazoa; Homeobox_Antennapedia_CS; Homeobox_CS; Homeodomain-like_sf
+O43435,TBX1,T-box transcription factor TBX1,T-box,5,p53-like_TF_DNA-bd_sf; T-box_DNA-bd; T-box_sf; TF_T-box; TF_T-box_CS
+O43524,FOXO3,Forkhead box protein O3,Winged-helix / Forkhead,6,Fork_head_dom; FOXO-TAD; FOXO_KIX-bd; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+O43711,TLX3,T-cell leukemia homeobox protein 3,Homeodomain,5,HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; TLX1/2/3
+O43763,TLX2,T-cell leukemia homeobox protein 2,Homeodomain,5,HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; TLX1/2/3
+O60248,SOX15,Transcription factor SOX-15,HMG box,3,HMG_box_dom; HMG_box_dom_sf; SRY-related_HMG-box_TF-like
+O60315,ZEB2,Zinc finger E-box-binding homeobox 2,Homeodomain,6,Di19_Zn-bd; HD; Homeodomain-like_sf; Znf_C2H2_sf; Znf_C2H2_type; ZnF_E-box_Homeobox
+O60381,HBP1,HMG box-containing protein 1,HMG box,5,Ataxin_AXH_dom; Ataxin_AXH_dom_sf; HBP1; HMG_box_dom; HMG_box_dom_sf
+O60393,NOBOX,Homeobox protein NOBOX,Homeodomain,3,HD; Homeodomain-like_sf; NOBOX
+O60479,DLX3,Homeobox protein DLX-3,Homeodomain,7,Distal-less_Homeobox_TF; Distal-less_N; HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; HTH_motif
+O60548,FOXD2,Forkhead box protein D2,Winged-helix / Forkhead,6,Fork_head_dom; FOX_domain-containing; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+O60663,LMX1B,LIM homeobox transcription factor 1-beta,Homeodomain,5,HD; Homeobox_CS; Homeodomain-like_sf; LIM_Homeobox_TF; Znf_LIM
+O60806,TBX19,T-box transcription factor TBX19,T-box,6,p53-like_TF_DNA-bd_sf; T-box_DNA-bd; T-box_sf; TF_Brachyury; TF_T-box; TF_T-box_CS
+O60869,EDF1,Endothelial differentiation-related factor 1,Helix-turn-helix,3,Cro/C1-type_HTH; Lambda_DNA-bd_dom_sf; MBF1_N
+O60902,SHOX2,Short stature homeobox protein 2,Homeodomain,6,HD; Homeobox_CS; Homeodomain-like_sf; HTH_motif; OAR_dom; Paired_homeobox_Bicoid
+O75360,PROP1,Homeobox protein prophet of Pit-1,Homeodomain,5,HD; Homeobox_CS; Homeodomain-like_sf; HTH_motif; PROP1
+O75364,PITX3,Pituitary homeobox 3,Homeodomain,5,HD; Homeobox_CS; Homeobox_Pitx/unc30; Homeodomain-like_sf; OAR_dom
+O75461,E2F6,Transcription factor E2F6,E2F / RB-associated,6,E2F; E2F-DP_heterodim; E2F_CC-MB; E2F_WHTH_DNA-bd_dom; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+O75469,NR1I2,Nuclear receptor subfamily 1 group I member 2,Nuclear receptor,6,NHR-like_dom_sf; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR1; Nuclear_hrmn_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+O75478,TADA2A,Transcriptional adapter 2-alpha,Zinc finger – other,11,ADA2-like_ZZ; Ada2/TADA2; Homeodomain-like_sf; Myb_dom; SANT/Myb; SANT_dom; SWIRM; TADA2A_B-like_dom; WH-like_DNA-bd_sf; Znf_ZZ; Znf_ZZ_sf
+O75564,JRK,Jerky protein homolog,Helix-turn-helix,5,CenT-Element_Derived; DDE_SF_endonuclease_dom; Homeodomain-like_sf; HTH_CenpB_DNA-bd_dom; HTH_Psq
+O75593,FOXH1,Forkhead box protein H1,Winged-helix / Forkhead,6,Activin_resp_transcr_regulator; FH_FOXH1; Fork_head_dom; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+O75603,GCM2,Chorion-specific transcription factor GCMb,Unclassified,5,GCM; GCM_dom_sf; GCM_large; GCM_small; Tscrpt_reg_GCM
+O75717,WDHD1,WD repeat and HMG-box DNA-binding protein 1,Homeodomain,10,HMG-box_WDHD1; HMG_box_dom; HMG_box_dom_sf; WD40/YVTN_repeat-like_dom_sf; WD40_repeat_CS; WD40_repeat_dom_sf; WD40_rpt; WD40_WDHD1_1st; WDHD1/CFT4_beta-prop_2nd; WDHD1/CFT4_hel
+O94842,TOX4,TOX high mobility group box family member 4,HMG box,3,HMG_box_dom; HMG_box_dom_sf; TOX_HMG-box_domain
+O94900,TOX,Thymocyte selection-associated high mobility group box protein TOX,HMG box,3,HMG_box_dom; HMG_box_dom_sf; TOX_HMG-box_domain
+O94916,NFAT5,Nuclear factor of activated T-cells 5,Homeodomain,9,Ig-like_fold; Ig_E-set; IPT_dom; NFAT; NFAT5_RHD_DNA-bd; p53-like_TF_DNA-bd_sf; RHD_dimer; RHD_DNA_bind_dom; RHD_DNA_bind_dom_sf
+O94983,CAMTA2,Calmodulin-binding transcription activator 2,Unclassified,5,Ankyrin_rpt-contain_sf; CG-1_dom; Ig-like_fold; Ig_E-set; IPT_dom
+O94993,SOX30,Transcription factor SOX-30,HMG box,3,HMG_box_dom; HMG_box_dom_sf; SOX30_TF
+O95096,NKX2-2,Homeobox protein Nkx-2.2,Homeodomain,5,HD; HD_metazoa; Homeobox_CS; Homeobox_NK-like; Homeodomain-like_sf
+O95231,VENTX,Homeobox protein VENTX,Homeodomain,4,HD; Homeobox_CS; Homeobox_TF; Homeodomain-like_sf
+O95238,SPDEF,SAM pointed domain-containing Ets transcription factor,ETS domain,6,Ets_dom; ETS_fam; Pointed_dom; SAM/pointed_sf; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+O95343,SIX3,Homeobox protein SIX3,Homeodomain,3,HD; Homeodomain-like_sf; SIX1_SD
+O95416,SOX14,Transcription factor SOX-14,HMG box,4,HMG_box_dom; HMG_box_dom_sf; SOX_fam; SRY-related_HMG-box_TF-like
+O95475,SIX6,Homeobox protein SIX6,Homeodomain,3,HD; Homeodomain-like_sf; SIX1_SD
+O95644,NFATC1,"Nuclear factor of activated T-cells, cytoplasmic 1",Homeodomain,8,Ig-like_fold; Ig_E-set; IPT_dom; NFAT; p53-like_TF_DNA-bd_sf; RHD_dimer; RHD_DNA_bind_dom; RHD_DNA_bind_dom_sf
+O95718,ESRRB,Steroid hormone receptor ERR2,Nuclear receptor,8,Est_rcpt/est-rel_rcp; NHR-like_dom_sf; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR3; Nuclear_hrmn_rcpt; Oest-rel_rcp; Znf_hrmn_rcpt; Znf_NHR/GATA
+O95935,TBX18,T-box transcription factor TBX18,T-box,5,p53-like_TF_DNA-bd_sf; T-box_DNA-bd; T-box_sf; TF_T-box; TF_T-box_CS
+O95936,EOMES,Eomesodermin homolog,T-box,6,p53-like_TF_DNA-bd_sf; T-box_assoc; T-box_DNA-bd; T-box_sf; TF_T-box; TF_T-box_CS
+O95947,TBX6,T-box transcription factor TBX6,T-box,6,p53-like_TF_DNA-bd_sf; T-box_DNA-bd; T-box_sf; TF_Brachyury; TF_T-box; TF_T-box_CS
+O95948,ONECUT2,One cut domain family member 2,Homeodomain,5,CUT_dom; CUT_Homeobox; HD; Homeodomain-like_sf; Lambda_DNA-bd_dom_sf
+O96028,NSD2,Histone-lysine N-methyltransferase NSD2,Homeodomain,26,AWS_dom; C5HCH; HMG-box_NSD2; HMG_box_dom; HMG_box_dom_sf; NSD_PHD; NSD_PHD-1st; PHD1_NSD1_2; PHD2_NSD2; PHD3_NSD2; PHD5_NSD2; PHDvar_NSD; Post-SET_dom; PWWP_dom; PWWP_NSD2_rpt1; PWWP_NSD2_rpt2; SET2_Histone-Lys_MeTrsfase; SET_dom; SET_dom_sf; SET_NSD2; Zinc_finger_PHD-type_CS; Znf_FYVE_PHD; Znf_PHD; Znf_PHD-finger; Znf_RING; Znf_RING/FYVE/PHD
+P01011,SERPINA3,Alpha-1-antichymotrypsin,Unclassified,6,Serpin_CS; Serpin_dom; Serpin_fam; Serpin_sf; Serpin_sf_1; Serpin_sf_2
+P02751,FN1,Fibronectin,Unclassified,8,ECM_Regulatory_Proteins; Fibronectin_type1; FN3_dom; FN3_sf; FN_type2_dom; FN_type2_sf; Ig-like_fold; Kringle-like
+P03372,ESR1,Estrogen receptor,Nuclear receptor,10,Est_rcpt/est-rel_rcp; Estr_rcpt; Estr_rcpt_N; NHR-like_dom_sf; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR3; Nuclear_hrmn_rcpt; Oestrogen-typ_rcpt_final_C_dom; Znf_hrmn_rcpt; Znf_NHR/GATA
+P04150,NR3C1,Glucocorticoid receptor,Nuclear receptor,7,Glcrtcd_rcpt; NHR-like_dom_sf; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR3; Nuclear_hrmn_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+P04637,TP53,Cellular tumor antigen p53,p53-like,9,p53-like_TF_DNA-bd_sf; p53/RUNT-type_TF_DNA-bd_sf; P53_central_site; p53_DNA-bd; p53_TAD2; p53_tetramer_sf; p53_tetrameristn; p53_transactivation_domain; p53_tumour_suppressor
+P06401,PGR,Progesterone receptor,Nuclear receptor,7,NHR-like_dom_sf; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR3; Nuclear_hrmn_rcpt; Progest_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+P07199,CENPB,Major centromere autoantigen B,Helix-turn-helix,7,CenpB_C; CenT-Element_Derived; DDE_SF_endonuclease_dom; Dimerisation_CENP-B_sf; Homeodomain-like_sf; HTH_CenpB_DNA-bd_dom; HTH_Psq
+P07992,ERCC1,DNA excision repair protein ERCC-1,Unclassified,4,ERCC1-like_central_dom; ERCC1/RAD10/SWI10; Restrct_endonuc-II-like; RuvA_2-like
+P08235,NR3C2,Mineralocorticoid receptor,Nuclear receptor,5,NHR-like_dom_sf; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR3; Znf_hrmn_rcpt; Znf_NHR/GATA
+P08651,NFIC,Nuclear factor 1 C-type,SMAD,5,CTF/NFI; CTF/NFI_DNA-bd-dom; CTF/NFI_DNA-bd_CS; CTF/NFI_DNA-bd_N; MAD_homology1_Dwarfin-type
+P09016,HOXD4,Homeobox protein Hox-D4,Homeodomain,7,Antp_homeobox_Deformed_sf; HD; HD_metazoa; Homeobox_antennapedia; Homeobox_Antennapedia_CS; Homeobox_CS; Homeodomain-like_sf
+P09017,HOXC4,Homeobox protein Hox-C4,Homeodomain,7,Antp_homeobox_Deformed_sf; HD; HD_metazoa; Homeobox_antennapedia; Homeobox_Antennapedia_CS; Homeobox_CS; Homeodomain-like_sf
+P09067,HOXB5,Homeobox protein Hox-B5,Homeodomain,7,Antp_homeobox; HD; HD_metazoa; Homeobox_antennapedia; Homeobox_Antennapedia_CS; Homeobox_CS; Homeodomain-like_sf
+P09086,POU2F2,"POU domain, class 2, transcription factor 2",Homeodomain,8,HD; Homeobox_CS; Homeodomain-like_sf; Lambda_DNA-bd_dom_sf; POU; POU_dom; POU_domain_TF; TF_octamer
+P09429,HMGB1,High mobility group protein B1,HMG box,4,HMG_box_dom; HMG_box_dom_sf; HMG_boxA_CS; HMGB
+P09629,HOXB7,Homeobox protein Hox-B7,Homeodomain,7,Antp_homeobox; HD; HD_metazoa; Homeobox_antennapedia; Homeobox_Antennapedia_CS; Homeobox_CS; Homeodomain-like_sf
+P0CB47,UBTFL1,Upstream-binding factor 1-like protein 1,HMG box,3,HMG_box_dom; HMG_box_dom_sf; UBF1
+P10242,MYB,Transcriptional activator Myb,Homeodomain,6,C-myb_C; Homeodomain-like_sf; Myb_dom; MYB_TF; SANT/Myb; Tscrpt_reg_Wos2-domain
+P10243,MYBL1,Myb-related protein A,Homeodomain,6,C-myb_C; Homeodomain-like_sf; Myb_dom; MYB_TF; SANT/Myb; Tscrpt_reg_Wos2-domain
+P10244,MYBL2,Myb-related protein B,Homeodomain,5,C-myb_C; Homeodomain-like_sf; Myb_dom; MYB_TF; SANT/Myb
+P10275,AR,Androgen receptor,Nuclear receptor,6,Andrgn_rcpt; NHR-like_dom_sf; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR3; Znf_hrmn_rcpt; Znf_NHR/GATA
+P10276,RARA,Retinoic acid receptor alpha,Nuclear receptor,8,NHR-like_dom_sf; NR_DBD_RAR; NR_LBD_RAR; Nucl_hrmn_rcpt_lig-bd; Nuclear_hrmn_rcpt; Retinoic_acid_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+P10588,NR2F6,Nuclear receptor subfamily 2 group F member 6,Nuclear receptor,6,NHR-like_dom_sf; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR2; Nuclear_hrmn_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+P10589,NR2F1,COUP transcription factor 1,Nuclear receptor,6,NHR-like_dom_sf; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR2; Nuclear_hrmn_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+P10826,RARB,Retinoic acid receptor beta,Nuclear receptor,8,NHR-like_dom_sf; NR_DBD_RAR; NR_LBD_RAR; Nucl_hrmn_rcpt_lig-bd; Nuclear_hrmn_rcpt; Retinoic_acid_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+P10827,THRA,Thyroid hormone receptor alpha,Nuclear receptor,7,NHR-like_dom_sf; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR1; Nuclear_hrmn_rcpt; ThyrH_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+P10828,THRB,Thyroid hormone receptor beta,Nuclear receptor,7,NHR-like_dom_sf; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR1; Nuclear_hrmn_rcpt; ThyrH_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+P10914,IRF1,Interferon regulatory factor 1,Winged-helix / Forkhead,5,Interferon_reg_fac_CS; Interferon_reg_fact_DNA-bd_dom; IRF1/IRF2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+P11308,ERG,Transcriptional regulator ERG,ETS domain,6,Ets_dom; ETS_fam; Pointed_dom; SAM/pointed_sf; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+P11473,VDR,Vitamin D3 receptor,Nuclear receptor,8,DBD_VDR; NHR-like_dom_sf; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR1; Nuclear_hrmn_rcpt; VitD_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+P11474,ESRRA,Steroid hormone receptor ERR1,Nuclear receptor,8,Est_rcpt/est-rel_rcp; NHR-like_dom_sf; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR3; Nuclear_hrmn_rcpt; Oest-rel_rcp; Znf_hrmn_rcpt; Znf_NHR/GATA
+P11831,SRF,Serum response factor,Unclassified,4,MADS-box/MEF2_TF; SRF-like_MADS-box; TF_MADSbox; TF_MADSbox_sf
+P12004,PCNA,DNA sliding clamp PCNA,Unclassified,5,DNA_clamp_sf; Pr_cel_nuc_antig; Pr_cel_nuc_antig_C; Pr_cel_nuc_antig_CS; Pr_cel_nuc_antig_N
+P13056,NR2C1,Nuclear receptor subfamily 2 group C member 1,Nuclear receptor,8,NHR-like_dom_sf; NR2C1/2-like_DBD; NR2C1/2-like_LBD; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR2; Nuclear_hrmn_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+P13378,HOXD8,Homeobox protein Hox-D8,Homeodomain,6,Antp_homeobox_TF; HD; HD_metazoa; Homeobox_Antennapedia_CS; Homeobox_CS; Homeodomain-like_sf
+P13631,RARG,Retinoic acid receptor gamma,Nuclear receptor,8,NHR-like_dom_sf; NR_DBD_RAR; NR_LBD_RAR; Nucl_hrmn_rcpt_lig-bd; Nuclear_hrmn_rcpt; Retinoic_acid_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+P14316,IRF2,Interferon regulatory factor 2,Winged-helix / Forkhead,5,Interferon_reg_fac_CS; Interferon_reg_fact_DNA-bd_dom; IRF1/IRF2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+P14651,HOXB3,Homeobox protein Hox-B3,Homeodomain,6,DUF4074; HD; HD_metazoa; Homeobox_Antennapedia_CS; Homeobox_CS; Homeodomain-like_sf
+P14652,HOXB2,Homeobox protein Hox-B2,Homeodomain,5,HD; HD_metazoa; Homeobox_Antennapedia_CS; Homeobox_CS; Homeodomain-like_sf
+P14653,HOXB1,Homeobox protein Hox-B1,Homeodomain,5,HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; HXA1/B1/D1
+P14859,POU2F1,"POU domain, class 2, transcription factor 1",Homeodomain – POU,9,HD; Homeobox_CS; Homeodomain-like_sf; Lambda_DNA-bd_dom_sf; POU; POU2F1_C; POU_dom; POU_domain_TF; TF_octamer
+P14921,ETS1,Protein C-ets-1,ETS domain,9,Ets1_N_flank; Ets_dom; ETS_fam; Pointed_dom; SAM/pointed_sf; SAM_PNT-ETS-1; Transform_prot_C-ets; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+P15036,ETS2,Protein C-ets-2,ETS domain,9,Ets1_N_flank; Ets_dom; ETS_fam; Pointed_dom; SAM/pointed_sf; Transform_prot_C-ets; Transform_prot_C-ets-2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+P15863,PAX1,Paired box protein Pax-1,Paired domain,5,Homeodomain-like_sf; PAIRED_DNA-bd_dom; Paired_dom; PAX_fam; WH-like_DNA-bd_sf
+P15918,RAG1,V(D)J recombination-activating protein 1,Zinc finger – other,16,RAG1; RAG1_C; RAG1_DNA-bd; RAG1_imp-bd; RAG1_pre-RNase_H; RAG1_RNase_H; RAG1_ZnC2; RAG1_Znf; RAG1_ZnH2; RAG_nonamer-bd_dom; RING-HC_RAG1; Znf_C2H2_sf; Znf_C3HC4_RING-type; Znf_RING; Znf_RING/FYVE/PHD; Znf_RING_CS
+P15927,RPA2,Replication protein A 32 kDa subunit,Winged-helix / Forkhead,6,NA-bd_OB-fold; RFA2-like; Rfa2/RPA32; RPA_C; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+P17096,HMGA1,High mobility group protein HMG-I/HMG-Y,HMG box,3,AT_hook_DNA-bd_motif; HMGA; HMGI/Y_DNA-bd_CS
+P17480,UBTF,Nucleolar transcription factor 1,HMG box,4,HMG_box_5; HMG_box_dom; HMG_box_dom_sf; UBF1
+P17481,HOXB8,Homeobox protein Hox-B8,Homeodomain,7,Antp_homeobox_TF; HD; HD_metazoa; Homeobox_Antennapedia_CS; Homeobox_CS; Homeodomain-like_sf; HTH_motif
+P17482,HOXB9,Homeobox protein Hox-B9,Homeodomain,6,HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; Hox9_activation_N; HXA9/HXB9/HXC9
+P17483,HOXB4,Homeobox protein Hox-B4,Homeodomain,7,Antp_homeobox_Deformed_sf; HD; HD_metazoa; Homeobox_antennapedia; Homeobox_Antennapedia_CS; Homeobox_CS; Homeodomain-like_sf
+P17509,HOXB6,Homeobox protein Hox-B6,Homeodomain,7,Antp_homeobox; HD; HD_metazoa; Homeobox_antennapedia; Homeobox_Antennapedia_CS; Homeobox_CS; Homeodomain-like_sf
+P17947,SPI1,Transcription factor PU.1,ETS domain,4,Ets_dom; ETS_fam; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+P19419,ELK1,ETS domain-containing protein Elk-1,ETS domain,4,Ets_dom; ETS_fam; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+P19622,EN2,Homeobox protein engrailed-2,Homeodomain,8,Engrailed_Homeobox_TFs; HD; HD_engrailed; HD_metazoa; Homeobox-engrailed_C-terminal; Homeobox-engrailed_CS; Homeobox_CS; Homeodomain-like_sf
+P19793,RXRA,Retinoic acid receptor RXR-alpha,Nuclear receptor,8,NHR-like_dom_sf; Nuc_recep-AF1; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR2; Nuclear_hrmn_rcpt; Retinoid-X_rcpt/HNF4; Znf_hrmn_rcpt; Znf_NHR/GATA
+P20264,POU3F3,"POU domain, class 3, transcription factor 3",Homeodomain – POU,8,HD; Homeobox_CS; Homeodomain-like_sf; Lambda_DNA-bd_dom_sf; POU; POU_dom; POU_domain_TF; TF_POU_3
+P20265,POU3F2,"POU domain, class 3, transcription factor 2",Homeodomain – POU,8,HD; Homeobox_CS; Homeodomain-like_sf; Lambda_DNA-bd_dom_sf; POU; POU_dom; POU_domain_TF; TF_POU_3
+P20393,NR1D1,Nuclear receptor subfamily 1 group D member 1,Nuclear receptor,6,NHR-like_dom_sf; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR1; Nuclear_hrmn_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+P20719,HOXA5,Homeobox protein Hox-A5,Homeodomain,7,Antp_homeobox; HD; HD_metazoa; Homeobox_antennapedia; Homeobox_Antennapedia_CS; Homeobox_CS; Homeodomain-like_sf
+P20823,HNF1A,Hepatocyte nuclear factor 1-alpha,Homeodomain,10,HD; HNF-1; HNF-1_N; HNF-1_POU; HNF1_dimer_N_dom_sf; HNF1a_C; HNF1b_C; HNF_P1; Homeodomain-like_sf; Lambda_DNA-bd_dom_sf
+P21675,TAF1,Transcription initiation factor TFIID subunit 1,Zinc finger – other,9,Bromodomain; Bromodomain-like_sf; Bromodomain_CS; TAF1; TAF1_animal; TAF1_HAT_dom; TAF_II_230-bd; TAFII-230_TBP-bd_sf; Znf-CCHC_6
+P22670,RFX1,MHC class II regulatory factor RFX1,Winged-helix / Forkhead,6,DNA-bd_RFX; RFX-like; RFX1-4/6/8-like_BCD; RFX1_trans_act; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+P22736,NR4A1,Nuclear receptor subfamily 4immunitygroup A member 1,Nuclear receptor,7,NHR-like_dom_sf; NR4A1; NR4A1-3; Nucl_hrmn_rcpt_lig-bd; Nuclear_hrmn_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+P23497,SP100,Nuclear autoantigen Sp-100,HMG box,6,HMG_box_dom; HMG_box_dom_sf; HSR_dom; SAND-like_dom_sf; SAND_dom; Sp110/Sp140/Sp140L-like
+P23511,NFYA,Nuclear transcription factor Y subunit alpha,Unclassified,2,CCAAT-binding_factor_CS; NFYA
+P23759,PAX7,Paired box protein Pax-7,Paired domain,9,HD; Homeobox_CS; Homeodomain-like_sf; OAR_dom; PAIRED_DNA-bd_dom; Paired_dom; Pax7_C; PAX_fam; WH-like_DNA-bd_sf
+P23760,PAX3,Paired box protein Pax-3,Paired domain,8,HD; Homeobox_CS; Homeodomain-like_sf; PAIRED_DNA-bd_dom; Paired_dom; Pax7_C; PAX_fam; WH-like_DNA-bd_sf
+P24468,NR2F2,COUP transcription factor 2,Nuclear receptor,6,NHR-like_dom_sf; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR2; Nuclear_hrmn_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+P25208,NFYB,Nuclear transcription factor Y subunit beta,Unclassified,4,CBFA_NFYB_domain; Histone-fold; Transc_fact_NFYB/HAP3; Transcrpt_fac_NFYB/HAP3_CS
+P26367,PAX6,Paired box protein Pax-6,Homeodomain,7,HD; Homeobox_CS; Homeodomain-like_sf; PAIRED_DNA-bd_dom; Paired_dom; PAX_fam; WH-like_DNA-bd_sf
+P26583,HMGB2,High mobility group protein B2,HMG box,4,HMG_box_dom; HMG_box_dom_sf; HMG_boxA_CS; HMGB
+P27694,RPA1,Replication protein A 70 kDa DNA-binding subunit,Unclassified,7,Euk_RPA1_DBD_C; NA-bd_OB-fold; NA-bd_OB_tRNA; Rep_factor-A_C; Rep_factor-A_N; REPA_OB_2; Rfa1
+P28069,POU1F1,Pituitary-specific positive transcription factor 1,Homeodomain,7,HD; Homeobox_CS; Homeodomain-like_sf; Lambda_DNA-bd_dom_sf; POU; POU_dom; POU_domain_TF
+P28324,ELK4,ETS domain-containing protein Elk-4,ETS domain,4,Ets_dom; ETS_fam; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+P28347,TEAD1,Transcriptional enhancer factor TEF-1,Unclassified,5,TEA/ATTS_dom; TEA/ATTS_sf; TEC1_TEAD_TF; TEF_metazoa; YBD
+P28356,HOXD9,Homeobox protein Hox-D9,Homeodomain,6,HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; Hox9_activation_N; HXA9/HXB9/HXC9
+P28358,HOXD10,Homeobox protein Hox-D10,Homeodomain,5,HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; HXA10/ABDB-like
+P28360,MSX1,Homeobox protein MSX-1,Homeodomain,5,HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; Msh_Homeobox_Regulators
+P28482,MAPK1,Mitogen-activated protein kinase 1,Unclassified,7,Kinase-like_dom_sf; MAP_kinase_CS; MAPK; MAPK_ERK1/2; Prot_kinase_dom; Protein_kinase_ATP_BS; Ser/Thr_kinase_AS
+P28702,RXRB,Retinoic acid receptor RXR-beta,Nuclear receptor,7,NHR-like_dom_sf; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR2; Nuclear_hrmn_rcpt; Retinoid-X_rcpt/HNF4; Znf_hrmn_rcpt; Znf_NHR/GATA
+P29084,GTF2E2,Transcription initiation factor IIE subunit beta,Winged-helix / Forkhead,5,TFA2_Winged_2; TFIIE-bsu; TFIIE_bsu_DNA-bd; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+P31249,HOXD3,Homeobox protein Hox-D3,Homeodomain,6,DUF4074; HD; HD_metazoa; Homeobox_Antennapedia_CS; Homeobox_CS; Homeodomain-like_sf
+P31260,HOXA10,Homeobox protein Hox-A10,Homeodomain,5,HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; HXA10/ABDB-like
+P31268,HOXA7,Homeobox protein Hox-A7,Homeodomain,7,Antp_homeobox; HD; HD_metazoa; Homeobox_antennapedia; Homeobox_Antennapedia_CS; Homeobox_CS; Homeodomain-like_sf
+P31269,HOXA9,Homeobox protein Hox-A9,Homeodomain,6,HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; Hox9_activation_N; HXA9/HXB9/HXC9
+P31270,HOXA11,Homeobox protein Hox-A11,Homeodomain,5,DUF3528; HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf
+P31271,HOXA13,Homeobox protein Hox-A13,Homeodomain,5,AP_axis_regulatory_Homeobox; HD; Homeobox_CS; Homeodomain-like_sf; HoxA13_N
+P31273,HOXC8,Homeobox protein Hox-C8,Homeodomain,7,Antp_homeobox_TF; HD; HD_metazoa; Homeobox_Antennapedia_CS; Homeobox_CS; Homeodomain-like_sf; HTH_motif
+P31274,HOXC9,Homeobox protein Hox-C9,Homeodomain,6,HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; Hox9_activation_N; HXA9/HXB9/HXC9
+P31276,HOXC13,Homeobox protein Hox-C13,Homeodomain,5,AP_axis_regulatory_Homeobox; HD; Homeobox_CS; Homeodomain-like_sf; HoxA13_N
+P31314,TLX1,T-cell leukemia homeobox protein 1,Homeodomain,5,HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; TLX1/2/3
+P32242,OTX1,Homeobox protein OTX1,Homeodomain,6,HD; Homeobox_CS; Homeodomain-like_sf; Otx1_TF; Otx_TF; Otx_TF_C
+P32243,OTX2,Homeobox protein OTX2,Homeodomain,6,HD; Homeobox_CS; Homeodomain-like_sf; Otx2_TF; Otx_TF; Otx_TF_C
+P32519,ELF1,ETS-related transcription factor Elf-1,ETS domain,5,Ets_dom; ETS_fam; TF_Elf_N; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+P35398,RORA,Nuclear receptor ROR-alpha,Nuclear receptor,7,NHR-like_dom_sf; NR_DBD_ROR; Nucl_hrmn_rcpt_lig-bd; Nuclear_hrmn_rcpt; ROR_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+P35452,HOXD12,Homeobox protein Hox-D12,Homeodomain,4,HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf
+P35453,HOXD13,Homeobox protein Hox-D13,Homeodomain,5,AP_axis_regulatory_Homeobox; HD; Homeobox_CS; Homeodomain-like_sf; HoxA13_N
+P35548,MSX2,Homeobox protein MSX-2,Homeodomain,5,HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; Msh_Homeobox_Regulators
+P35659,DEK,Protein DEK,Unclassified,3,DEK; DEK_C; SAP_dom
+P35680,HNF1B,Hepatocyte nuclear factor 1-beta,Homeodomain,9,HD; HNF-1; HNF-1_N; HNF-1_POU; HNF1_dimer_N_dom_sf; HNF1b_C; HNF_P1; Homeodomain-like_sf; Lambda_DNA-bd_dom_sf
+P35711,SOX5,Transcription factor SOX-5,HMG box,3,HMG_box_dom; HMG_box_dom_sf; SOX/SOX-like_TF
+P35712,SOX6,Transcription factor SOX-6,HMG box,3,HMG_box_dom; HMG_box_dom_sf; SOX/SOX-like_TF
+P35713,SOX18,Transcription factor SOX-18,HMG box,5,HMG_box_dom; HMG_box_dom_sf; Sox7/17/18_central; Sox_C; SRY-related_HMG-box_TF-like
+P35716,SOX11,Transcription factor SOX-11,HMG box,4,HMG_box_dom; HMG_box_dom_sf; SOX-12/11/4; SRY-related_HMG-box_TF-like
+P36402,TCF7,Transcription factor 7,HMG box,5,Catenin-bd_sf; CTNNB1-bd_N; HMG_box_dom; HMG_box_dom_sf; TCF/LEF
+P37231,PPARG,Peroxisome proliferator-activated receptor gamma,Nuclear receptor,9,1Cnucl_rcpt; NHR-like_dom_sf; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR1; Nuclear_hrmn_rcpt; PPAR-gamma; PPARgamma_N; Znf_hrmn_rcpt; Znf_NHR/GATA
+P37275,ZEB1,Zinc finger E-box-binding homeobox 1,Homeodomain,6,Di19_Zn-bd; HD; Homeodomain-like_sf; Znf_C2H2_sf; Znf_C2H2_type; ZnF_E-box_Homeobox
+P39880,CUX1,Homeobox protein cut-like 1,Homeodomain,6,CUT_dom; Cux_N; HD; Homeobox_CS; Homeodomain-like_sf; Lambda_DNA-bd_dom_sf
+P40424,PBX1,Pre-B-cell leukemia transcription factor 1,Homeodomain,6,HD; Homeobox_CS; Homeodomain-like_sf; KN_HD; PBX_PBC_dom; TALE_homeobox
+P40425,PBX2,Pre-B-cell leukemia transcription factor 2,Homeodomain,6,HD; Homeobox_CS; Homeodomain-like_sf; KN_HD; PBX_PBC_dom; TALE_homeobox
+P40426,PBX3,Pre-B-cell leukemia transcription factor 3,Homeodomain,6,HD; Homeobox_CS; Homeodomain-like_sf; KN_HD; PBX_PBC_dom; TALE_homeobox
+P41161,ETV5,ETS translocation variant 5,ETS domain,5,Ets_dom; ETS_fam; ETS_PEA3_N; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+P41162,ETV3,ETS translocation variant 3,ETS domain,4,Ets_dom; ETS_fam; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+P41212,ETV6,Transcription factor ETV6,ETS domain,6,Ets_dom; ETS_fam; Pointed_dom; SAM/pointed_sf; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+P41225,SOX3,Transcription factor SOX-3,HMG box,4,HMG_box_dom; HMG_box_dom_sf; SOX_fam; SRY-related_HMG-box_TF-like
+P41235,HNF4A,Hepatocyte nuclear factor 4-alpha,Nuclear receptor,8,HNF4-like_DBD; HNF4_LBD; NHR-like_dom_sf; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR2; Nuclear_hrmn_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+P41970,ELK3,ETS domain-containing protein Elk-3,ETS domain,4,Ets_dom; ETS_fam; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+P43268,ETV4,ETS translocation variant 4,ETS domain,5,Ets_dom; ETS_fam; ETS_PEA3_N; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+P43351,RAD52,DNA repair protein RAD52 homolog,Unclassified,4,DNA_recomb/repair_Rad52; Rad52_fam; Rad52_Rad59_Rad22; Rad52_Rad59_Rad22_sf
+P43354,NR4A2,Nuclear receptor subfamily 4 group A member 2,Nuclear receptor,7,NHR-like_dom_sf; NR4A1-3; NR4A2; Nucl_hrmn_rcpt_lig-bd; Nuclear_hrmn_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+P43699,NKX2-1,Homeobox protein Nkx-2.1,Homeodomain,5,HD; HD_metazoa; Homeobox_CS; Homeobox_NK-like; Homeodomain-like_sf
+P47902,CDX1,Homeobox protein CDX-1,Homeodomain,7,Caudal_activation_dom; Caudal_homeobox; HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; HTH_motif
+P48378,RFX2,DNA-binding protein RFX2,Winged-helix / Forkhead,6,DNA-bd_RFX; RFX-like; RFX1-4/6/8-like_BCD; RFX1_trans_act; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+P48380,RFX3,Transcription factor RFX3,Winged-helix / Forkhead,6,DNA-bd_RFX; RFX-like; RFX1-4/6/8-like_BCD; RFX1_trans_act; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+P48382,RFX5,DNA-binding protein RFX5,Winged-helix / Forkhead,5,DNA-bd_RFX; RFX-like; RFX5_C; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+P48431,SOX2,Transcription factor SOX-2,HMG box,4,HMG_box_dom; HMG_box_dom_sf; SOX_fam; SRY-related_HMG-box_TF-like
+P48436,SOX9,Transcription factor SOX-9,HMG box,4,HMG_box_dom; HMG_box_dom_sf; Sox_N; SOX_TF
+P48443,RXRG,Retinoic acid receptor RXR-gamma,Nuclear receptor,8,NHR-like_dom_sf; Nuc_recep-AF1; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR2; Nuclear_hrmn_rcpt; Retinoid-X_rcpt/HNF4; Znf_hrmn_rcpt; Znf_NHR/GATA
+P48742,LHX1,LIM/homeobox protein Lhx1,Homeodomain,7,HD; Homeobox_CS; Homeodomain-like_sf; Lhx1/5_LIM1; Lhx1/5_LIM2; LIM_Homeobox_TF; Znf_LIM
+P49116,NR2C2,Nuclear receptor subfamily 2 group C member 2,Nuclear receptor,8,NHR-like_dom_sf; NR2C1/2-like_DBD; NR2C1/2-like_LBD; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR2; Nuclear_hrmn_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+P49335,POU3F4,"POU domain, class 3, transcription factor 4",Homeodomain – POU,8,HD; Homeobox_CS; Homeodomain-like_sf; Lambda_DNA-bd_dom_sf; POU; POU_dom; POU_domain_TF; TF_POU_3
+P49639,HOXA1,Homeobox protein Hox-A1,Homeodomain,5,HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; HXA1/B1/D1
+P49640,EVX1,Homeobox even-skipped homolog protein 1,Homeodomain,5,Even-skipped_HD; HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf
+P49715,CEBPA,CCAAT/enhancer-binding protein alpha,bZIP,4,bZIP; bZIP_sf; C/EBP; C/EBP_chordates
+P50219,MNX1,Motor neuron and pancreas homeobox protein 1,Homeodomain,5,HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; MNX1/Ceh-12
+P50221,MEOX1,Homeobox protein MOX-1,Homeodomain,5,HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; MOX-1/MOX-2
+P50222,MEOX2,Homeobox protein MOX-2,Homeodomain,5,HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; MOX-1/MOX-2
+P50458,LHX2,LIM/homeobox protein Lhx2,Homeodomain,5,HD; Homeobox_CS; Homeodomain-like_sf; LIM_Homeobox_TF; Znf_LIM
+P50548,ERF,ETS domain-containing transcription factor ERF,ETS domain,4,Ets_dom; ETS_fam; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+P50549,ETV1,ETS translocation variant 1,ETS domain,5,Ets_dom; ETS_fam; ETS_PEA3_N; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+P51449,RORC,Nuclear receptor ROR-gamma,Nuclear receptor,7,NHR-like_dom_sf; NR_DBD_ROR; Nucl_hrmn_rcpt_lig-bd; Nuclear_hrmn_rcpt; ROR_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+P51608,MECP2,Methyl-CpG-binding protein 2,Unclassified,4,DNA-bd_dom_sf; Me_CpG-bd_MeCP2; MeCP2/MBD4; Methyl_CpG_DNA-bd
+P52926,HMGA2,High mobility group protein HMGI-C,HMG box,3,AT_hook_DNA-bd_motif; HMGA; HMGI/Y_DNA-bd_CS
+P52945,PDX1,Pancreas/duodenum homeobox protein 1,Homeodomain,5,HD; HD_metazoa; Homeobox_antennapedia; Homeobox_CS; Homeodomain-like_sf
+P52951,GBX2,Homeobox protein GBX-2,Homeodomain,5,GBX-1/2; HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf
+P52952,NKX2-5,Homeobox protein Nkx-2.5,Homeodomain,5,HD; HD_metazoa; Homeobox_CS; Homeobox_NK-like; Homeodomain-like_sf
+P52954,LBX1,Transcription factor LBX1,Homeodomain,5,HD; Homeobox_CS; Homeodomain-like_sf; HTH_motif; LBX_TF
+P54274,TERF1,Telomeric repeat-binding factor 1,Homeodomain,7,Homeodomain-like_sf; Myb_dom; SANT/Myb; Telomere_rpt-bd_fac_dimer_dom; Telomere_rpt-bd_fac_dimer_sf; TERF1/2; TRBD-Containing_Protein
+P54277,PMS1,PMS1 protein homolog 1,HMG box,9,DNA_mismatch_repair_CS; DNA_mismatch_S5_2-like; HATPase_C_sf; HMG_box_dom; HMG_box_dom_sf; MutL/Mlh/PMS; MutL/Mlh/Pms-like; Ribosomal_Su5_D2-typ_SF; Ribsml_uS5_D2-typ_fold_subgr
+P54821,PRRX1,Paired mesoderm homeobox protein 1,Homeodomain,5,HD; Homeobox_CS; Homeodomain-like_sf; OAR_dom; PRRX1/2
+P55055,NR1H2,Oxysterols receptor LXR-beta,Nuclear receptor,7,Liver_X_rcpt; NHR-like_dom_sf; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR1; Nuclear_hrmn_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+P55316,FOXG1,Forkhead box protein G1,Winged-helix / Forkhead,6,Fork_head_dom; FOXG1; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+P55317,FOXA1,Hepatocyte nuclear factor 3-alpha,Winged-helix / Forkhead,8,Fork-head_N; Fork_head_dom; Forkhead_box_C; FOX_domain-containing; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+P55318,FOXA3,Hepatocyte nuclear factor 3-gamma,Winged-helix / Forkhead,8,FH_FOXA3; Fork-head_N; Fork_head_dom; FOX_domain-containing; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+P55347,PKNOX1,Homeobox protein PKNOX1,Homeodomain,5,HD; Homeodomain-like_sf; KN_HD; PKNOX/Meis_N; TALE_homeobox
+P55771,PAX9,Paired box protein Pax-9,Paired domain,5,Homeodomain-like_sf; PAIRED_DNA-bd_dom; Paired_dom; PAX_fam; WH-like_DNA-bd_sf
+P56177,DLX1,Homeobox protein DLX-1,Homeodomain,6,Distal-less_Homeobox_TF; HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; HTH_motif
+P56178,DLX5,Homeobox protein DLX-5,Homeodomain,7,Distal-less_Homeobox_TF; Distal-less_N; HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; HTH_motif
+P56179,DLX6,Homeobox protein DLX-6,Homeodomain,6,Distal-less_Homeobox_TF; HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; HTH_motif
+P56693,SOX10,Transcription factor SOX-10,HMG box,4,HMG_box_dom; HMG_box_dom_sf; Sox_N; SOX_TF
+P56915,GSC,Homeobox protein goosecoid,Homeodomain,4,Goosecoid-like_HB; HD; Homeobox_CS; Homeodomain-like_sf
+P57073,SOX8,Transcription factor SOX-8,HMG box,4,HMG_box_dom; HMG_box_dom_sf; Sox_N; SOX_TF
+P57082,TBX4,T-box transcription factor TBX4,T-box,5,p53-like_TF_DNA-bd_sf; T-box_DNA-bd; T-box_sf; TF_T-box; TF_T-box_CS
+P58012,FOXL2,Forkhead box protein L2,Winged-helix / Forkhead,7,FH_FOXL2; Fork_head_dom; FOX_domain-containing; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+P58304,VSX2,Visual system homeobox 2,Homeodomain,6,CVC; HD; Homeobox_CS; Homeodomain-like_sf; OAR_dom; VSX_homeobox_regulators
+P61371,ISL1,Insulin gene enhancer protein ISL-1,Homeodomain,6,HD; Homeobox_CS; Homeodomain-like_sf; ISL1/2-like; ISL1/2-like_LIM1; Znf_LIM
+P62508,ESRRG,Estrogen-related receptor gamma,Nuclear receptor,9,Est_rcpt/est-rel_rcp; NHR-like_dom_sf; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR3; Nuclear_hrmn_rcpt; Oest-rel_rcp; Retinoic_acid_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+P62805,H4C1,Histone H4,Unclassified,5,CENP-T/H4_C; Histone-fold; Histone_H4; Histone_H4_CS; TAF_TATA-bd_Histone-like_dom
+P78337,PITX1,Pituitary homeobox 1,Homeodomain,5,HD; Homeobox_CS; Homeobox_Pitx/unc30; Homeodomain-like_sf; OAR_dom
+P78367,NKX3-2,Homeobox protein Nkx-3.2,Homeodomain,5,HD; HD_metazoa; Homeobox_CS; Homeobox_NK-like; Homeodomain-like_sf
+P78411,IRX5,Iroquois-class homeodomain protein IRX-5,Homeodomain,5,HD; Homeobox_CS; Homeodomain-like_sf; Iroquois_homeo; KN_HD
+P78412,IRX6,Iroquois-class homeodomain protein IRX-6,Homeodomain,5,HD; Homeobox_CS; Homeodomain-like_sf; Iroquois_homeo; KN_HD
+P78413,IRX4,Iroquois-class homeodomain protein IRX-4,Homeodomain,5,HD; Homeobox_CS; Homeodomain-like_sf; Iroquois_homeo; KN_HD
+P78415,IRX3,Iroquois-class homeodomain protein IRX-3,Homeodomain,5,HD; Homeobox_CS; Homeodomain-like_sf; Iroquois_homeo; KN_HD
+P78424,POU6F2,"POU domain, class 6, transcription factor 2",Homeodomain – POU,6,HD; Homeodomain-like_sf; Lambda_DNA-bd_dom_sf; POU; POU_dom; POU_domain_TF
+P78426,NKX6-1,Homeobox protein Nkx-6.1,Homeodomain,6,HD; HD_metazoa; Homeobox_CS; Homeobox_NK-like; Homeodomain-like_sf; HTH_motif
+P78545,ELF3,ETS-related transcription factor Elf-3,ETS domain,7,Elf-3_PNT; Ets_dom; ETS_fam; Pointed_dom; SAM/pointed_sf; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+P80303,NUCB2,Nucleobindin-2,Unclassified,5,EF-hand-dom_pair; EF_Hand_1_Ca_BS; EF_hand_dom; NUCB1_N; Nucleobindin
+P85037,FOXK1,Forkhead box protein K1,Winged-helix / Forkhead,8,FH_FOXK1; FHA_dom; Fork_head_dom; SMAD_FHA_dom_sf; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+P98177,FOXO4,Forkhead box protein O4,Winged-helix / Forkhead,6,FH_FOXO4; Fork_head_dom; FOXO-TAD; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q00056,HOXA4,Homeobox protein Hox-A4,Homeodomain,7,Antp_homeobox_Deformed_sf; HD; HD_metazoa; Homeobox_antennapedia; Homeobox_Antennapedia_CS; Homeobox_CS; Homeodomain-like_sf
+Q00059,TFAM,"Transcription factor A, mitochondrial",HMG box,3,HMG_box_dom; HMG_box_dom_sf; HMGB
+Q00444,HOXC5,Homeobox protein Hox-C5,Homeodomain,7,Antp_homeobox_Deformed_sf; HD; HD_metazoa; Homeobox_antennapedia; Homeobox_Antennapedia_CS; Homeobox_CS; Homeodomain-like_sf
+Q00978,IRF9,Interferon regulatory factor 9,SMAD,7,Interferon_reg_fac_CS; Interferon_reg_fact_DNA-bd_dom; Interferon_reg_factor-3; SMAD-like_dom_sf; SMAD_FHA_dom_sf; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q01094,E2F1,Transcription factor E2F1,E2F / RB-associated,6,E2F; E2F-DP_heterodim; E2F_CC-MB; E2F_WHTH_DNA-bd_dom; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q01167,FOXK2,Forkhead box protein K2,Winged-helix / Forkhead,9,FH_FOXK2; FHA_dom; FHA_FOXK2; Fork_head_dom; SMAD_FHA_dom_sf; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q01543,FLI1,Friend leukemia integration 1 transcription factor,ETS domain,7,Ets_dom; ETS_fam; Pointed_dom; SAM/pointed_sf; SAM_PNT-FLI-1; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q01826,SATB1,DNA-binding protein SATB1,Homeodomain,9,CUT_dom; CUTL; HD; Homeodomain-like_sf; Lambda_DNA-bd_dom_sf; SATB1/SATB2; SATB_CUTL_sf; SATB_ULD_sf; ULD
+Q01851,POU4F1,"POU domain, class 4, transcription factor 1",Homeodomain,7,HD; Homeobox_CS; Homeodomain-like_sf; Lambda_DNA-bd_dom_sf; POU; POU_dom; POU_domain_TF
+Q01860,POU5F1,"POU domain, class 5, transcription factor 1",Homeodomain,7,HD; Homeobox_CS; Homeodomain-like_sf; Lambda_DNA-bd_dom_sf; POU; POU_dom; POU_domain_TF
+Q01892,SPIB,Transcription factor Spi-B,ETS domain,4,Ets_dom; ETS_fam; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q02078,MEF2A,Myocyte-specific enhancer factor 2A,Unclassified,4,HJURP_C; MEF2-like_N; TF_MADSbox; TF_MADSbox_sf
+Q02080,MEF2B,Myocyte-specific enhancer factor 2B,Unclassified,3,MEF2-like_N; TF_MADSbox; TF_MADSbox_sf
+Q02548,PAX5,Paired box protein Pax-5,Paired domain,6,Homeodomain-like_sf; PAIRED_DNA-bd_dom; Paired_dom; Pax2_C; PAX_fam; WH-like_DNA-bd_sf
+Q02556,IRF8,Interferon regulatory factor 8,SMAD,7,Interferon_reg_fac_CS; Interferon_reg_fact_DNA-bd_dom; Interferon_reg_factor-3; SMAD-like_dom_sf; SMAD_FHA_dom_sf; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q02818,NUCB1,Nucleobindin-1,Unclassified,5,EF-hand-dom_pair; EF_Hand_1_Ca_BS; EF_hand_dom; NUCB1_N; Nucleobindin
+Q02962,PAX2,Paired box protein Pax-2,Paired domain,6,Homeodomain-like_sf; PAIRED_DNA-bd_dom; Paired_dom; Pax2_C; PAX_fam; WH-like_DNA-bd_sf
+Q03014,HHEX,Hematopoietically-expressed homeobox protein HHEX,Homeodomain,5,HD; HD_metazoa; Homeobox_CS; Homeobox_DNA-bind_prot; Homeodomain-like_sf
+Q03052,POU3F1,"POU domain, class 3, transcription factor 1",Homeodomain – POU,8,HD; Homeobox_CS; Homeodomain-like_sf; Lambda_DNA-bd_dom_sf; POU; POU_dom; POU_domain_TF; TF_POU_3
+Q03164,KMT2A,Histone-lysine N-methyltransferase 2A,Homeodomain,19,Bromodomain; Bromodomain-like_sf; EPHD; FYrich_C; FYrich_N; KMT2A_2B_SET; KMT2A_ePHD; KMT2A_PHD1; KMT2A_PHD2; KMT2A_PHD3; MeTrfase_trithorax; Post-SET_dom; SET_dom; SET_dom_sf; Znf_CXXC; Znf_FYVE_PHD; Znf_PHD; Znf_PHD-finger; Znf_RING/FYVE/PHD
+Q03181,PPARD,Peroxisome proliferator-activated receptor delta,Nuclear receptor,8,1Cnucl_rcpt; 1Cnucl_rcpt_B; NHR-like_dom_sf; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR1; Nuclear_hrmn_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+Q03933,HSF2,Heat shock factor protein 2,Winged-helix / Forkhead,4,HSF_DNA-bd; Vert_HSTF_C; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q04741,EMX1,Homeobox protein EMX1,Homeodomain,5,EMX-VAX-Noto_Homeobox_TFs; HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf
+Q04743,EMX2,Homeobox protein EMX2,Homeodomain,6,EMX-VAX-Noto_Homeobox_TFs; HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; HTH_motif
+Q05066,SRY,Sex-determining region Y protein,HMG box,4,HMG_box_dom; HMG_box_dom_sf; SRY; SRY-related_HMG-box_TF-like
+Q05925,EN1,Homeobox protein engrailed-1,Homeodomain,8,Engrailed_Homeobox_TFs; HD; HD_engrailed; HD_metazoa; Homeobox-engrailed_C-terminal; Homeobox-engrailed_CS; Homeobox_CS; Homeodomain-like_sf
+Q06413,MEF2C,Myocyte-specific enhancer factor 2C,Unclassified,4,HJURP_C; MEF2-like_N; TF_MADSbox; TF_MADSbox_sf
+Q06416,POU5F1B,"POU domain, class 5, transcription factor 1B",Homeodomain,7,HD; Homeobox_CS; Homeodomain-like_sf; Lambda_DNA-bd_dom_sf; POU; POU_dom; POU_domain_TF
+Q06546,GABPA,GA-binding protein alpha chain,ETS domain,9,Ets_dom; ETS_fam; GABP_asu_N; Pointed_dom; SAM/pointed_sf; TF_GA-bd_asu; Ubiquitin-like_domsf; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q06710,PAX8,Paired box protein Pax-8,Paired domain,6,Homeodomain-like_sf; PAIRED_DNA-bd_dom; Paired_dom; Pax2_C; PAX_fam; WH-like_DNA-bd_sf
+Q06945,SOX4,Transcription factor SOX-4,HMG box,4,HMG_box_dom; HMG_box_dom_sf; SOX-12/11/4; SRY-related_HMG-box_TF-like
+Q07687,DLX2,Homeobox protein DLX-2,Homeodomain,7,Distal-less_Homeobox_TF; Distal-less_N; HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; HTH_motif
+Q07869,PPARA,Peroxisome proliferator-activated receptor alpha,Nuclear receptor,8,1Cnucl_rcpt; NHR-like_dom_sf; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR1; Nuclear_hrmn_rcpt; PPAR-alpha; Znf_hrmn_rcpt; Znf_NHR/GATA
+Q08050,FOXM1,Forkhead box protein M1,Winged-helix / Forkhead,7,FH_FOXM1; Fork_head_dom; FOXM1; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q08945,SSRP1,FACT complex subunit SSRP1,HMG box,11,HMG_box_dom; HMG_box_dom_sf; PH-like_dom_sf; RTT106/SPT16-like_middle_dom; RTT106/SSRP1_HistChap/FACT; SSRP1-like_PH1; SSRP1/POB3; SSRP1/POB3_N; SSRP1_C; SSRP1_DD; SSRP1_sf
+Q12778,FOXO1,Forkhead box protein O1,Winged-helix / Forkhead,7,FH_FOXO1; Fork_head_dom; FOXO-TAD; FOXO_KIX-bd; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q12837,POU4F2,"POU domain, class 4, transcription factor 2",Homeodomain,7,HD; Homeobox_CS; Homeodomain-like_sf; Lambda_DNA-bd_dom_sf; POU; POU_dom; POU_domain_TF
+Q12857,NFIA,Nuclear factor 1 A-type,SMAD,5,CTF/NFI; CTF/NFI_DNA-bd-dom; CTF/NFI_DNA-bd_CS; CTF/NFI_DNA-bd_N; MAD_homology1_Dwarfin-type
+Q12946,FOXF1,Forkhead box protein F1,Winged-helix / Forkhead,6,Fork_head_dom; Forkhead_box_regulator; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q12947,FOXF2,Forkhead box protein F2,Winged-helix / Forkhead,6,Fork_head_dom; Forkhead_box_regulator; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q12948,FOXC1,Forkhead box protein C1,Winged-helix / Forkhead,7,Fork_head_dom; FOX_domain-containing; FOXC1/C2-like_FH; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q12951,FOXI1,Forkhead box protein I1,Winged-helix / Forkhead,6,Fork_head_dom; FOX_domain-containing; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q12952,FOXL1,Forkhead box protein L1,Winged-helix / Forkhead,7,FH_FOXL1; Fork_head_dom; FOX_domain-containing; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q12968,NFATC3,"Nuclear factor of activated T-cells, cytoplasmic 3",Homeodomain,8,Ig-like_fold; Ig_E-set; IPT_dom; NFAT; p53-like_TF_DNA-bd_sf; RHD_dimer; RHD_DNA_bind_dom; RHD_DNA_bind_dom_sf
+Q13133,NR1H3,Oxysterols receptor LXR-alpha,Nuclear receptor,7,Liver_X_rcpt; NHR-like_dom_sf; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR1; Nuclear_hrmn_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+Q13156,RPA4,Replication protein A 30 kDa subunit,Winged-helix / Forkhead,6,NA-bd_OB-fold; RFA2-like; Rfa2/RPA32; RPA_C; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q13207,TBX2,T-box transcription factor TBX2,T-box,8,p53-like_TF_DNA-bd_sf; T-box_DNA-bd; T-box_sf; TBX2/3_TAD; TBX2_3_RD; TF_Brachyury; TF_T-box; TF_T-box_CS
+Q13285,NR5A1,Steroidogenic factor 1,Nuclear receptor,6,NHR-like_dom_sf; NR5-like; Nucl_hrmn_rcpt_lig-bd; Nuclear_hrmn_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+Q13461,FOXE3,Forkhead box protein E3,Winged-helix / Forkhead,6,Fork_head_dom; FOX_domain-containing; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q13469,NFATC2,"Nuclear factor of activated T-cells, cytoplasmic 2",Homeodomain,8,Ig-like_fold; Ig_E-set; IPT_dom; NFAT; p53-like_TF_DNA-bd_sf; RHD_dimer; RHD_DNA_bind_dom; RHD_DNA_bind_dom_sf
+Q13568,IRF5,Interferon regulatory factor 5,SMAD,7,Interferon_reg_fac_CS; Interferon_reg_fact_DNA-bd_dom; Interferon_reg_factor-3; SMAD-like_dom_sf; SMAD_FHA_dom_sf; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q14186,TFDP1,Transcription factor Dp-1,Winged-helix / Forkhead,7,E2F-DP_heterodim; E2F_WHTH_DNA-bd_dom; TF_DP_C_sf; Transc_factor_DP_C; Transcrpt_fac_DP; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q14188,TFDP2,Transcription factor Dp-2,Winged-helix / Forkhead,7,E2F-DP_heterodim; E2F_WHTH_DNA-bd_dom; TF_DP_C_sf; Transc_factor_DP_C; Transcrpt_fac_DP; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q14209,E2F2,Transcription factor E2F2,E2F / RB-associated,6,E2F; E2F-DP_heterodim; E2F_CC-MB; E2F_WHTH_DNA-bd_dom; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q14541,HNF4G,Hepatocyte nuclear factor 4-gamma,Nuclear receptor,8,HNF4-like_DBD; HNF4_LBD; NHR-like_dom_sf; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR2; Nuclear_hrmn_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+Q14653,IRF3,Interferon regulatory factor 3,SMAD,7,Interferon_reg_fac_CS; Interferon_reg_fact_DNA-bd_dom; Interferon_reg_factor-3; SMAD-like_dom_sf; SMAD_FHA_dom_sf; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q14774,HLX,H2.0-like homeobox protein,Homeodomain,6,H2.0_Homeobox_TF; HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; HTH_motif
+Q14781,CBX2,Chromobox protein homolog 2,Unclassified,6,CBX2; CBX7_C; Chromo-like_dom_sf; Chromo/chromo_shadow_dom; Chromo_domain; Chromodomain_CS
+Q14814,MEF2D,Myocyte-specific enhancer factor 2D,Unclassified,4,HJURP_C; MEF2-like_N; TF_MADSbox; TF_MADSbox_sf
+Q14863,POU6F1,"POU domain, class 6, transcription factor 1",Homeodomain – POU,6,HD; Homeodomain-like_sf; Lambda_DNA-bd_dom_sf; POU; POU_dom; POU_domain_TF
+Q14934,NFATC4,"Nuclear factor of activated T-cells, cytoplasmic 4",Homeodomain,8,Ig-like_fold; Ig_E-set; IPT_dom; NFAT; p53-like_TF_DNA-bd_sf; RHD_dimer; RHD_DNA_bind_dom; RHD_DNA_bind_dom_sf
+Q14938,NFIX,Nuclear factor 1 X-type,SMAD,5,CTF/NFI; CTF/NFI_DNA-bd-dom; CTF/NFI_DNA-bd_CS; CTF/NFI_DNA-bd_N; MAD_homology1_Dwarfin-type
+Q14966,ZNF638,Zinc finger protein 638,Zinc finger – C2H2,9,Matrin/U1-C_Znf_C2H2; Matrin/U1-like-C_Znf_C2H2; Nucleotide-bd_a/b_plait_sf; RBD_domain_sf; RRM_dom; ZNF638_RRM1/2; Znf_C2H2_jaz; Znf_C2H2_sf; Znf_C2H2_type
+Q14994,NR1I3,Nuclear receptor subfamily 1 group I member 3,Nuclear receptor,7,NHR-like_dom_sf; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR1; Nuclear_hrmn_rcpt; ThyrH_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+Q14995,NR1D2,Nuclear receptor subfamily 1 group D member 2,Nuclear receptor,6,NHR-like_dom_sf; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR1; Nuclear_hrmn_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+Q15306,IRF4,Interferon regulatory factor 4,SMAD,7,Interferon_reg_fac_CS; Interferon_reg_fact_DNA-bd_dom; Interferon_reg_factor-3; SMAD-like_dom_sf; SMAD_FHA_dom_sf; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q15319,POU4F3,"POU domain, class 4, transcription factor 3",Homeodomain,7,HD; Homeobox_CS; Homeodomain-like_sf; Lambda_DNA-bd_dom_sf; POU; POU_dom; POU_domain_TF
+Q15329,E2F5,Transcription factor E2F5,E2F / RB-associated,6,E2F; E2F-DP_heterodim; E2F_CC-MB; E2F_WHTH_DNA-bd_dom; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q15406,NR6A1,Nuclear receptor subfamily 6 group A member 1,Nuclear receptor,6,NHR-like_dom_sf; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR3; Nuclear_hrmn_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+Q15475,SIX1,Homeobox protein SIX1,Homeodomain,5,HD; Homeobox_CS; Homeodomain-like_sf; KN_HD; SIX1_SD
+Q15554,TERF2,Telomeric repeat-binding factor 2,Homeodomain,8,Homeodomain-like_sf; Myb_dom; SANT/Myb; Telomere_rpt-bd_fac_dimer_dom; Telomere_rpt-bd_fac_dimer_sf; TERF1/2; TERF2; TERF2_RBM
+Q15561,TEAD4,Transcriptional enhancer factor TEF-3,Unclassified,6,TEA/ATTS_dom; TEA/ATTS_sf; TEC1_TEAD_TF; TEF-3; TEF_metazoa; YBD
+Q15562,TEAD2,Transcriptional enhancer factor TEF-4,Unclassified,5,TEA/ATTS_dom; TEA/ATTS_sf; TEC1_TEAD_TF; TEF_metazoa; YBD
+Q15583,TGIF1,Homeobox protein TGIF1,Homeodomain,4,HD; Homeodomain-like_sf; KN_HD; TALE_homeobox
+Q15699,ALX1,ALX homeobox protein 1,Homeodomain,5,HD; Homeobox_CS; Homeodomain-like_sf; OAR_dom; Paired_Homeobox_TFs
+Q15723,ELF2,ETS-related transcription factor Elf-2,ETS domain,5,Ets_dom; ETS_fam; TF_Elf_N; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q15906,VPS72,Vacuolar protein sorting-associated protein 72 homolog,Unclassified,2,Vps72/YL1_C; YL1_N
+Q15911,ZFHX3,Zinc finger homeobox protein 3,Homeodomain,7,HD; Homeobox_CS; Homeodomain-like_sf; Matrin/U1-like-C_Znf_C2H2; Znf_C2H2_sf; Znf_C2H2_type; ZnFinger_Homeobox_TR
+Q16254,E2F4,Transcription factor E2F4,E2F / RB-associated,6,E2F; E2F-DP_heterodim; E2F_CC-MB; E2F_WHTH_DNA-bd_dom; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q16594,TAF9,Transcription initiation factor TFIID subunit 9,Unclassified,3,Histone-fold; TFIID-31; TFIID_subunit_9
+Q16650,TBR1,T-box brain protein 1,T-box,6,p53-like_TF_DNA-bd_sf; T-box_assoc; T-box_DNA-bd; T-box_sf; TF_T-box; TF_T-box_CS
+Q16656,NRF1,Nuclear respiratory factor 1,Unclassified,2,NRF1/Ewg; Nrf1_NLS/DNA-bd_dimer
+Q16676,FOXD1,Forkhead box protein D1,Winged-helix / Forkhead,6,Fork_head_dom; FOX_domain-containing; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q2KHR2,RFX7,DNA-binding protein RFX7,Winged-helix / Forkhead,4,DNA-bd_RFX; RFX-like; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q33E94,RFX4,Transcription factor RFX4,Winged-helix / Forkhead,5,DNA-bd_RFX; RFX-like; RFX1-4/6/8-like_BCD; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q3SYB3,FOXD4L6,Forkhead box protein D4-like 6,Winged-helix / Forkhead,6,Fork_head_dom; FOX_domain-containing; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q49A26,GLYR1,Cytokine-like nuclear factor N-PAC,Unclassified,8,6-PGluconate_DH-like_C_sf; 6PGD_dom2; 6PGDH_NADP-bd; GLYR1_PWWP; HIBADH-like_NADP-bd; HIBADH-related_NP60_sf; NAD(P)-bd_dom_sf; PWWP_dom
+Q53H47,SETMAR,Histone-lysine N-methyltransferase SETMAR,Helix-turn-helix,9,Mos1_HTH; Post-SET_dom; Pre-SET_dom; RNaseH_sf; SET_dom; SET_dom_sf; Transposase-MT_Hybrid; Transposase_1; WH-like_DNA-bd_sf
+Q5H9I0,TFDP3,Transcription factor Dp family member 3,Winged-helix / Forkhead,7,E2F-DP_heterodim; E2F_WHTH_DNA-bd_dom; TF_DP_C_sf; Transc_factor_DP_C; Transcrpt_fac_DP; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q5SQQ9,VAX1,Ventral anterior homeobox 1,Homeodomain,5,EMX-VAX-Noto_Homeobox_TFs; HD; Homeobox_CS; Homeodomain-like_sf; HTH_motif
+Q5SXM2,SNAPC4,snRNA-activating protein complex subunit 4,Homeodomain,5,Homeodomain-like_sf; Myb-like_DNA-bd; Myb_dom; SANT/Myb; SANT_dom
+Q5TGY3,AHDC1,Transcription factor Gibbin,Homeodomain,2,AHDC1; DUF4683
+Q5XKR4,OTP,Homeobox protein orthopedia,Homeodomain,6,HD; Homeobox_CS; Homeodomain-like_sf; HTH_motif; OAR_dom; OTP_Homeobox
+Q63HK5,TSHZ3,Teashirt homolog 3,Homeodomain,4,HD; Teashirt_fam; TSHZ1-3_homeodomain; Znf_C2H2_type
+Q68CP9,ARID2,AT-rich interactive domain-containing protein 2,Winged-helix / Forkhead,8,ARID_dom; ARID_dom_sf; ARM-type_fold; Chromatin_Remodeling_Comp; DNA-bd_RFX; WH-like_DNA-bd_sf; WH_DNA-bd_sf; Znf_C2H2_type
+Q68G74,LHX8,LIM/homeobox protein Lhx8,Homeodomain,5,HD; Homeobox_CS; Homeodomain-like_sf; LIM_Homeobox_TF; Znf_LIM
+Q6NSI4,RADX,RPA-related protein RADX,Unclassified,2,NA-bd_OB-fold; RADX
+Q6NSW7,NANOGP8,Homeobox protein NANOGP8,Homeodomain,4,Distal-less_Homeobox_TF; HD; Homeobox_CS; Homeodomain-like_sf
+Q6NT76,HMBOX1,Homeobox-containing protein 1,Helix-turn-helix,8,Cro/C1-type_HTH; HD; HMBOX1; HNF-1_N; HNF-1_POU; HNF_P1; Homeodomain-like_sf; Lambda_DNA-bd_dom_sf
+Q6PIV2,FOXR1,Forkhead box protein R1,Winged-helix / Forkhead,4,Fork_head_dom; FOX_transcription_regulators; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q6RFH8,DUX4L9,Double homeobox protein 4C,Homeodomain,4,HD; Homeobox_regulator; Homeodomain-like_sf; HTH_motif
+Q6VB84,FOXD4L3,Forkhead box protein D4-like 3,Winged-helix / Forkhead,6,Fork_head_dom; FOX_domain-containing; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q6ZRS2,SRCAP,Chromatin remodeling protein SRCAP,Unclassified,9,AT_hook_DNA-bd_motif; Helicase_ATP-bd; Helicase_C-like; HSA_dom; INO80/SWR1_helicase; P-loop_NTPase; SNF2-like_sf; SNF2/RAD54-like_C; SNF2_N
+Q6ZSZ6,TSHZ1,Teashirt homolog 1,Homeodomain,4,HD; Teashirt_fam; TSHZ1-3_homeodomain; Znf_C2H2_type
+Q7Z353,HDX,Highly divergent homeobox,Homeodomain,3,HD; Homeodomain-like_sf; POU_domain_TF
+Q7Z591,AKNA,Microtubule organization protein AKNA,Unclassified,2,AKNA_Centrosome-Trans_reg; AKNA_dom
+Q86U86,PBRM1,Protein polybromo-1,HMG box,9,BAH_dom; BAH_sf; Bromodomain; Bromodomain-like_sf; Bromodomain_CS; HMG_box_dom; HMG_box_dom_sf; PBRM1_BD5; Rsc/polybromo
+Q86UP3,ZFHX4,Zinc finger homeobox protein 4,Homeodomain,7,HD; Homeobox_CS; Homeodomain-like_sf; Matrin/U1-like-C_Znf_C2H2; Znf_C2H2_sf; Znf_C2H2_type; ZnFinger_Homeobox_TR
+Q86WS4,REDIC1,Regulator of DNA class I crossover intermediates 1,Unclassified,1,Redic1-like
+Q86WV5,TEN1,CST complex subunit TEN1,Unclassified,2,NA-bd_OB-fold; Ten1_animal_plant
+Q8HWS3,RFX6,DNA-binding protein RFX6,Winged-helix / Forkhead,5,DNA-bd_RFX; RFX-like; RFX1-4/6/8-like_BCD; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q8IVH2,FOXP4,Forkhead box protein P4,Winged-helix / Forkhead,7,FH_FOXP4; Fork_head_dom; FOXP; FOXP-CC; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q8IWI9,MGA,MAX gene-associated protein,T-box,9,bHLH_dom; HLH_DNA-bd_sf; MAX_gene-associated_bHLHzip; MGA_dom; p53-like_TF_DNA-bd_sf; T-box_DNA-bd; T-box_sf; TF_T-box; TF_T-box_CS
+Q8IX15,HOMEZ,Homeobox and leucine zipper protein Homez,Homeodomain,3,HD; Homeodomain-like_sf; Homez_homeobox_dom
+Q8IYH5,ZZZ3,ZZ-type zinc finger-containing protein 3,Zinc finger – other,7,Homeodomain-like_sf; Myb_dom; SANT/Myb; Znf_ZZ; Znf_ZZ_sf; ZZZ3; ZZZ3_ZZ
+Q8N196,SIX5,Homeobox protein SIX5,Homeodomain,4,HD; Homeobox_CS; Homeodomain-like_sf; SIX1_SD
+Q8N635,MEIOB,Meiosis-specific with OB domain-containing protein,Unclassified,3,MEIOB; NA-bd_OB-fold; OB_MEIOB_N
+Q8N693,ESX1,Homeobox protein ESX1,Homeodomain,5,HD; Homeobox_CS; Homeodomain-like_sf; Paired_Homeobox_TFs; POU
+Q8N7U7,TPRX1,Tetra-peptide repeat homeobox protein 1,Homeodomain,2,HD; Homeodomain-like_sf
+Q8NEZ4,KMT2C,Histone-lysine N-methyltransferase 2C,Homeodomain,20,EPHD; FYrich_C; FYrich_N; HMG_box_dom; HMG_box_dom_sf; HMGI/Y_DNA-bd_CS; KMT2C_ePHD1; KMT2C_ePHD2; KMT2C_PHD2; KMT2C_PHD4; KMT2C_PHD6; PHD3_KMT2C; Post-SET_dom; SET_dom; SET_dom_sf; Znf_FYVE_PHD; Znf_PHD; Znf_PHD-finger; Znf_RING; Znf_RING/FYVE/PHD
+Q8NFC6,BOD1L1,Biorientation of chromosomes in cell division protein 1-like 1,Unclassified,2,BOD1/SHG1_dom; BOD1L1
+Q8NFW5,DMBX1,Diencephalon/mesencephalon homeobox protein 1,Homeodomain,5,DMBX_homeobox; HD; Homeobox_CS; Homeodomain-like_sf; OAR_dom
+Q8NHV9,RHOXF1,Rhox homeobox family member 1,Homeodomain,5,HD; Homeobox_CS; Homeodomain-like_sf; HTH_motif; Paired_Homeobox_TFs
+Q8TAU0,NKX2-3,Homeobox protein Nkx-2.3,Homeodomain,5,HD; HD_metazoa; Homeobox_CS; Homeobox_NK-like; Homeodomain-like_sf
+Q8TE12,LMX1A,LIM homeobox transcription factor 1-alpha,Homeodomain,6,HD; Homeobox_CS; Homeodomain-like_sf; LIM_Homeobox_TF; Lmx1a_LIM1; Znf_LIM
+Q8WY36,BBX,HMG box transcription factor BBX,HMG box,5,BBX_HMG-box; CC-Dev_Transcription_Reg; HMG_box_dom; HMG_box_dom_sf; TF_HMG_box_BBX_DUF2028
+Q8WYP5,AHCTF1,Protein ELYS,Unclassified,4,ELYS-bb; ELYS/MEL-28_NucAsmblyFactor; ELYS_dom; Quinoprotein_ADH-like_sf
+Q92570,NR4A3,Nuclear receptor subfamily 4 group A member 3,Nuclear receptor,7,NHR-like_dom_sf; NR4A1-3; NR4A3; Nucl_hrmn_rcpt_lig-bd; Nuclear_hrmn_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+Q92731,ESR2,Estrogen receptor beta,Nuclear receptor,9,ER-beta-like_N; ER-beta/gamma; Est_rcpt/est-rel_rcp; NHR-like_dom_sf; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR3; Nuclear_hrmn_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+Q92753,RORB,Nuclear receptor ROR-beta,Nuclear receptor,7,NHR-like_dom_sf; NR_DBD_ROR; Nucl_hrmn_rcpt_lig-bd; Nuclear_hrmn_rcpt; ROR_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+Q92826,HOXB13,Homeobox protein Hox-B13,Homeodomain,5,AP_axis_regulatory_Homeobox; HD; Homeobox_CS; Homeodomain-like_sf; HoxA13_N
+Q92949,FOXJ1,Forkhead box protein J1,Winged-helix / Forkhead,7,FH_FOXJ1; Fork_head_dom; FOXJ1; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q92985,IRF7,Interferon regulatory factor 7,SMAD,7,Interferon_reg_fac_CS; Interferon_reg_fact_DNA-bd_dom; Interferon_reg_factor-3; SMAD-like_dom_sf; SMAD_FHA_dom_sf; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q92988,DLX4,Homeobox protein DLX-4,Homeodomain,6,Distal-less_Homeobox_TF; HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; HTH_motif
+Q969G2,LHX4,LIM/homeobox protein Lhx4,Homeodomain,7,HD; Homeobox_CS; Homeodomain-like_sf; Lhx3/4-like_LIM2; LHX4_LIM1; LIM_Homeobox_TF; Znf_LIM
+Q969G3,SMARCE1,SWI/SNF-related matrix-associated actin-dependent regulator of chromatin subfamily E member 1,HMG box,2,HMG_box_dom; HMG_box_dom_sf
+Q96AH0,NABP1,SOSS complex subunit B2,Unclassified,3,NA-bd_OB-fold; OB_Ssb-like; SOSS-B
+Q96AV8,E2F7,Transcription factor E2F7,Winged-helix / Forkhead,4,E2F; E2F_WHTH_DNA-bd_dom; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q96BD5,PHF21A,PHD finger protein 21A,Homeodomain,5,Zinc_finger_PHD-type_CS; Znf_FYVE_PHD; Znf_PHD; Znf_PHD-finger; Znf_RING/FYVE/PHD
+Q96C55,ZNF524,Zinc finger protein 524,Zinc finger – C2H2,2,Znf_C2H2_sf; Znf_C2H2_type
+Q96E14,RMI2,RecQ-mediated genome instability protein 2,Unclassified,2,NA-bd_OB-fold; RMI2
+Q96IS3,RAX2,Retina and anterior neural fold homeobox protein 2,Homeodomain,4,HD; Homeobox_CS; Homeodomain-like_sf; RAX/RAX2
+Q96JN0,LCOR,Ligand-dependent corepressor,Homeodomain,2,Homeodomain-like_sf; HTH_Psq
+Q96JY0,MAEL,Protein maelstrom homolog,HMG box,4,HMG_box_dom; HMG_box_dom_sf; Maelstrom; Protein_maelstrom
+Q96KN3,PKNOX2,Homeobox protein PKNOX2,Homeodomain,5,HD; Homeodomain-like_sf; KN_HD; PKNOX/Meis_N; TALE_homeobox
+Q96LI6,HSFY1,"Heat shock transcription factor, Y-linked",Winged-helix / Forkhead,3,HSF_DNA-bd; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q96MA1,DMRTB1,Doublesex- and mab-3-related transcription factor B1,Unclassified,3,DM_DNA-bd; DM_DNA-bd_sf; DMRT
+Q96NM4,TOX2,TOX high mobility group box family member 2,HMG box,3,HMG_box_dom; HMG_box_dom_sf; TOX_HMG-box_domain
+Q96NZ1,FOXN4,Forkhead box protein N4,Winged-helix / Forkhead,5,Fork_head_dom; FOXN2/3-like; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q96QS3,ARX,Homeobox protein ARX,Homeodomain,5,HD; Homeobox_CS; Homeodomain-like_sf; OAR_dom; Paired_Homeobox_TFs
+Q96RI1,NR1H4,Bile acid receptor,Nuclear receptor,8,NHR-like_dom_sf; NR_LBD_NR1H4; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR1; Nuclear_hrmn_rcpt; ThyrH_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+Q96RK0,CIC,Protein capicua homolog,HMG box,6,CC-Dev_Transcription_Reg; Cic_dom; HMG-box_Cic-like; HMG_box_dom; HMG_box_dom_sf; HTH_Cic_C
+Q96SF7,TBX15,T-box transcription factor TBX15,T-box,5,p53-like_TF_DNA-bd_sf; T-box_DNA-bd; T-box_sf; TF_T-box; TF_T-box_CS
+Q96T58,SPEN,Msx2-interacting protein,E2F / RB-associated,13,MINT_MID; MINT_RAM7; MINT_RID; Nucleotide-bd_a/b_plait_sf; RBD_domain_sf; RRM_dom; SHARP_RRM1; SHARP_RRM2; SHARP_RRM3; SHARP_RRM4; SPOC-like_C_dom_sf; SPOC_C; SPOC_met
+Q99453,PHOX2B,Paired mesoderm homeobox protein 2B,Homeodomain,4,HD; Homeobox_CS; Homeodomain-like_sf; Paired_Homeobox_TFs
+Q99459,CDC5L,Cell division cycle 5-like protein,Homeodomain,6,CDC5L/Cef1; Cdc5p/Cef1_C; Homeodomain-like_sf; Myb_dom; SANT/Myb; SANT_CDC5L_II
+Q99581,FEV,Protein FEV,ETS domain,4,Ets_dom; ETS_fam; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q99593,TBX5,T-box transcription factor TBX5,T-box,5,p53-like_TF_DNA-bd_sf; T-box_DNA-bd; T-box_sf; TF_T-box; TF_T-box_CS
+Q99594,TEAD3,Transcriptional enhancer factor TEF-5,Unclassified,6,TEA/ATTS_dom; TEA/ATTS_sf; TEC1_TEAD_TF; TEF-5; TEF_metazoa; YBD
+Q99607,ELF4,ETS-related transcription factor Elf-4,ETS domain,5,Ets_dom; ETS_fam; TF_Elf_N; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q99626,CDX2,Homeobox protein CDX-2,Homeodomain,7,Caudal_activation_dom; Caudal_homeobox; HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; HTH_motif
+Q99687,MEIS3,Homeobox protein Meis3,Homeodomain,5,HD; Homeodomain-like_sf; KN_HD; PKNOX/Meis_N; TALE_homeobox
+Q99697,PITX2,Pituitary homeobox 2,Homeodomain,5,HD; Homeobox_CS; Homeobox_Pitx/unc30; Homeodomain-like_sf; OAR_dom
+Q99801,NKX3-1,Homeobox protein Nkx-3.1,Homeodomain,5,HD; HD_metazoa; Homeobox_CS; Homeobox_NK-like; Homeodomain-like_sf
+Q99853,FOXB1,Forkhead box protein B1,Winged-helix / Forkhead,7,Fork_head_dom; FOX_domain-containing; FOXB1_B2_FH; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q99958,FOXC2,Forkhead box protein C2,Winged-helix / Forkhead,7,Fork_head_dom; FOX_domain-containing; FOXC1/C2-like_FH; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q9BPY8,HOPX,Homeodomain-only protein,Homeodomain,3,HD; Homeodomain-like_sf; HOPX
+Q9BQ15,NABP2,SOSS complex subunit B1,Unclassified,3,NA-bd_OB-fold; OB_Ssb-like; SOSS-B
+Q9BQY4,RHOXF2,Rhox homeobox family member 2,Homeodomain,3,HD; Homeobox_CS; Homeodomain-like_sf
+Q9BT81,SOX7,Transcription factor SOX-7,HMG box,5,HMG_box_dom; HMG_box_dom_sf; Sox7/17/18_central; Sox_C; SRY-related_HMG-box_TF-like
+Q9BVI0,PHF20,PHD finger protein 20,Homeodomain,9,Crb2_Tudor; PHF20-like; PHF20_AT-hook; Tudor; Zinc_finger_PHD-type_CS; Znf_C2H2_type; Znf_FYVE_PHD; Znf_PHD; Znf_RING/FYVE/PHD
+Q9BXR3,ERVK-6,Endogenous retrovirus group K member 6 Pol protein,⚠ Transposable element,12,DNA/RNA_pol_sf; Integrase-like_N; Integrase_C_dom_sf_retrovir; Integrase_C_retrovir; Integrase_cat-core; Integrase_Zn-bd_dom_N; Rev_trsase/Diguanyl_cyclase; RNaseH-like_sf; RNaseH_domain; RNaseH_sf; RT_dom; RVT_thumb
+Q9BYU1,PBX4,Pre-B-cell leukemia transcription factor 4,Homeodomain,5,HD; Homeodomain-like_sf; KN_HD; PBX_PBC_dom; TALE_homeobox
+Q9BZM3,GSX2,GS homeobox 2,Homeodomain,5,GSH1/2; HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf
+Q9BZS1,FOXP3,Forkhead box protein P3,Winged-helix / Forkhead,8,FH_FOXP3; Fork_head_dom; FOXP; FOXP-CC; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf; Znf_C2H2_type
+Q9C056,NKX6-2,Homeobox protein Nkx-6.2,Homeodomain,6,HD; HD_metazoa; Homeobox_CS; Homeobox_NK-like; Homeodomain-like_sf; HTH_motif
+Q9C0A1,ZFHX2,Zinc finger homeobox protein 2,Homeodomain,7,HD; Homeobox_CS; Homeodomain-like_sf; Matrin/U1-like-C_Znf_C2H2; Znf_C2H2_sf; Znf_C2H2_type; ZnFinger_Homeobox_TR
+Q9GZN2,TGIF2,Homeobox protein TGIF2,Homeodomain,4,HD; Homeodomain-like_sf; KN_HD; TALE_homeobox
+Q9H147,DNTTIP1,Deoxynucleotidyltransferase terminal-interacting protein 1,Unclassified,3,DNTTIP1_dimer; TdIF1; TdIF1_C
+Q9H161,ALX4,Homeobox protein aristaless-like 4,Homeodomain,5,HD; Homeobox_CS; Homeodomain-like_sf; OAR_dom; Paired_Homeobox_TFs
+Q9H2C1,LHX5,LIM/homeobox protein Lhx5,Homeodomain,7,HD; Homeobox_CS; Homeodomain-like_sf; Lhx1/5_LIM1; Lhx1/5_LIM2; LIM_Homeobox_TF; Znf_LIM
+Q9H2P0,ADNP,Activity-dependent neuroprotector homeobox protein,Homeodomain,5,ADNP/ADNP2; ADNP_Znf; HD; Homeodomain-like_sf; Znf_C2H2_type
+Q9H2W2,MIXL1,Homeobox protein MIXL1,Homeodomain,4,HD; Homeobox_CS; Homeodomain-like_sf; MIXL1
+Q9H334,FOXP1,Forkhead box protein P1,Winged-helix / Forkhead,7,FH_FOXP1_P2; Fork_head_dom; FOXP; FOXP-CC; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q9H3D4,TP63,Tumor protein 63,p53-like,10,p53-like_TF_DNA-bd_sf; p53/RUNT-type_TF_DNA-bd_sf; P53_central_site; p53_DNA-bd; p53_tetramer_sf; p53_tetrameristn; p53_tumour_suppressor; SAM; SAM/pointed_sf; Tumor-p63_SAM
+Q9H4I2,ZHX3,Zinc fingers and homeoboxes protein 3,Homeodomain,6,HD; Homeodomain-like_sf; Homez_homeobox_dom; ZHX_Znf_C2H2; Znf_C2H2_sf; Znf_C2H2_type
+Q9H4S2,GSX1,GS homeobox 1,Homeodomain,5,GSH1/2; HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf
+Q9H611,PIF1,ATP-dependent DNA helicase PIF1,Unclassified,6,DNA_helicase_pif1-like_DEAD; P-loop_NTPase; Pif1-like_2B_dom; PIF1/LRR1_PH; PIF1_helicase; PIF1_RRM3_pfh1
+Q9H668,STN1,CST complex subunit STN1,Winged-helix / Forkhead,8,CST_STN1_C; CST_Stn1_wHTH1_sf; NA-bd_OB-fold; NA-bd_OB_tRNA; RFA2-like; Stn1; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q9H6I2,SOX17,Transcription factor SOX-17,HMG box,5,HMG_box_dom; HMG_box_dom_sf; Sox7/17/18_central; Sox_C; SRY-related_HMG-box_TF-like
+Q9H9S0,NANOG,Homeobox protein NANOG,Homeodomain,4,Distal-less_Homeobox_TF; HD; Homeobox_CS; Homeodomain-like_sf
+Q9HBE1,PATZ1,"POZ-, AT hook-, and zinc finger-containing protein 1",Zinc finger – C2H2,5,BTB/POZ_dom; HMGI/Y_DNA-bd_CS; SKP1/BTB/POZ_sf; Znf_C2H2_sf; Znf_C2H2_type
+Q9HBU1,BARX1,Homeobox protein BarH-like 1,Homeodomain,6,HD; HD_metazoa; Homeobox_CS; Homeobox_TF; Homeodomain-like_sf; HTH_motif
+Q9HCS4,TCF7L1,Transcription factor 7-like 1,HMG box,5,Catenin-bd_sf; CTNNB1-bd_N; HMG_box_dom; HMG_box_dom_sf; TCF/LEF
+Q9NP08,HMX1,Homeobox protein HMX1,Homeodomain,5,HD; HD_metazoa; HMX_Homeobox_TF; Homeobox_CS; Homeodomain-like_sf
+Q9NP62,GCM1,Chorion-specific transcription factor GCMa,Unclassified,5,GCM; GCM_dom_sf; GCM_large; GCM_small; Tscrpt_reg_GCM
+Q9NP66,HMG20A,High mobility group protein 20A,HMG box,3,ChromReg_NeuronalGeneExpr; HMG_box_dom; HMG_box_dom_sf
+Q9NPC8,SIX2,Homeobox protein SIX2,Homeodomain,4,HD; Homeobox_CS; Homeodomain-like_sf; SIX1_SD
+Q9NQ69,LHX9,LIM/homeobox protein Lhx9,Homeodomain,5,HD; Homeobox_CS; Homeodomain-like_sf; LIM_Homeobox_TF; Znf_LIM
+Q9NQB0,TCF7L2,Transcription factor 7-like 2,HMG box,5,Catenin-bd_sf; CTNNB1-bd_N; HMG_box_dom; HMG_box_dom_sf; TCF/LEF
+Q9NQL9,DMRT3,Doublesex- and mab-3-related transcription factor 3,Unclassified,5,DM_DNA-bd; DM_DNA-bd_sf; DMA; DMRT; UBA-like_sf
+Q9NR48,ASH1L,Histone-lysine N-methyltransferase ASH1L,Homeodomain,15,AT_hook_DNA-bd_motif; AWS_dom; BAH_dom; BAH_sf; Bromo_ASH1L; Bromodomain; Bromodomain-like_sf; PHD_ASH1L; Post-SET_dom; SET_dom; SET_dom_sf; Zinc_finger_PHD-type_CS; Znf_FYVE_PHD; Znf_PHD; Znf_RING/FYVE/PHD
+Q9NRE2,TSHZ2,Teashirt homolog 2,Homeodomain,4,HD; Teashirt_fam; TSHZ1-3_homeodomain; Znf_C2H2_type
+Q9NTI5,PDS5B,Sister chromatid cohesion protein PDS5 homolog B,Unclassified,3,ARM-like; ARM-type_fold; Pds5
+Q9NU39,FOXD4L1,Forkhead box protein D4-like 1,Winged-helix / Forkhead,6,Fork_head_dom; FOX_domain-containing; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q9NYD6,HOXC10,Homeobox protein Hox-C10,Homeodomain,5,HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; HXA10/ABDB-like
+Q9NZC4,EHF,ETS homologous factor,ETS domain,7,EHF_SAM_Pointed_dom; Ets_dom; ETS_fam; Pointed_dom; SAM/pointed_sf; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q9NZR4,VSX1,Visual system homeobox 1,Homeodomain,5,CVC; HD; Homeobox_CS; Homeobox_domain; Homeodomain-like_sf
+Q9P0K8,FOXJ2,Forkhead box protein J2,Winged-helix / Forkhead,6,FH_FOXJ2; Fork_head_dom; FOXJ2/3-like; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q9P0W2,HMG20B,SWI/SNF-related matrix-associated actin-dependent regulator of chromatin subfamily E member 1-related,HMG box,3,ChromReg_NeuronalGeneExpr; HMG_box_dom; HMG_box_dom_sf
+Q9UBC0,ONECUT1,Hepatocyte nuclear factor 6,Homeodomain,5,CUT_dom; CUT_Homeobox; HD; Homeodomain-like_sf; Lambda_DNA-bd_dom_sf
+Q9UBD0,HSFX1,"Heat shock transcription factor, X-linked",Winged-helix / Forkhead,3,HSF_DNA-bd; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q9UBR4,LHX3,LIM/homeobox protein Lhx3,Homeodomain,7,HD; Homeobox_CS; Homeodomain-like_sf; Lhx3/4-like_LIM2; Lhx3_LIM1; LIM_Homeobox_TF; Znf_LIM
+Q9UBX0,HESX1,Homeobox expressed in ES cells 1,Homeodomain,4,HD; Hesx1; Homeobox_CS; Homeodomain-like_sf
+Q9UBX2,DUX4,Double homeobox protein 4,Homeodomain,4,HD; Homeobox_regulator; Homeodomain-like_sf; HTH_motif
+Q9UGU0,TCF20,Transcription factor 20,Homeodomain,5,EPHD; TCF-20_ePHD; Trans_Reg/Chrom_Remod; Znf_PHD; Znf_RING/FYVE/PHD
+Q9UGU5,HMGXB4,HMG domain-containing protein 4,HMG box,5,DUF4171; HMG_box_dom; HMG_box_dom_sf; HMGXB4; HMGXB4_HMG-box
+Q9UIF9,BAZ2A,Bromodomain adjacent to zinc finger domain protein 2A,Homeodomain,15,AT_hook_DNA-bd_motif; BAZ2A/B_Bromo; Bromodomain; Bromodomain-like_sf; Bromodomain_CS; DDT_dom; DNA-bd_dom_sf; Methyl_CpG_DNA-bd; PHD_BAZ2A; WHIM1_dom; WHIM2_dom; Znf_FYVE_PHD; Znf_PHD; Znf_PHD-finger; Znf_RING/FYVE/PHD
+Q9UIU6,SIX4,Homeobox protein SIX4,Homeodomain,4,HD; Homeobox_CS; Homeodomain-like_sf; SIX1_SD
+Q9UIW0,VAX2,Ventral anterior homeobox 2,Homeodomain,6,EMX-VAX-Noto_Homeobox_TFs; HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; HTH_motif
+Q9UJU2,LEF1,Lymphoid enhancer-binding factor 1,HMG box,5,Catenin-bd_sf; CTNNB1-bd_N; HMG_box_dom; HMG_box_dom_sf; TCF/LEF
+Q9UJU5,FOXD3,Forkhead box protein D3,Winged-helix / Forkhead,7,FH_FOXD3; Fork_head_dom; FOX_domain-containing; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q9UKI9,POU2F3,"POU domain, class 2, transcription factor 3",Homeodomain,8,HD; Homeobox_CS; Homeodomain-like_sf; Lambda_DNA-bd_dom_sf; POU; POU_dom; POU_domain_TF; TF_octamer
+Q9UKW6,ELF5,ETS-related transcription factor Elf-5,ETS domain,6,Ets_dom; ETS_fam; Pointed_dom; SAM/pointed_sf; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q9UKY1,ZHX1,Zinc fingers and homeoboxes protein 1,Homeodomain,6,HD; Homeodomain-like_sf; Homez_homeobox_dom; ZHX_Znf_C2H2; Znf_C2H2_sf; Znf_C2H2_type
+Q9UL17,TBX21,T-box transcription factor TBX21,T-box,5,p53-like_TF_DNA-bd_sf; T-box_DNA-bd; T-box_sf; TF_T-box; TF_T-box_CS
+Q9ULV5,HSF4,Heat shock factor protein 4,Winged-helix / Forkhead,3,HSF_DNA-bd; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q9UMN6,KMT2B,Histone-lysine N-methyltransferase 2B,Homeodomain,15,Bromodomain-like_sf; EPHD; FYrich_C; FYrich_N; KMT2A_2B_SET; KMT2B_ePHD; MeTrfase_trithorax; Post-SET_dom; SET_dom; SET_dom_sf; Znf_CXXC; Znf_FYVE_PHD; Znf_PHD; Znf_PHD-finger; Znf_RING/FYVE/PHD
+Q9UMQ3,BARX2,Homeobox protein BarH-like 2,Homeodomain,6,HD; HD_metazoa; Homeobox_CS; Homeobox_TF; Homeodomain-like_sf; HTH_motif
+Q9UMR3,TBX20,T-box transcription factor TBX20,T-box,5,p53-like_TF_DNA-bd_sf; T-box_DNA-bd; T-box_sf; TF_T-box; TF_T-box_CS
+Q9UN79,SOX13,Transcription factor SOX-13,HMG box,3,HMG_box_dom; HMG_box_dom_sf; SOX/SOX-like_TF
+Q9UPM6,LHX6,LIM/homeobox protein Lhx6,Homeodomain,5,HD; Homeobox_CS; Homeodomain-like_sf; LIM_Homeobox_TF; Znf_LIM
+Q9UPW0,FOXJ3,Forkhead box protein J3,Winged-helix / Forkhead,6,Fork_head_dom; FOXJ2/3-like; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q9UPW6,SATB2,DNA-binding protein SATB2,Homeodomain,9,CUT_dom; CUTL; HD; Homeodomain-like_sf; Lambda_DNA-bd_dom_sf; SATB1/SATB2; SATB_CUTL_sf; SATB_ULD_sf; ULD
+Q9WJR5,ERVK-19,Endogenous retrovirus group K member 19 Pol protein,⚠ Transposable element,12,DNA/RNA_pol_sf; Integrase-like_N; Integrase_C_dom_sf_retrovir; Integrase_C_retrovir; Integrase_cat-core; Integrase_Zn-bd_dom_N; Rev_trsase/Diguanyl_cyclase; RNaseH-like_sf; RNaseH_domain; RNaseH_sf; RT_dom; RVT_thumb
+Q9Y222,DMTF1,Cyclin-D-binding Myb-like transcription factor 1,Homeodomain,5,DMTF1_DNA-bind_reg; DMTF1_N; Homeodomain-like_sf; Myb_dom; SANT/Myb
+Q9Y261,FOXA2,Hepatocyte nuclear factor 3-beta,Winged-helix / Forkhead,8,Fork-head_N; Fork_head_dom; Forkhead_box_C; FOX_domain-containing; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q9Y2G1,MYRF,Myelin regulatory factor,p53-like,7,MRF-like; MYRF_C2; MYRF_ICA; NDT80_DNA-bd_dom; NDT80_DNA-bd_dom_sf; p53-like_TF_DNA-bd_sf; S74_ICA
+Q9Y2U8,LEMD3,Inner nuclear membrane protein Man1,E2F / RB-associated,8,INM_ESCRT-Associated; LEM/LEM-like_dom_sf; LEM_dom; Man1/Src1-like_C; Man1_RRM; MAN1_winged_helix_dom; Nucleotide-bd_a/b_plait_sf; RBD_domain_sf
+Q9Y2V3,RAX,Retinal homeobox protein Rx,Homeodomain,5,HD; Homeobox_CS; Homeodomain-like_sf; OAR_dom; RAX/RAX2
+Q9Y458,TBX22,T-box transcription factor TBX22,T-box,5,p53-like_TF_DNA-bd_sf; T-box_DNA-bd; T-box_sf; TF_T-box; TF_T-box_CS
+Q9Y466,NR2E1,Nuclear receptor subfamily 2 group E member 1,Nuclear receptor,6,NHR-like_dom_sf; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR2; Nuclear_hrmn_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
+Q9Y5R5,DMRT2,Doublesex- and mab-3-related transcription factor 2,Unclassified,3,DM_DNA-bd; DM_DNA-bd_sf; DMRT
+Q9Y5R6,DMRT1,Doublesex- and mab-3-related transcription factor 1,Unclassified,4,DM_DNA-bd; DM_DNA-bd_sf; DMRT; DMRT1-like
+Q9Y5X4,NR2E3,Photoreceptor-specific nuclear receptor,Nuclear receptor,7,NHR-like_dom_sf; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR2; Nuclear_hrmn_rcpt; Retinoid-X_rcpt/HNF4; Znf_hrmn_rcpt; Znf_NHR/GATA
+Q9Y603,ETV7,Transcription factor ETV7,ETS domain,6,Ets_dom; ETS_fam; Pointed_dom; SAM/pointed_sf; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q9Y6X0,SETBP1,SET-binding protein,Unclassified,1,AT_hook_DNA-bd_motif
+Q9Y6X8,ZHX2,Zinc fingers and homeoboxes protein 2,Zinc finger – C2H2,5,HD; Homeodomain-like_sf; ZHX_Znf_C2H2; Znf_C2H2_sf; Znf_C2H2_type
+Q9Y6Y1,CAMTA1,Calmodulin-binding transcription activator 1,Unclassified,8,Ankyrin_rpt; Ankyrin_rpt-contain_sf; CG-1_dom; Ig-like_fold; Ig_E-set; IPT_dom; IQ_motif_EF-hand-BS; P-loop_NTPase
+A2RU54,HMX2,Homeobox protein HMX2,Homeodomain,5,HD; HD_metazoa; HMX_Homeobox_TF; Homeobox_CS; Homeodomain-like_sf
+A6NHT5,HMX3,Homeobox protein HMX3,Homeodomain,5,HD; HD_metazoa; HMX_Homeobox_TF; Homeobox_CS; Homeodomain-like_sf
+A6NJT0,UNCX,Homeobox protein unc-4 homolog,Homeodomain,3,HD; Homeobox_CS; Homeodomain-like_sf
+A6NLW8,DUXA,Double homeobox protein A,Homeodomain,4,HD; Homeobox_regulator; Homeodomain-like_sf; HTH_motif
+A6NNA5,DRGX,Dorsal root ganglia homeobox protein,Homeodomain,5,HD; Homeobox_CS; Homeodomain-like_sf; OAR_dom; Paired_Homeobox_TFs
+O00570,SOX1,Transcription factor SOX-1,HMG box,4,HMG_box_dom; HMG_box_dom_sf; SOX_fam; SRY-related_HMG-box_TF-like
+O43638,FOXS1,Forkhead box protein S1,Winged-helix / Forkhead,7,FH_FOXS1; Fork_head_dom; FOX_domain-containing; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+O43812,DUX1,Double homeobox protein 1,Homeodomain,5,HD; Homeobox_CS; Homeobox_regulator; Homeodomain-like_sf; HTH_motif
+O60422,ONECUT3,One cut domain family member 3,Homeodomain,5,CUT_dom; CUT_Homeobox; HD; Homeodomain-like_sf; Lambda_DNA-bd_dom_sf
+O95076,ALX3,Homeobox protein aristaless-like 3,Homeodomain,4,HD; Homeobox_CS; Homeodomain-like_sf; Paired_Homeobox_TFs
+P09630,HOXC6,Homeobox protein Hox-C6,Homeodomain,6,Antp_homeobox; HD; HD_metazoa; Homeobox_Antennapedia_CS; Homeobox_CS; Homeodomain-like_sf
+P0C7M4,RHOXF2B,Rhox homeobox family member 2B,Homeodomain,3,HD; Homeobox_CS; Homeodomain-like_sf
+P10266,ERVK-10,Endogenous retrovirus group K member 10 Pol protein,⚠ Transposable element,13,DNA/RNA_pol_sf; HERV-K_env; Integrase-like_N; Integrase_C_dom_sf_retrovir; Integrase_C_retrovir; Integrase_cat-core; Integrase_Zn-bd_dom_N; Rev_trsase/Diguanyl_cyclase; RNaseH-like_sf; RNaseH_domain; RNaseH_sf; RT_dom; RVT_thumb
+P31267,HOXA6,Homeobox protein Hox-A6,Homeodomain,7,Antp_homeobox; HD; HD_metazoa; Homeobox_antennapedia; Homeobox_Antennapedia_CS; Homeobox_CS; Homeodomain-like_sf
+P31277,HOXD11,Homeobox protein Hox-D11,Homeodomain,5,DUF3528; HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf
+P32314,FOXN2,Forkhead box protein N2,Winged-helix / Forkhead,7,FH_FOXN2; Fork_head_dom; FOXN2/3-like; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+P63132,HERVK_113,Endogenous retrovirus group K member 113 Pol protein,⚠ Transposable element,12,DNA/RNA_pol_sf; Integrase-like_N; Integrase_C_dom_sf_retrovir; Integrase_C_retrovir; Integrase_cat-core; Integrase_Zn-bd_dom_N; Rev_trsase/Diguanyl_cyclase; RNaseH-like_sf; RNaseH_domain; RNaseH_sf; RT_dom; RVT_thumb
+P63133,ERVK-8,Endogenous retrovirus group K member 8 Pol protein,⚠ Transposable element,12,DNA/RNA_pol_sf; Integrase-like_N; Integrase_C_dom_sf_retrovir; Integrase_C_retrovir; Integrase_cat-core; Integrase_Zn-bd_dom_N; Rev_trsase/Diguanyl_cyclase; RNaseH-like_sf; RNaseH_domain; RNaseH_sf; RT_dom; RVT_thumb
+P63135,ERVK-7,Endogenous retrovirus group K member 7 Pol protein,⚠ Transposable element,14,DNA/RNA_pol_sf; GP41-like; HERV-K_env; Integrase-like_N; Integrase_C_dom_sf_retrovir; Integrase_C_retrovir; Integrase_cat-core; Integrase_Zn-bd_dom_N; Rev_trsase/Diguanyl_cyclase; RNaseH-like_sf; RNaseH_domain; RNaseH_sf; RT_dom; RVT_thumb
+P63136,ERVK-25,Endogenous retrovirus group K member 25 Pol protein,⚠ Transposable element,12,DNA/RNA_pol_sf; Integrase-like_N; Integrase_C_dom_sf_retrovir; Integrase_C_retrovir; Integrase_cat-core; Integrase_Zn-bd_dom_N; Rev_trsase/Diguanyl_cyclase; RNaseH-like_sf; RNaseH_domain; RNaseH_sf; RT_dom; RVT_thumb
+P78414,IRX1,Iroquois-class homeodomain protein IRX-1,Homeodomain,5,HD; Homeobox_CS; Homeodomain-like_sf; Iroquois_homeo; KN_HD
+Q03828,EVX2,Homeobox even-skipped homolog protein 2,Homeodomain,5,Even-skipped_HD; HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf
+Q12950,FOXD4,Forkhead box protein D4,Winged-helix / Forkhead,5,Fork_head_dom; FOX_domain-containing; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q17RH7,TPRXL,Tetra-peptide repeat homeobox-like protein,Homeodomain,2,HD; Homeodomain-like_sf
+Q2M1V0,ISX,Intestine-specific homeobox,Homeodomain,4,HD; Homeobox_CS; Homeodomain-like_sf; Paired_Homeobox_TFs
+Q3C1V8,BSX,Brain-specific homeobox protein homolog,Homeodomain,5,HD; HD_metazoa; Homeobox_CS; Homeobox_TF; Homeodomain-like_sf
+Q4G112,HSF5,Heat shock factor protein 5,Winged-helix / Forkhead,3,HSF_DNA-bd; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q5VZB9,DMRTA1,Doublesex- and mab-3-related transcription factor A1,Unclassified,6,DM_DNA-bd; DM_DNA-bd_sf; DMA; DMRT; DMRT5_1_DMB_dom; UBA-like_sf
+Q6IQ32,ADNP2,Activity-dependent neuroprotector homeobox protein 2,Homeodomain,5,ADNP/ADNP2; ADNP_Znf; HD; Homeodomain-like_sf; Znf_C2H2_type
+Q6PJQ5,FOXR2,Forkhead box protein R2,Winged-helix / Forkhead,4,Fork_head_dom; FOX_transcription_regulators; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q6XYB7,LBX2,Transcription factor LBX2,Homeodomain,3,HD; Homeodomain-like_sf; LBX_TF
+Q8IUE0,TGIF2LY,Homeobox protein TGIF2LY,Homeodomain,4,HD; Homeodomain-like_sf; KN_HD; TALE_homeobox
+Q8IUE1,TGIF2LX,Homeobox protein TGIF2LX,Homeodomain,4,HD; Homeodomain-like_sf; KN_HD; TALE_homeobox
+Q8IXT2,DMRTC2,Doublesex- and mab-3-related transcription factor C2,Unclassified,4,DM_DNA-bd; DM_DNA-bd_sf; DMRT; DMRT-C1/C2_C
+Q8N3X6,LCORL,Ligand-dependent nuclear receptor corepressor-like protein,Homeodomain,2,Homeodomain-like_sf; HTH_Psq
+Q96A47,ISL2,Insulin gene enhancer protein ISL-2,Homeodomain,6,HD; Homeobox_CS; Homeodomain-like_sf; ISL1/2-like; ISL1/2-like_LIM1; Znf_LIM
+Q96LU7,MYRFL,Myelin regulatory factor-like protein,p53-like,7,MRF-like; MYRF_C2; MYRF_ICA; NDT80_DNA-bd_dom; NDT80_DNA-bd_dom_sf; p53-like_TF_DNA-bd_sf; S74_ICA
+Q96SC8,DMRTA2,Doublesex- and mab-3-related transcription factor A2,Unclassified,6,DM_DNA-bd; DM_DNA-bd_sf; DMA; DMRT; DMRT5_1_DMB_dom; UBA-like_sf
+Q99525,H4C7,Histone H4-like protein type G,Unclassified,2,Histone-fold; Histone_H4
+Q99811,PRRX2,Paired mesoderm homeobox protein 2,Homeodomain,5,HD; Homeobox_CS; Homeodomain-like_sf; OAR_dom; PRRX1/2
+Q9BZI1,IRX2,Iroquois-class homeodomain protein IRX-2,Homeodomain,5,HD; Homeobox_CS; Homeodomain-like_sf; Iroquois_homeo; KN_HD
+Q9C009,FOXQ1,Forkhead box protein Q1,Winged-helix / Forkhead,7,FH_FOXQ1; Fork_head_dom; FOX_domain-containing; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q9GZZ0,HOXD1,Homeobox protein Hox-D1,Homeodomain,5,HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; HXA1/B1/D1
+Q9NY43,BARHL2,BarH-like 2 homeobox protein,Homeodomain,5,HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; Mediator/Homeobox_domain
+Q9UJV8,PURG,Purine-rich element-binding protein gamma,Unclassified,1,PUR-bd_fam
+Q9UQG0,ERVK-11,Endogenous retrovirus group K member 11 Pol protein,⚠ Transposable element,13,DNA/RNA_pol_sf; HERV-K_env; Integrase-like_N; Integrase_C_dom_sf_retrovir; Integrase_C_retrovir; Integrase_cat-core; Integrase_Zn-bd_dom_N; Rev_trsase/Diguanyl_cyclase; RNaseH-like_sf; RNaseH_domain; RNaseH_sf; RT_dom; RVT_thumb
+Q9Y651,SOX21,Transcription factor SOX-21,HMG box,4,HMG_box_dom; HMG_box_dom_sf; SOX_fam; SRY-related_HMG-box_TF-like
+A0A1W2PPM1,CPHXL,Cytoplasmic polyadenylated homeobox-like protein,Homeodomain,3,Engrailed_Homeobox_TFs; HD; Homeodomain-like_sf
+A0A2Z4LIS9,FOXO3B,Forkhead box protein O3B,Winged-helix / Forkhead,3,Fork_head_dom; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+A6NDR6,MEIS3P1,Putative homeobox protein Meis3-like 1,Homeodomain,5,HD; Homeodomain-like_sf; KN_HD; PKNOX/Meis_N; TALE_homeobox
+A6NFQ7,DPRX,Divergent paired-related homeobox,Homeodomain,3,HD; Homeobox_CS; Homeodomain-like_sf
+A6NJG6,ARGFX,Arginine-fifty homeobox,Homeodomain,3,HD; Homeobox_CS; Homeodomain-like_sf
+A6NMT0,DBX1,Homeobox protein DBX1,Homeodomain,6,H2.0_Homeobox_NeuralPatt; HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; HTH_motif
+A8K0S8,MEIS3P2,Putative homeobox protein Meis3-like 2,Homeodomain,5,HD; Homeodomain-like_sf; KN_HD; PKNOX/Meis_N; TALE_homeobox
+A8MYZ6,FOXO6,Forkhead box protein O6,Winged-helix / Forkhead,6,FH_FOXO6; Fork_head_dom; FOXO-TAD; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+B2CW77,KLLN,Killin,Unclassified,0,
+C9JSJ3,MEIOSIN,Meiosis initiator protein,HMG box,4,bHLH_dom; HLH_DNA-bd_sf; HMG_box_dom; HMG_box_dom_sf
+O75333,TBX10,T-box transcription factor TBX10,T-box,5,p53-like_TF_DNA-bd_sf; T-box_DNA-bd; T-box_sf; TF_T-box; TF_T-box_CS
+P0DV77,TPRX2,Tetrapeptide repeat homeobox protein 2,Homeodomain,3,HD; Homeobox_CS; Homeodomain-like_sf
+P31275,HOXC12,Homeobox protein Hox-C12,Homeodomain,4,HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf
+Q14549,GBX1,Homeobox protein GBX-1,Homeodomain,5,GBX-1/2; HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf
+Q15270,NKX1-1,NK1 transcription factor-related protein 1,Homeodomain,5,HD; HD_metazoa; Homeobox_CS; Homeobox_NK-like; Homeodomain-like_sf
+Q53EQ6,TIGD5,Tigger transposable element-derived protein 5,Helix-turn-helix,6,CenT-Element_Derived; DDE_SF_endonuclease_dom; Homeodomain-like_sf; HTH_CenpB_DNA-bd_dom; HTH_Psq; WH-like_DNA-bd_sf
+Q5VYV0,FOXB2,Forkhead box protein B2,Winged-helix / Forkhead,7,Fork_head_dom; FOX_domain-containing; FOXB1_B2_FH; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q6B0B8,TIGD3,Tigger transposable element-derived protein 3,Helix-turn-helix,5,CenT-Element_Derived; DDE_SF_endonuclease_dom; Homeodomain-like_sf; HTH_CenpB_DNA-bd_dom; HTH_Psq
+Q6NT04,TIGD7,Tigger transposable element-derived protein 7,Helix-turn-helix,5,CenT-Element_Derived; DDE_SF_endonuclease_dom; Homeodomain-like_sf; HTH_CenpB_DNA-bd_dom; HTH_Psq
+Q6ZN32,ETV3L,ETS translocation variant 3-like protein,ETS domain,4,Ets_dom; ETS_fam; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q6ZNG2,DBX2,Homeobox protein DBX2,Homeodomain,6,H2.0_Homeobox_NeuralPatt; HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; HTH_motif
+Q6ZV50,RFX8,DNA-binding protein RFX8,Winged-helix / Forkhead,5,DNA-bd_RFX; RFX-like; RFX1-4/6/8-like_BCD; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q8IY51,TIGD4,Tigger transposable element-derived protein 4,Helix-turn-helix,5,CenT-Element_Derived; DDE_SF_endonuclease_dom; Homeodomain-like_sf; HTH_CenpB_DNA-bd_dom; HTH_Psq
+Q8IYA7,MKX,Homeobox protein Mohawk,Homeodomain,4,HD; Homeobox_CS; Homeodomain-like_sf; KN_HD
+Q8N5J4,SPIC,Transcription factor Spi-C,ETS domain,4,Ets_dom; ETS_fam; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q8N7G0,POU5F2,"POU domain, class 5, transcription factor 2",Homeodomain – POU,6,HD; Homeodomain-like_sf; Lambda_DNA-bd_dom_sf; POU; POU_dom; POU_domain_TF
+Q8WW32,HMGB4,High mobility group protein B4,HMG box,3,HMG_box_dom; HMG_box_dom_sf; HMGB
+Q8WXT5,FOXD4L4,Forkhead box protein D4-like 4,Winged-helix / Forkhead,6,Fork_head_dom; FOX_domain-containing; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q96PT3,DUX5,Double homeobox protein 5,Homeodomain,5,HD; Homeobox_CS; Homeobox_regulator; Homeodomain-like_sf; HTH_motif
+Q96PT4,DUX3,Putative double homeobox protein 3,Homeodomain,4,HD; Homeobox_regulator; Homeodomain-like_sf; HTH_motif
+Q9BZE3,BARHL1,BarH-like 1 homeobox protein,Homeodomain,5,HD; HD_metazoa; Homeobox_CS; Homeobox_TF; Homeodomain-like_sf
+Q9H2Z4,NKX2-4,Homeobox protein Nkx-2.4,Homeodomain,5,HD; HD_metazoa; Homeobox_CS; Homeobox_NK-like; Homeodomain-like_sf
+Q9HB31,SEBOX,Homeobox protein SEBOX,Homeodomain,3,HD; Homeodomain-like_sf; SEBOX
+Q9UD57,NKX1-2,NK1 transcription factor-related protein 2,Homeodomain,5,HD; HD_metazoa; Homeobox_CS; Homeobox_NK-like; Homeodomain-like_sf
+Q9Y4A0,JRKL,Jerky protein homolog-like,Helix-turn-helix,6,CenT-Element_Derived; DDE_SF_endonuclease_dom; Homeodomain-like_sf; HTH_CenpB_DNA-bd_dom; HTH_Psq; RNaseH_sf
+A0A1B0GTS1,HSFX4,"Heat shock transcription factor, X-linked member 4",Winged-helix / Forkhead,3,HSF_DNA-bd; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+A0A1B0GWH4,HSFX3,"Heat shock transcription factor, X-linked member 3",Winged-helix / Forkhead,3,HSF_DNA-bd; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+A0A1W2PPF3,DUXB,Double homeobox protein B,Homeodomain,4,HD; Homeobox_CS; Homeobox_regulator; Homeodomain-like_sf
+A0A1W2PPK0,CPHXL2,Cytoplasmic polyadenylated homeobox-like protein 2,Homeodomain,3,Engrailed_Homeobox_TFs; HD; Homeodomain-like_sf
+A0A1W2PQ73,ERFL,ETS domain-containing transcription factor ERF-like,ETS domain,4,Ets_dom; ETS_fam; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+A0A1W2PRP0,FOXL3,Forkhead box protein L3,Winged-helix / Forkhead,5,Fork_head_dom; FOX_domain-containing; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+B2RD01,CENPBD1P,Putative CENPB DNA-binding domain-containing protein 1,Helix-turn-helix,4,Homeodomain-like_sf; HTH_CenpB_DNA-bd_dom; HTH_Psq; WH-like_DNA-bd_sf
+E9PGG2,ANHX,Anomalous homeobox protein,Homeodomain,5,HD; Homeobox_CS; Homeodomain-like_sf; KN_HD; SIX1_SD
+P0CB48,UBTFL6,Putative upstream-binding factor 1-like protein 6,HMG box,3,HMG_box_dom; HMG_box_dom_sf; UBF1
+P0CJ85,DUX4L2,Double homeobox protein 4-like protein 2,Homeodomain,4,HD; Homeobox_regulator; Homeodomain-like_sf; HTH_motif
+P0CJ86,DUX4L3,Double homeobox protein 4-like protein 3,Homeodomain,4,HD; Homeobox_regulator; Homeodomain-like_sf; HTH_motif
+P0CJ87,DUX4L4,Double homeobox protein 4-like protein 4,Homeodomain,4,HD; Homeobox_regulator; Homeodomain-like_sf; HTH_motif
+P0CJ88,DUX4L5,Double homeobox protein 4-like protein 5,Homeodomain,4,HD; Homeobox_regulator; Homeodomain-like_sf; HTH_motif
+P0CJ89,DUX4L6,Double homeobox protein 4-like protein 6,Homeodomain,4,HD; Homeobox_regulator; Homeodomain-like_sf; HTH_motif
+P0CJ90,DUX4L7,Double homeobox protein 4-like protein 7,Homeodomain,4,HD; Homeobox_regulator; Homeodomain-like_sf; HTH_motif
+Q12766,HMGXB3,HMG domain-containing protein 3,HMG box,4,HMG_box_dom; HMG_box_dom_sf; HMGXB3; HMGXB3_CxC4
+Q17RP2,TIGD6,Tigger transposable element-derived protein 6,Helix-turn-helix,5,CenT-Element_Derived; DDE_SF_endonuclease_dom; Homeodomain-like_sf; HTH_CenpB_DNA-bd_dom; HTH_Psq
+Q4W5G0,TIGD2,Tigger transposable element-derived protein 2,Helix-turn-helix,5,CenT-Element_Derived; DDE_SF_endonuclease_dom; Homeodomain-like_sf; HTH_CenpB_DNA-bd_dom; HTH_Psq
+Q5VV16,FOXD4L5,Forkhead box protein D4-like 5,Winged-helix / Forkhead,6,Fork_head_dom; FOX_domain-containing; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q6ZQN5,FOXI2,Forkhead box protein I2,Winged-helix / Forkhead,6,Fork_head_dom; FOX_domain-containing; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
+Q7Z5D8,NANOGNB,NANOG neighbor homeobox,Homeodomain,2,HD; Homeodomain-like_sf
+Q96MW7,TIGD1,Tigger transposable element-derived protein 1,Helix-turn-helix,6,CenT-Element_Derived; DDE_SF_endonuclease_dom; Homeodomain-like_sf; HTH_CenpB_DNA-bd_dom; HTH_Psq; RNaseH_sf

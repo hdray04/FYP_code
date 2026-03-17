@@ -1,0 +1,54 @@
+structural_class,Benign/LB,Conflicting,Other,Pathogenic/LP,VUS,total_variants,n_proteins,variants_per_protein
+Homeodomain-like superfamily,1070,478,24,654,13578,15804,272,58.1
+Winged helix-like DNA-binding domain superfamily,560,146,8,328,5365,6407,87,73.6
+High mobility group box domain superfamily,769,265,36,253,3877,5200,46,113.0
+"p53-like transcription factor, DNA-binding domain superfamily",243,492,12,373,2272,3392,18,188.4
+Nuclear hormone receptor-like domain superfamily,175,136,9,439,2230,2989,46,65.0
+Bromodomain-like superfamily,368,161,3,63,1321,1916,4,479.0
+P-loop containing nucleoside triphosphate hydrolase,89,88,0,4,1129,1310,2,655.0
+Zinc finger superfamily,158,66,7,67,928,1226,5,245.2
+SMAD-like domain superfamily,63,20,10,58,960,1111,9,123.4
+Fibronectin type III superfamily,73,90,0,21,712,896,1,896.0
+"Hepatocyte nuclear factor 1, N-terminal domain superfamily",33,74,10,204,523,844,2,422.0
+Basic-leucine zipper domain superfamily,9,64,0,9,503,585,1,585.0
+Nucleotide-binding alpha-beta plait domain superfamily,114,8,0,1,445,568,2,284.0
+Sterile alpha motif/pointed domain superfamily,28,24,2,18,482,554,11,50.4
+Ankyrin repeat-containing domain superfamily,54,15,0,11,446,526,2,263.0
+DM DNA-binding domain superfamily,40,2,0,7,427,476,7,68.0
+Immunoglobulin-like fold,33,4,0,0,391,428,5,85.6
+LEM/LEM-like domain superfamily,15,12,0,2,380,409,1,409.0
+Bromo adjacent homology (BAH) domain superfamily,57,9,1,3,330,400,2,200.0
+BOD1/SHG1 domain,26,0,0,0,278,304,1,304.0
+"CTF transcription factor/nuclear factor 1, DNA-binding domain",11,13,0,43,227,294,4,73.5
+ARID DNA-binding domain superfamily,58,4,3,2,201,268,1,268.0
+"Transcription factor, MADS-box superfamily",28,15,0,30,173,246,5,49.2
+E2F-DP heterodimerization region,13,0,0,0,229,242,9,26.9
+AT-hook motif,21,0,0,0,218,239,4,59.8
+SKP1/BTB/POZ domain superfamily,10,5,0,1,214,230,2,115.0
+Histone-fold,0,1,0,20,197,218,4,54.5
+"Nucleic acid-binding, OB-fold",17,1,0,4,194,216,9,24.0
+TEA/ATTS domain superfamily,4,2,0,1,199,206,4,51.5
+AKNA domain,20,0,0,0,152,172,1,172.0
+GCM domain superfamily,16,4,2,7,143,172,2,86.0
+Catenin binding domain superfamily,17,0,0,1,152,170,4,42.5
+"NDT80, DNA-binding domain superfamily",16,1,0,15,124,156,2,78.0
+"CST complex subunit Stn1, wHTH1 motif superfamily",6,5,0,1,115,127,1,127.0
+Chromo-like domain superfamily,12,2,0,2,90,106,1,106.0
+Histidine kinase/HSP90-like ATPase superfamily,20,1,8,2,55,86,1,86.0
+EF-hand domain pair,4,0,0,0,76,80,2,40.0
+Armadillo-like helical,1,0,0,0,74,75,1,75.0
+Ribonuclease H superfamily,1,0,0,0,42,43,1,43.0
+"Ataxin, AXH domain superfamily",0,0,0,0,36,36,1,36.0
+Protein kinase-like domain superfamily,1,1,1,13,20,36,1,36.0
+"CENP-B, dimerisation domain superfamily",0,0,0,0,34,34,1,34.0
+Restriction endonuclease type II-like,0,3,0,1,26,30,1,30.0
+"DEK, C-terminal",1,0,0,0,26,27,1,27.0
+Purine-rich element binding protein family,2,0,0,0,21,23,1,23.0
+"DNTTIP1, dimerisation domain",1,0,0,0,18,19,1,19.0
+DNA repair protein Rad52/59/22 superfamily,3,0,0,0,10,13,1,13.0
+Nuclear transcription factor Y subunit A,0,0,0,0,12,12,1,12.0
+DNA clamp superfamily,0,0,0,1,7,8,1,8.0
+"Nuclear respiratory factor 1, NLS/DNA-binding, dimerisation domain",0,0,0,0,8,8,1,8.0
+Regulator of DNA class I crossover intermediates 1-like,0,0,0,0,4,4,1,4.0
+DNA-binding domain superfamily,0,0,0,2,1,3,1,3.0
+"Vps72/YL1, C-terminal",0,0,0,0,2,2,1,2.0

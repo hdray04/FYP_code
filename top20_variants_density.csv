@@ -1,0 +1,21 @@
+uniprot,gene,structural_class,length,n_variants,variants_per_100aa
+P04637,TP53,"p53-like transcription factor, DNA-binding domain superfamily",393,1357,345.29
+Q92826,HOXB13,Homeodomain-like superfamily,284,864,304.23
+P62805,H4C1,Histone-fold,103,186,180.58
+Q99453,PHOX2B,Homeodomain-like superfamily,314,556,177.07
+P49715,CEBPA,Basic-leucine zipper domain superfamily,358,585,163.41
+Q969G3,SMARCE1,High mobility group box domain superfamily,411,483,117.52
+P52952,NKX2-5,Homeodomain-like superfamily,324,372,114.81
+Q13461,FOXE3,Winged helix-like DNA-binding domain superfamily,319,299,93.73
+P20823,HNF1A,"Hepatocyte nuclear factor 1, N-terminal domain superfamily",631,492,77.97
+P55316,FOXG1,Winged helix-like DNA-binding domain superfamily,489,371,75.87
+Q9UMR3,TBX20,"p53-like transcription factor, DNA-binding domain superfamily",447,326,72.93
+Q9Y5X4,NR2E3,Nuclear hormone receptor-like domain superfamily,410,286,69.76
+O15266,SHOX,Homeodomain-like superfamily,292,196,67.12
+Q96IS3,RAX2,Homeodomain-like superfamily,184,120,65.22
+Q9Y6X0,SETBP1,No structural annotation,1596,1036,64.91
+Q96QS3,ARX,Homeodomain-like superfamily,562,358,63.7
+Q12948,FOXC1,Winged helix-like DNA-binding domain superfamily,553,351,63.47
+P35680,HNF1B,"Hepatocyte nuclear factor 1, N-terminal domain superfamily",557,352,63.2
+Q92985,IRF7,SMAD-like domain superfamily,503,316,62.82
+Q9NP08,HMX1,Homeodomain-like superfamily,348,206,59.2

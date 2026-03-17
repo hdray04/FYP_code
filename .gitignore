@@ -1,0 +1,31 @@
+# Virtual environments
+venv/
+FYP/
+.venv/
+env/
+ENV/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+
+# IDE
+.vscode/
+.idea/
+.claude/
+
+# Project data files
+Data/*
+
+# Data files (comment out if you want to track them)
+# *.csv
+# *.json
+
+# Logs
+*.log

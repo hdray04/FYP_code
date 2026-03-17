@@ -1,0 +1,21 @@
+uniprot,gene,structural_class,length,n_variants,variants_per_100aa
+P04637,TP53,"p53-like transcription factor, DNA-binding domain superfamily",393,1357,345.29
+Q8NEZ4,KMT2C,High mobility group box domain superfamily,4911,1330,27.08
+Q6ZRS2,SRCAP,P-loop containing nucleoside triphosphate hydrolase,3230,1214,37.59
+Q9UMN6,KMT2B,Bromodomain-like superfamily,2715,1194,43.98
+Q9Y6X0,SETBP1,No structural annotation,1596,1036,64.91
+P02751,FN1,Fibronectin type III superfamily,2477,896,36.17
+Q92826,HOXB13,Homeodomain-like superfamily,284,864,304.23
+Q03164,KMT2A,Bromodomain-like superfamily,3969,722,18.19
+Q9UGU0,TCF20,Zinc finger superfamily,1960,662,33.78
+O60315,ZEB2,Homeodomain-like superfamily,1214,656,54.04
+P49715,CEBPA,Basic-leucine zipper domain superfamily,358,585,163.41
+Q99453,PHOX2B,Homeodomain-like superfamily,314,556,177.07
+Q96T58,SPEN,Nucleotide-binding alpha-beta plait domain superfamily,3664,514,14.03
+P20823,HNF1A,"Hepatocyte nuclear factor 1, N-terminal domain superfamily",631,492,77.97
+Q969G3,SMARCE1,High mobility group box domain superfamily,411,483,117.52
+Q96RK0,CIC,High mobility group box domain superfamily,2517,468,18.59
+Q9Y6Y1,CAMTA1,Ankyrin repeat-containing domain superfamily,1673,426,25.46
+P15918,RAG1,Zinc finger superfamily,1043,425,40.75
+Q9H2P0,ADNP,Homeodomain-like superfamily,1102,424,38.48
+Q15911,ZFHX3,Homeodomain-like superfamily,3703,419,11.32
