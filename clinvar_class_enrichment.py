@@ -117,8 +117,8 @@ non_dbp_counts = (all_counts - dbp_counts).fillna(all_counts)
 
 print("Enrichment of clinical significance in DBPs vs rest of ClinVar (Fisher's exact):")
 print(f"  Note: ascertainment bias likely inflates enrichment for well-studied genes.")
-print(f"  {'Sig group':<20} {'DBP%':>6}  {'non-DBP%':>8}  {'OR':>6}  {'95% CI':>18}  {'p_raw':>10}")
-print(f"  {'-'*85}")
+print(f"  {'Sig group':<20} {'DBP n':>8} {'DBP%':>6}  {'nonDBP n':>9} {'nonDBP%':>8}  {'OR':>6}  {'95% CI':>18}  {'p_raw':>10}")
+print(f"  {'-'*100}")
 
 dbp_enrichment_rows = []
 for sig in SIG_GROUPS:
@@ -134,8 +134,8 @@ for sig in SIG_GROUPS:
     pct_nondbp = 100 * b / n_non_dbp if n_non_dbp else 0
     cc = "†" if corrected else ""
     stars = " ***" if p_raw < 0.001 else (" **" if p_raw < 0.01 else (" *" if p_raw < 0.05 else ""))
-    print(f"  {sig:<20} {pct_dbp:>6.1f}%  {pct_nondbp:>7.1f}%  {or_hat:>6.2f}{cc}  "
-          f"[{ci_lo:>6.2f}, {ci_hi:>6.2f}]  {p_raw:>10.3e}{stars}")
+    print(f"  {sig:<20} {a:>8,} {pct_dbp:>6.1f}%  {b:>9,} {pct_nondbp:>7.1f}%  "
+          f"{or_hat:>6.2f}{cc}  [{ci_lo:>6.2f}, {ci_hi:>6.2f}]  {p_raw:>10.3e}{stars}")
     dbp_enrichment_rows.append({
         "sig_group": sig, "n_dbp": a, "n_non_dbp": b,
         "pct_dbp": round(pct_dbp, 2), "pct_non_dbp": round(pct_nondbp, 2),
@@ -160,6 +160,8 @@ merged = cv_dbp.merge(
 # Exclude unannotated proteins from enrichment plots
 merged = merged[merged["structural_class"] != "No structural annotation"]
 
+
+"""
 # ── Per-class summary ──────────────────────────────────────────────────────────
 
 # Proteins per class (denominator for variants-per-protein)
@@ -685,3 +687,5 @@ for _, row in top20.iterrows():
     print(f"{int(row['rank']):>4}  {gene:<12} {row['uniprot']:<10} {int(row['n_variants']):>8,}  {cls}")
 
 print("\nDone.")
+
+"""
