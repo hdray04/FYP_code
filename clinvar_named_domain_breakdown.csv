@@ -1,0 +1,269 @@
+feature_type,domain_name,Benign/LB,Other/Conflicting,Pathogenic/LP,VUS,total,plp_pct
+DNA binding,A.T hook,0,0,0,23,23,0.0
+DNA binding,A.T hook 1,0,2,0,22,24,0.0
+DNA binding,A.T hook 2,2,3,0,18,23,0.0
+DNA binding,A.T hook 3,3,1,0,21,25,0.0
+DNA binding,Binds DNA containing a D-loop,0,0,0,2,2,0.0
+DNA binding,CG-1,0,0,6,24,30,20.0
+DNA binding,CTF/NF-I,2,8,42,92,144,29.166666666666668
+DNA binding,CUT,1,0,0,11,12,0.0
+DNA binding,CUT 1,8,4,28,38,78,35.8974358974359
+DNA binding,CUT 2,12,5,12,55,84,14.285714285714285
+DNA binding,CUT 3,1,0,1,18,20,5.0
+DNA binding,DM,2,0,3,37,42,7.142857142857142
+DNA binding,DNA binding,61,291,261,664,1277,20.43852779953015
+DNA binding,ETS,13,10,29,129,181,16.022099447513813
+DNA binding,Fork-head,15,31,249,584,879,28.327645051194537
+DNA binding,GCM,5,1,4,34,44,9.090909090909092
+DNA binding,H-T-H motif,0,0,2,43,45,4.444444444444445
+DNA binding,HMG box,8,12,177,263,460,38.47826086956522
+DNA binding,HMG box 1,4,0,0,33,37,0.0
+DNA binding,HMG box 2,1,0,2,23,26,7.6923076923076925
+DNA binding,HMG box 3,0,0,0,2,2,0.0
+DNA binding,HMG box 4,1,0,0,4,5,0.0
+DNA binding,HMG box 5,0,0,0,3,3,0.0
+DNA binding,HMG box 6,0,0,0,4,4,0.0
+DNA binding,Homeobox,36,47,232,1356,1671,13.883901855176543
+DNA binding,Homeobox 1,2,1,0,30,33,0.0
+DNA binding,Homeobox 2,1,0,1,38,40,2.5
+DNA binding,Homeobox 3,2,0,0,20,22,0.0
+DNA binding,Homeobox 4,0,0,0,11,11,0.0
+DNA binding,Homeobox 5,0,0,0,8,8,0.0
+DNA binding,Homeobox; HNF1-type,1,15,83,79,178,46.62921348314607
+DNA binding,Homeobox; TALE-type,1,1,31,53,86,36.04651162790697
+DNA binding,Homeobox; atypical,6,3,0,24,33,0.0
+DNA binding,IRF tryptophan pentad repeat,9,6,36,166,217,16.589861751152075
+DNA binding,Mef2-type,2,0,4,5,11,36.36363636363637
+DNA binding,NBD,1,5,15,13,34,44.11764705882353
+DNA binding,NDT80,2,1,9,32,44,20.454545454545457
+DNA binding,Nuclear receptor,5,23,138,255,421,32.779097387173394
+DNA binding,OB,8,1,3,75,87,3.4482758620689653
+DNA binding,Paired,3,11,143,187,344,41.56976744186046
+DNA binding,RFX-type winged-helix,4,1,3,63,71,4.225352112676056
+DNA binding,T-box,17,25,65,474,581,11.187607573149743
+DNA binding,T-box; first part,0,0,4,24,28,14.285714285714285
+DNA binding,TEA,0,0,0,20,20,0.0
+DNA binding,TFIIE beta,0,1,0,14,15,0.0
+Domain,ARID,1,0,0,12,13,0.0
+Domain,AWS,1,1,1,2,5,20.0
+Domain,AXH,0,0,0,9,9,0.0
+Domain,BTB,0,1,0,29,30,0.0
+Domain,Bromo,16,4,1,24,45,2.2222222222222223
+Domain,CMP,7,3,6,32,48,12.5
+Domain,CUTL,3,0,4,15,22,18.181818181818183
+Domain,CVC,0,2,3,16,21,14.285714285714285
+Domain,Chromo,0,0,0,2,2,0.0
+Domain,DDE-1,5,0,0,98,103,0.0
+Domain,DDE-1 1,0,0,0,9,9,0.0
+Domain,DDE-1 2,1,0,0,6,7,0.0
+Domain,DEK-C,0,0,0,5,5,0.0
+Domain,DHHC,6,2,0,14,22,0.0
+Domain,DMA,2,0,0,8,10,0.0
+Domain,EF-hand 1,0,0,0,7,7,0.0
+Domain,EF-hand 2,1,0,0,4,5,0.0
+Domain,FHA,0,0,0,8,8,0.0
+Domain,FYR C-terminal,12,6,2,20,40,5.0
+Domain,FYR N-terminal,5,3,2,18,28,7.142857142857142
+Domain,Fibronectin type-I 1,1,0,2,10,13,15.384615384615385
+Domain,Fibronectin type-I 10,2,1,0,9,12,0.0
+Domain,Fibronectin type-I 11,0,0,0,11,11,0.0
+Domain,Fibronectin type-I 12,1,0,0,18,19,0.0
+Domain,Fibronectin type-I 2,2,1,2,18,23,8.695652173913043
+Domain,Fibronectin type-I 3,0,1,1,5,7,14.285714285714285
+Domain,Fibronectin type-I 4,1,3,3,10,17,17.647058823529413
+Domain,Fibronectin type-I 5,1,0,3,26,30,10.0
+Domain,Fibronectin type-I 6,1,0,1,7,9,11.11111111111111
+Domain,Fibronectin type-I 7,1,1,0,15,17,0.0
+Domain,Fibronectin type-I 8,5,1,0,14,20,0.0
+Domain,Fibronectin type-I 9,1,5,0,4,10,0.0
+Domain,Fibronectin type-II 1,1,2,0,8,11,0.0
+Domain,Fibronectin type-II 2,0,2,0,12,14,0.0
+Domain,Fibronectin type-III 1,2,1,0,30,33,0.0
+Domain,Fibronectin type-III 10,4,2,0,29,35,0.0
+Domain,Fibronectin type-III 11,1,6,0,32,39,0.0
+Domain,Fibronectin type-III 12,2,0,0,25,27,0.0
+Domain,Fibronectin type-III 13; extra domain A,1,0,0,26,27,0.0
+Domain,Fibronectin type-III 14,1,5,0,33,39,0.0
+Domain,Fibronectin type-III 15,3,5,5,26,39,12.82051282051282
+Domain,Fibronectin type-III 16,0,6,0,24,30,0.0
+Domain,Fibronectin type-III 17,6,3,0,29,38,0.0
+Domain,Fibronectin type-III 2,3,1,0,18,22,0.0
+Domain,Fibronectin type-III 3,2,3,0,17,22,0.0
+Domain,Fibronectin type-III 4,1,6,1,23,31,3.225806451612903
+Domain,Fibronectin type-III 5,5,8,1,34,48,2.083333333333333
+Domain,Fibronectin type-III 6,2,6,0,20,28,0.0
+Domain,Fibronectin type-III 7,1,2,0,21,24,0.0
+Domain,Fibronectin type-III 8; extra domain B,5,3,0,28,36,0.0
+Domain,Fibronectin type-III 9,2,2,0,30,34,0.0
+Domain,FoxP leucine zipper (ZIP),1,1,8,31,41,19.51219512195122
+Domain,HNF-p1,3,5,20,38,66,30.303030303030305
+Domain,HSA,0,0,0,18,18,0.0
+Domain,HSR,1,0,0,5,6,0.0
+Domain,HTH CENPB-type,0,0,0,37,37,0.0
+Domain,HTH cro/C1-type,0,0,0,5,5,0.0
+Domain,HTH myb-type,0,0,0,12,12,0.0
+Domain,HTH myb-type 1,0,1,0,12,13,0.0
+Domain,HTH myb-type 2,1,0,1,9,11,9.090909090909092
+Domain,HTH myb-type 3,0,0,1,9,10,10.0
+Domain,HTH psq-type,1,0,0,25,26,0.0
+Domain,Helicase ATP-binding,0,0,0,27,27,0.0
+Domain,Helicase C-terminal,0,1,0,29,30,0.0
+Domain,IPT/TIG,0,0,1,33,34,2.941176470588235
+Domain,IQ 1,0,0,0,4,4,0.0
+Domain,IQ 2,0,0,0,5,5,0.0
+Domain,IQ 3,0,0,0,6,6,0.0
+Domain,LEM,0,0,0,23,23,0.0
+Domain,LIM zinc-binding 1,1,3,10,55,69,14.492753623188406
+Domain,LIM zinc-binding 2,2,3,11,72,88,12.5
+Domain,MADS-box,0,3,22,29,54,40.74074074074074
+Domain,MEIS N-terminal,0,0,0,34,34,0.0
+Domain,Myb-like 1,1,0,0,2,3,0.0
+Domain,Myb-like 2,0,0,1,14,15,6.666666666666667
+Domain,NR LBD,45,62,256,893,1256,20.382165605095544
+Domain,PBC,2,0,4,72,78,5.128205128205128
+Domain,PNT,2,2,1,94,99,1.0101010101010102
+Domain,POU-specific,0,2,23,76,101,22.772277227722775
+Domain,POU-specific atypical,3,17,74,104,198,37.37373737373738
+Domain,PWWP,0,0,0,1,1,0.0
+Domain,PWWP 1,1,1,0,4,6,0.0
+Domain,PWWP 2,1,0,2,8,11,18.181818181818183
+Domain,Peptidase S74,0,0,3,13,16,18.75
+Domain,Post-SET,2,0,0,4,6,0.0
+Domain,Pre-SET,0,0,0,5,5,0.0
+Domain,Protein kinase,1,1,7,14,23,30.434782608695656
+Domain,RHD,4,0,0,56,60,0.0
+Domain,RID,19,0,0,61,80,0.0
+Domain,RRM 1,0,1,0,4,5,0.0
+Domain,RRM 2,0,0,0,6,6,0.0
+Domain,RRM 3,0,0,0,6,6,0.0
+Domain,RRM 4,2,0,0,6,8,0.0
+Domain,SAM,0,4,20,11,35,57.14285714285714
+Domain,SAND,1,0,0,4,5,0.0
+Domain,SAP,0,0,0,1,1,0.0
+Domain,SET,8,1,9,69,87,10.344827586206897
+Domain,SPOC,2,0,0,17,19,0.0
+Domain,Sox C-terminal,5,2,0,89,96,0.0
+Domain,Tudor 1,0,0,0,4,4,0.0
+Domain,Tudor 2,0,0,0,3,3,0.0
+Domain,bZIP,0,4,5,64,73,6.8493150684931505
+Motif,4S motif; modulates transactivation activity and protein stability,0,0,0,2,2,0.0
+Motif,9aaTAD,3,0,0,25,28,0.0
+Motif,9aaTAD 1,0,0,0,2,2,0.0
+Motif,9aaTAD 2,1,0,0,1,2,0.0
+Motif,9aaTAD 3,0,0,0,2,2,0.0
+Motif,AF-2,0,0,0,2,2,0.0
+Motif,Antp-type hexapeptide,0,0,0,9,9,0.0
+Motif,Bipartite nuclear localization signal,9,14,0,22,45,0.0
+Motif,Bipartite nuclear localization signal (NLS1),0,0,7,9,16,43.75
+Motif,Cell attachment site,0,0,0,1,1,0.0
+Motif,Cytoplasmic retention motif,0,1,3,2,6,50.0
+Motif,DEF box,0,0,0,17,17,0.0
+Motif,Engrailed homology 1 repressor,0,0,0,2,2,0.0
+Motif,Fast/FoxH1 motif 1 (FM1),0,0,0,1,1,0.0
+Motif,Fast/FoxH1 motif 2 (FM2),0,0,0,4,4,0.0
+Motif,GBA,1,0,0,5,6,0.0
+Motif,HMX family specific domain 1,0,0,0,8,8,0.0
+Motif,HMX family specific domain 2,0,0,0,10,10,0.0
+Motif,Integrase domain-binding motif 1 (IBM1),0,1,0,3,4,0.0
+Motif,Integrase domain-binding motif 2 (IBM2),0,0,0,1,1,0.0
+Motif,Interaction with nuclear receptors,0,0,0,1,1,0.0
+Motif,LXXL motif 2,0,0,0,1,1,0.0
+Motif,LXXLL,0,0,0,1,1,0.0
+Motif,Menin-binding motif (MBM),0,0,1,15,16,6.25
+Motif,Nuclear export signal,10,14,4,26,54,7.4074074074074066
+Motif,Nuclear localization signal,7,3,14,62,86,16.27906976744186
+Motif,Nuclear localization signal (NLS) 2,1,0,0,0,1,0.0
+Motif,Nuclear localization signal (NLS1),0,0,1,0,1,100.0
+Motif,Nuclear localization signal 1 (NLS 1),0,1,12,5,18,66.66666666666666
+Motif,Nuclear localization signal 2 (NLS 2),0,0,2,3,5,40.0
+Motif,Nuclear translocation motif,0,0,0,1,1,0.0
+Motif,OAR,0,1,6,22,29,20.689655172413794
+Motif,Octapeptide motif,0,0,0,3,3,0.0
+Motif,POU-IV box,0,0,0,10,10,0.0
+Motif,PxLPxI/L motif; mediates interaction with ANKRA2 and RFXANK,0,0,0,1,1,0.0
+Motif,PxVxL motif,1,0,0,0,1,0.0
+Motif,SH3-binding,0,0,0,1,1,0.0
+Motif,SMAD interaction motif (SIM),1,0,0,4,5,0.0
+Motif,TADI,0,0,0,6,6,0.0
+Motif,TADII,5,4,0,12,21,0.0
+Motif,WDR5 interaction motif (WIN),0,0,0,1,1,0.0
+Motif,[KR]-[STA]-K motif,0,3,0,2,5,0.0
+Motif,nuclear export sequence (NES2),0,0,0,2,2,0.0
+Repeat,1,2,1,0,8,11,0.0
+Repeat,10,0,0,0,3,3,0.0
+Repeat,11,0,0,0,1,1,0.0
+Repeat,13,1,0,0,1,2,0.0
+Repeat,14,0,0,1,0,1,100.0
+Repeat,2,3,1,1,7,12,8.333333333333332
+Repeat,3,4,2,1,11,18,5.555555555555555
+Repeat,3; approximate,0,0,0,2,2,0.0
+Repeat,4,0,0,0,2,2,0.0
+Repeat,6,2,1,0,0,3,0.0
+Repeat,7,1,0,0,1,2,0.0
+Repeat,8,0,0,0,3,3,0.0
+Repeat,9,1,0,0,1,2,0.0
+Repeat,ANK 1,0,0,1,9,10,10.0
+Repeat,ANK 2,0,0,0,7,7,0.0
+Repeat,ANK 3,0,0,0,13,13,0.0
+Repeat,HEAT,0,0,0,1,1,0.0
+Repeat,SP 1,0,0,0,1,1,0.0
+Repeat,WD 3,0,0,0,1,1,0.0
+Repeat,WD 4,1,0,0,3,4,0.0
+Repeat,WD 5,0,0,0,2,2,0.0
+Repeat,WD 6,1,0,0,4,5,0.0
+Repeat,WD 7,0,0,0,3,3,0.0
+Zinc finger,C2H2-type,7,0,0,20,27,0.0
+Zinc finger,C2H2-type 1,3,0,2,39,44,4.545454545454546
+Zinc finger,C2H2-type 10,0,0,0,4,4,0.0
+Zinc finger,C2H2-type 10; atypical,0,0,0,3,3,0.0
+Zinc finger,C2H2-type 11; atypical,0,0,0,3,3,0.0
+Zinc finger,C2H2-type 11; degenerate,1,0,0,3,4,0.0
+Zinc finger,C2H2-type 12,0,0,1,5,6,16.666666666666664
+Zinc finger,C2H2-type 13,0,0,0,4,4,0.0
+Zinc finger,C2H2-type 15,0,0,0,1,1,0.0
+Zinc finger,C2H2-type 16,0,0,0,2,2,0.0
+Zinc finger,C2H2-type 17,0,0,0,1,1,0.0
+Zinc finger,C2H2-type 18,0,0,0,1,1,0.0
+Zinc finger,C2H2-type 1; degenerate,0,0,0,1,1,0.0
+Zinc finger,C2H2-type 2,4,2,0,23,29,0.0
+Zinc finger,C2H2-type 21,0,0,0,3,3,0.0
+Zinc finger,C2H2-type 22,0,0,0,1,1,0.0
+Zinc finger,C2H2-type 23,0,0,0,3,3,0.0
+Zinc finger,C2H2-type 2; atypical,1,2,1,4,8,12.5
+Zinc finger,C2H2-type 2; degenerate,0,0,0,1,1,0.0
+Zinc finger,C2H2-type 3,1,1,2,27,31,6.451612903225806
+Zinc finger,C2H2-type 3; atypical,0,0,0,6,6,0.0
+Zinc finger,C2H2-type 4,3,3,0,22,28,0.0
+Zinc finger,C2H2-type 4; atypical,0,0,3,14,17,17.647058823529413
+Zinc finger,C2H2-type 5,0,0,1,24,25,4.0
+Zinc finger,C2H2-type 5; atypical,1,1,0,7,9,0.0
+Zinc finger,C2H2-type 5; degenerate,0,0,0,1,1,0.0
+Zinc finger,C2H2-type 6,0,1,1,10,12,8.333333333333332
+Zinc finger,C2H2-type 6; atypical,0,0,0,5,5,0.0
+Zinc finger,C2H2-type 6; degenerate,0,0,0,1,1,0.0
+Zinc finger,C2H2-type 7,5,1,7,18,31,22.58064516129032
+Zinc finger,C2H2-type 7; degenerate,1,0,0,3,4,0.0
+Zinc finger,C2H2-type 8,0,0,0,5,5,0.0
+Zinc finger,C2H2-type 8; atypical,1,0,10,12,23,43.47826086956522
+Zinc finger,C2H2-type 9; atypical,0,0,1,9,10,10.0
+Zinc finger,C2H2-type 9; degenerate,2,0,0,4,6,0.0
+Zinc finger,C2HC pre-PHD-type,0,2,3,6,11,27.27272727272727
+Zinc finger,C2HC pre-PHD-type 1; degenerate,2,1,0,1,4,0.0
+Zinc finger,C2HC pre-PHD-type 2,3,1,2,2,8,25.0
+Zinc finger,C2HC pre-PHD-type; degenerate,3,2,0,6,11,0.0
+Zinc finger,C4-type,0,0,0,3,3,0.0
+Zinc finger,CXXC-type,3,3,24,11,41,58.536585365853654
+Zinc finger,NR C4-type,2,15,90,156,263,34.22053231939163
+Zinc finger,PHD-type,3,1,1,9,14,7.142857142857142
+Zinc finger,PHD-type 1,6,3,8,37,54,14.814814814814813
+Zinc finger,PHD-type 2,2,5,1,50,58,1.7241379310344827
+Zinc finger,PHD-type 3,8,3,4,38,53,7.547169811320755
+Zinc finger,PHD-type 4,2,4,5,20,31,16.129032258064516
+Zinc finger,PHD-type 4; atypical,0,0,0,2,2,0.0
+Zinc finger,PHD-type 5,2,0,0,3,5,0.0
+Zinc finger,PHD-type 6,0,0,0,1,1,0.0
+Zinc finger,PHD-type 7,1,2,1,7,11,9.090909090909092
+Zinc finger,PHD-type 8,2,0,0,7,9,0.0
+Zinc finger,RAG1-type,0,0,1,9,10,10.0
+Zinc finger,RING-type,3,0,2,15,20,10.0
+Zinc finger,ZZ-type,0,0,0,4,4,0.0

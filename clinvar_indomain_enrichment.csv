@@ -1,0 +1,5 @@
+sig_group,n_in_domain,n_out_domain,pct_in_domain,pct_out_domain,odds_ratio,ci95_lo,ci95_hi,p_raw,continuity_corrected
+Pathogenic/LP,2211,471,17.71,1.26,16.884,15.249,18.694,0.0,False
+VUS,8967,31357,71.81,83.77,0.493,0.47,0.518,2.853502142034761e-178,False
+Benign/LB,573,4000,4.59,10.69,0.402,0.367,0.44,1.0761637305687967e-105,False
+Other/Conflicting,782,1655,6.26,4.42,1.444,1.323,1.576,8.081742908881816e-16,False

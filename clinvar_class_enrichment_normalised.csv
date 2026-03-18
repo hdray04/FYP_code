@@ -1,29 +1,29 @@
-structural_class,n_proteins,total_variants,total_per_protein,Pathogenic/LP_per_protein,Conflicting_per_protein,VUS_per_protein,Benign/LB_per_protein,Other_per_protein
-"Nucleic acid-binding, OB-fold",9,216,24.0,0.4444444444444444,0.1111111111111111,21.555555555555557,1.8888888888888888,0.0
-E2F-DP heterodimerization region,9,242,26.9,0.0,0.0,25.444444444444443,1.4444444444444444,0.0
-EF-hand domain pair,2,80,40.0,0.0,0.0,38.0,2.0,0.0
-Catenin binding domain superfamily,4,170,42.5,0.25,0.0,38.0,4.25,0.0
-"Transcription factor, MADS-box superfamily",5,246,49.2,6.0,3.0,34.6,5.6,0.0
-Sterile alpha motif/pointed domain superfamily,11,554,50.4,1.6363636363636365,2.1818181818181817,43.81818181818182,2.5454545454545454,0.18181818181818182
-TEA/ATTS domain superfamily,4,206,51.5,0.25,0.5,49.75,1.0,0.0
-Histone-fold,4,218,54.5,5.0,0.25,49.25,0.0,0.0
-Homeodomain-like superfamily,272,15804,58.1,2.4044117647058822,1.7573529411764706,49.919117647058826,3.9338235294117645,0.08823529411764706
-AT-hook motif,4,239,59.8,0.0,0.0,54.5,5.25,0.0
-Nuclear hormone receptor-like domain superfamily,46,2989,65.0,9.543478260869565,2.9565217391304346,48.47826086956522,3.8043478260869565,0.1956521739130435
-DM DNA-binding domain superfamily,7,476,68.0,1.0,0.2857142857142857,61.0,5.714285714285714,0.0
-"CTF transcription factor/nuclear factor 1, DNA-binding domain",4,294,73.5,10.75,3.25,56.75,2.75,0.0
-Winged helix-like DNA-binding domain superfamily,87,6407,73.6,3.7701149425287355,1.6781609195402298,61.666666666666664,6.436781609195402,0.09195402298850575
-"NDT80, DNA-binding domain superfamily",2,156,78.0,7.5,0.5,62.0,8.0,0.0
-Immunoglobulin-like fold,5,428,85.6,0.0,0.8,78.2,6.6,0.0
-GCM domain superfamily,2,172,86.0,3.5,2.0,71.5,8.0,1.0
-High mobility group box domain superfamily,46,5200,113.0,5.5,5.760869565217392,84.28260869565217,16.717391304347824,0.782608695652174
-SKP1/BTB/POZ domain superfamily,2,230,115.0,0.5,2.5,107.0,5.0,0.0
-SMAD-like domain superfamily,9,1111,123.4,6.444444444444445,2.2222222222222223,106.66666666666667,7.0,1.1111111111111112
-"p53-like transcription factor, DNA-binding domain superfamily",18,3392,188.4,20.72222222222222,27.333333333333332,126.22222222222223,13.5,0.6666666666666666
-Bromo adjacent homology (BAH) domain superfamily,2,400,200.0,1.5,4.5,165.0,28.5,0.5
-Zinc finger superfamily,5,1226,245.2,13.4,13.2,185.6,31.6,1.4
-Ankyrin repeat-containing domain superfamily,2,526,263.0,5.5,7.5,223.0,27.0,0.0
-Nucleotide-binding alpha-beta plait domain superfamily,2,568,284.0,0.5,4.0,222.5,57.0,0.0
-"Hepatocyte nuclear factor 1, N-terminal domain superfamily",2,844,422.0,102.0,37.0,261.5,16.5,5.0
-Bromodomain-like superfamily,4,1916,479.0,15.75,40.25,330.25,92.0,0.75
-P-loop containing nucleoside triphosphate hydrolase,2,1310,655.0,2.0,44.0,564.5,44.5,0.0
+structural_class,n_proteins,total_variants,total_per_protein,Pathogenic/LP_per_protein,VUS_per_protein,Benign/LB_per_protein,Other/Conflicting_per_protein
+"Nucleic acid-binding, OB-fold",9,216,24.0,0.4444444444444444,21.555555555555557,1.8888888888888888,0.1111111111111111
+E2F-DP heterodimerization region,9,242,26.9,0.0,25.444444444444443,1.4444444444444444,0.0
+EF-hand domain pair,2,80,40.0,0.0,38.0,2.0,0.0
+Catenin binding domain superfamily,4,170,42.5,0.25,38.0,4.25,0.0
+"Transcription factor, MADS-box superfamily",5,246,49.2,6.0,34.6,5.6,3.0
+Sterile alpha motif/pointed domain superfamily,11,554,50.4,1.6363636363636365,43.81818181818182,2.5454545454545454,2.3636363636363638
+TEA/ATTS domain superfamily,4,206,51.5,0.25,49.75,1.0,0.5
+Histone-fold,4,218,54.5,5.0,49.25,0.0,0.25
+Homeodomain-like superfamily,272,15804,58.1,2.4044117647058822,49.919117647058826,3.9338235294117645,1.8455882352941178
+AT-hook motif,4,239,59.8,0.0,54.5,5.25,0.0
+Nuclear hormone receptor-like domain superfamily,46,2989,65.0,9.543478260869565,48.47826086956522,3.8043478260869565,3.152173913043478
+DM DNA-binding domain superfamily,7,476,68.0,1.0,61.0,5.714285714285714,0.2857142857142857
+"CTF transcription factor/nuclear factor 1, DNA-binding domain",4,294,73.5,10.75,56.75,2.75,3.25
+Winged helix-like DNA-binding domain superfamily,87,6407,73.6,3.7701149425287355,61.666666666666664,6.436781609195402,1.7701149425287357
+"NDT80, DNA-binding domain superfamily",2,156,78.0,7.5,62.0,8.0,0.5
+Immunoglobulin-like fold,5,428,85.6,0.0,78.2,6.6,0.8
+GCM domain superfamily,2,172,86.0,3.5,71.5,8.0,3.0
+High mobility group box domain superfamily,46,5200,113.0,5.5,84.28260869565217,16.717391304347824,6.543478260869565
+SKP1/BTB/POZ domain superfamily,2,230,115.0,0.5,107.0,5.0,2.5
+SMAD-like domain superfamily,9,1111,123.4,6.444444444444445,106.66666666666667,7.0,3.3333333333333335
+"p53-like transcription factor, DNA-binding domain superfamily",18,3392,188.4,20.72222222222222,126.22222222222223,13.5,28.0
+Bromo adjacent homology (BAH) domain superfamily,2,400,200.0,1.5,165.0,28.5,5.0
+Zinc finger superfamily,5,1226,245.2,13.4,185.6,31.6,14.6
+Ankyrin repeat-containing domain superfamily,2,526,263.0,5.5,223.0,27.0,7.5
+Nucleotide-binding alpha-beta plait domain superfamily,2,568,284.0,0.5,222.5,57.0,4.0
+"Hepatocyte nuclear factor 1, N-terminal domain superfamily",2,844,422.0,102.0,261.5,16.5,42.0
+Bromodomain-like superfamily,4,1916,479.0,15.75,330.25,92.0,41.0
+P-loop containing nucleoside triphosphate hydrolase,2,1310,655.0,2.0,564.5,44.5,44.0

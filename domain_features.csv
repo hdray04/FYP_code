@@ -1,0 +1,1629 @@
+uniprot,feature_type,domain_name,start,end,seq_len
+A0AVK6,DNA binding,DNA binding,113,182,867
+A0AVK6,DNA binding,DNA binding,261,347,867
+A6NCS4,DNA binding,Homeobox,132,191,301
+A6NJ46,DNA binding,Homeobox,139,198,265
+A8MTJ6,DNA binding,Fork-head,145,239,420
+A8MTJ6,Motif,Nuclear localization signal,235,241,420
+A8MTJ6,Motif,9aaTAD,406,414,420
+A8MTQ0,DNA binding,Homeobox,156,215,251
+A8MZ59,DNA binding,Homeobox,33,67,198
+A8MZ59,Motif,9aaTAD,125,136,198
+A8MZ59,Motif,9aaTAD,153,161,198
+A8MZ59,Motif,9aaTAD,163,171,198
+A8MZ59,Motif,9aaTAD,178,186,198
+B2RPK0,DNA binding,HMG box 1,9,79,211
+B2RPK0,DNA binding,HMG box 2,95,163,211
+O00321,DNA binding,ETS,240,320,342
+O00358,DNA binding,Fork-head,53,147,373
+O00409,DNA binding,Fork-head,113,204,490
+O00470,Domain,MEIS N-terminal,108,192,390
+O00470,DNA binding,Homeobox; TALE-type,272,334,390
+O00482,Domain,NR LBD,300,539,541
+O00482,DNA binding,Nuclear receptor,83,154,541
+O00482,Zinc finger,NR C4-type,86,106,541
+O00482,Zinc finger,NR C4-type,122,146,541
+O00482,Motif,FTZ-F1 box,168,187,541
+O00712,DNA binding,CTF/NF-I,1,195,420
+O00712,Motif,9aaTAD,397,405,420
+O00716,DNA binding,DNA binding,155,245,465
+O00716,Motif,DEF box,209,245,465
+O14529,DNA binding,CUT 1,544,631,1486
+O14529,DNA binding,CUT 2,887,974,1486
+O14529,DNA binding,CUT 3,1038,1125,1486
+O14529,DNA binding,Homeobox,1168,1227,1486
+O14627,DNA binding,Homeobox,173,232,284
+O14770,Domain,MEIS N-terminal,110,193,477
+O14770,DNA binding,Homeobox; TALE-type,276,338,477
+O14813,DNA binding,Homeobox,90,149,284
+O14896,DNA binding,IRF tryptophan pentad repeat,7,115,467
+O15119,DNA binding,T-box; first part,107,220,743
+O15119,DNA binding,T-box; second part,241,305,743
+O15178,DNA binding,T-box,51,219,435
+O15226,Domain,G-patch,551,596,690
+O15226,Domain,R3H,600,664,690
+O15226,DNA binding,DNA binding,296,388,690
+O15226,Motif,Nuclear localization signal,25,45,690
+O15266,DNA binding,Homeobox,117,176,292
+O15266,Motif,Nuclear localization signal,170,174,292
+O15266,Motif,SH3-binding,242,249,292
+O15266,Motif,OAR,274,287,292
+O15347,DNA binding,HMG box 1,9,79,200
+O15347,DNA binding,HMG box 2,93,161,200
+O15353,DNA binding,Fork-head,271,367,648
+O15370,DNA binding,HMG box,40,108,315
+O15405,DNA binding,HMG box,255,323,576
+O15409,Domain,FoxP leucine zipper (ZIP),372,412,715
+O15409,Zinc finger,C2H2-type,346,371,715
+O15409,DNA binding,Fork-head,504,594,715
+O15499,DNA binding,Homeobox,126,185,205
+O15522,DNA binding,Homeobox,84,143,239
+O43167,Domain,BTB,10,133,697
+O43167,DNA binding,A.T hook,159,171,697
+O43167,Zinc finger,C2H2-type 1,294,316,697
+O43167,Zinc finger,C2H2-type 2,322,344,697
+O43167,Zinc finger,C2H2-type 3,350,372,697
+O43167,Zinc finger,C2H2-type 4,378,400,697
+O43167,Zinc finger,C2H2-type 5,406,428,697
+O43167,Zinc finger,C2H2-type 6,434,456,697
+O43167,Zinc finger,C2H2-type 7,462,484,697
+O43167,Zinc finger,C2H2-type 8,490,512,697
+O43186,DNA binding,Homeobox,39,98,299
+O43248,DNA binding,Homeobox,232,291,304
+O43316,DNA binding,Paired,5,131,350
+O43316,DNA binding,Homeobox,170,229,350
+O43364,DNA binding,Homeobox,143,202,376
+O43364,Motif,Antp-type hexapeptide,94,99,376
+O43365,DNA binding,Homeobox,191,250,443
+O43365,Motif,Antp-type hexapeptide,155,160,443
+O43435,DNA binding,T-box,119,297,398
+O43524,DNA binding,Fork-head,157,251,673
+O43524,Motif,Nuclear localization signal,242,259,673
+O43711,DNA binding,Homeobox,166,225,291
+O43763,DNA binding,Homeobox,157,216,284
+O60248,DNA binding,HMG box,49,117,233
+O60315,Zinc finger,C2H2-type 1,211,234,1214
+O60315,Zinc finger,C2H2-type 2,241,263,1214
+O60315,Zinc finger,C2H2-type 3,282,304,1214
+O60315,Zinc finger,C2H2-type 4; atypical,310,334,1214
+O60315,Zinc finger,C2H2-type 5; atypical,581,605,1214
+O60315,DNA binding,Homeobox; atypical,644,703,1214
+O60315,Zinc finger,C2H2-type 6,999,1021,1214
+O60315,Zinc finger,C2H2-type 7,1027,1049,1214
+O60315,Zinc finger,C2H2-type 8; atypical,1055,1076,1214
+O60381,Domain,AXH,203,345,514
+O60381,DNA binding,HMG box,434,502,514
+O60393,DNA binding,Homeobox,272,363,691
+O60479,DNA binding,Homeobox,129,188,287
+O60548,DNA binding,Fork-head,126,217,495
+O60663,Domain,LIM zinc-binding 1,56,106,402
+O60663,Domain,LIM zinc-binding 2,115,168,402
+O60663,DNA binding,Homeobox,219,278,402
+O60806,DNA binding,T-box,45,218,448
+O60869,Domain,HTH cro/C1-type,81,135,148
+O60869,DNA binding,H-T-H motif,92,111,148
+O60869,Motif,IQ motif,81,88,148
+O60902,DNA binding,Homeobox,140,199,331
+O60902,Motif,OAR,313,326,331
+O75360,DNA binding,Homeobox,69,128,226
+O75364,DNA binding,Homeobox,62,121,302
+O75364,Motif,OAR,262,275,302
+O75364,Motif,Nuclear localization signal,268,272,302
+O75461,DNA binding,DNA binding,50,129,281
+O75461,Motif,DEF box,95,129,281
+O75469,Domain,NR LBD,146,433,434
+O75469,DNA binding,Nuclear receptor,38,107,434
+O75469,Zinc finger,NR C4-type,41,61,434
+O75469,Zinc finger,NR C4-type,77,102,434
+O75469,Motif,Bipartite nuclear localization signal,66,92,434
+O75478,Domain,SANT,70,122,443
+O75478,Domain,SWIRM,356,443,443
+O75478,Zinc finger,ZZ-type,12,69,443
+O75478,DNA binding,DNA binding,426,435,443
+O75564,Domain,HTH psq-type,11,62,556
+O75564,Domain,HTH CENPB-type,77,149,556
+O75564,Domain,DDE-1,213,382,556
+O75564,DNA binding,H-T-H motif,38,58,556
+O75564,DNA binding,H-T-H motif,110,142,556
+O75593,DNA binding,Fork-head,32,128,365
+O75593,Motif,Fast/FoxH1 motif 1 (FM1),277,281,365
+O75593,Motif,Fast/FoxH1 motif 2 (FM2),287,293,365
+O75593,Motif,SMAD interaction motif (SIM),327,348,365
+O75603,DNA binding,GCM,19,174,506
+O75717,Repeat,WD 1,11,50,1129
+O75717,Repeat,WD 2,52,91,1129
+O75717,Repeat,WD 3,92,131,1129
+O75717,Repeat,WD 4,134,173,1129
+O75717,Repeat,WD 5,184,223,1129
+O75717,Repeat,WD 6,228,267,1129
+O75717,Repeat,WD 7,271,310,1129
+O75717,DNA binding,HMG box,1016,1079,1129
+O94842,DNA binding,HMG box,223,291,621
+O94842,Motif,Nuclear localization signal,213,218,621
+O94900,DNA binding,HMG box,261,329,526
+O94900,Motif,Nuclear localization signal,237,256,526
+O94916,Domain,RHD,264,443,1531
+O94916,DNA binding,DNA binding,293,300,1531
+O94983,Domain,IPT/TIG,537,615,1202
+O94983,Repeat,ANK 1,712,745,1202
+O94983,Repeat,ANK 2,757,787,1202
+O94983,Repeat,ANK 3,791,821,1202
+O94983,Domain,IQ 1,1049,1078,1202
+O94983,Domain,IQ 2,1102,1131,1202
+O94983,DNA binding,CG-1,30,155,1202
+O94983,Motif,Nuclear localization signal,79,86,1202
+O94993,DNA binding,HMG box,337,405,753
+O95096,DNA binding,Homeobox,128,187,273
+O95231,DNA binding,Homeobox,91,150,258
+O95238,Domain,PNT,129,213,335
+O95238,DNA binding,ETS,249,332,335
+O95343,DNA binding,Homeobox,206,265,332
+O95416,DNA binding,HMG box,8,76,240
+O95475,DNA binding,Homeobox,128,187,246
+O95644,Repeat,1,203,219,943
+O95644,Repeat,2,233,249,943
+O95644,Repeat,3,282,298,943
+O95644,Domain,RHD,410,592,943
+O95644,DNA binding,DNA binding,439,446,943
+O95644,Motif,Nuclear localization signal,265,267,943
+O95644,Motif,Nuclear export signal,310,321,943
+O95644,Motif,Nuclear localization signal,682,684,943
+O95644,Motif,Nuclear export signal,924,933,943
+O95718,Domain,NR LBD,208,432,433
+O95718,DNA binding,Nuclear receptor,100,186,433
+O95718,Zinc finger,NR C4-type,103,123,433
+O95718,Zinc finger,NR C4-type,139,163,433
+O95935,DNA binding,T-box,143,330,607
+O95935,Motif,Engrailed homology 1 repressor,18,28,607
+O95935,Motif,Nuclear localization signal,36,40,607
+O95936,DNA binding,T-box,276,456,686
+O95947,DNA binding,T-box,100,273,436
+O95948,DNA binding,CUT,324,410,504
+O95948,DNA binding,Homeobox,426,485,504
+O96028,Domain,PWWP 1,222,286,1365
+O96028,Domain,PWWP 2,880,942,1365
+O96028,Domain,AWS,1011,1061,1365
+O96028,Domain,SET,1063,1180,1365
+O96028,Domain,Post-SET,1187,1203,1365
+O96028,DNA binding,HMG box,453,521,1365
+O96028,Zinc finger,PHD-type 1,667,713,1365
+O96028,Zinc finger,PHD-type 2,714,770,1365
+O96028,Zinc finger,PHD-type 3,831,875,1365
+O96028,Zinc finger,PHD-type 4; atypical,1239,1286,1365
+P01011,DNA binding,DNA binding,235,237,423
+P02751,Domain,Fibronectin type-I 1,50,90,2477
+P02751,Domain,Fibronectin type-I 2,95,138,2477
+P02751,Domain,Fibronectin type-I 3,139,182,2477
+P02751,Domain,Fibronectin type-I 4,184,228,2477
+P02751,Domain,Fibronectin type-I 5,229,273,2477
+P02751,Domain,Fibronectin type-I 6,306,345,2477
+P02751,Domain,Fibronectin type-II 1,355,403,2477
+P02751,Domain,Fibronectin type-II 2,415,463,2477
+P02751,Domain,Fibronectin type-I 7,468,511,2477
+P02751,Domain,Fibronectin type-I 8,516,558,2477
+P02751,Domain,Fibronectin type-I 9,559,602,2477
+P02751,Domain,Fibronectin type-III 1,610,702,2477
+P02751,Domain,Fibronectin type-III 2,722,812,2477
+P02751,Domain,Fibronectin type-III 3,813,904,2477
+P02751,Domain,Fibronectin type-III 4,909,998,2477
+P02751,Domain,Fibronectin type-III 5,999,1088,2477
+P02751,Domain,Fibronectin type-III 6,1089,1175,2477
+P02751,Domain,Fibronectin type-III 7,1176,1270,2477
+P02751,Domain,Fibronectin type-III 8; extra domain B,1271,1359,2477
+P02751,Domain,Fibronectin type-III 9,1360,1452,2477
+P02751,Domain,Fibronectin type-III 10,1453,1540,2477
+P02751,Domain,Fibronectin type-III 11,1541,1634,2477
+P02751,Domain,Fibronectin type-III 12,1635,1726,2477
+P02751,Domain,Fibronectin type-III 13; extra domain A,1727,1814,2477
+P02751,Domain,Fibronectin type-III 14,1815,1908,2477
+P02751,Domain,Fibronectin type-III 15,1909,1995,2477
+P02751,Domain,Fibronectin type-III 16,1996,2086,2477
+P02751,Domain,Fibronectin type-III 17,2194,2288,2477
+P02751,Domain,Fibronectin type-I 10,2295,2339,2477
+P02751,Domain,Fibronectin type-I 11,2340,2382,2477
+P02751,Domain,Fibronectin type-I 12,2384,2427,2477
+P02751,DNA binding,DNA binding,907,1172,2477
+P02751,Motif,Cell attachment site,1615,1617,2477
+P03372,Domain,NR LBD,311,547,595
+P03372,DNA binding,Nuclear receptor,185,250,595
+P03372,Zinc finger,NR C4-type,185,205,595
+P03372,Zinc finger,NR C4-type,221,245,595
+P04150,Domain,NR LBD,524,758,777
+P04150,DNA binding,Nuclear receptor,418,493,777
+P04150,Zinc finger,NR C4-type,421,441,777
+P04150,Zinc finger,NR C4-type,457,476,777
+P04637,DNA binding,DNA binding,102,292,393
+P04637,Motif,TADI,17,25,393
+P04637,Motif,TADII,48,56,393
+P04637,Motif,Bipartite nuclear localization signal,305,321,393
+P04637,Motif,Nuclear export signal,339,350,393
+P04637,Motif,[KR]-[STA]-K motif,370,372,393
+P06401,Domain,NR LBD,679,913,933
+P06401,DNA binding,Nuclear receptor,567,639,933
+P06401,Zinc finger,NR C4-type,567,587,933
+P06401,Zinc finger,NR C4-type,603,627,933
+P06401,Motif,LXXL motif 1,55,59,933
+P06401,Motif,LXXL motif 2,115,119,933
+P06401,Motif,Nuclear localization signal,183,187,933
+P07199,Domain,HTH psq-type,2,52,599
+P07199,Domain,HTH CENPB-type,65,136,599
+P07199,DNA binding,H-T-H motif,28,48,599
+P07199,DNA binding,H-T-H motif,97,129,599
+P07992,DNA binding,DNA binding,134,156,297
+P07992,Motif,Nuclear localization signal,17,23,297
+P08235,Domain,NR LBD,726,964,984
+P08235,DNA binding,Nuclear receptor,603,668,984
+P08235,Zinc finger,NR C4-type,603,623,984
+P08235,Zinc finger,NR C4-type,639,663,984
+P08651,DNA binding,CTF/NF-I,1,195,508
+P08651,Motif,9aaTAD,404,412,508
+P09016,DNA binding,Homeobox,154,213,255
+P09016,Motif,Antp-type hexapeptide,133,138,255
+P09017,DNA binding,Homeobox,156,215,264
+P09017,Motif,Antp-type hexapeptide,135,140,264
+P09067,DNA binding,Homeobox,194,253,269
+P09067,Motif,Antp-type hexapeptide,176,181,269
+P09086,Domain,POU-specific,195,269,479
+P09086,DNA binding,Homeobox,297,356,479
+P09429,DNA binding,HMG box 1,9,79,215
+P09429,DNA binding,HMG box 2,95,163,215
+P09429,Motif,Nuclear localization signal (NLS) 1,27,43,215
+P09429,Motif,Nuclear localization signal (NLS) 2,178,184,215
+P09629,DNA binding,Homeobox,137,196,217
+P09629,Motif,Antp-type hexapeptide,126,131,217
+P0CB47,DNA binding,HMG box 1,100,168,393
+P0CB47,DNA binding,HMG box 2,222,288,393
+P10242,Domain,HTH myb-type 1,35,86,640
+P10242,Domain,HTH myb-type 2,87,142,640
+P10242,Domain,HTH myb-type 3,143,193,640
+P10242,DNA binding,H-T-H motif,63,86,640
+P10242,DNA binding,H-T-H motif,115,138,640
+P10242,DNA binding,H-T-H motif,166,189,640
+P10243,Domain,HTH myb-type 1,30,81,752
+P10243,Domain,HTH myb-type 2,82,137,752
+P10243,Domain,HTH myb-type 3,138,188,752
+P10243,DNA binding,H-T-H motif,58,81,752
+P10243,DNA binding,H-T-H motif,110,133,752
+P10243,DNA binding,H-T-H motif,161,184,752
+P10244,Domain,HTH myb-type 1,26,77,700
+P10244,Domain,HTH myb-type 2,78,133,700
+P10244,Domain,HTH myb-type 3,134,184,700
+P10244,DNA binding,H-T-H motif,54,77,700
+P10244,DNA binding,H-T-H motif,106,129,700
+P10244,DNA binding,H-T-H motif,157,180,700
+P10244,Motif,Nuclear localization signal,411,417,700
+P10244,Motif,Bipartite nuclear localization signal,564,584,700
+P10275,Domain,NR LBD,669,900,920
+P10275,DNA binding,Nuclear receptor,560,632,920
+P10275,Zinc finger,NR C4-type,560,580,920
+P10275,Zinc finger,NR C4-type,596,620,920
+P10276,Domain,NR LBD,183,417,462
+P10276,DNA binding,Nuclear receptor,88,153,462
+P10276,Zinc finger,NR C4-type,88,108,462
+P10276,Zinc finger,NR C4-type,124,148,462
+P10276,Motif,UBR5-degron,254,258,462
+P10276,Motif,9aaTAD,408,416,462
+P10588,Domain,NR LBD,165,393,404
+P10588,DNA binding,Nuclear receptor,53,128,404
+P10588,Zinc finger,NR C4-type,56,76,404
+P10588,Zinc finger,NR C4-type,92,116,404
+P10589,Domain,NR LBD,184,410,423
+P10589,DNA binding,Nuclear receptor,83,158,423
+P10589,Zinc finger,NR C4-type,86,106,423
+P10589,Zinc finger,NR C4-type,122,146,423
+P10826,Domain,NR LBD,183,417,455
+P10826,DNA binding,Nuclear receptor,88,153,455
+P10826,Zinc finger,NR C4-type,88,108,455
+P10826,Zinc finger,NR C4-type,124,148,455
+P10827,Domain,NR LBD,163,407,490
+P10827,DNA binding,Nuclear receptor,53,127,490
+P10827,Zinc finger,NR C4-type,53,73,490
+P10827,Zinc finger,NR C4-type,91,115,490
+P10828,Domain,NR LBD,217,461,461
+P10828,DNA binding,Nuclear receptor,107,181,461
+P10828,Zinc finger,NR C4-type,107,127,461
+P10828,Zinc finger,NR C4-type,145,169,461
+P10914,DNA binding,IRF tryptophan pentad repeat,5,113,325
+P11308,Domain,PNT,113,199,479
+P11308,DNA binding,ETS,311,391,479
+P11473,Domain,NR LBD,127,423,427
+P11473,DNA binding,Nuclear receptor,21,96,427
+P11473,Zinc finger,NR C4-type,24,44,427
+P11473,Zinc finger,NR C4-type,60,84,427
+P11473,Motif,9aaTAD,416,424,427
+P11474,Domain,NR LBD,193,421,423
+P11474,DNA binding,Nuclear receptor,76,151,423
+P11474,Zinc finger,NR C4-type,79,99,423
+P11474,Zinc finger,NR C4-type,115,134,423
+P11831,Domain,MADS-box,141,201,508
+P11831,DNA binding,DNA binding,133,222,508
+P12004,DNA binding,DNA binding,61,80,261
+P13056,Domain,NR LBD,348,590,603
+P13056,DNA binding,Nuclear receptor,110,185,603
+P13056,Zinc finger,NR C4-type,113,133,603
+P13056,Zinc finger,NR C4-type,149,173,603
+P13378,DNA binding,Homeobox,197,256,290
+P13631,Domain,NR LBD,185,419,454
+P13631,DNA binding,Nuclear receptor,90,155,454
+P13631,Zinc finger,NR C4-type,90,110,454
+P13631,Zinc finger,NR C4-type,126,150,454
+P14316,DNA binding,IRF tryptophan pentad repeat,5,113,349
+P14651,DNA binding,Homeobox,188,247,431
+P14651,Motif,Antp-type hexapeptide,129,134,431
+P14652,DNA binding,Homeobox,143,202,356
+P14652,Motif,Antp-type hexapeptide,94,99,356
+P14653,DNA binding,Homeobox,203,262,301
+P14653,Motif,Antp-type hexapeptide,179,184,301
+P14859,Domain,POU-specific,280,354,743
+P14859,DNA binding,Homeobox,379,438,743
+P14921,Domain,PNT,51,136,441
+P14921,DNA binding,ETS,335,415,441
+P15036,Domain,PNT,85,170,469
+P15036,DNA binding,ETS,363,443,469
+P15863,DNA binding,Paired,98,224,534
+P15918,Zinc finger,RING-type,293,332,1043
+P15918,Zinc finger,RAG1-type,354,383,1043
+P15918,DNA binding,NBD,392,459,1043
+P15927,DNA binding,OB,74,148,270
+P17096,DNA binding,A.T hook 1,21,31,107
+P17096,DNA binding,A.T hook 2,53,63,107
+P17096,DNA binding,A.T hook 3,78,89,107
+P17480,DNA binding,HMG box 1,112,180,764
+P17480,DNA binding,HMG box 2,196,264,764
+P17480,DNA binding,HMG box 3,298,362,764
+P17480,DNA binding,HMG box 4,407,475,764
+P17480,DNA binding,HMG box 5,482,549,764
+P17480,DNA binding,HMG box 6,568,634,764
+P17481,DNA binding,Homeobox,146,205,243
+P17481,Motif,Antp-type hexapeptide,134,139,243
+P17482,DNA binding,Homeobox,185,244,250
+P17483,DNA binding,Homeobox,162,221,251
+P17483,Motif,Antp-type hexapeptide,141,146,251
+P17509,DNA binding,Homeobox,146,205,224
+P17509,Motif,Antp-type hexapeptide,127,132,224
+P17947,DNA binding,ETS,170,253,270
+P19419,DNA binding,ETS,5,86,428
+P19622,DNA binding,Homeobox,244,303,333
+P19793,Domain,NR LBD,227,458,462
+P19793,DNA binding,Nuclear receptor,135,200,462
+P19793,Zinc finger,NR C4-type,135,155,462
+P19793,Zinc finger,NR C4-type,171,195,462
+P20264,Domain,POU-specific,314,388,500
+P20264,DNA binding,Homeobox,406,465,500
+P20265,Domain,POU-specific,262,336,443
+P20265,DNA binding,Homeobox,354,413,443
+P20393,Domain,NR LBD,284,614,614
+P20393,DNA binding,Nuclear receptor,129,205,614
+P20393,Zinc finger,NR C4-type,132,152,614
+P20393,Zinc finger,NR C4-type,169,193,614
+P20719,DNA binding,Homeobox,195,254,270
+P20719,Motif,Antp-type hexapeptide,176,181,270
+P20823,Domain,HNF-p1,1,32,631
+P20823,Domain,POU-specific atypical,87,182,631
+P20823,DNA binding,Homeobox; HNF1-type,199,279,631
+P20823,Motif,Nuclear localization signal,197,205,631
+P21675,Domain,Protein kinase 1,1,435,1893
+P21675,Domain,Bromo 1,1397,1505,1893
+P21675,Domain,Protein kinase 2,1446,1893,1893
+P21675,Domain,Bromo 2,1519,1628,1893
+P21675,DNA binding,HMG box; involved in promoter binding,1216,1294,1893
+P21675,Motif,Nuclear localization signal,1372,1379,1893
+P22670,DNA binding,RFX-type winged-helix,438,513,979
+P22736,Domain,NR LBD,360,595,598
+P22736,DNA binding,Nuclear receptor,264,339,598
+P22736,Zinc finger,NR C4-type,267,287,598
+P22736,Zinc finger,NR C4-type,303,327,598
+P23497,Domain,HSR,33,149,879
+P23497,Domain,SAND,595,676,879
+P23497,DNA binding,HMG box 1,677,753,879
+P23497,DNA binding,HMG box 2,769,837,879
+P23497,Motif,D-box; recognition signal for CDC20-mediated degradation,165,168,879
+P23497,Motif,PxVxL motif,284,297,879
+P23497,Motif,Nuclear localization signal,536,553,879
+P23497,Motif,Nuclear localization signal,568,592,879
+P23497,Motif,Nuclear localization signal,717,734,879
+P23511,DNA binding,NFYA/HAP2-type,296,321,347
+P23511,Motif,Subunit association domain (SAD),266,289,347
+P23759,DNA binding,Paired,34,163,505
+P23759,DNA binding,Homeobox,217,276,505
+P23759,Motif,OAR,479,491,505
+P23760,DNA binding,Paired,34,161,479
+P23760,DNA binding,Homeobox,219,278,479
+P24468,Domain,NR LBD,177,403,414
+P24468,DNA binding,Nuclear receptor,76,151,414
+P24468,Zinc finger,NR C4-type,79,99,414
+P24468,Zinc finger,NR C4-type,115,139,414
+P25208,DNA binding,DNA binding,59,65,207
+P26367,DNA binding,Paired,4,130,422
+P26367,DNA binding,Homeobox,210,269,422
+P26583,DNA binding,HMG box 1,9,79,209
+P26583,DNA binding,HMG box 2,95,163,209
+P27694,DNA binding,OB,197,281,616
+P27694,Zinc finger,C4-type,481,503,616
+P28069,Domain,POU-specific,124,198,291
+P28069,DNA binding,Homeobox,214,273,291
+P28069,Motif,9aaTAD,5,13,291
+P28324,DNA binding,ETS,5,85,431
+P28347,DNA binding,TEA,28,104,426
+P28356,DNA binding,Homeobox,285,344,352
+P28358,DNA binding,Homeobox,266,325,340
+P28360,DNA binding,Homeobox,172,231,303
+P28482,Domain,Protein kinase,25,313,360
+P28482,DNA binding,DNA binding,259,277,360
+P28482,Motif,TXY,185,187,360
+P28482,Motif,Cytoplasmic retention motif,318,322,360
+P28482,Motif,Nuclear translocation motif,327,333,360
+P28702,Domain,NR LBD,296,529,533
+P28702,DNA binding,Nuclear receptor,205,270,533
+P28702,Zinc finger,NR C4-type,205,225,533
+P28702,Zinc finger,NR C4-type,241,265,533
+P29084,DNA binding,TFIIE beta,66,146,291
+P31249,DNA binding,Homeobox,194,253,432
+P31249,Motif,Antp-type hexapeptide,160,165,432
+P31260,DNA binding,Homeobox,336,395,410
+P31268,DNA binding,Homeobox,130,189,230
+P31268,Motif,Antp-type hexapeptide,119,124,230
+P31269,DNA binding,Homeobox,206,265,272
+P31270,DNA binding,Homeobox,241,300,313
+P31271,DNA binding,Homeobox,322,381,388
+P31273,DNA binding,Homeobox,149,208,242
+P31273,Motif,Antp-type hexapeptide,138,143,242
+P31274,DNA binding,Homeobox,192,251,260
+P31276,DNA binding,Homeobox,260,319,330
+P31314,DNA binding,Homeobox,201,260,330
+P32242,DNA binding,Homeobox,38,97,354
+P32243,DNA binding,Homeobox,38,97,289
+P32519,DNA binding,ETS,208,290,619
+P35398,Domain,NR LBD,272,510,523
+P35398,DNA binding,Nuclear receptor,73,138,523
+P35398,Zinc finger,NR C4-type,73,93,523
+P35398,Zinc finger,NR C4-type,109,133,523
+P35398,Motif,AF-2,506,523,523
+P35452,DNA binding,Homeobox,202,261,270
+P35453,DNA binding,Homeobox,276,335,343
+P35548,DNA binding,Homeobox,142,201,267
+P35659,Domain,SAP,149,183,375
+P35659,Domain,DEK-C,319,375,375
+P35659,DNA binding,DNA binding,337,351,375
+P35659,DNA binding,DNA binding,367,371,375
+P35659,Motif,Nuclear localization signal,205,221,375
+P35680,Domain,HNF-p1,1,32,557
+P35680,Domain,POU-specific atypical,93,188,557
+P35680,DNA binding,Homeobox; HNF1-type,231,311,557
+P35711,DNA binding,HMG box,556,624,763
+P35712,DNA binding,HMG box,621,689,828
+P35713,Domain,Sox C-terminal,263,383,384
+P35713,DNA binding,HMG box,85,153,384
+P35713,Motif,9aaTAD,325,333,384
+P35716,DNA binding,HMG box,49,117,441
+P36402,DNA binding,HMG box,269,337,384
+P36402,Motif,Nuclear localization signal,344,348,384
+P37231,Domain,NR LBD,238,503,505
+P37231,DNA binding,Nuclear receptor,136,210,505
+P37231,Zinc finger,NR C4-type,139,159,505
+P37231,Zinc finger,NR C4-type,176,198,505
+P37231,Motif,9aaTAD,495,503,505
+P37275,Zinc finger,C2H2-type 1,170,193,1124
+P37275,Zinc finger,C2H2-type 2,200,222,1124
+P37275,Zinc finger,C2H2-type 3,240,262,1124
+P37275,Zinc finger,C2H2-type 4; atypical,268,292,1124
+P37275,DNA binding,Homeobox; atypical,581,640,1124
+P37275,Zinc finger,C2H2-type 5,904,926,1124
+P37275,Zinc finger,C2H2-type 6,932,954,1124
+P37275,Zinc finger,C2H2-type 7; atypical,960,981,1124
+P39880,DNA binding,CUT 1,542,629,1505
+P39880,DNA binding,CUT 2,934,1021,1505
+P39880,DNA binding,CUT 3,1117,1204,1505
+P39880,DNA binding,Homeobox,1244,1303,1505
+P40424,Domain,PBC,38,232,430
+P40424,DNA binding,Homeobox; TALE-type,233,295,430
+P40425,Domain,PBC,48,243,430
+P40425,DNA binding,Homeobox; TALE-type,244,306,430
+P40426,Domain,PBC,41,234,434
+P40426,DNA binding,Homeobox; TALE-type,235,297,434
+P41161,DNA binding,ETS,368,448,510
+P41162,DNA binding,ETS,35,116,512
+P41212,Domain,PNT,40,124,452
+P41212,DNA binding,ETS,339,420,452
+P41225,DNA binding,HMG box,139,207,446
+P41225,Motif,9aaTAD,399,407,446
+P41235,Domain,NR LBD,147,377,474
+P41235,DNA binding,Nuclear receptor,57,132,474
+P41235,Zinc finger,NR C4-type,60,80,474
+P41235,Zinc finger,NR C4-type,96,120,474
+P41235,Motif,9aaTAD,368,376,474
+P41970,DNA binding,ETS,5,85,407
+P41970,Motif,CTBP-binding motif,273,277,407
+P43268,DNA binding,ETS,341,421,484
+P43351,DNA binding,DNA binding,152,156,418
+P43354,Domain,NR LBD,360,595,598
+P43354,DNA binding,Nuclear receptor,260,335,598
+P43354,Zinc finger,NR C4-type,263,283,598
+P43354,Zinc finger,NR C4-type,299,323,598
+P43354,Motif,Bipartite nuclear localization signal (NLS1),287,314,598
+P43354,Motif,Nuclear localization signal (NLS1),338,350,598
+P43354,Motif,nuclear export sequence (NES1),443,452,598
+P43354,Motif,nuclear export sequence (NES2),568,577,598
+P43699,DNA binding,Homeobox,161,220,371
+P47902,DNA binding,Homeobox,154,213,265
+P48378,DNA binding,RFX-type winged-helix,199,274,723
+P48380,DNA binding,RFX-type winged-helix,183,258,749
+P48382,DNA binding,RFX-type winged-helix,92,168,616
+P48382,Motif,PxLPxI/L motif; mediates interaction with RFXANK,173,178,616
+P48431,DNA binding,HMG box,41,109,317
+P48431,Motif,9aaTAD,272,280,317
+P48436,DNA binding,HMG box,105,173,509
+P48436,Motif,9aaTAD 1,275,284,509
+P48436,Motif,9aaTAD 2,290,298,509
+P48436,Motif,9aaTAD 3,460,468,509
+P48443,Domain,NR LBD,231,459,463
+P48443,DNA binding,Nuclear receptor,136,211,463
+P48443,Zinc finger,NR C4-type,139,159,463
+P48443,Zinc finger,NR C4-type,175,199,463
+P48742,Domain,LIM zinc-binding 1,4,54,406
+P48742,Domain,LIM zinc-binding 2,63,117,406
+P48742,DNA binding,Homeobox,180,239,406
+P49116,Domain,NR LBD,341,583,596
+P49116,DNA binding,Nuclear receptor,114,189,596
+P49116,Zinc finger,NR C4-type,117,137,596
+P49116,Zinc finger,NR C4-type,153,177,596
+P49335,Domain,POU-specific,186,260,361
+P49335,DNA binding,Homeobox,278,337,361
+P49639,DNA binding,Homeobox,229,288,335
+P49639,Motif,Antp-type hexapeptide,204,209,335
+P49640,DNA binding,Homeobox,183,242,407
+P49715,Domain,bZIP,282,345,358
+P49715,DNA binding,DNA binding,285,300,358
+P50219,DNA binding,Homeobox,241,300,401
+P50221,DNA binding,Homeobox,171,230,254
+P50222,DNA binding,Homeobox,187,246,304
+P50458,Domain,LIM zinc-binding 1,53,105,406
+P50458,Domain,LIM zinc-binding 2,115,168,406
+P50458,DNA binding,Homeobox,266,325,406
+P50458,Motif,Nuclear localization signal,307,323,406
+P50548,DNA binding,ETS,27,107,548
+P50549,DNA binding,ETS,335,415,477
+P51449,Domain,NR LBD,269,508,518
+P51449,DNA binding,Nuclear receptor,31,96,518
+P51449,Zinc finger,NR C4-type,31,51,518
+P51449,Zinc finger,NR C4-type,67,91,518
+P51449,Motif,AF-2,501,506,518
+P51608,Domain,MBD,90,162,486
+P51608,DNA binding,A.T hook 1,185,197,486
+P51608,DNA binding,A.T hook 2,265,277,486
+P52926,DNA binding,A.T hook 1,24,34,109
+P52926,DNA binding,A.T hook 2,44,54,109
+P52926,DNA binding,A.T hook 3,71,82,109
+P52945,DNA binding,Homeobox,146,205,283
+P52945,Motif,Antp-type hexapeptide,118,123,283
+P52945,Motif,Nuclear localization signal,197,203,283
+P52951,DNA binding,Homeobox,247,306,348
+P52952,DNA binding,Homeobox,138,197,324
+P52954,DNA binding,Homeobox,125,184,281
+P54274,Domain,HTH myb-type,375,432,439
+P54274,DNA binding,H-T-H motif,403,428,439
+P54274,Motif,Nuclear localization signal,337,356,439
+P54277,DNA binding,HMG box,571,639,932
+P54821,DNA binding,Homeobox,94,153,245
+P54821,Motif,OAR,222,235,245
+P55055,Domain,NR LBD,222,460,460
+P55055,DNA binding,Nuclear receptor,84,161,460
+P55055,Zinc finger,NR C4-type,87,107,460
+P55055,Zinc finger,NR C4-type,125,149,460
+P55316,DNA binding,Fork-head,181,275,489
+P55317,DNA binding,Fork-head,169,260,472
+P55318,DNA binding,Fork-head,116,207,350
+P55347,Domain,MEIS N-terminal,80,163,436
+P55347,DNA binding,Homeobox; TALE-type,259,321,436
+P55771,DNA binding,Paired,4,130,341
+P56177,DNA binding,Homeobox,128,187,255
+P56178,DNA binding,Homeobox,137,196,289
+P56179,DNA binding,Homeobox,49,108,175
+P56693,DNA binding,HMG box,104,172,466
+P56693,Motif,Nuclear export signal,134,145,466
+P56915,DNA binding,Homeobox,160,219,257
+P57073,DNA binding,HMG box,102,170,446
+P57073,Motif,9aaTAD,400,408,446
+P57082,DNA binding,T-box,71,251,545
+P58012,DNA binding,Fork-head,54,148,376
+P58304,Domain,CVC,208,261,361
+P58304,DNA binding,Homeobox,148,207,361
+P58304,Motif,OAR,304,317,361
+P61371,Domain,LIM zinc-binding 1,17,70,349
+P61371,Domain,LIM zinc-binding 2,79,133,349
+P61371,DNA binding,Homeobox,181,240,349
+P62508,Domain,NR LBD,233,457,458
+P62508,DNA binding,Nuclear receptor,125,200,458
+P62508,Zinc finger,NR C4-type,128,148,458
+P62508,Zinc finger,NR C4-type,164,188,458
+P62805,DNA binding,DNA binding,17,21,103
+P78337,DNA binding,Homeobox,89,148,314
+P78337,Motif,OAR,280,293,314
+P78337,Motif,Nuclear localization signal,286,290,314
+P78367,DNA binding,Homeobox,206,265,333
+P78411,DNA binding,Homeobox; TALE-type,113,175,483
+P78412,DNA binding,Homeobox,146,208,446
+P78413,DNA binding,Homeobox; TALE-type,143,204,519
+P78415,DNA binding,Homeobox; TALE-type,125,188,501
+P78424,Domain,POU-specific,476,586,691
+P78424,DNA binding,Homeobox,607,666,691
+P78426,DNA binding,Homeobox,236,295,367
+P78545,Domain,PNT,46,132,371
+P78545,DNA binding,ETS,273,355,371
+P78545,Motif,9aaTAD,137,145,371
+P80303,Domain,EF-hand 1,241,276,420
+P80303,Domain,EF-hand 2,293,328,420
+P80303,DNA binding,DNA binding,171,223,420
+P80303,Motif,GBA,304,334,420
+P85037,Domain,FHA,123,175,733
+P85037,DNA binding,Fork-head,305,400,733
+P98177,DNA binding,Fork-head,100,188,505
+Q00056,DNA binding,Homeobox,215,274,320
+Q00056,Motif,Antp-type hexapeptide,194,199,320
+Q00059,DNA binding,HMG box 1,50,118,246
+Q00059,DNA binding,HMG box 2,155,219,246
+Q00444,DNA binding,Homeobox,155,214,222
+Q00444,Motif,Antp-type hexapeptide,140,145,222
+Q00978,DNA binding,IRF tryptophan pentad repeat,9,116,393
+Q01094,DNA binding,DNA binding,110,194,437
+Q01094,Motif,DEF box,158,194,437
+Q01167,Domain,FHA,54,128,660
+Q01167,DNA binding,Fork-head,258,353,660
+Q01543,Domain,PNT,112,198,452
+Q01543,DNA binding,ETS,281,361,452
+Q01826,Domain,CMP,71,172,763
+Q01826,Domain,CUTL,175,248,763
+Q01826,DNA binding,CUT 1,361,448,763
+Q01826,DNA binding,CUT 2,484,571,763
+Q01826,DNA binding,Homeobox,645,704,763
+Q01826,Motif,Nuclear localization signal,20,40,763
+Q01826,Motif,Protein interaction,139,143,763
+Q01851,Domain,POU-specific,261,338,419
+Q01851,DNA binding,Homeobox,356,415,419
+Q01851,Motif,POU-IV box,57,66,419
+Q01860,Domain,POU-specific,138,212,360
+Q01860,DNA binding,Homeobox,230,289,360
+Q01860,Motif,9aaTAD,4,12,360
+Q01892,DNA binding,ETS,169,252,262
+Q02078,Domain,MADS-box,3,57,507
+Q02078,DNA binding,Mef2-type,58,86,507
+Q02080,Domain,MADS-box,3,57,365
+Q02080,DNA binding,Mef2-type,58,86,365
+Q02548,DNA binding,Paired,16,142,391
+Q02556,DNA binding,IRF tryptophan pentad repeat,7,114,426
+Q02818,Domain,EF-hand 1,240,275,461
+Q02818,Domain,EF-hand 2,292,327,461
+Q02818,DNA binding,DNA binding,172,218,461
+Q02818,Motif,GBA,303,333,461
+Q02962,DNA binding,Paired,16,142,417
+Q03014,DNA binding,Homeobox,137,196,270
+Q03052,Domain,POU-specific,247,321,451
+Q03052,DNA binding,Homeobox,339,398,451
+Q03164,Domain,Bromo,1635,1765,3969
+Q03164,Domain,FYR N-terminal,2018,2074,3969
+Q03164,Domain,FYR C-terminal,3666,3747,3969
+Q03164,Domain,SET,3829,3945,3969
+Q03164,Domain,Post-SET,3953,3969,3969
+Q03164,DNA binding,A.T hook 1,169,180,3969
+Q03164,DNA binding,A.T hook 2,217,227,3969
+Q03164,DNA binding,A.T hook 3,301,309,3969
+Q03164,Zinc finger,CXXC-type,1147,1195,3969
+Q03164,Zinc finger,PHD-type 1,1431,1482,3969
+Q03164,Zinc finger,PHD-type 2,1479,1533,3969
+Q03164,Zinc finger,PHD-type 3,1566,1627,3969
+Q03164,Zinc finger,C2HC pre-PHD-type,1870,1910,3969
+Q03164,Zinc finger,PHD-type 4,1931,1978,3969
+Q03164,Motif,Menin-binding motif (MBM),6,25,3969
+Q03164,Motif,Integrase domain-binding motif 1 (IBM1),123,134,3969
+Q03164,Motif,Integrase domain-binding motif 2 (IBM2),147,152,3969
+Q03164,Motif,9aaTAD,2847,2855,3969
+Q03164,Motif,WDR5 interaction motif (WIN),3762,3767,3969
+Q03181,Domain,NR LBD,211,439,441
+Q03181,DNA binding,Nuclear receptor,71,145,441
+Q03181,Zinc finger,NR C4-type,74,94,441
+Q03181,Zinc finger,NR C4-type,111,133,441
+Q03933,DNA binding,DNA binding,7,112,536
+Q03933,Motif,Nuclear localization signal,108,122,536
+Q03933,Motif,Nuclear localization signal,195,210,536
+Q04741,DNA binding,Homeobox,192,251,290
+Q04743,DNA binding,Homeobox,154,213,252
+Q05066,DNA binding,HMG box,60,128,204
+Q05925,DNA binding,Homeobox,303,362,392
+Q06413,Domain,MADS-box,3,57,473
+Q06413,DNA binding,Mef2-type,58,86,473
+Q06416,Domain,POU-specific,138,212,359
+Q06416,DNA binding,Homeobox,229,288,359
+Q06546,Domain,PNT,168,251,454
+Q06546,DNA binding,ETS,320,400,454
+Q06710,DNA binding,Paired,9,135,450
+Q06945,DNA binding,HMG box,59,127,474
+Q06945,Motif,9aaTAD,426,434,474
+Q07687,DNA binding,Homeobox,152,211,328
+Q07869,Domain,NR LBD,239,466,468
+Q07869,DNA binding,Nuclear receptor,99,173,468
+Q07869,Zinc finger,NR C4-type,102,122,468
+Q07869,Zinc finger,NR C4-type,139,161,468
+Q08050,DNA binding,Fork-head,235,327,763
+Q08945,DNA binding,HMG box,547,615,709
+Q12778,DNA binding,Fork-head,159,235,655
+Q12778,Motif,Nuclear localization signal,251,253,655
+Q12778,Motif,Required for interaction with SIRT1,462,466,655
+Q12837,Domain,POU-specific,250,327,409
+Q12837,DNA binding,Homeobox,345,404,409
+Q12837,Motif,POU-IV box,110,119,409
+Q12837,Motif,Nuclear speckle targeting signal,171,185,409
+Q12857,DNA binding,CTF/NF-I,1,194,509
+Q12857,Motif,9aaTAD,394,402,509
+Q12946,DNA binding,Fork-head,47,138,379
+Q12947,DNA binding,Fork-head,99,190,444
+Q12948,DNA binding,Fork-head,77,168,553
+Q12948,Motif,Nuclear localization signal 1 (NLS 1),78,93,553
+Q12948,Motif,Nuclear localization signal 2 (NLS 2),168,176,553
+Q12951,DNA binding,Fork-head,123,217,378
+Q12952,DNA binding,Fork-head,48,139,345
+Q12968,Repeat,1,207,223,1075
+Q12968,Repeat,2,236,252,1075
+Q12968,Repeat,3,292,308,1075
+Q12968,Domain,RHD,415,596,1075
+Q12968,DNA binding,DNA binding,444,451,1075
+Q12968,Motif,Nuclear localization signal,273,275,1075
+Q12968,Motif,Nuclear localization signal,686,688,1075
+Q12968,Motif,Nuclear export signal,1032,1041,1075
+Q13133,Domain,NR LBD,209,447,447
+Q13133,DNA binding,Nuclear receptor,95,170,447
+Q13133,Zinc finger,NR C4-type,98,118,447
+Q13133,Zinc finger,NR C4-type,134,158,447
+Q13156,DNA binding,OB,74,148,261
+Q13207,DNA binding,T-box,109,287,712
+Q13285,Domain,NR LBD,222,459,461
+Q13285,DNA binding,Nuclear receptor,10,85,461
+Q13285,Zinc finger,NR C4-type,13,33,461
+Q13285,Zinc finger,NR C4-type,49,73,461
+Q13461,DNA binding,Fork-head,71,165,319
+Q13469,Repeat,1,184,200,925
+Q13469,Repeat,2,213,229,925
+Q13469,Repeat,3; approximate,272,286,925
+Q13469,Domain,RHD,392,574,925
+Q13469,DNA binding,DNA binding,421,428,925
+Q13469,Motif,9aaTAD,26,34,925
+Q13469,Motif,Nuclear localization signal,251,253,925
+Q13469,Motif,Nuclear localization signal,664,666,925
+Q13469,Motif,Nuclear export signal,904,913,925
+Q13568,DNA binding,IRF tryptophan pentad repeat,14,122,498
+Q13568,Motif,Nuclear localization signal,12,18,498
+Q13568,Motif,Nuclear export signal,150,160,498
+Q14186,DNA binding,DNA binding,113,195,410
+Q14186,Motif,DEF box,161,195,410
+Q14188,DNA binding,DNA binding,129,210,446
+Q14188,Motif,Nuclear localization signal,103,118,446
+Q14188,Motif,DEF box,176,210,446
+Q14209,DNA binding,DNA binding,107,196,437
+Q14209,Motif,DEF box,160,196,437
+Q14541,Domain,NR LBD,99,328,408
+Q14541,DNA binding,Nuclear receptor,9,84,408
+Q14541,Zinc finger,NR C4-type,12,32,408
+Q14541,Zinc finger,NR C4-type,48,72,408
+Q14653,DNA binding,IRF tryptophan pentad repeat,5,111,427
+Q14653,Motif,Nuclear export signal,139,149,427
+Q14774,DNA binding,Homeobox,276,335,488
+Q14781,Domain,Chromo,12,70,532
+Q14781,DNA binding,A.T hook,75,87,532
+Q14781,Motif,Nuclear localization signal,163,168,532
+Q14814,Domain,MADS-box,3,57,521
+Q14814,DNA binding,Mef2-type,58,86,521
+Q14863,Domain,POU-specific,449,523,611
+Q14863,DNA binding,Homeobox,544,603,611
+Q14934,Repeat,SP 1,213,229,902
+Q14934,Repeat,SP 2; approximate,277,293,902
+Q14934,Domain,RHD,401,582,902
+Q14934,Domain,IPT/TIG,586,683,902
+Q14934,DNA binding,DNA binding,430,437,902
+Q14934,Motif,Nuclear localization signal,268,270,902
+Q14934,Motif,Nuclear localization signal,672,674,902
+Q14938,DNA binding,CTF/NF-I,1,194,502
+Q14938,Motif,9aaTAD,398,406,502
+Q14966,Domain,RRM 1,676,751,1978
+Q14966,Domain,RRM 2,905,979,1978
+Q14966,DNA binding,DNA binding,1353,1477,1978
+Q14966,Zinc finger,Matrin-type,1928,1958,1978
+Q14994,Domain,NR LBD,109,352,352
+Q14994,DNA binding,Nuclear receptor,8,83,352
+Q14994,Zinc finger,NR C4-type,11,31,352
+Q14994,Zinc finger,NR C4-type,47,71,352
+Q14995,Domain,NR LBD,369,579,579
+Q14995,DNA binding,Nuclear receptor,100,176,579
+Q14995,Zinc finger,NR C4-type,103,123,579
+Q14995,Zinc finger,NR C4-type,140,164,579
+Q15306,DNA binding,IRF tryptophan pentad repeat,21,129,451
+Q15319,Domain,POU-specific,179,256,338
+Q15319,DNA binding,Homeobox,274,333,338
+Q15319,Motif,POU-IV box,56,65,338
+Q15329,DNA binding,DNA binding,47,118,346
+Q15329,Motif,DEF box,81,118,346
+Q15406,Domain,NR LBD,249,480,480
+Q15406,DNA binding,Nuclear receptor,57,132,480
+Q15406,Zinc finger,NR C4-type,60,80,480
+Q15406,Zinc finger,NR C4-type,96,120,480
+Q15475,DNA binding,Homeobox,124,183,284
+Q15554,Domain,HTH myb-type,484,541,542
+Q15554,DNA binding,H-T-H motif,512,537,542
+Q15554,Motif,Nuclear localization signal,371,375,542
+Q15561,DNA binding,TEA,36,112,434
+Q15562,DNA binding,TEA,38,114,447
+Q15583,DNA binding,Homeobox; TALE-type,164,226,401
+Q15583,Motif,CTBP-binding motif,153,157,401
+Q15699,DNA binding,Homeobox,132,191,326
+Q15699,Motif,OAR,306,319,326
+Q15723,DNA binding,ETS,208,290,593
+Q15906,DNA binding,DNA binding,156,206,364
+Q15911,Zinc finger,C2H2-type 1; degenerate,79,101,3703
+Q15911,Zinc finger,C2H2-type 2,282,305,3703
+Q15911,Zinc finger,C2H2-type 3,640,663,3703
+Q15911,Zinc finger,C2H2-type 4,671,694,3703
+Q15911,Zinc finger,C2H2-type 5,726,750,3703
+Q15911,Zinc finger,C2H2-type 6; atypical,804,828,3703
+Q15911,Zinc finger,C2H2-type 7; degenerate,945,968,3703
+Q15911,Zinc finger,C2H2-type 8; atypical,984,1008,3703
+Q15911,Zinc finger,C2H2-type 9; atypical,1040,1064,3703
+Q15911,Zinc finger,C2H2-type 10; atypical,1088,1112,3703
+Q15911,Zinc finger,C2H2-type 11; atypical,1223,1246,3703
+Q15911,Zinc finger,C2H2-type 12,1252,1275,3703
+Q15911,Zinc finger,C2H2-type 13,1360,1385,3703
+Q15911,Zinc finger,C2H2-type 14,1401,1423,3703
+Q15911,Zinc finger,C2H2-type 15,1429,1452,3703
+Q15911,Zinc finger,C2H2-type 16,1545,1569,3703
+Q15911,Zinc finger,C2H2-type 17,1596,1620,3703
+Q15911,Zinc finger,C2H2-type 18,1983,2006,3703
+Q15911,DNA binding,Homeobox 1,2145,2204,3703
+Q15911,DNA binding,Homeobox 2,2242,2301,3703
+Q15911,Zinc finger,C2H2-type 19; atypical,2328,2351,3703
+Q15911,Zinc finger,C2H2-type 20,2530,2552,3703
+Q15911,DNA binding,Homeobox 3,2641,2700,3703
+Q15911,Zinc finger,C2H2-type 21,2711,2734,3703
+Q15911,DNA binding,Homeobox 4,2944,3003,3703
+Q15911,Zinc finger,C2H2-type 22,3024,3048,3703
+Q15911,Zinc finger,C2H2-type 23,3529,3553,3703
+Q15911,Motif,Nuclear localization signal,2615,2617,3703
+Q16254,DNA binding,DNA binding,16,85,413
+Q16254,Motif,DEF box,48,85,413
+Q16254,Motif,HCFC1-binding-motif (HBM),389,392,413
+Q16594,DNA binding,DNA binding,120,137,264
+Q16650,DNA binding,T-box,213,393,682
+Q16656,DNA binding,DNA binding,109,305,503
+Q16656,Motif,Nuclear localization signal,88,116,503
+Q16676,DNA binding,Fork-head,124,215,465
+Q2KHR2,DNA binding,RFX-type winged-helix,108,183,1460
+Q2KHR2,Motif,PxLPxI/L motif; mediates interaction with ANKRA2 and RFXANK,188,193,1460
+Q33E94,DNA binding,DNA binding,44,126,735
+Q33E94,DNA binding,RFX-type winged-helix,61,136,735
+Q3SYB3,DNA binding,Fork-head,108,202,417
+Q49A26,Domain,PWWP,8,66,553
+Q49A26,DNA binding,A.T hook,168,180,553
+Q53H47,Domain,Pre-SET,73,136,684
+Q53H47,Domain,SET,139,263,684
+Q53H47,Domain,Post-SET,283,299,684
+Q53H47,DNA binding,H-T-H motif,364,395,684
+Q53H47,DNA binding,H-T-H motif,428,448,684
+Q5H9I0,DNA binding,DNA binding,108,190,405
+Q5H9I0,Motif,DEF box,156,190,405
+Q5SQQ9,DNA binding,Homeobox,100,159,334
+Q5SXM2,Domain,Myb-like 1,250,288,1469
+Q5SXM2,Domain,HTH myb-type 1,289,343,1469
+Q5SXM2,Domain,Myb-like 2,344,395,1469
+Q5SXM2,Domain,HTH myb-type 2,396,451,1469
+Q5SXM2,Domain,HTH myb-type 3,452,503,1469
+Q5SXM2,DNA binding,H-T-H motif,317,341,1469
+Q5SXM2,DNA binding,H-T-H motif,424,447,1469
+Q5SXM2,DNA binding,H-T-H motif,476,499,1469
+Q5TGY3,DNA binding,A.T hook 1,396,408,1603
+Q5TGY3,DNA binding,A.T hook 2,544,556,1603
+Q5XKR4,DNA binding,Homeobox,104,163,325
+Q5XKR4,Motif,OAR,306,319,325
+Q63HK5,Zinc finger,C2H2-type 1,214,238,1081
+Q63HK5,Zinc finger,C2H2-type 2,275,299,1081
+Q63HK5,Zinc finger,C2H2-type 3; atypical,386,404,1081
+Q63HK5,DNA binding,Homeobox; atypical,891,961,1081
+Q63HK5,Zinc finger,C2H2-type 4,976,998,1081
+Q63HK5,Zinc finger,C2H2-type 5,1041,1064,1081
+Q68CP9,Domain,ARID,13,105,1835
+Q68CP9,DNA binding,RFX-type winged-helix,524,603,1835
+Q68CP9,Zinc finger,C2H2-type,1632,1657,1835
+Q68CP9,Motif,LXXLL,313,317,1835
+Q68G74,Domain,LIM zinc-binding 1,73,133,356
+Q68G74,Domain,LIM zinc-binding 2,134,196,356
+Q68G74,DNA binding,Homeobox,225,284,356
+Q6NSI4,DNA binding,OB,228,331,855
+Q6NSW7,Repeat,1,196,200,305
+Q6NSW7,Repeat,2,201,205,305
+Q6NSW7,Repeat,3,206,210,305
+Q6NSW7,Repeat,4,216,220,305
+Q6NSW7,Repeat,5,221,225,305
+Q6NSW7,Repeat,6,226,230,305
+Q6NSW7,Repeat,7,231,235,305
+Q6NSW7,Repeat,8,236,240,305
+Q6NSW7,DNA binding,Homeobox,95,154,305
+Q6NT76,Domain,HNF-p1,18,49,420
+Q6NT76,Domain,POU-specific atypical,145,241,420
+Q6NT76,DNA binding,Homeobox,267,341,420
+Q6PIV2,DNA binding,Fork-head,173,272,292
+Q6RFH8,DNA binding,Homeobox 1,19,78,374
+Q6RFH8,DNA binding,Homeobox 2,94,153,374
+Q6VB84,DNA binding,Fork-head,108,202,417
+Q6ZRS2,Domain,HSA,124,196,3230
+Q6ZRS2,Domain,Helicase ATP-binding,630,795,3230
+Q6ZRS2,Domain,Helicase C-terminal,2044,2197,3230
+Q6ZRS2,DNA binding,A.T hook 1,2857,2869,3230
+Q6ZRS2,DNA binding,A.T hook 2,2936,2948,3230
+Q6ZRS2,DNA binding,A.T hook 3,3004,3016,3230
+Q6ZSZ6,Zinc finger,C2H2-type 1,246,270,1077
+Q6ZSZ6,Zinc finger,C2H2-type 2,307,331,1077
+Q6ZSZ6,Zinc finger,C2H2-type 3; atypical,416,440,1077
+Q6ZSZ6,DNA binding,Homeobox; atypical,885,955,1077
+Q6ZSZ6,Zinc finger,C2H2-type 4,970,992,1077
+Q6ZSZ6,Zinc finger,C2H2-type 5,1037,1060,1077
+Q7Z353,DNA binding,Homeobox 1,3,63,690
+Q7Z353,DNA binding,Homeobox 2,435,498,690
+Q7Z591,DNA binding,A.T hook,1115,1123,1439
+Q86U86,Domain,Bromo 1,41,151,1689
+Q86U86,Domain,Bromo 2,177,287,1689
+Q86U86,Domain,Bromo 3,381,487,1689
+Q86U86,Domain,Bromo 4,518,625,1689
+Q86U86,Domain,Bromo 5,653,763,1689
+Q86U86,Domain,Bromo 6,769,879,1689
+Q86U86,Domain,BAH 1,956,1074,1689
+Q86U86,Domain,BAH 2,1156,1272,1689
+Q86U86,DNA binding,HMG box,1379,1447,1689
+Q86UP3,Zinc finger,C2H2-type 1,613,636,3567
+Q86UP3,Zinc finger,C2H2-type 2,644,667,3567
+Q86UP3,Zinc finger,C2H2-type 3,699,723,3567
+Q86UP3,Zinc finger,C2H2-type 4; degenerate,767,789,3567
+Q86UP3,Zinc finger,C2H2-type 5,917,941,3567
+Q86UP3,Zinc finger,C2H2-type 6,973,995,3567
+Q86UP3,Zinc finger,C2H2-type 7,1021,1045,3567
+Q86UP3,Zinc finger,C2H2-type 8,1172,1195,3567
+Q86UP3,Zinc finger,C2H2-type 9,1201,1224,3567
+Q86UP3,Zinc finger,C2H2-type 10,1352,1374,3567
+Q86UP3,Zinc finger,C2H2-type 11,1380,1403,3567
+Q86UP3,Zinc finger,C2H2-type 12,1496,1522,3567
+Q86UP3,Zinc finger,C2H2-type 13,1548,1572,3567
+Q86UP3,Zinc finger,C2H2-type 14,1901,1924,3567
+Q86UP3,DNA binding,Homeobox 1,2084,2143,3567
+Q86UP3,DNA binding,Homeobox 2,2181,2240,3567
+Q86UP3,Zinc finger,C2H2-type 15; degenerate,2267,2291,3567
+Q86UP3,Zinc finger,C2H2-type 16,2448,2470,3567
+Q86UP3,DNA binding,Homeobox 3,2560,2619,3567
+Q86UP3,Zinc finger,C2H2-type 17,2630,2653,3567
+Q86UP3,DNA binding,Homeobox 4,2884,2943,3567
+Q86UP3,Zinc finger,C2H2-type 18,2962,2986,3567
+Q86UP3,Zinc finger,C2H2-type 19; degenerate,3354,3378,3567
+Q86UP3,Zinc finger,C2H2-type 20,3398,3422,3567
+Q86WS4,DNA binding,Binds DNA containing a D-loop,1,231,652
+Q86WV5,DNA binding,OB,2,123,123
+Q8HWS3,DNA binding,RFX-type winged-helix,124,199,928
+Q8IVH2,Domain,FoxP leucine zipper (ZIP),333,373,680
+Q8IVH2,Zinc finger,C2H2-type,307,332,680
+Q8IVH2,DNA binding,Fork-head,467,559,680
+Q8IWI9,Domain,bHLH,2423,2474,3065
+Q8IWI9,DNA binding,T-box,84,260,3065
+Q8IX15,DNA binding,Homeobox 1,55,114,550
+Q8IX15,DNA binding,Homeobox 2,355,415,550
+Q8IX15,DNA binding,Homeobox 3,451,510,550
+Q8IX15,Motif,Nuclear localization signal,358,363,550
+Q8IYH5,Domain,HTH myb-type,647,707,903
+Q8IYH5,DNA binding,H-T-H motif,680,703,903
+Q8IYH5,Zinc finger,ZZ-type,818,877,903
+Q8N196,DNA binding,Homeobox,201,260,739
+Q8N635,DNA binding,OB,167,272,442
+Q8N693,Repeat,1,244,252,406
+Q8N693,Repeat,2,253,261,406
+Q8N693,Repeat,3,262,270,406
+Q8N693,Repeat,4,271,279,406
+Q8N693,Repeat,5,280,288,406
+Q8N693,Repeat,6,289,297,406
+Q8N693,Repeat,7,298,306,406
+Q8N693,Repeat,8,307,315,406
+Q8N693,Repeat,9,316,324,406
+Q8N693,Repeat,10,325,333,406
+Q8N693,Repeat,11,334,342,406
+Q8N693,Repeat,12,343,351,406
+Q8N693,Repeat,13,352,360,406
+Q8N693,Repeat,14,361,369,406
+Q8N693,Repeat,15,370,378,406
+Q8N693,DNA binding,Homeobox,139,198,406
+Q8N693,Motif,Nuclear localization signal,138,143,406
+Q8N7U7,DNA binding,Homeobox,3,24,411
+Q8NEZ4,Domain,DHHC,436,489,4911
+Q8NEZ4,Domain,FYR N-terminal,4545,4605,4911
+Q8NEZ4,Domain,FYR C-terminal,4606,4691,4911
+Q8NEZ4,Domain,SET,4771,4887,4911
+Q8NEZ4,Domain,Post-SET,4895,4911,4911
+Q8NEZ4,DNA binding,A.T hook,34,46,4911
+Q8NEZ4,Zinc finger,C2HC pre-PHD-type 1; degenerate,227,262,4911
+Q8NEZ4,Zinc finger,PHD-type 1,283,331,4911
+Q8NEZ4,Zinc finger,PHD-type 2,341,391,4911
+Q8NEZ4,Zinc finger,RING-type,344,389,4911
+Q8NEZ4,Zinc finger,PHD-type 3,388,438,4911
+Q8NEZ4,Zinc finger,PHD-type 4,464,520,4911
+Q8NEZ4,Zinc finger,PHD-type 5,957,1010,4911
+Q8NEZ4,Zinc finger,PHD-type 6,1007,1057,4911
+Q8NEZ4,Zinc finger,PHD-type 7,1084,1139,4911
+Q8NEZ4,Zinc finger,C2HC pre-PHD-type 2,4399,4439,4911
+Q8NEZ4,Zinc finger,PHD-type 8,4460,4507,4911
+Q8NEZ4,Motif,WDR5 interaction motif (WIN),4707,4712,4911
+Q8NFC6,DNA binding,A.T hook,2872,2884,3051
+Q8NFW5,DNA binding,Homeobox,71,130,382
+Q8NFW5,Motif,OAR,359,372,382
+Q8NHV9,DNA binding,Homeobox,103,162,184
+Q8NHV9,Motif,Nuclear localization signal,155,164,184
+Q8TAU0,DNA binding,Homeobox,148,207,364
+Q8TE12,Domain,LIM zinc-binding 1,33,92,382
+Q8TE12,Domain,LIM zinc-binding 2,92,154,382
+Q8TE12,DNA binding,Homeobox,195,254,382
+Q8WY36,DNA binding,HMG box,80,148,941
+Q8WYP5,DNA binding,A.T hook,1971,1983,2266
+Q92570,Domain,NR LBD,394,623,626
+Q92570,DNA binding,Nuclear receptor,289,364,626
+Q92570,Zinc finger,NR C4-type,292,312,626
+Q92570,Zinc finger,NR C4-type,328,352,626
+Q92731,Domain,NR LBD,264,498,530
+Q92731,DNA binding,Nuclear receptor,149,214,530
+Q92731,Zinc finger,NR C4-type,149,169,530
+Q92731,Zinc finger,NR C4-type,185,209,530
+Q92753,Domain,NR LBD,222,460,470
+Q92753,DNA binding,Nuclear receptor,18,93,470
+Q92753,Zinc finger,NR C4-type,21,41,470
+Q92753,Zinc finger,NR C4-type,57,81,470
+Q92753,Motif,AF-2,456,461,470
+Q92826,DNA binding,Homeobox,216,275,284
+Q92949,DNA binding,Fork-head,120,210,421
+Q92985,DNA binding,IRF tryptophan pentad repeat,11,126,503
+Q92988,DNA binding,Homeobox,117,176,240
+Q969G2,Domain,LIM zinc-binding 1,28,87,390
+Q969G2,Domain,LIM zinc-binding 2,88,150,390
+Q969G2,DNA binding,Homeobox,157,216,390
+Q969G3,DNA binding,HMG box,66,134,411
+Q96AH0,DNA binding,OB,26,99,204
+Q96AV8,DNA binding,DNA binding,142,211,911
+Q96AV8,DNA binding,DNA binding,282,367,911
+Q96BD5,DNA binding,A.T hook,425,437,680
+Q96BD5,Zinc finger,PHD-type,488,535,680
+Q96C55,DNA binding,A.T hook,51,63,264
+Q96C55,Zinc finger,C2H2-type 1,114,136,264
+Q96C55,Zinc finger,C2H2-type 2,142,164,264
+Q96C55,Zinc finger,C2H2-type 3,170,192,264
+Q96C55,Zinc finger,C2H2-type 4,198,221,264
+Q96E14,DNA binding,OB,44,114,147
+Q96IS3,DNA binding,Homeobox,27,86,184
+Q96JN0,Domain,HTH psq-type,340,392,433
+Q96JN0,DNA binding,H-T-H motif,368,388,433
+Q96JN0,Motif,Interaction with nuclear receptors,53,57,433
+Q96JN0,Motif,Nuclear localization signal,339,345,433
+Q96JY0,DNA binding,HMG box,4,73,434
+Q96KN3,Domain,MEIS N-terminal,96,179,472
+Q96KN3,DNA binding,Homeobox,291,350,472
+Q96LI6,DNA binding,DNA binding,76,194,401
+Q96MA1,DNA binding,DM,11,58,342
+Q96NM4,DNA binding,HMG box,255,323,488
+Q96NM4,Motif,Nuclear localization signal,223,252,488
+Q96NZ1,DNA binding,Fork-head,193,289,517
+Q96QS3,DNA binding,Homeobox,328,387,562
+Q96QS3,Motif,OAR,530,543,562
+Q96RI1,Domain,NR LBD,262,486,486
+Q96RI1,DNA binding,Nuclear receptor,134,209,486
+Q96RI1,Zinc finger,NR C4-type,137,157,486
+Q96RI1,Zinc finger,NR C4-type,173,197,486
+Q96RK0,DNA binding,HMG box,1109,1177,2517
+Q96SF7,DNA binding,T-box,122,304,602
+Q96T58,Domain,RRM 1,6,81,3664
+Q96T58,Domain,RRM 2,335,415,3664
+Q96T58,Domain,RRM 3,438,513,3664
+Q96T58,Domain,RRM 4,517,589,3664
+Q96T58,Domain,RID,2201,2707,3664
+Q96T58,Domain,SPOC,3498,3664,3664
+Q96T58,DNA binding,DNA binding,1,573,3664
+Q99453,DNA binding,Homeobox,98,157,314
+Q99459,Domain,HTH myb-type 1,1,56,802
+Q99459,Domain,HTH myb-type 2,57,108,802
+Q99459,DNA binding,H-T-H motif,31,54,802
+Q99459,DNA binding,H-T-H motif,82,104,802
+Q99459,Motif,Nuclear localization signal,165,271,802
+Q99581,DNA binding,ETS,47,127,238
+Q99593,DNA binding,T-box,58,238,518
+Q99594,DNA binding,TEA,28,104,435
+Q99607,DNA binding,ETS,209,291,663
+Q99626,DNA binding,Homeobox,186,245,313
+Q99626,Motif,4S motif; modulates transactivation activity and protein stability,283,295,313
+Q99687,Domain,MEIS N-terminal,96,179,375
+Q99687,DNA binding,Homeobox; TALE-type,262,324,375
+Q99697,DNA binding,Homeobox,85,144,317
+Q99697,Motif,OAR,279,292,317
+Q99697,Motif,Nuclear localization signal,285,289,317
+Q99801,DNA binding,Homeobox,124,183,234
+Q99853,DNA binding,Fork-head,12,103,325
+Q99958,DNA binding,Fork-head,71,162,501
+Q9BPY8,DNA binding,Homeobox; degenerate,3,62,73
+Q9BQ15,DNA binding,OB,22,92,211
+Q9BQY4,DNA binding,Homeobox,134,193,288
+Q9BQY4,Motif,Nuclear localization signal,186,195,288
+Q9BT81,Domain,Sox C-terminal,268,388,388
+Q9BT81,DNA binding,HMG box,45,113,388
+Q9BVI0,Domain,Tudor 1,4,69,1012
+Q9BVI0,Domain,Tudor 2,83,147,1012
+Q9BVI0,DNA binding,A.T hook,257,269,1012
+Q9BVI0,Zinc finger,C2H2-type,452,477,1012
+Q9BVI0,Zinc finger,PHD-type,654,700,1012
+Q9BXR3,Domain,Reverse transcriptase,57,245,956
+Q9BXR3,Domain,RNase H type-1,460,590,956
+Q9BXR3,Domain,Integrase catalytic,642,803,956
+Q9BXR3,Zinc finger,Integrase-type,587,628,956
+Q9BXR3,DNA binding,Integrase-type,811,859,956
+Q9BXR3,Motif,LPQG,161,164,956
+Q9BXR3,Motif,YXDD,195,198,956
+Q9BYU1,Domain,PBC,14,209,374
+Q9BYU1,DNA binding,Homeobox; TALE-type,210,272,374
+Q9BZM3,DNA binding,Homeobox,202,261,304
+Q9BZS1,Domain,FoxP leucine zipper (ZIP),223,263,431
+Q9BZS1,Zinc finger,C2H2-type,197,222,431
+Q9BZS1,DNA binding,Fork-head,337,423,431
+Q9BZS1,Motif,Nuclear export signal,68,76,431
+Q9BZS1,Motif,LXXLL motif,92,96,431
+Q9BZS1,Motif,Nuclear export signal,239,248,431
+Q9BZS1,Motif,Nuclear localization signal,414,417,431
+Q9C056,DNA binding,Homeobox,148,207,277
+Q9C0A1,Zinc finger,C2H2-type 1,453,476,2572
+Q9C0A1,Zinc finger,C2H2-type 2,508,532,2572
+Q9C0A1,Zinc finger,C2H2-type 3,821,845,2572
+Q9C0A1,Zinc finger,C2H2-type 4,870,894,2572
+Q9C0A1,Zinc finger,C2H2-type 5,1009,1032,2572
+Q9C0A1,Zinc finger,C2H2-type 6,1191,1217,2572
+Q9C0A1,Zinc finger,C2H2-type 7,1248,1272,2572
+Q9C0A1,Zinc finger,C2H2-type 8,1480,1503,2572
+Q9C0A1,DNA binding,Homeobox 1,1595,1654,2572
+Q9C0A1,Zinc finger,C2H2-type 9; degenerate,1670,1696,2572
+Q9C0A1,Zinc finger,C2H2-type 10,1769,1791,2572
+Q9C0A1,DNA binding,Homeobox 2,1857,1916,2572
+Q9C0A1,DNA binding,Homeobox 3,2065,2124,2572
+Q9C0A1,Zinc finger,C2H2-type 11; degenerate,2451,2471,2572
+Q9C0A1,Zinc finger,C2H2-type 12,2495,2519,2572
+Q9GZN2,DNA binding,Homeobox; TALE-type,16,79,237
+Q9H147,DNA binding,A.T hook,159,173,329
+Q9H147,DNA binding,H-T-H motif,216,237,329
+Q9H147,Motif,Nuclear localization signal,164,170,329
+Q9H161,DNA binding,Homeobox,214,273,411
+Q9H161,Motif,OAR,391,404,411
+Q9H2C1,Domain,LIM zinc-binding 1,3,61,402
+Q9H2C1,Domain,LIM zinc-binding 2,62,125,402
+Q9H2C1,DNA binding,Homeobox,180,239,402
+Q9H2P0,Zinc finger,C2H2-type 1,74,97,1102
+Q9H2P0,Zinc finger,C2H2-type 2; atypical,107,129,1102
+Q9H2P0,Zinc finger,C2H2-type 3,165,188,1102
+Q9H2P0,Zinc finger,C2H2-type 4,221,244,1102
+Q9H2P0,Zinc finger,C2H2-type 5; atypical,447,469,1102
+Q9H2P0,Zinc finger,C2H2-type 6; atypical,489,510,1102
+Q9H2P0,Zinc finger,C2H2-type 7,512,535,1102
+Q9H2P0,Zinc finger,C2H2-type 8; atypical,622,647,1102
+Q9H2P0,Zinc finger,C2H2-type 9; atypical,662,686,1102
+Q9H2P0,DNA binding,Homeobox,754,814,1102
+Q9H2W2,DNA binding,Homeobox,86,145,232
+Q9H334,Domain,FoxP leucine zipper (ZIP),332,372,677
+Q9H334,Zinc finger,C2H2-type,306,331,677
+Q9H334,DNA binding,Fork-head,465,555,677
+Q9H3D4,Domain,SAM,541,607,680
+Q9H3D4,DNA binding,DNA binding,170,362,680
+Q9H4I2,Zinc finger,C2H2-type 1,77,100,956
+Q9H4I2,Zinc finger,C2H2-type 2,109,132,956
+Q9H4I2,DNA binding,Homeobox 1,304,363,956
+Q9H4I2,DNA binding,Homeobox 2,494,553,956
+Q9H4I2,DNA binding,Homeobox 3,612,671,956
+Q9H4I2,DNA binding,Homeobox 4,764,823,956
+Q9H4I2,DNA binding,Homeobox 5,835,894,956
+Q9H4S2,DNA binding,Homeobox,147,206,264
+Q9H611,DNA binding,DNA binding,577,596,641
+Q9H668,DNA binding,OB,57,155,368
+Q9H6I2,Domain,Sox C-terminal,280,413,414
+Q9H6I2,DNA binding,HMG box,68,136,414
+Q9H6I2,Motif,9aaTAD,361,369,414
+Q9H9S0,Repeat,1,196,200,305
+Q9H9S0,Repeat,2,201,205,305
+Q9H9S0,Repeat,3,206,210,305
+Q9H9S0,Repeat,4,216,220,305
+Q9H9S0,Repeat,5,221,225,305
+Q9H9S0,Repeat,6,226,230,305
+Q9H9S0,Repeat,7,231,235,305
+Q9H9S0,Repeat,8,236,240,305
+Q9H9S0,DNA binding,Homeobox,95,154,305
+Q9HBE1,Domain,BTB,41,130,687
+Q9HBE1,DNA binding,A.T hook,264,276,687
+Q9HBE1,Zinc finger,C2H2-type 1,292,314,687
+Q9HBE1,Zinc finger,C2H2-type 2,355,377,687
+Q9HBE1,Zinc finger,C2H2-type 3,383,405,687
+Q9HBE1,Zinc finger,C2H2-type 4,413,436,687
+Q9HBE1,Zinc finger,C2H2-type 5,442,464,687
+Q9HBE1,Zinc finger,C2H2-type 6,495,518,687
+Q9HBE1,Zinc finger,C2H2-type 7,605,628,687
+Q9HBU1,DNA binding,Homeobox,142,201,254
+Q9HCS4,DNA binding,HMG box,346,414,588
+Q9HCS4,Motif,Nuclear localization signal,421,427,588
+Q9NP08,DNA binding,Homeobox,203,262,348
+Q9NP08,Motif,HMX family specific domain 1,263,273,348
+Q9NP08,Motif,HMX family specific domain 2,276,289,348
+Q9NP62,DNA binding,GCM,14,169,436
+Q9NP66,DNA binding,HMG box,103,171,347
+Q9NPC8,DNA binding,Homeobox,124,183,291
+Q9NQ69,Domain,LIM zinc-binding 1,69,130,397
+Q9NQ69,Domain,LIM zinc-binding 2,131,193,397
+Q9NQ69,DNA binding,Homeobox,267,326,397
+Q9NQB0,DNA binding,HMG box,350,418,619
+Q9NQB0,Motif,Nuclear localization signal,425,430,619
+Q9NQL9,Domain,DMA,249,284,472
+Q9NQL9,DNA binding,DM,29,76,472
+Q9NR48,Domain,AWS,2091,2142,2969
+Q9NR48,Domain,SET,2145,2261,2969
+Q9NR48,Domain,Post-SET,2269,2285,2969
+Q9NR48,Domain,Bromo,2444,2550,2969
+Q9NR48,Domain,BAH,2661,2798,2969
+Q9NR48,DNA binding,A.T hook 1,887,899,2969
+Q9NR48,DNA binding,A.T hook 2,1347,1359,2969
+Q9NR48,DNA binding,A.T hook 3,1847,1859,2969
+Q9NR48,Zinc finger,PHD-type,2585,2631,2969
+Q9NRE2,Zinc finger,C2H2-type 1,215,239,1034
+Q9NRE2,Zinc finger,C2H2-type 2,275,299,1034
+Q9NRE2,Zinc finger,C2H2-type 3; atypical,380,404,1034
+Q9NRE2,DNA binding,Homeobox; atypical,841,911,1034
+Q9NRE2,Zinc finger,C2H2-type 4,926,948,1034
+Q9NRE2,Zinc finger,C2H2-type 5,994,1017,1034
+Q9NTI5,Repeat,HEAT,383,419,1447
+Q9NTI5,DNA binding,A.T hook 1,1249,1261,1447
+Q9NTI5,DNA binding,A.T hook 2,1287,1299,1447
+Q9NTI5,DNA binding,A.T hook 3,1372,1384,1447
+Q9NU39,DNA binding,Fork-head,107,201,408
+Q9NYD6,DNA binding,Homeobox,268,327,342
+Q9NZC4,Domain,PNT,29,115,300
+Q9NZC4,DNA binding,ETS,207,289,300
+Q9NZR4,Domain,CVC,224,277,365
+Q9NZR4,DNA binding,Homeobox,164,223,365
+Q9NZR4,Motif,Octapeptide motif,31,38,365
+Q9NZR4,Motif,Nuclear localization signal,161,166,365
+Q9P0K8,DNA binding,Fork-head,66,143,574
+Q9P0W2,DNA binding,HMG box,70,138,317
+Q9UBC0,DNA binding,CUT,283,369,465
+Q9UBC0,DNA binding,Homeobox,385,444,465
+Q9UBD0,DNA binding,DNA binding,98,282,423
+Q9UBR4,Domain,LIM zinc-binding 1,31,81,397
+Q9UBR4,Domain,LIM zinc-binding 2,90,144,397
+Q9UBR4,DNA binding,Homeobox,157,216,397
+Q9UBX0,DNA binding,Homeobox,108,167,185
+Q9UBX2,DNA binding,Homeobox 1,19,78,424
+Q9UBX2,DNA binding,Homeobox 2,94,153,424
+Q9UGU0,DNA binding,A.T hook,1537,1551,1960
+Q9UGU0,Zinc finger,C2HC pre-PHD-type; degenerate,1829,1865,1960
+Q9UGU0,Zinc finger,PHD-type,1885,1933,1960
+Q9UGU0,Motif,Nuclear localization signal,1254,1268,1960
+Q9UGU0,Motif,Nuclear localization signal,1576,1600,1960
+Q9UGU0,Motif,Nuclear localization signal,1785,1792,1960
+Q9UGU5,DNA binding,HMG box,407,475,601
+Q9UIF9,Domain,MBD,546,617,1905
+Q9UIF9,Domain,DDT,848,913,1905
+Q9UIF9,Domain,Bromo,1793,1897,1905
+Q9UIF9,DNA binding,A.T hook 1,649,661,1905
+Q9UIF9,DNA binding,A.T hook 2,670,682,1905
+Q9UIF9,DNA binding,A.T hook 3,1186,1198,1905
+Q9UIF9,DNA binding,A.T hook 4,1404,1416,1905
+Q9UIF9,Zinc finger,PHD-type,1676,1726,1905
+Q9UIU6,DNA binding,Homeobox,223,282,781
+Q9UIW0,DNA binding,Homeobox,102,161,290
+Q9UJU2,DNA binding,HMG box,299,367,399
+Q9UJU5,DNA binding,Fork-head,141,235,478
+Q9UKI9,Domain,POU-specific,183,257,436
+Q9UKI9,DNA binding,Homeobox,281,340,436
+Q9UKW6,Domain,PNT,43,129,265
+Q9UKW6,DNA binding,ETS,173,254,265
+Q9UKY1,Zinc finger,C2H2-type 1,70,93,873
+Q9UKY1,Zinc finger,C2H2-type 2,102,125,873
+Q9UKY1,DNA binding,Homeobox 1,284,346,873
+Q9UKY1,DNA binding,Homeobox 2,464,526,873
+Q9UKY1,DNA binding,Homeobox 3,569,630,873
+Q9UKY1,DNA binding,Homeobox 4,660,722,873
+Q9UKY1,DNA binding,Homeobox 5,777,832,873
+Q9UL17,DNA binding,T-box,141,326,535
+Q9ULV5,DNA binding,DNA binding,17,121,492
+Q9UMN6,Domain,Bromo,1404,1504,2715
+Q9UMN6,Domain,FYR N-terminal,1727,1783,2715
+Q9UMN6,Domain,FYR C-terminal,2411,2492,2715
+Q9UMN6,Domain,SET,2575,2691,2715
+Q9UMN6,Domain,Post-SET,2699,2715,2715
+Q9UMN6,DNA binding,A.T hook 1,37,44,2715
+Q9UMN6,DNA binding,A.T hook 2,110,117,2715
+Q9UMN6,DNA binding,A.T hook 3,357,365,2715
+Q9UMN6,Zinc finger,CXXC-type,959,1006,2715
+Q9UMN6,Zinc finger,PHD-type 1,1201,1252,2715
+Q9UMN6,Zinc finger,PHD-type 2,1249,1303,2715
+Q9UMN6,Zinc finger,PHD-type 3,1335,1396,2715
+Q9UMN6,Zinc finger,C2HC pre-PHD-type,1578,1618,2715
+Q9UMN6,Zinc finger,PHD-type 4,1639,1686,2715
+Q9UMN6,Motif,Menin-binding motif (MBM),17,36,2715
+Q9UMN6,Motif,WDR5 interaction motif (WIN),2508,2513,2715
+Q9UMQ3,DNA binding,Homeobox,133,192,279
+Q9UMR3,DNA binding,T-box,109,288,447
+Q9UN79,DNA binding,HMG box,424,492,622
+Q9UPM6,Domain,LIM zinc-binding 1,70,122,363
+Q9UPM6,Domain,LIM zinc-binding 2,131,184,363
+Q9UPM6,DNA binding,Homeobox,219,278,363
+Q9UPW0,DNA binding,Fork-head,77,168,622
+Q9UPW6,Domain,CMP,57,158,733
+Q9UPW6,Domain,CUTL,161,234,733
+Q9UPW6,DNA binding,CUT 1,350,437,733
+Q9UPW6,DNA binding,CUT 2,473,560,733
+Q9UPW6,DNA binding,Homeobox,615,674,733
+Q9WJR5,Domain,Reverse transcriptase,57,248,959
+Q9WJR5,Domain,RNase H type-1,463,593,959
+Q9WJR5,Domain,Integrase catalytic,645,806,959
+Q9WJR5,Zinc finger,Integrase-type,590,631,959
+Q9WJR5,DNA binding,Integrase-type,814,862,959
+Q9WJR5,Motif,LPQG,164,167,959
+Q9WJR5,Motif,YXDD,198,201,959
+Q9Y222,Domain,Myb-like 1,225,263,760
+Q9Y222,Domain,HTH myb-type,268,333,760
+Q9Y222,Domain,Myb-like 2,339,388,760
+Q9Y222,DNA binding,H-T-H motif,306,329,760
+Q9Y261,DNA binding,Fork-head,159,252,457
+Q9Y261,Motif,Nuclear localization signal,106,113,457
+Q9Y2G1,Domain,Peptidase S74,587,696,1151
+Q9Y2G1,DNA binding,NDT80,250,541,1151
+Q9Y2G1,Motif,Nuclear localization signal,254,257,1151
+Q9Y2G1,Motif,Nuclear localization signal,491,494,1151
+Q9Y2U8,Domain,LEM,6,50,911
+Q9Y2U8,DNA binding,DNA binding,707,726,911
+Q9Y2V3,DNA binding,Homeobox,136,195,346
+Q9Y2V3,Motif,Octapeptide motif,33,40,346
+Q9Y2V3,Motif,OAR,323,336,346
+Q9Y2V3,Motif,Nuclear localization signal,329,333,346
+Q9Y458,DNA binding,T-box,96,283,520
+Q9Y466,Domain,NR LBD,155,383,385
+Q9Y466,DNA binding,Nuclear receptor,13,90,385
+Q9Y466,Zinc finger,NR C4-type,16,36,385
+Q9Y466,Zinc finger,NR C4-type,52,78,385
+Q9Y5R5,DNA binding,DM,123,170,561
+Q9Y5R6,DNA binding,DM,72,118,373
+Q9Y5X4,Domain,NR LBD,169,410,410
+Q9Y5X4,DNA binding,Nuclear receptor,44,120,410
+Q9Y5X4,Zinc finger,NR C4-type,47,67,410
+Q9Y5X4,Zinc finger,NR C4-type,83,108,410
+Q9Y603,Domain,PNT,33,117,341
+Q9Y603,DNA binding,ETS,224,305,341
+Q9Y6X0,Repeat,1,1520,1527,1596
+Q9Y6X0,Repeat,2,1528,1535,1596
+Q9Y6X0,Repeat,3,1536,1543,1596
+Q9Y6X0,DNA binding,A.T hook 1,584,596,1596
+Q9Y6X0,DNA binding,A.T hook 2,1016,1028,1596
+Q9Y6X0,DNA binding,A.T hook 3,1451,1463,1596
+Q9Y6X8,Zinc finger,C2H2-type 1,78,101,837
+Q9Y6X8,Zinc finger,C2H2-type 2,110,133,837
+Q9Y6X8,DNA binding,Homeobox 1,263,324,837
+Q9Y6X8,DNA binding,Homeobox 2,439,501,837
+Q9Y6X8,DNA binding,Homeobox 3,530,591,837
+Q9Y6X8,DNA binding,Homeobox 4,628,690,837
+Q9Y6Y1,Domain,IPT/TIG,875,953,1673
+Q9Y6Y1,Repeat,ANK 1,1064,1093,1673
+Q9Y6Y1,Repeat,ANK 2,1109,1129,1673
+Q9Y6Y1,Repeat,ANK 3,1143,1172,1673
+Q9Y6Y1,Domain,IQ 1,1547,1576,1673
+Q9Y6Y1,Domain,IQ 2,1577,1599,1673
+Q9Y6Y1,Domain,IQ 3,1600,1622,1673
+Q9Y6Y1,DNA binding,CG-1,63,188,1673
+Q9Y6Y1,Motif,Nuclear localization signal,112,119,1673
+A2RU54,DNA binding,Homeobox,149,208,273
+A6NHT5,DNA binding,Homeobox,227,286,357
+A6NJT0,DNA binding,Homeobox,105,164,531
+A6NLW8,DNA binding,Homeobox 1,15,74,204
+A6NLW8,DNA binding,Homeobox 2,101,160,204
+A6NNA5,DNA binding,Homeobox,33,92,263
+A6NNA5,Motif,OAR,204,217,263
+O00570,DNA binding,HMG box,51,119,391
+O00570,Motif,9aaTAD,342,350,391
+O43638,DNA binding,Fork-head,17,108,330
+O43812,DNA binding,Homeobox 1,19,78,170
+O43812,DNA binding,Homeobox 2,94,153,170
+O60422,DNA binding,CUT,312,398,494
+O60422,DNA binding,Homeobox,414,473,494
+O95076,DNA binding,Homeobox,153,212,343
+P09630,DNA binding,Homeobox,141,200,235
+P09630,Motif,Antp-type hexapeptide,122,127,235
+P0C7M4,DNA binding,Homeobox,134,193,288
+P0C7M4,Motif,Nuclear localization signal,186,195,288
+P10266,Domain,Reverse transcriptase,57,245,1014
+P10266,Domain,RNase H type-1,460,590,1014
+P10266,Domain,Integrase catalytic,642,803,1014
+P10266,Zinc finger,Integrase-type,587,628,1014
+P10266,DNA binding,Integrase-type,811,859,1014
+P10266,Motif,LPQG,161,164,1014
+P10266,Motif,YXDD,195,198,1014
+P31267,DNA binding,Homeobox,155,214,233
+P31267,Motif,Antp-type hexapeptide,136,141,233
+P31277,DNA binding,Homeobox,266,325,338
+P32314,DNA binding,Fork-head,112,208,431
+P63132,Domain,Reverse transcriptase,57,248,959
+P63132,Domain,RNase H type-1,463,593,959
+P63132,Domain,Integrase catalytic,645,806,959
+P63132,Zinc finger,Integrase-type,590,631,959
+P63132,DNA binding,Integrase-type,814,862,959
+P63132,Motif,LPQG,164,167,959
+P63132,Motif,YXDD,198,201,959
+P63133,Domain,Reverse transcriptase,57,245,956
+P63133,Domain,RNase H type-1,460,590,956
+P63133,Domain,Integrase catalytic,642,803,956
+P63133,Zinc finger,Integrase-type,587,628,956
+P63133,DNA binding,Integrase-type,811,859,956
+P63133,Motif,LPQG,161,164,956
+P63133,Motif,YXDD,195,198,956
+P63135,Domain,Reverse transcriptase,57,245,1459
+P63135,Domain,RNase H type-1,460,590,1459
+P63135,Domain,Integrase catalytic,642,803,1459
+P63135,Zinc finger,Integrase-type,587,628,1459
+P63135,DNA binding,Integrase-type,811,859,1459
+P63135,Motif,LPQG,161,164,1459
+P63135,Motif,YXDD,195,198,1459
+P63136,Domain,Reverse transcriptase,57,245,954
+P63136,Domain,RNase H type-1,460,588,954
+P63136,Domain,Integrase catalytic,640,801,954
+P63136,Zinc finger,Integrase-type,585,626,954
+P63136,DNA binding,Integrase-type,809,857,954
+P63136,Motif,LPQG,161,164,954
+P63136,Motif,YXDD,195,198,954
+P78414,DNA binding,Homeobox; TALE-type,125,188,480
+Q03828,DNA binding,Homeobox,188,247,476
+Q12950,DNA binding,Fork-head,104,198,439
+Q17RH7,DNA binding,Homeobox,20,79,139
+Q2M1V0,DNA binding,Homeobox,82,141,245
+Q3C1V8,DNA binding,Homeobox,110,169,233
+Q4G112,DNA binding,DNA binding,10,200,596
+Q5VZB9,Domain,DMA,327,362,504
+Q5VZB9,DNA binding,DM,97,144,504
+Q6IQ32,Zinc finger,C2H2-type 1,73,96,1131
+Q6IQ32,Zinc finger,C2H2-type 2; degenerate,106,128,1131
+Q6IQ32,Zinc finger,C2H2-type 3; degenerate,155,178,1131
+Q6IQ32,Zinc finger,C2H2-type 4,215,240,1131
+Q6IQ32,Zinc finger,C2H2-type 5; degenerate,694,716,1131
+Q6IQ32,Zinc finger,C2H2-type 6; degenerate,747,768,1131
+Q6IQ32,Zinc finger,C2H2-type 7,770,793,1131
+Q6IQ32,Zinc finger,C2H2-type 8,875,898,1131
+Q6IQ32,Zinc finger,C2H2-type 9; degenerate,913,937,1131
+Q6IQ32,DNA binding,Homeobox,1043,1102,1131
+Q6PJQ5,DNA binding,Fork-head,192,294,311
+Q6XYB7,DNA binding,Homeobox,85,144,198
+Q8IUE0,DNA binding,Homeobox; TALE-type,48,111,185
+Q8IUE1,DNA binding,Homeobox; TALE-type,48,111,241
+Q8IXT2,DNA binding,DM,42,89,367
+Q8N3X6,Domain,HTH psq-type,516,568,602
+Q8N3X6,DNA binding,H-T-H motif,544,564,602
+Q96A47,Domain,LIM zinc-binding 1,25,86,359
+Q96A47,Domain,LIM zinc-binding 2,87,149,359
+Q96A47,DNA binding,Homeobox,191,250,359
+Q96LU7,Domain,Peptidase S74,451,559,910
+Q96LU7,DNA binding,NDT80,142,405,910
+Q96SC8,Domain,DMA,314,349,542
+Q96SC8,DNA binding,DM,70,117,542
+Q99525,DNA binding,DNA binding,17,21,98
+Q99811,DNA binding,Homeobox,104,163,253
+Q99811,Motif,OAR,230,243,253
+Q9BZI1,DNA binding,Homeobox; TALE-type,112,175,471
+Q9C009,DNA binding,Fork-head,119,214,403
+Q9GZZ0,DNA binding,Homeobox,229,288,328
+Q9GZZ0,Motif,Antp-type hexapeptide,204,209,328
+Q9NY43,DNA binding,Homeobox,232,291,387
+Q9UJV8,DNA binding,DNA binding,51,293,347
+Q9UQG0,Domain,Reverse transcriptase,57,245,969
+Q9UQG0,Domain,RNase H type-1,460,590,969
+Q9UQG0,Domain,Integrase catalytic,642,803,969
+Q9UQG0,Zinc finger,Integrase-type,587,628,969
+Q9UQG0,DNA binding,Integrase-type,811,859,969
+Q9UQG0,Motif,LPQG,161,164,969
+Q9Y651,DNA binding,HMG box,8,76,276
+A0A1W2PPM1,DNA binding,Homeobox,28,87,405
+A0A2Z4LIS9,DNA binding,Fork-head,242,290,290
+A6NDR6,Domain,MEIS N-terminal,12,65,274
+A6NDR6,DNA binding,Homeobox,161,223,274
+A6NFQ7,DNA binding,Homeobox,16,75,191
+A6NJG6,DNA binding,Homeobox,78,137,315
+A6NMT0,DNA binding,Homeobox,181,240,343
+A8K0S8,Domain,MEIS N-terminal,96,149,358
+A8K0S8,DNA binding,Homeobox,245,307,358
+A8MYZ6,DNA binding,Fork-head,88,182,492
+B2CW77,DNA binding,DNA binding,8,50,178
+C9JSJ3,Domain,bHLH,62,116,638
+C9JSJ3,DNA binding,HMG box,540,608,638
+O75333,DNA binding,T-box,69,252,385
+P0DV77,DNA binding,Homeobox,20,79,301
+P31275,DNA binding,Homeobox,214,273,282
+Q14549,DNA binding,Homeobox,261,320,363
+Q15270,DNA binding,Homeobox,296,355,448
+Q53EQ6,Domain,HTH psq-type,47,98,642
+Q53EQ6,Domain,HTH CENPB-type,112,185,642
+Q53EQ6,Domain,DDE-1 1,233,357,642
+Q53EQ6,Domain,DDE-1 2,410,477,642
+Q53EQ6,DNA binding,H-T-H motif,74,94,642
+Q53EQ6,DNA binding,H-T-H motif,145,178,642
+Q5VYV0,DNA binding,Fork-head,13,107,432
+Q6B0B8,Domain,HTH psq-type,3,55,471
+Q6B0B8,Domain,HTH CENPB-type,67,137,471
+Q6B0B8,Domain,DDE-1,167,360,471
+Q6B0B8,DNA binding,H-T-H motif,31,51,471
+Q6B0B8,DNA binding,H-T-H motif,100,130,471
+Q6NT04,Domain,HTH psq-type,1,52,549
+Q6NT04,Domain,HTH CENPB-type,68,139,549
+Q6NT04,Domain,DDE-1,169,399,549
+Q6NT04,DNA binding,H-T-H motif,28,48,549
+Q6NT04,DNA binding,H-T-H motif,101,132,549
+Q6ZN32,DNA binding,ETS,39,120,361
+Q6ZNG2,DNA binding,Homeobox,186,245,339
+Q6ZV50,DNA binding,RFX-type winged-helix,22,97,586
+Q8IY51,Domain,HTH psq-type,12,63,512
+Q8IY51,Domain,HTH CENPB-type,75,146,512
+Q8IY51,Domain,DDE-1,174,375,512
+Q8IY51,DNA binding,H-T-H motif,39,59,512
+Q8IY51,DNA binding,H-T-H motif,108,139,512
+Q8IYA7,DNA binding,Homeobox; TALE-type,71,132,352
+Q8N5J4,DNA binding,ETS,111,194,248
+Q8N7G0,Domain,POU-specific,118,192,328
+Q8N7G0,DNA binding,Homeobox,210,269,328
+Q8WW32,DNA binding,HMG box 1,9,79,186
+Q8WW32,DNA binding,HMG box 2,93,161,186
+Q8WXT5,DNA binding,Fork-head,108,202,416
+Q96PT3,DNA binding,Homeobox 1,46,105,197
+Q96PT3,DNA binding,Homeobox 2,121,180,197
+Q96PT4,DNA binding,Homeobox 1,46,105,197
+Q96PT4,DNA binding,Homeobox 2,121,180,197
+Q9BZE3,DNA binding,Homeobox,178,237,327
+Q9H2Z4,DNA binding,Homeobox,189,248,354
+Q9HB31,DNA binding,Homeobox,19,78,190
+Q9UD57,DNA binding,Homeobox,163,222,310
+Q9Y4A0,Domain,HTH psq-type,1,52,524
+Q9Y4A0,Domain,HTH CENPB-type,67,139,524
+Q9Y4A0,Domain,DDE-1,168,385,524
+Q9Y4A0,DNA binding,H-T-H motif,28,48,524
+Q9Y4A0,DNA binding,H-T-H motif,100,132,524
+A0A1B0GTS1,DNA binding,DNA binding,79,182,333
+A0A1B0GWH4,DNA binding,DNA binding,79,182,333
+A0A1W2PPF3,DNA binding,Homeobox 1,15,74,345
+A0A1W2PPF3,DNA binding,Homeobox 2,102,161,345
+A0A1W2PPK0,DNA binding,Homeobox,24,83,400
+A0A1W2PQ73,DNA binding,ETS,42,122,354
+A0A1W2PRP0,DNA binding,Fork-head,32,130,233
+B2RD01,Domain,HTH psq-type,13,64,187
+B2RD01,Domain,HTH CENPB-type,78,155,187
+B2RD01,DNA binding,H-T-H motif,40,60,187
+B2RD01,DNA binding,H-T-H motif,111,148,187
+E9PGG2,DNA binding,Homeobox,135,196,379
+P0CB48,DNA binding,HMG box 1,107,175,400
+P0CB48,DNA binding,HMG box 2,229,295,400
+P0CJ85,DNA binding,Homeobox 1,19,78,424
+P0CJ85,DNA binding,Homeobox 2,94,153,424
+P0CJ86,DNA binding,Homeobox 1,19,78,424
+P0CJ86,DNA binding,Homeobox 2,94,153,424
+P0CJ87,DNA binding,Homeobox 1,19,78,422
+P0CJ87,DNA binding,Homeobox 2,94,153,422
+P0CJ88,DNA binding,Homeobox 1,19,78,424
+P0CJ88,DNA binding,Homeobox 2,94,153,424
+P0CJ89,DNA binding,Homeobox 1,19,78,424
+P0CJ89,DNA binding,Homeobox 2,94,153,424
+P0CJ90,DNA binding,Homeobox 1,19,78,424
+P0CJ90,DNA binding,Homeobox 2,94,153,424
+Q12766,DNA binding,HMG box,42,110,1292
+Q17RP2,Domain,HTH psq-type,3,54,521
+Q17RP2,Domain,HTH CENPB-type,66,137,521
+Q17RP2,Domain,DDE-1,170,372,521
+Q17RP2,DNA binding,H-T-H motif,30,50,521
+Q17RP2,DNA binding,H-T-H motif,99,130,521
+Q4W5G0,Domain,HTH psq-type,1,52,525
+Q4W5G0,Domain,HTH CENPB-type,67,139,525
+Q4W5G0,Domain,DDE-1,168,385,525
+Q4W5G0,DNA binding,H-T-H motif,28,48,525
+Q4W5G0,DNA binding,H-T-H motif,100,132,525
+Q5VV16,DNA binding,Fork-head,108,202,416
+Q6ZQN5,DNA binding,Fork-head,102,196,318
+Q7Z5D8,DNA binding,Homeobox,102,161,188
+Q96MW7,Domain,HTH psq-type,6,57,591
+Q96MW7,Domain,HTH CENPB-type,70,149,591
+Q96MW7,Domain,DDE-1,178,403,591
+Q96MW7,DNA binding,H-T-H motif,33,53,591
+Q96MW7,DNA binding,H-T-H motif,103,142,591

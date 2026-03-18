@@ -1,0 +1,6 @@
+feature_type,n_unique_variants,Pathogenic/LP,VUS,Benign/LB,Other/Conflicting
+DNA binding,7418,1583,5087,239,509
+Domain,4129,517,3173,227,212
+Motif,436,50,305,39,42
+Repeat,109,4,84,16,5
+Zinc finger,966,171,671,71,53

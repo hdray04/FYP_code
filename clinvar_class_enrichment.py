@@ -70,16 +70,83 @@ def recode(sig):
     if sig in VUS_TERMS:
         return "VUS"
     if sig in CONFLICTING_TERMS:
-        return "Conflicting"
-    return "Other"
+        return "Other/Conflicting"
+    return "Other/Conflicting"
+
+def odds_ratio_ci_95(a, b, c, d, continuity=0.5):
+    """
+    95% CI for odds ratio using log(OR) ± 1.96*SE.
+    Applies Haldane-Anscombe continuity correction if any cell is zero.
+    """
+    corrected = min(a, b, c, d) == 0
+    if corrected:
+        a, b, c, d = a + continuity, b + continuity, c + continuity, d + continuity
+
+    or_hat = (a * d) / (b * c)
+    se = np.sqrt((1 / a) + (1 / b) + (1 / c) + (1 / d))
+    z = scipy.stats.norm.ppf(0.975)
+    lo = np.exp(np.log(or_hat) - z * se)
+    hi = np.exp(np.log(or_hat) + z * se)
+    return or_hat, lo, hi, corrected
 
 cv_dbp["sig_group"] = cv_dbp["ClinicalSignificance"].apply(recode)
+cv["sig_group_all"] = cv["ClinicalSignificance"].apply(recode)
+print("Clinical significance breakdown (ALL ClinVar variants):")
+total_cv = len(cv)
+for grp, n in cv["sig_group_all"].value_counts().items():
+    pct = 100 * n / total_cv
+    print(f"  {grp:<20} {n:>8,}  ({pct:.1f}%)")
+print()
 
-print("Clinical significance breakdown (DBP variants):")
+print("Clinical significance breakdown (DBP variants only):")
 for grp, n in cv_dbp["sig_group"].value_counts().items():
     pct = 100 * n / len(cv_dbp)
-    print(f"  {grp:<20} {n:>6,}  ({pct:.1f}%)")
+    print(f"  {grp:<20} {n:>8,}  ({pct:.1f}%)")
 print()
+
+# ── DBP enrichment vs rest of ClinVar (odds ratio per sig group) ───────────────
+
+SIG_GROUPS = ["Pathogenic/LP", "VUS", "Benign/LB", "Other/Conflicting"]
+
+n_dbp     = len(cv_dbp)
+n_non_dbp = len(cv) - n_dbp
+
+dbp_counts    = cv_dbp["sig_group"].value_counts()
+all_counts    = cv["sig_group_all"].value_counts()
+non_dbp_counts = (all_counts - dbp_counts).fillna(all_counts)
+
+print("Enrichment of clinical significance in DBPs vs rest of ClinVar (Fisher's exact):")
+print(f"  Note: ascertainment bias likely inflates enrichment for well-studied genes.")
+print(f"  {'Sig group':<20} {'DBP%':>6}  {'non-DBP%':>8}  {'OR':>6}  {'95% CI':>18}  {'p_raw':>10}")
+print(f"  {'-'*85}")
+
+dbp_enrichment_rows = []
+for sig in SIG_GROUPS:
+    a = int(dbp_counts.get(sig, 0))          # DBP, this sig
+    b = int(non_dbp_counts.get(sig, 0))      # non-DBP, this sig
+    c = n_dbp - a                             # DBP, other sigs
+    d = n_non_dbp - b                         # non-DBP, other sigs
+
+    _, p_raw = scipy.stats.fisher_exact([[a, b], [c, d]])
+    or_hat, ci_lo, ci_hi, corrected = odds_ratio_ci_95(a, c, b, d)
+
+    pct_dbp    = 100 * a / n_dbp     if n_dbp     else 0
+    pct_nondbp = 100 * b / n_non_dbp if n_non_dbp else 0
+    cc = "†" if corrected else ""
+    stars = " ***" if p_raw < 0.001 else (" **" if p_raw < 0.01 else (" *" if p_raw < 0.05 else ""))
+    print(f"  {sig:<20} {pct_dbp:>6.1f}%  {pct_nondbp:>7.1f}%  {or_hat:>6.2f}{cc}  "
+          f"[{ci_lo:>6.2f}, {ci_hi:>6.2f}]  {p_raw:>10.3e}{stars}")
+    dbp_enrichment_rows.append({
+        "sig_group": sig, "n_dbp": a, "n_non_dbp": b,
+        "pct_dbp": round(pct_dbp, 2), "pct_non_dbp": round(pct_nondbp, 2),
+        "odds_ratio": round(or_hat, 3), "ci95_lo": round(ci_lo, 3), "ci95_hi": round(ci_hi, 3),
+        "p_raw": p_raw, "continuity_corrected": corrected,
+    })
+
+print("  † Haldane-Anscombe continuity correction applied\n")
+
+pd.DataFrame(dbp_enrichment_rows).to_csv("clinvar_dbp_sig_enrichment.csv", index=False)
+print("Saved: clinvar_dbp_sig_enrichment.csv\n")
 
 # ── Merge with structural classes ──────────────────────────────────────────────
 
@@ -118,7 +185,7 @@ for _, row in ploop_proteins.iterrows():
     print(f"  {row['uniprot_id']}  {n_vars} variants")
 
 # Ensure all sig groups present
-for col in ["Pathogenic/LP", "Benign/LB", "VUS", "Conflicting", "Other"]:
+for col in ["Pathogenic/LP", "Benign/LB", "VUS", "Other/Conflicting"]:
     if col not in pivot.columns:
         pivot[col] = 0
 
@@ -142,13 +209,12 @@ for cls, row in pivot.iterrows():
 pivot.to_csv("clinvar_class_enrichment.csv")
 print("\nSaved: clinvar_class_enrichment.csv\n")
 
-SIG_ORDER  = ["Pathogenic/LP", "Conflicting", "VUS", "Benign/LB", "Other"]
+SIG_ORDER  = ["Pathogenic/LP", "VUS", "Benign/LB", "Other/Conflicting"]
 SIG_COLORS = {
-    "Pathogenic/LP": "#d62728",
-    "Conflicting"  : "#ff7f0e",
-    "VUS"          : "#aec7e8",
-    "Benign/LB"    : "#2ca02c",
-    "Other"        : "#c7c7c7",
+    "Pathogenic/LP"    : "#d62728",
+    "VUS"              : "#aec7e8",
+    "Benign/LB"        : "#2ca02c",
+    "Other/Conflicting": "#c7c7c7",
 }
 
 # ── Build normalised table: variants per protein per sig group ─────────────────
@@ -255,22 +321,6 @@ plt.tight_layout()
 plt.savefig("clinvar_pathogenic_fraction.png", dpi=150, bbox_inches="tight")
 
 
-def odds_ratio_ci_95(a, b, c, d, continuity=0.5):
-    """
-    95% CI for odds ratio using log(OR) ± 1.96*SE.
-    Applies Haldane-Anscombe continuity correction if any cell is zero.
-    """
-    corrected = min(a, b, c, d) == 0
-    if corrected:
-        a, b, c, d = a + continuity, b + continuity, c + continuity, d + continuity
-
-    or_hat = (a * d) / (b * c)
-    se = np.sqrt((1 / a) + (1 / b) + (1 / c) + (1 / d))
-    z = scipy.stats.norm.ppf(0.975)
-    lo = np.exp(np.log(or_hat) - z * se)
-    hi = np.exp(np.log(or_hat) + z * se)
-    return or_hat, lo, hi, corrected
-
 # Livesey-Marsh style relative enrichment
 # For each class vs all others: Pathogenic/LP vs Benign/LB
 print("\nFisher's exact test — relative enrichment (Pathogenic/LP vs Benign/LB):")
@@ -338,7 +388,7 @@ sig_classes = {
 
 # ── Plot 3: Proportional stacked bar (class composition) ─────────────────────
 
-sig_cols = [c for c in ["Pathogenic/LP", "Conflicting", "VUS", "Benign/LB", "Other"]
+sig_cols = [c for c in ["Pathogenic/LP", "VUS", "Benign/LB", "Other/Conflicting"]
             if c in pivot.columns]
 
 # Classes with ≥2 proteins, sorted by P/LP fraction ascending (for barh)
@@ -351,11 +401,10 @@ class_n = plot_pivot["n_proteins"].to_dict()
 fig, ax = plt.subplots(figsize=(10, 12))
 
 prop_colors = {
-    "Pathogenic/LP": "#A32D2D",
-    "Conflicting":   "#E8A838",
-    "VUS":           "#6B9FD4",
-    "Benign/LB":     "#4A7C3F",
-    "Other":         "#888780",
+    "Pathogenic/LP"    : "#A32D2D",
+    "VUS"              : "#6B9FD4",
+    "Benign/LB"        : "#4A7C3F",
+    "Other/Conflicting": "#888780",
 }
 
 left = np.zeros(len(pivot_pct))

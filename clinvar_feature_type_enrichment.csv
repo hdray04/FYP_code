@@ -1,0 +1,6 @@
+feature_type,n_path_in_type,n_path_other_types,pct_path_in_type,pct_path_other_types,odds_ratio,ci95_lo,ci95_hi,p_raw,continuity_corrected
+DNA binding,1583,742,21.34,13.16,1.791,1.628,1.97,1.95372954300157e-34,False
+Domain,517,1808,12.52,20.25,0.564,0.507,0.627,4.462302499318644e-28,False
+Motif,50,2275,11.47,18.02,0.589,0.437,0.794,0.0002723932958365598,False
+Repeat,4,2321,3.67,17.92,0.174,0.064,0.474,1.2700310953789993e-05,False
+Zinc finger,171,2154,17.7,17.81,0.992,0.836,1.178,0.9651507250524183,False
