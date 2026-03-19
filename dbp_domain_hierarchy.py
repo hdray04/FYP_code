@@ -355,8 +355,8 @@ other_row = pd.DataFrame([{
 }])
 main_classes["percent"] = (main_classes["n_proteins"] / annotated_total * 100).round(1)
 
+main_classes = main_classes.sort_values("n_proteins", ascending=True)
 merged_bar = pd.concat([other_row, main_classes], ignore_index=True)
-merged_bar = merged_bar.sort_values("n_proteins", ascending=True)
 
 fig, ax = plt.subplots(figsize=(11, max(5, len(merged_bar) * 0.45)))
 colors_merged = ["#aec7e8"] + list(plt.cm.tab20.colors[:len(main_classes)])
