@@ -29,6 +29,8 @@ print(domains.head())
 
 #Load ClinVar data 
 cv = pd.read_csv(CLINVAR_CSV, low_memory=False)
+cv = cv[cv["OriginSimple"] == "germline"].copy()
+cv = cv[~((cv["canonical_residue"] == "Met") & (cv["residue_seq"] == 1))].copy()  # remove start-lost
 cv = cv.dropna(subset=["uniprot", "residue_seq"]).copy()
 cv["residue_seq"] = cv["residue_seq"].astype(int)
 
@@ -36,7 +38,7 @@ print(f"{len(cv)} ClinVar variants with valid UniProt ID and residue position\n"
 print(cv["uniprot"].nunique(), "unique proteins in ClinVar\n")
 
 #Merge with domain info 
-classif = pd.read_csv("protein_classifications_hierarchy.csv")
+classif = pd.read_csv("Csvs/protein_classifications_hierarchy.csv")
 classif = classif[~classif["is_te"]]  # Exclude TEs
 dbp_ids = set(classif["uniprot_id"])
 
@@ -126,19 +128,24 @@ def odds_ratio_ci_95(a, b, c, d, continuity=0.5):
 n_in  = in_sig.sum()
 n_out = out_sig.sum()
 
-print(f"{'Sig group':<20} {'In-dom%':>8}  {'Out-dom%':>9}  {'OR':>6}  {'95% CI':>18}  {'p':>10}")
-print("-" * 80)
+SIG_GROUPS = ["Pathogenic/LP", "VUS", "Benign/LB", "Other/Conflicting"]
+n_tests = len(SIG_GROUPS)
+print(f"  Bonferroni correction: n_tests={n_tests}")
+print(f"{'Sig group':<20} {'In-dom%':>8}  {'Out-dom%':>9}  {'OR':>6}  {'95% CI':>18}  {'p_raw':>10}  {'p_bonf':>10}")
+print("-" * 95)
 
-for sig in ["Pathogenic/LP", "VUS", "Benign/LB", "Other/Conflicting"]:
+for sig in SIG_GROUPS:
     a = int(in_sig.get(sig, 0))   # in domain, this sig
     b = int(out_sig.get(sig, 0))  # out of domain, this sig
     c = n_in  - a                  # in domain, other sigs
     d = n_out - b                  # out of domain, other sigs
 
-    _, p = scipy.stats.fisher_exact([[a, b], [c, d]])
+    _, p_raw = scipy.stats.fisher_exact([[a, b], [c, d]])
     or_hat, lo, hi, corrected = odds_ratio_ci_95(a, c, b, d)
+    p_bonf = min(p_raw * n_tests, 1.0)
 
     cc    = "†" if corrected else ""
-    stars = " ***" if p < 0.001 else (" **" if p < 0.01 else (" *" if p < 0.05 else ""))
+    stars = " ***" if p_bonf < 0.001 else (" **" if p_bonf < 0.01 else (" *" if p_bonf < 0.05 else ""))
+    fmt_p = lambda p: f"< {np.finfo(float).tiny:.2e}" if p == 0.0 else f"{p:.3e}"
     print(f"{sig:<20} {100*a/n_in:>7.1f}%  {100*b/n_out:>8.1f}%  "
-          f"{or_hat:>6.2f}{cc}  [{lo:>6.2f}, {hi:>6.2f}]  {p:>10.3e}{stars}")
+          f"{or_hat:>6.2f}{cc}  [{lo:>6.2f}, {hi:>6.2f}]  {fmt_p(p_raw):>14}  {fmt_p(p_bonf):>14}{stars}")

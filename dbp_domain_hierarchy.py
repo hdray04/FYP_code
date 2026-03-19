@@ -295,16 +295,16 @@ for t, n in type_breakdown.items():
 
 # ── Step 6: Save ──────────────────────────────────────────────────────────────
 
-df.to_csv("protein_classifications_hierarchy.csv", index=False)
+df.to_csv("Csvs/protein_classifications_hierarchy.csv", index=False)
 
 summary = class_counts.reset_index()
 summary.columns = ["structural_class", "n_proteins"]
 summary["percent"] = (summary["n_proteins"] / total * 100).round(1)
-summary.to_csv("class_summary_hierarchy.csv", index=False)
+summary.to_csv("Csvs/class_summary_hierarchy.csv", index=False)
 
 print("\nFiles saved:")
-print("  protein_classifications_hierarchy.csv")
-print("  class_summary_hierarchy.csv")
+print("  Csvs/protein_classifications_hierarchy.csv")
+print("  Csvs/class_summary_hierarchy.csv")
 
 # ── Step 7: Plot ──────────────────────────────────────────────────────────────
 
@@ -334,6 +334,51 @@ ax.xaxis.set_major_locator(mticker.MaxNLocator(integer=True))
 plt.tight_layout()
 plt.savefig("domain_class_hierarchy_bar.png", dpi=150, bbox_inches="tight")
 print("  domain_class_hierarchy_bar.png")
+plt.show()
+
+# ── Bar chart (merged: classes <1% → "Other") ─────────────────────────────────
+
+EXCLUDE_FROM_BAR = {"No structural annotation", "⚠ Transposable element / ERV"}
+bar_data = summary[~summary["structural_class"].isin(EXCLUDE_FROM_BAR)].copy()
+annotated_total = bar_data["n_proteins"].sum()
+threshold = annotated_total * 0.01
+
+main_classes  = bar_data[bar_data["n_proteins"] >= threshold].copy()
+other_classes = bar_data[bar_data["n_proteins"] <  threshold]
+other_n       = other_classes["n_proteins"].sum()
+other_count   = len(other_classes)
+
+other_row = pd.DataFrame([{
+    "structural_class": f"Other ({other_count} classes)",
+    "n_proteins": other_n,
+    "percent": round(100 * other_n / annotated_total, 1),
+}])
+main_classes["percent"] = (main_classes["n_proteins"] / annotated_total * 100).round(1)
+
+merged_bar = pd.concat([other_row, main_classes], ignore_index=True)
+merged_bar = merged_bar.sort_values("n_proteins", ascending=True)
+
+fig, ax = plt.subplots(figsize=(11, max(5, len(merged_bar) * 0.45)))
+colors_merged = ["#aec7e8"] + list(plt.cm.tab20.colors[:len(main_classes)])
+bars = ax.barh(merged_bar["structural_class"], merged_bar["n_proteins"],
+               color=colors_merged, edgecolor="white")
+
+for bar, (_, row) in zip(bars, merged_bar.iterrows()):
+    ax.text(row["n_proteins"] + 0.5, bar.get_y() + bar.get_height() / 2,
+            f'{row["n_proteins"]}  ({row["percent"]}%)',
+            va="center", fontsize=8)
+
+ax.set_xlabel("Number of proteins", fontsize=11)
+ax.set_title(
+    "DNA-binding proteins — structural classification\n"
+    "(classes < 1% merged into Other)",
+    fontsize=11, fontweight="bold"
+)
+ax.spines[["top", "right"]].set_visible(False)
+ax.xaxis.set_major_locator(mticker.MaxNLocator(integer=True))
+plt.tight_layout()
+plt.savefig("domain_class_hierarchy_bar_merged.png", dpi=150, bbox_inches="tight")
+print("  domain_class_hierarchy_bar_merged.png")
 plt.show()
 
 # ── Pie chart ─────────────────────────────────────────────────────────────────

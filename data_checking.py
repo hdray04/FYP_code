@@ -70,6 +70,10 @@ try:
     with open(clinvar_file, 'r', encoding='utf-8') as f:
         reader = csv.DictReader(f)
         for row in reader:
+            if row.get('OriginSimple', '').strip() != 'germline':
+                continue
+            if row.get('canonical_residue', '').strip() == 'Met' and row.get('residue_seq', '').strip() == '1':
+                continue  # remove start-lost
             uniprot_id = row['uniprot']
             if uniprot_id and uniprot_id.strip() and uniprot_id in all_protein_accessions:  # Only count variants for our proteins
                 if uniprot_id not in clinvar_variants:
@@ -353,4 +357,111 @@ except FileNotFoundError:
 except Exception as e:
     print(f'Error processing ClinVar data: {e}')
 
+
+#### Evidence Source Analysis ####
+
+print(f'\n{"="*60}')
+print("EVIDENCE SOURCE ANALYSIS")
+print(f'{"="*60}')
+
+# ECO code classification
+EXPERIMENTAL_CODES = {
+    'ECO:0000269',  # experimental evidence used in manual assertion
+    'ECO:0000314',  # direct assay evidence
+    'ECO:0000315',  # mutant phenotype evidence
+    'ECO:0000353',  # physical interaction evidence
+    'ECO:0000316',  # genetic interaction evidence
+    'ECO:0000270',  # expression pattern evidence
+    'ECO:0007005',  # immunofluorescence evidence
+    'ECO:0006056',  # imaging assay evidence
+    'ECO:0007829',  # X-ray crystallography evidence
+    'ECO:0007744',  # combinatorial/structural evidence
+}
+BY_SIMILARITY_CODES = {
+    'ECO:0000250',  # sequence similarity (By similarity)
+    'ECO:0000255',  # match to sequence model (Probable/Potential)
+    'ECO:0000256',  # automated sequence model match
+}
+CURATED_CODES = {
+    'ECO:0000305',  # curator inference
+    'ECO:0000303',  # non-traceable author statement
+    'ECO:0000304',  # author statement
+    'ECO:0000312',  # imported information
+}
+
+def collect_evidence_counts(obj, counts):
+    if isinstance(obj, dict):
+        if 'evidenceCode' in obj:
+            code = obj['evidenceCode']
+            if code in EXPERIMENTAL_CODES:
+                counts['experimental'] += 1
+            elif code in BY_SIMILARITY_CODES:
+                counts['by_similarity'] += 1
+            elif code in CURATED_CODES:
+                counts['curated'] += 1
+            else:
+                counts['other'] += 1
+        for v in obj.values():
+            collect_evidence_counts(v, counts)
+    elif isinstance(obj, list):
+        for item in obj:
+            collect_evidence_counts(item, counts)
+
+totals = {'experimental': 0, 'by_similarity': 0, 'curated': 0, 'other': 0}
+protein_profiles = {}
+
+for entry in results:
+    acc = entry['primaryAccession']
+    counts = {'experimental': 0, 'by_similarity': 0, 'curated': 0, 'other': 0}
+    collect_evidence_counts(entry, counts)
+    protein_profiles[acc] = counts
+    for k in totals:
+        totals[k] += counts[k]
+
+grand_total = sum(totals.values())
+
+print(f'\n--- Annotation-level breakdown ({grand_total} total evidence tags) ---')
+print(f'Experimental (direct):         {totals["experimental"]:6d}  ({100*totals["experimental"]/grand_total:.1f}%)')
+print(f'By similarity/probable/potential:{totals["by_similarity"]:5d}  ({100*totals["by_similarity"]/grand_total:.1f}%)')
+print(f'Curated/inferred:              {totals["curated"]:6d}  ({100*totals["curated"]/grand_total:.1f}%)')
+if totals['other']:
+    print(f'Other/unclassified:            {totals["other"]:6d}  ({100*totals["other"]/grand_total:.1f}%)')
+
+# Per-protein profile
+exp_only = []
+sim_only = []
+both = []
+neither = []
+
+for acc, ev in protein_profiles.items():
+    has_exp = ev['experimental'] > 0
+    has_sim = ev['by_similarity'] > 0
+    if has_exp and has_sim:
+        both.append(acc)
+    elif has_exp:
+        exp_only.append(acc)
+    elif has_sim:
+        sim_only.append(acc)
+    else:
+        neither.append(acc)
+
+print(f'\n--- Per-protein evidence profile ---')
+print(f'Experimental + by similarity:  {len(both):4d} proteins ({100*len(both)/total:.1f}%)')
+print(f'Experimental only:             {len(exp_only):4d} proteins ({100*len(exp_only)/total:.1f}%)')
+print(f'By similarity only:            {len(sim_only):4d} proteins ({100*len(sim_only)/total:.1f}%)')
+print(f'Neither (curated/other only):  {len(neither):4d} proteins ({100*len(neither)/total:.1f}%)')
+
+# Top-level proteinExistence field
+from collections import Counter as _Counter
+pe_counts = _Counter(entry.get('proteinExistence') for entry in results)
+print(f'\n--- proteinExistence field (top-level UniProt classification) ---')
+for level, count in sorted(pe_counts.items()):
+    print(f'  {level}: {count} ({100*count/total:.1f}%)')
+
+# List proteins with ONLY similarity-based evidence
+if sim_only:
+    print(f'\n--- Proteins with NO experimental evidence (by similarity only): {len(sim_only)} ---')
+    for acc in sorted(sim_only):
+        ev = protein_profiles[acc]
+        print(f'  {acc}  (by_similarity={ev["by_similarity"]}, curated={ev["curated"]})')
 

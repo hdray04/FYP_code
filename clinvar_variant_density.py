@@ -11,7 +11,7 @@ import json
 import pandas as pd
 
 CLINVAR_CSV  = "Data/clinvar_variants_28_08_2025.csv"
-CLASSIF_CSV  = "protein_classifications_hierarchy.csv"
+CLASSIF_CSV  = "Csvs/protein_classifications_hierarchy.csv"
 UNIPROT_JSON = "Data/uniprotkb_organism_id_9606_AND_reviewed_2026_03_06.json"
 
 # ── Load protein lengths from UniProt JSON ─────────────────────────────────────
@@ -36,6 +36,8 @@ dbp_ids = set(classif["uniprot_id"])
 
 print("Loading ClinVar...")
 cv = pd.read_csv(CLINVAR_CSV, low_memory=False)
+cv = cv[cv["OriginSimple"] == "germline"].copy()
+cv = cv[~((cv["canonical_residue"] == "Met") & (cv["residue_seq"] == 1))].copy()  # remove start-lost
 cv_dbp = cv[cv["uniprot"].isin(dbp_ids)].copy()
 print(f"  {len(cv_dbp):,} variants across {cv_dbp['uniprot'].nunique()} DBPs\n")
 
@@ -111,6 +113,6 @@ for rank, (_, row) in enumerate(top20_density.iterrows(), 1):
 # ── Save both tables ───────────────────────────────────────────────────────────
 
 cols = ["uniprot", "gene", "structural_class", "length", "n_variants", "variants_per_100aa"]
-top20_raw[cols].to_csv("top20_variants_raw.csv", index=False)
-top20_density[cols].to_csv("top20_variants_density.csv", index=False)
-print("\nSaved: top20_variants_raw.csv  |  top20_variants_density.csv")
+top20_raw[cols].to_csv("Csvs/top20_variants_raw.csv", index=False)
+top20_density[cols].to_csv("Csvs/top20_variants_density.csv", index=False)
+print("\nSaved: Csvs/top20_variants_raw.csv  |  Csvs/top20_variants_density.csv")

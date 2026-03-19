@@ -197,12 +197,12 @@ print(f"Unclassified   : {class_counts.get('Unclassified', 0)}")
 
 # ── Save tables ────────────────────────────────────────────────────────────────
 
-df.to_csv("protein_classifications.csv", index=False)
+df.to_csv("Csvs/protein_classifications.csv", index=False)
 
 summary = class_counts.reset_index()
 summary.columns = ["structural_class", "n_proteins"]
 summary["percent"] = (summary["n_proteins"] / total * 100).round(1)
-summary.to_csv("class_summary.csv", index=False)
+summary.to_csv("Csvs/class_summary.csv", index=False)
 
 print("\nFiles saved:")
 print("  protein_classifications.csv  — one row per protein")

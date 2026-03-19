@@ -12,7 +12,7 @@ import scipy.stats
 # ── Paths ──────────────────────────────────────────────────────────────────────
 
 CLINVAR_CSV       = "Data/clinvar_variants_28_08_2025.csv"
-CLASSIF_CSV       = "protein_classifications_hierarchy.csv"
+CLASSIF_CSV       = "Csvs/protein_classifications_hierarchy.csv"
 
 # ── Load classifications ───────────────────────────────────────────────────────
 
@@ -27,7 +27,9 @@ print(f"  {len(classif)} proteins ({len(dbp_ids)} unique IDs, TEs excluded)\n")
 
 print("Loading ClinVar...")
 cv = pd.read_csv(CLINVAR_CSV, low_memory=False)
-print(f"  {len(cv):,} total variants")
+cv = cv[cv["OriginSimple"] == "germline"].copy()
+cv = cv[~((cv["canonical_residue"] == "Met") & (cv["residue_seq"] == 1))].copy()  # remove start-lost
+print(f"  {len(cv):,} total variants (germline, missense only)")
 
 # Filter to DBP proteins
 cv_dbp = cv[cv["uniprot"].isin(dbp_ids)].copy()
@@ -115,10 +117,12 @@ dbp_counts    = cv_dbp["sig_group"].value_counts()
 all_counts    = cv["sig_group_all"].value_counts()
 non_dbp_counts = (all_counts - dbp_counts).fillna(all_counts)
 
+n_dbp_tests = len(SIG_GROUPS)
 print("Enrichment of clinical significance in DBPs vs rest of ClinVar (Fisher's exact):")
 print(f"  Note: ascertainment bias likely inflates enrichment for well-studied genes.")
-print(f"  {'Sig group':<20} {'DBP n':>8} {'DBP%':>6}  {'nonDBP n':>9} {'nonDBP%':>8}  {'OR':>6}  {'95% CI':>18}  {'p_raw':>10}")
-print(f"  {'-'*100}")
+print(f"  Bonferroni correction: n_tests={n_dbp_tests}")
+print(f"  {'Sig group':<20} {'DBP n':>8} {'DBP%':>6}  {'nonDBP n':>9} {'nonDBP%':>8}  {'OR':>6}  {'95% CI':>18}  {'p_raw':>10}  {'p_bonf':>10}")
+print(f"  {'-'*115}")
 
 dbp_enrichment_rows = []
 for sig in SIG_GROUPS:
@@ -129,23 +133,24 @@ for sig in SIG_GROUPS:
 
     _, p_raw = scipy.stats.fisher_exact([[a, b], [c, d]])
     or_hat, ci_lo, ci_hi, corrected = odds_ratio_ci_95(a, c, b, d)
+    p_bonf = min(p_raw * n_dbp_tests, 1.0)
 
     pct_dbp    = 100 * a / n_dbp     if n_dbp     else 0
     pct_nondbp = 100 * b / n_non_dbp if n_non_dbp else 0
     cc = "†" if corrected else ""
-    stars = " ***" if p_raw < 0.001 else (" **" if p_raw < 0.01 else (" *" if p_raw < 0.05 else ""))
+    stars = " ***" if p_bonf < 0.001 else (" **" if p_bonf < 0.01 else (" *" if p_bonf < 0.05 else ""))
     print(f"  {sig:<20} {a:>8,} {pct_dbp:>6.1f}%  {b:>9,} {pct_nondbp:>7.1f}%  "
-          f"{or_hat:>6.2f}{cc}  [{ci_lo:>6.2f}, {ci_hi:>6.2f}]  {p_raw:>10.3e}{stars}")
+          f"{or_hat:>6.2f}{cc}  [{ci_lo:>6.2f}, {ci_hi:>6.2f}]  {p_raw:>10.3e}  {p_bonf:>10.3e}{stars}")
     dbp_enrichment_rows.append({
         "sig_group": sig, "n_dbp": a, "n_non_dbp": b,
         "pct_dbp": round(pct_dbp, 2), "pct_non_dbp": round(pct_nondbp, 2),
         "odds_ratio": round(or_hat, 3), "ci95_lo": round(ci_lo, 3), "ci95_hi": round(ci_hi, 3),
-        "p_raw": p_raw, "continuity_corrected": corrected,
+        "p_raw": p_raw, "p_bonf": p_bonf, "continuity_corrected": corrected,
     })
 
 print("  † Haldane-Anscombe continuity correction applied\n")
 
-pd.DataFrame(dbp_enrichment_rows).to_csv("clinvar_dbp_sig_enrichment.csv", index=False)
+pd.DataFrame(dbp_enrichment_rows).to_csv("Csvs/clinvar_dbp_sig_enrichment.csv", index=False)
 print("Saved: clinvar_dbp_sig_enrichment.csv\n")
 
 # ── Merge with structural classes ──────────────────────────────────────────────
@@ -208,8 +213,8 @@ for cls, row in pivot.iterrows():
           f"{row.get('Pathogenic/LP',0):>6,} {row.get('Benign/LB',0):>6,} "
           f"{row.get('VUS',0):>7,} {row['variants_per_protein']:>9.1f}")
 
-pivot.to_csv("clinvar_class_enrichment.csv")
-print("\nSaved: clinvar_class_enrichment.csv\n")
+pivot.to_csv("Csvs/clinvar_class_enrichment.csv")
+print("\nSaved: Csvs/clinvar_class_enrichment.csv\n")
 
 SIG_ORDER  = ["Pathogenic/LP", "VUS", "Benign/LB", "Other/Conflicting"]
 SIG_COLORS = {
@@ -237,8 +242,8 @@ norm_out = norm[["n_proteins", "total_variants", "total_pp"] +
                 [f"{s}_pp" for s in SIG_ORDER]].copy()
 norm_out.columns = ["n_proteins", "total_variants", "total_per_protein"] + \
                    [f"{s}_per_protein" for s in SIG_ORDER]
-norm_out.to_csv("clinvar_class_enrichment_normalised.csv")
-print("Saved: clinvar_class_enrichment_normalised.csv\n")
+norm_out.to_csv("Csvs/clinvar_class_enrichment_normalised.csv")
+print("Saved: Csvs/clinvar_class_enrichment_normalised.csv\n")
 
 # ── Plot 1: Normalised stacked bar — variants per protein ─────────────────────
 
@@ -381,8 +386,8 @@ path_ben_df["p_bonf_path_vs_benign"] = (
 ).clip(upper=1.0)
 
 enrich_stats = path_ben_df.sort_values("or_path_vs_benign", ascending=False)
-enrich_stats.to_csv("clinvar_enrichment_stats.csv", index=False)
-print("\nSaved: clinvar_enrichment_stats.csv")
+enrich_stats.to_csv("Csvs/clinvar_enrichment_stats.csv", index=False)
+print("\nSaved: Csvs/clinvar_enrichment_stats.csv")
 
 sig_classes = {
     cls for cls, _, p_raw, *_ in results_path_vs_benign if min(p_raw * n_tests, 1.0) < 0.05
