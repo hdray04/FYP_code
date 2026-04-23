@@ -28,7 +28,6 @@ from collections import Counter
 
 import pandas as pd
 import matplotlib.pyplot as plt
-import matplotlib.ticker as mticker
 
 # ── Paths ────────────────────────────────────────────────────────────────────
 
@@ -308,43 +307,77 @@ print("  Csvs/class_summary_hierarchy.csv")
 
 # ── Step 7: Plot ──────────────────────────────────────────────────────────────
 
+DISPLAY_NAMES = {
+    "Homeodomain-like superfamily":                                  "Homeodomain-like",
+    "Winged helix-like DNA-binding domain superfamily":              "Winged helix-like",
+    "Nuclear hormone receptor-like domain superfamily":              "Nuclear hormone receptor-like",
+    "High mobility group box domain superfamily":                    "HMG box",
+    "p53-like transcription factor, DNA-binding domain superfamily": "p53-like",
+    "Sterile alpha motif/pointed domain superfamily":                "SAM/pointed domain",
+    "Nucleic acid-binding, OB-fold":                                 "OB-fold",
+    "SMAD-like domain superfamily":                                  "SMAD-like",
+    "E2F-DP heterodimerization region":                              "E2F-DP",
+    "DM DNA-binding domain superfamily":                             "DM domain",
+}
+
+def display_name(s):
+    """Return shortened display label; collapse 'Other (N classes)' → 'Other (N)'."""
+    if s in DISPLAY_NAMES:
+        return DISPLAY_NAMES[s]
+    if s.startswith("Other (") and s.endswith(" classes)"):
+        return s.replace(" classes)", ")")
+    return s
+
 plot_df = (summary[~summary["structural_class"].isin(
                ["No structural annotation", "⚠ Transposable element / ERV"])]
            .head(20)
            .sort_values("n_proteins", ascending=True))
 
 fig, ax = plt.subplots(figsize=(11, 8))
-colors = plt.cm.tab20.colors
-bars   = ax.barh(plot_df["structural_class"], plot_df["n_proteins"],
-                 color=colors[:len(plot_df)], edgecolor="white")
+GREY = plt.cm.tab10.colors[7]  # reserved for "Other"
+_t = [c for i, c in enumerate(plt.cm.tab10.colors) if i != 7]  # tab10 minus grey
+# Swap blue (pos 0) and brown (pos 5) so Homeodomain-like (6th above threshold) = blue,
+# and SAM/pointed domain (1st above threshold) = brown
+_t[0], _t[5] = _t[5], _t[0]
+MAIN_COLORS = _t
+THRESHOLD = 9
+# tab20 interleaves dark/light pairs — odd indices are the light versions, distinct from MAIN_COLORS
+SMALL_COLORS = [plt.cm.tab20.colors[i] for i in range(1, 20, 2) if i != 15]  # skip light grey
+main_classes_plot = [r for _, r in plot_df.iterrows() if r["n_proteins"] > THRESHOLD]
+small_classes_plot = [r for _, r in plot_df.iterrows() if r["n_proteins"] <= THRESHOLD]
+color_iter_main  = iter(MAIN_COLORS  * ((len(main_classes_plot)  // len(MAIN_COLORS)  + 1)))
+color_iter_small = iter(SMALL_COLORS * ((len(small_classes_plot) // len(SMALL_COLORS) + 1)))
+colors = [next(color_iter_main) if row["n_proteins"] > THRESHOLD else next(color_iter_small)
+          for _, row in plot_df.iterrows()]
+bars   = ax.barh(plot_df["structural_class"].map(display_name), plot_df["n_proteins"],
+                 color=colors, edgecolor="white")
 
 for bar, (_, row) in zip(bars, plot_df.iterrows()):
     ax.text(row["n_proteins"] + 0.5, bar.get_y() + bar.get_height() / 2,
             f'{row["n_proteins"]}  ({row["percent"]}%)',
-            va="center", fontsize=8)
+            va="center", fontsize=14, fontfamily="Palatino")
 
-ax.set_xlabel("Number of proteins", fontsize=11)
-ax.set_title(
-    "DNA-binding proteins — structural classification\n"
-    "via InterPro hierarchy (Homologous_superfamily > Domain > Family)",
-    fontsize=11, fontweight="bold"
-)
+ax.set_xlabel("Number of proteins", fontsize=14, fontfamily="Palatino")
+ax.set_xlim(0, 300)
 ax.spines[["top", "right"]].set_visible(False)
-ax.xaxis.set_major_locator(mticker.MaxNLocator(integer=True))
+ax.tick_params(axis="y", labelsize=14)
+ax.tick_params(axis="x", labelsize=12)
+ax.set_xticks([0, 50, 100, 150, 200, 250, 300])
+for label in ax.get_yticklabels() + ax.get_xticklabels():
+    label.set_fontfamily("Palatino")
 plt.tight_layout()
 plt.savefig("domain_class_hierarchy_bar.png", dpi=150, bbox_inches="tight")
 print("  domain_class_hierarchy_bar.png")
 plt.show()
 
-# ── Bar chart (merged: classes <1% → "Other") ─────────────────────────────────
+# ── Bar chart (merged: classes ≤9 proteins → "Other") ────────────────────────
 
 EXCLUDE_FROM_BAR = {"No structural annotation", "⚠ Transposable element / ERV"}
 bar_data = summary[~summary["structural_class"].isin(EXCLUDE_FROM_BAR)].copy()
 annotated_total = bar_data["n_proteins"].sum()
-threshold = annotated_total * 0.01
 
-main_classes  = bar_data[bar_data["n_proteins"] >= threshold].copy()
-other_classes = bar_data[bar_data["n_proteins"] <  threshold]
+main_classes  = bar_data[bar_data["n_proteins"] > THRESHOLD].copy()
+other_classes = bar_data[bar_data["n_proteins"] <= THRESHOLD]
 other_n       = other_classes["n_proteins"].sum()
 other_count   = len(other_classes)
 
@@ -358,24 +391,31 @@ main_classes["percent"] = (main_classes["n_proteins"] / annotated_total * 100).r
 main_classes = main_classes.sort_values("n_proteins", ascending=True)
 merged_bar = pd.concat([other_row, main_classes], ignore_index=True)
 
-fig, ax = plt.subplots(figsize=(11, max(5, len(merged_bar) * 0.45)))
-colors_merged = ["#aec7e8"] + list(plt.cm.tab20.colors[:len(main_classes)])
-bars = ax.barh(merged_bar["structural_class"], merged_bar["n_proteins"],
+fig, ax = plt.subplots(figsize=(11, max(5, len(merged_bar) * 0.5)))
+n_main = len(main_classes)
+color_iter_m = iter(MAIN_COLORS * (n_main // len(MAIN_COLORS) + 1))
+colors_merged = []
+for _, row in merged_bar.iterrows():
+    if str(row["structural_class"]).startswith("Other"):
+        colors_merged.append(GREY)
+    else:
+        colors_merged.append(next(color_iter_m))
+bars = ax.barh(merged_bar["structural_class"].map(display_name), merged_bar["n_proteins"],
                color=colors_merged, edgecolor="white")
 
 for bar, (_, row) in zip(bars, merged_bar.iterrows()):
     ax.text(row["n_proteins"] + 0.5, bar.get_y() + bar.get_height() / 2,
             f'{row["n_proteins"]}  ({row["percent"]}%)',
-            va="center", fontsize=8)
+            va="center", fontsize=14, fontfamily="Palatino")
 
-ax.set_xlabel("Number of proteins", fontsize=11)
-ax.set_title(
-    "DNA-binding proteins — structural classification\n"
-    "(classes < 1% merged into Other)",
-    fontsize=11, fontweight="bold"
-)
+ax.set_xlabel("Number of proteins", fontsize=14, fontfamily="Palatino")
+ax.set_xlim(0, 300)
 ax.spines[["top", "right"]].set_visible(False)
-ax.xaxis.set_major_locator(mticker.MaxNLocator(integer=True))
+ax.tick_params(axis="y", labelsize=14)
+ax.tick_params(axis="x", labelsize=12)
+ax.set_xticks([0, 50, 100, 150, 200, 250, 300])
+for label in ax.get_yticklabels() + ax.get_xticklabels():
+    label.set_fontfamily("Palatino")
 plt.tight_layout()
 plt.savefig("domain_class_hierarchy_bar_merged.png", dpi=150, bbox_inches="tight")
 print("  domain_class_hierarchy_bar_merged.png")
@@ -399,13 +439,13 @@ wedges, texts, autotexts = ax2.pie(
     pie_values,
     labels=None,          # use legend instead to avoid label overlap
     autopct=lambda p: f"{p:.1f}%" if p >= 2 else "",
-    colors=colors[:len(pie_labels)],
+    colors=(MAIN_COLORS * ((len(pie_labels) // len(MAIN_COLORS)) + 1))[:len(pie_labels)],
     startangle=140,
     pctdistance=0.78,
     wedgeprops={"edgecolor": "white", "linewidth": 1.5},
 )
 for at in autotexts:
-    at.set_fontsize(8)
+    at.set_fontsize(12)
 
 ax2.legend(
     wedges, pie_labels,

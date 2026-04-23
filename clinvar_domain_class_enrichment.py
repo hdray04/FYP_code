@@ -10,7 +10,6 @@ Variants falling outside a DNA-binding domain interval are excluded entirely.
 
 import pandas as pd
 import matplotlib.pyplot as plt
-import matplotlib.ticker as mticker
 import numpy as np
 import scipy.stats
 from matplotlib.lines import Line2D
@@ -165,48 +164,6 @@ print("  † Haldane-Anscombe continuity correction applied\n")
 results_df.to_csv("Csvs/clinvar_domain_enrichment_stats.csv", index=False)
 print("Saved: Csvs/clinvar_domain_enrichment_stats.csv\n")
 
-# ── Plot A: Forest plot — ALL classes, P/LP vs B/LB ───────────────────────────
-# OR = (P/LP ratio in this class) / (P/LP ratio in all other classes)
-# Shows every class; significant ones highlighted in red.
-
-forest_df = results_df[
-    ~((results_df["cls_path"] == 0) & (results_df["cls_benign"] == 0))
-].sort_values("or_path_vs_benign", ascending=True)
-
-fig, ax = plt.subplots(figsize=(9, max(5, len(forest_df) * 0.45)))
-
-for i, (_, row) in enumerate(forest_df.iterrows()):
-    is_sig = row["p_bonf"] < 0.05
-    color  = "#A32D2D" if is_sig else "#555555"
-    ax.plot(
-        [row["ci95_lo"], row["ci95_hi"]], [i, i],
-        color=color, linewidth=1.5, zorder=2,
-    )
-    ax.scatter(row["or_path_vs_benign"], i, color=color, s=40, zorder=3)
-
-ax.axvline(x=1, color="black", linewidth=0.9, linestyle="--", zorder=1)
-ax.set_yticks(range(len(forest_df)))
-ax.set_yticklabels(
-    [f"{r['structural_class']}  ({int(r['cls_path'])}P/{int(r['cls_benign'])}B)"
-     for _, r in forest_df.iterrows()],
-    fontsize=8,
-)
-for label, (_, row) in zip(ax.get_yticklabels(), forest_df.iterrows()):
-    if row["p_bonf"] < 0.05:
-        label.set_color("#A32D2D")
-        label.set_fontweight("bold")
-
-ax.set_xlabel("Odds ratio  (P/LP vs B/LB, this class vs all others)", fontsize=10)
-ax.set_title(
-    "Plot A — P/LP vs B/LB enrichment by structural class (in-domain variants)\n"
-    "red = Bonferroni-significant  ·  n shown as P/LP count / B/LB count",
-    fontsize=10, fontweight="bold",
-)
-ax.spines[["top", "right"]].set_visible(False)
-plt.tight_layout()
-plt.savefig("clinvar_domain_OR_forest_plp_vs_blb.png", dpi=150, bbox_inches="tight")
-print("Saved: clinvar_domain_OR_forest_plp_vs_blb.png")
-plt.show()
 
 # ── Option 2: P/LP vs all other variants (higher power) ──────────────────────
 # 2x2 table: [P/LP, not-P/LP] x [this class, all others]
@@ -260,7 +217,7 @@ for _, row in results2_df.sort_values("or_plp_vs_all", ascending=False).iterrows
 results2_df.to_csv("Csvs/clinvar_domain_enrichment_stats_plp_vs_all.csv", index=False)
 print("\nSaved: Csvs/clinvar_domain_enrichment_stats_plp_vs_all.csv\n")
 
-# ── Plot B: Forest plot — ALL classes, P/LP vs all others ─────────────────────
+# ── Forest plot: OR + 95% CI, P/LP vs all other variants ──────────────────────
 
 results2_df = results2_df[results2_df["cls_total"] > 0]
 
@@ -289,8 +246,8 @@ for label, (_, row) in zip(ax.get_yticklabels(), results2_df.iterrows()):
 
 ax.set_xlabel("Odds ratio  (P/LP vs all other variants, this class vs all others)", fontsize=10)
 ax.set_title(
-    "Plot B — P/LP fraction enrichment by structural class (in-domain variants)\n"
-    "red = Bonferroni-significant  ·  n shown as P/LP / total variants (%P/LP)",
+    "P/LP enrichment by structural class (in-domain variants)\n"
+    "red = Bonferroni-significant  ·  n shown as P/LP / total (%P/LP)",
     fontsize=10, fontweight="bold",
 )
 ax.spines[["top", "right"]].set_visible(False)
@@ -299,96 +256,7 @@ plt.savefig("clinvar_domain_OR_forest_plp_vs_all.png", dpi=150, bbox_inches="tig
 print("Saved: clinvar_domain_OR_forest_plp_vs_all.png")
 plt.show()
 
-# ── Normalised table: in-domain variants per protein ──────────────────────────
-
-norm = pivot[pivot["n_proteins"] >= 2].copy()
-for sig in SIG_GROUPS:
-    norm[f"{sig}_pp"] = norm[sig] / norm["n_proteins"]
-norm["total_pp"] = norm["variants_per_protein"]
-norm = norm.sort_values("total_pp", ascending=True)
-
-# ── Plot 1: Stacked bar — in-domain variants per protein ───────────────────────
-
-fig, ax = plt.subplots(figsize=(12, 8))
-left = np.zeros(len(norm))
-for sig in SIG_GROUPS:
-    col  = f"{sig}_pp"
-    vals = norm[col].values if col in norm.columns else np.zeros(len(norm))
-    ax.barh(norm.index, vals, left=left, color=SIG_COLORS[sig], label=sig)
-    left += vals
-
-for i, (cls, row) in enumerate(norm.iterrows()):
-    ax.text(row["total_pp"] + 0.1, i,
-            f"{row['total_pp']:.1f}  (n={int(row['n_proteins'])} proteins)",
-            va="center", fontsize=7.5)
-
-ax.set_xlabel("In-domain ClinVar variants per protein", fontsize=11)
-ax.set_title(
-    "In-domain ClinVar variant burden per protein by structural class\n"
-    "(only variants within UniProt DNA-binding domain intervals)",
-    fontsize=11, fontweight="bold",
-)
-ax.legend(title="Clinical significance", bbox_to_anchor=(1, 1), loc="upper left", fontsize=9)
-ax.spines[["top", "right"]].set_visible(False)
-ax.xaxis.set_major_locator(mticker.MaxNLocator(integer=True))
-plt.tight_layout()
-plt.savefig("clinvar_domain_class_enrichment_normalised.png", dpi=150, bbox_inches="tight")
-print("Saved: clinvar_domain_class_enrichment_normalised.png")
-plt.show()
-
-# ── Plot 2: Proportional stacked bar (% composition) ─────────────────────────
-
-sig_cols    = [c for c in SIG_GROUPS if c in pivot.columns]
-plot_pivot  = pivot[pivot["n_proteins"] >= 2].copy()
-pivot_pct   = plot_pivot[sig_cols].div(plot_pivot["total_variants"], axis=0) * 100
-pivot_pct   = pivot_pct.sort_values("Pathogenic/LP", ascending=True)
-class_n     = plot_pivot["n_proteins"].to_dict()
-
-prop_colors = {
-    "Pathogenic/LP"    : "#A32D2D",
-    "VUS"              : "#6B9FD4",
-    "Benign/LB"        : "#4A7C3F",
-    "Other/Conflicting": "#888780",
-}
-
-fig, ax = plt.subplots(figsize=(10, 12))
-left = np.zeros(len(pivot_pct))
-for col in pivot_pct.columns:
-    ax.barh(range(len(pivot_pct)), pivot_pct[col], left=left,
-            color=prop_colors[col], label=col, height=0.7)
-    left += pivot_pct[col].values
-
-for i, (idx, row) in enumerate(pivot_pct.iterrows()):
-    plp = row.get("Pathogenic/LP", 0)
-    if plp > 0.5:
-        ax.text(101, i, f"{plp:.1f}%", va="center", fontsize=8,
-                color="#A32D2D", fontweight="bold")
-
-yticklabels = [f"{idx}  (n={int(class_n.get(idx, 0))})" for idx in pivot_pct.index]
-ax.set_yticks(range(len(pivot_pct)))
-ax.set_yticklabels(yticklabels, fontsize=8)
-
-for label, cls in zip(ax.get_yticklabels(), pivot_pct.index):
-    if cls in sig_classes:
-        label.set_color("#A32D2D")
-        label.set_fontweight("bold")
-
-ax.set_xlim(0, 115)
-ax.set_xlabel("% of in-domain ClinVar variants", fontsize=10)
-ax.set_title(
-    "Clinical significance breakdown by structural class\n"
-    "(in-domain variants only; red bold = Bonferroni-significant P/LP enrichment)",
-    fontsize=10, fontweight="bold",
-)
-ax.axvline(x=100, color="black", linewidth=0.5)
-ax.legend(loc="lower right", fontsize=8, framealpha=0.9)
-ax.spines[["top", "right"]].set_visible(False)
-plt.tight_layout()
-plt.savefig("clinvar_domain_class_sig_composition_pct.png", dpi=150, bbox_inches="tight")
-print("Saved: clinvar_domain_class_sig_composition_pct.png")
-plt.show()
-
-# ── Plot 3: Per-protein P/LP fraction dot plot ────────────────────────────────
+# ── Per-protein P/LP fraction dot plot ───────────────────────────────────────
 
 per_prot = (
     merged.groupby("uniprot")["sig_group"]

@@ -102,9 +102,8 @@ cv_dbp["sig_group"] = cv_dbp["ClinicalSignificance"].apply(recode)
 in_domain_ids = set(mapped["#AlleleID"])
 in_sig  = mapped.drop_duplicates("#AlleleID")["sig_group"].value_counts()
 
-
 out_domain = cv_dbp[~cv_dbp["#AlleleID"].isin(in_domain_ids)]
-out_sig = out_domain["sig_group"].value_counts()
+out_sig = out_domain.drop_duplicates("#AlleleID")["sig_group"].value_counts()
 
 print("In-domain variants:")
 for grp, n in in_sig.items():
@@ -149,3 +148,59 @@ for sig in SIG_GROUPS:
     fmt_p = lambda p: f"< {np.finfo(float).tiny:.2e}" if p == 0.0 else f"{p:.3e}"
     print(f"{sig:<20} {100*a/n_in:>7.1f}%  {100*b/n_out:>8.1f}%  "
           f"{or_hat:>6.2f}{cc}  [{lo:>6.2f}, {hi:>6.2f}]  {fmt_p(p_raw):>14}  {fmt_p(p_bonf):>14}{stars}")
+
+# ── CHECKING: boundary precision sensitivity ──────────────────────────────────
+# Domain boundaries are hard integer positions from UniProt. Variants near the
+# edge of a domain may be misclassified if boundaries are off by a few residues.
+# Test robustness by shrinking (±3, ±5) and expanding (±3, ±5) all intervals.
+
+def classify_with_offset(cv_dbp, domains_dbp, offset):
+    """Re-run in/out classification with domain boundaries shifted by `offset`
+    residues (positive = expand, negative = shrink). Returns (in_sig, out_sig)."""
+    hits = []
+    for accession, prot_vars in cv_dbp.groupby("uniprot"):
+        prot_domains = domains_dbp[domains_dbp["uniprot_id"] == accession]
+        if prot_domains.empty:
+            continue
+        for _, dom in prot_domains.iterrows():
+            lo_bound = max(1, dom["domain_start"] - offset)
+            hi_bound = dom["domain_end"] + offset
+            in_dom = prot_vars[
+                (prot_vars["residue_seq"] >= lo_bound) &
+                (prot_vars["residue_seq"] <= hi_bound)
+            ].copy()
+            if in_dom.empty:
+                continue
+            hits.append(in_dom)
+    if not hits:
+        mapped_off = pd.DataFrame(columns=cv_dbp.columns)
+    else:
+        mapped_off = pd.concat(hits, ignore_index=True).drop_duplicates("#AlleleID")
+    in_ids = set(mapped_off["#AlleleID"])
+    in_s   = mapped_off["sig_group"].value_counts()
+    out_s  = cv_dbp[~cv_dbp["#AlleleID"].isin(in_ids)]["sig_group"].value_counts()
+    return in_s, out_s
+
+# Baseline ORs for Pathogenic/LP (primary outcome)
+def path_or(in_s, out_s):
+    a = int(in_s.get("Pathogenic/LP", 0))
+    b = int(out_s.get("Pathogenic/LP", 0))
+    c = in_s.sum() - a
+    d = out_s.sum() - b
+    or_hat, _, _, _ = odds_ratio_ci_95(a, c, b, d)
+    return or_hat
+
+base_or = path_or(in_sig, out_sig)
+
+print("\n── Boundary precision sensitivity (Pathogenic/LP OR) ──")
+print(f"{'Offset':>10}  {'n_in':>8}  {'OR':>6}  {'Δ OR':>8}  {'%Δ OR':>8}")
+print("-" * 50)
+print(f"{'baseline':>10}  {int(in_sig.sum()):>8,}  {base_or:>6.3f}  {'—':>8}  {'—':>8}")
+
+for offset in [-5, -3, 3, 5]:
+    in_s, out_s = classify_with_offset(cv_dbp, domains_dbp, offset)
+    or_off = path_or(in_s, out_s)
+    delta  = or_off - base_or
+    pct    = 100 * delta / base_or
+    label  = f"{offset:+d} residues"
+    print(f"{label:>10}  {int(in_s.sum()):>8,}  {or_off:>6.3f}  {delta:>+8.3f}  {pct:>+7.1f}%")

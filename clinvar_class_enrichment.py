@@ -29,6 +29,7 @@ print("Loading ClinVar...")
 cv = pd.read_csv(CLINVAR_CSV, low_memory=False)
 cv = cv[cv["OriginSimple"] == "germline"].copy()
 cv = cv[~((cv["canonical_residue"] == "Met") & (cv["residue_seq"] == 1))].copy()  # remove start-lost
+cv = cv.dropna(subset=["uniprot", "residue_seq"]).copy()
 print(f"  {len(cv):,} total variants (germline, missense only)")
 
 # Filter to DBP proteins
@@ -93,16 +94,22 @@ def odds_ratio_ci_95(a, b, c, d, continuity=0.5):
 
 cv_dbp["sig_group"] = cv_dbp["ClinicalSignificance"].apply(recode)
 cv["sig_group_all"] = cv["ClinicalSignificance"].apply(recode)
+
+# Deduplicate by AlleleID so each variant counts once regardless of how many
+# proteins it maps to (82 variants appear on two DBP proteins in the raw data).
+cv_uniq     = cv.drop_duplicates("#AlleleID")
+cv_dbp_uniq = cv_dbp.drop_duplicates("#AlleleID")
+
 print("Clinical significance breakdown (ALL ClinVar variants):")
-total_cv = len(cv)
-for grp, n in cv["sig_group_all"].value_counts().items():
+total_cv = len(cv_uniq)
+for grp, n in cv_uniq["sig_group_all"].value_counts().items():
     pct = 100 * n / total_cv
     print(f"  {grp:<20} {n:>8,}  ({pct:.1f}%)")
 print()
 
 print("Clinical significance breakdown (DBP variants only):")
-for grp, n in cv_dbp["sig_group"].value_counts().items():
-    pct = 100 * n / len(cv_dbp)
+for grp, n in cv_dbp_uniq["sig_group"].value_counts().items():
+    pct = 100 * n / len(cv_dbp_uniq)
     print(f"  {grp:<20} {n:>8,}  ({pct:.1f}%)")
 print()
 
@@ -110,11 +117,11 @@ print()
 
 SIG_GROUPS = ["Pathogenic/LP", "VUS", "Benign/LB", "Other/Conflicting"]
 
-n_dbp     = len(cv_dbp)
-n_non_dbp = len(cv) - n_dbp
+n_dbp     = len(cv_dbp_uniq)
+n_non_dbp = len(cv_uniq) - n_dbp
 
-dbp_counts    = cv_dbp["sig_group"].value_counts()
-all_counts    = cv["sig_group_all"].value_counts()
+dbp_counts    = cv_dbp_uniq["sig_group"].value_counts()
+all_counts    = cv_uniq["sig_group_all"].value_counts()
 non_dbp_counts = (all_counts - dbp_counts).fillna(all_counts)
 
 n_dbp_tests = len(SIG_GROUPS)
