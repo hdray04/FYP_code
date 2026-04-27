@@ -29,6 +29,7 @@ Data/*
 # Data files (comment out if you want to track them)
 # *.csv
 # *.json
+# *.tsv
 
 # Logs
 *.log

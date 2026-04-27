@@ -73,7 +73,7 @@ Step 7  08_sensitivity_sim_only_check.py       Sensitivity: remove similarity-on
 
 **Classification strategy (per protein):**
 1. Extract all InterPro cross-references from the UniProt JSON entry
-2. Prioritise **Homologous_superfamily** entries (structural fold), fall back to Domain, then Family (`TYPE_PRIORITY`)
+2. Prioritise **Homologous_superfamily** entries (structural fold), fall back to Domain, then Family, then Conserved_site as a last resort (`TYPE_PRIORITY`)
 3. For each selected InterPro entry, walk up the `ParentChildTreeFile` hierarchy to its root ancestor
 4. Assign the protein the most frequently occurring root across all its entries
 5. Apply `COLLAPSE_MAP` (see manual edits below)
@@ -94,6 +94,7 @@ The raw hierarchy produces >40 distinct root classes, several of which contain I
 | `"SMAD/FHA domain superfamily"` | `"SMAD-like domain superfamily"` | Two separate root entries in the hierarchy; both represent SMAD proteins |
 | `"High mobility group protein HMGA"` | `"AT-hook motif"` | HMGA proteins bind DNA via AT-hook motifs rather than an HMG-box fold; functional class takes precedence |
 | `"Quinoprotein alcohol dehydrogenase-like superfamily"`, `"6-phosphogluconate dehydrogenase-like, C-terminal domain superfamily"` | `"AT-hook motif"` | ELYS (AHCTF1) and GLYR1 (N-PAC) carry AT-hook DNA-binding features, but walking the InterPro hierarchy leads to metabolic enzyme roots due to shared beta-barrel topology; overridden to reflect DNA-binding function |
+| `"AT hook, DNA-binding motif"` | `"AT-hook motif"` | SETBP1's sole InterPro entry (IPR017956) is a `Conserved_site` type, which falls outside the normal `Homologous_superfamily / Domain / Family` priority order and would otherwise yield "No structural annotation". The entry name directly identifies AT-hook DNA binding; manually assigned to the AT-hook class |
 
 **Note:** `"Lambda repressor-like, DNA-binding domain superfamily"` (IPR010982; 1 protein: EDF1) is retained as its own structural class. Although it shares HTH topology with homeodomains, SCOP classifies it as a distinct superfamily; merging would be structurally imprecise.
 

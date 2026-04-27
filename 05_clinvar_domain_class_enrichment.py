@@ -26,21 +26,16 @@ hits    = pd.read_csv(DOMAIN_HITS_CSV, low_memory=False)
 classif = pd.read_csv(CLASSIF_CSV)
 classif = classif[~classif["is_te"]]
 
-# ── Filter to DNA-binding domain variants only ──────────────────────────────────
-
-dna_hits = hits[hits["feature_type"] == "DNA binding"].copy()
-print(f"  {len(dna_hits):,} variant-domain hits with feature_type='DNA binding'")
-
 # A variant can map to multiple DNA-binding domain intervals (e.g. multi-domain
 # proteins).  Keep one row per unique variant — sig_group is the same for all
 # copies, so drop_duplicates on AlleleID is safe.
-dna_hits = dna_hits.drop_duplicates("#AlleleID")
-print(f"  {len(dna_hits):,} unique variants after deduplication")
-print(f"  {dna_hits['uniprot'].nunique()} proteins represented\n")
+hits = hits.drop_duplicates("#AlleleID")
+print(f"  {len(hits):,} unique variants after deduplication")
+print(f"  {hits['uniprot'].nunique()} proteins represented\n")
 
 # ── Merge with structural class ─────────────────────────────────────────────────
 
-merged = dna_hits.merge(
+merged = hits.merge(
     classif[["uniprot_id", "structural_class", "gene"]],
     left_on="uniprot",
     right_on="uniprot_id",
@@ -217,73 +212,6 @@ for _, row in results2_df.sort_values("or_plp_vs_all", ascending=False).iterrows
 results2_df.to_csv("Csvs/clinvar_domain_enrichment_stats_plp_vs_all.csv", index=False)
 print("\nSaved: Csvs/clinvar_domain_enrichment_stats_plp_vs_all.csv\n")
 
-# ── Forest plot: OR + 95% CI, P/LP vs all other variants ──────────────────────
-
-results2_df = results2_df[results2_df["cls_total"] > 0]
-
-fig, ax = plt.subplots(figsize=(9, max(5, len(results2_df) * 0.45)))
-
-for i, (_, row) in enumerate(results2_df.iterrows()):
-    is_sig = row["p_bonf"] < 0.05
-    color  = "#A32D2D" if is_sig else "#555555"
-    ax.plot(
-        [row["ci95_lo"], row["ci95_hi"]], [i, i],
-        color=color, linewidth=1.5, zorder=2,
-    )
-    ax.scatter(row["or_plp_vs_all"], i, color=color, s=40, zorder=3)
-
-ax.axvline(x=1, color="black", linewidth=0.9, linestyle="--", zorder=1)
-ax.set_yticks(range(len(results2_df)))
-ax.set_yticklabels(
-    [f"{r['structural_class']}  ({int(r['cls_path'])}/{int(r['cls_total'])} = {r['cls_pct_path']}%P/LP)"
-     for _, r in results2_df.iterrows()],
-    fontsize=8,
-)
-for label, (_, row) in zip(ax.get_yticklabels(), results2_df.iterrows()):
-    if row["p_bonf"] < 0.05:
-        label.set_color("#A32D2D")
-        label.set_fontweight("bold")
-
-ax.set_xlabel("Odds ratio  (P/LP vs all other variants, this class vs all others)", fontsize=10)
-ax.set_title(
-    "P/LP enrichment by structural class (in-domain variants)\n"
-    "red = Bonferroni-significant  ·  n shown as P/LP / total (%P/LP)",
-    fontsize=10, fontweight="bold",
-)
-ax.spines[["top", "right"]].set_visible(False)
-plt.tight_layout()
-plt.savefig("clinvar_domain_OR_forest_plp_vs_all.png", dpi=150, bbox_inches="tight")
-print("Saved: clinvar_domain_OR_forest_plp_vs_all.png")
-plt.show()
-
-# ── Per-protein P/LP fraction dot plot ───────────────────────────────────────
-
-per_prot = (
-    merged.groupby("uniprot")["sig_group"]
-    .agg(total="size", plp=lambda s: (s == "Pathogenic/LP").sum())
-    .reset_index()
-)
-per_prot = per_prot[per_prot["total"] >= 1].copy()
-per_prot["plp_frac"] = per_prot["plp"] / per_prot["total"] * 100
-
-per_prot = per_prot.merge(
-    classif[["uniprot_id", "structural_class", "gene"]],
-    left_on="uniprot", right_on="uniprot_id", how="left",
-)
-per_prot = per_prot[~per_prot["structural_class"].isin(
-    ["No structural annotation", "⚠ Transposable element / ERV"]
-)]
-
-class_sizes   = per_prot.groupby("structural_class")["uniprot"].nunique()
-class_medians = (
-    per_prot.groupby("structural_class")["plp_frac"]
-    .median()
-    .loc[class_sizes[class_sizes >= 2].index]
-    .sort_values(ascending=False)
-)
-classes_ordered = list(class_medians.index)
-overall_mean    = per_prot["plp_frac"].mean()
-
 NAME_SHORT = {
     "Hepatocyte nuclear factor 1, N-terminal domain superfamily"         : "HNF1",
     "Nuclear hormone receptor-like domain superfamily"                   : "NHR",
@@ -315,6 +243,85 @@ NAME_SHORT = {
     "P-loop containing nucleoside triphosphate hydrolase"               : "P-loop",
     "Fibronectin type III superfamily"                                  : "FN3",
 }
+
+# ── Stacked bar chart: variant classification proportions by structural class ──
+
+bar_data = pivot[pivot["total_variants"] >= 30].copy()
+bar_data["pct_path"]   = 100 * bar_data["Pathogenic/LP"]      / bar_data["total_variants"]
+bar_data["pct_vus"]    = 100 * bar_data["VUS"]                / bar_data["total_variants"]
+bar_data["pct_benign"] = 100 * bar_data["Benign/LB"]          / bar_data["total_variants"]
+bar_data["pct_other"]  = 100 * bar_data["Other/Conflicting"]  / bar_data["total_variants"]
+bar_data = bar_data.sort_values("pct_path", ascending=True)
+
+overall_pct_path = 100 * pivot["Pathogenic/LP"].sum() / pivot["total_variants"].sum()
+
+y_labels = [
+    f"{NAME_SHORT.get(c, c[:18])}{'*' if c in sig_classes2 else ''}  "
+    f"(n={int(row['total_variants']):,})"
+    for c, row in bar_data.iterrows()
+]
+
+fig, ax = plt.subplots(figsize=(10, max(5, len(bar_data) * 0.5)))
+
+lefts = np.zeros(len(bar_data))
+for col, color, lbl in [
+    ("pct_path",   "#d62728", "Pathogenic/LP"),
+    ("pct_other",  "#c7c7c7", "Other/Conflicting"),
+    ("pct_vus",    "#aec7e8", "VUS"),
+    ("pct_benign", "#2ca02c", "Benign/LB"),
+]:
+    vals = bar_data[col].values
+    ax.barh(range(len(bar_data)), vals, left=lefts, color=color, label=lbl, height=0.7)
+    lefts += vals
+
+ax.axvline(overall_pct_path, color="black", linestyle="--", linewidth=1.2,
+           label=f"Overall % P/LP ({overall_pct_path:.1f}%)")
+ax.set_yticks(range(len(bar_data)))
+ax.set_yticklabels(y_labels, fontsize=9)
+for lbl_obj, cls in zip(ax.get_yticklabels(), bar_data.index):
+    if cls in sig_classes2:
+        lbl_obj.set_fontweight("bold")
+ax.set_xlabel("% of in-domain ClinVar variants", fontsize=11)
+ax.set_xlim(0, 100)
+ax.set_title(
+    "ClinVar variant classification by structural class (in-domain variants only)\n"
+    "* Bonferroni-significant enrichment/depletion of P/LP  ·  ordered by % P/LP",
+    fontsize=10, fontweight="bold",
+)
+ax.legend(loc="lower right", fontsize=9)
+ax.spines[["top", "right"]].set_visible(False)
+plt.tight_layout()
+plt.savefig("Figures/clinvar_domain_stacked_bar.png", dpi=150, bbox_inches="tight")
+print("Saved: Figures/clinvar_domain_stacked_bar.png")
+plt.show()
+
+# ── Per-protein P/LP fraction dot plot ───────────────────────────────────────
+
+per_prot = (
+    merged.groupby("uniprot")["sig_group"]
+    .agg(total="size", plp=lambda s: (s == "Pathogenic/LP").sum())
+    .reset_index()
+)
+per_prot = per_prot[per_prot["total"] >= 1].copy()
+per_prot["plp_frac"] = per_prot["plp"] / per_prot["total"] * 100
+
+per_prot = per_prot.merge(
+    classif[["uniprot_id", "structural_class", "gene"]],
+    left_on="uniprot", right_on="uniprot_id", how="left",
+)
+per_prot = per_prot[~per_prot["structural_class"].isin(
+    ["No structural annotation", "⚠ Transposable element / ERV"]
+)]
+
+class_sizes   = per_prot.groupby("structural_class")["uniprot"].nunique()
+class_medians = (
+    per_prot.groupby("structural_class")["plp_frac"]
+    .median()
+    .loc[class_sizes[class_sizes >= 2].index]
+    .sort_values(ascending=False)
+)
+classes_ordered = list(class_medians.index)
+overall_mean    = per_prot["plp_frac"].mean()
 
 LABEL_THRESHOLD = 15.0
 
@@ -369,8 +376,8 @@ legend_elements = [
 ax.legend(handles=legend_elements, fontsize=8, loc="upper right")
 ax.spines[["top", "right"]].set_visible(False)
 plt.tight_layout()
-plt.savefig("clinvar_domain_plp_dotplot.png", dpi=150, bbox_inches="tight")
-print("Saved: clinvar_domain_plp_dotplot.png")
+plt.savefig("Figures/clinvar_domain_plp_dotplot.png", dpi=150, bbox_inches="tight")
+print("Saved: Figures/clinvar_domain_plp_dotplot.png")
 plt.show()
 
 print("\nDone.")

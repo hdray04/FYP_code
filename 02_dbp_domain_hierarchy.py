@@ -35,8 +35,10 @@ ENTRY_LIST     = "Data/entry.list.txt"
 HIERARCHY_FILE = "Data/ParentChildTreeFile.txt"
 JSON_FILE      = "data/uniprotkb_organism_id_9606_AND_reviewed_2026_03_06.json"
 
-# Entry-type preference order for structural classification
-TYPE_PRIORITY = ["Homologous_superfamily", "Domain", "Family"]
+# Entry-type preference order for structural classification.
+# Conserved_site is included as a last resort for proteins with no higher-priority
+# entries (currently only SETBP1, whose sole InterPro entry is IPR017956).
+TYPE_PRIORITY = ["Homologous_superfamily", "Domain", "Family", "Conserved_site"]
 
 # Manual collapse map: any class name on the left is merged into the label on the right.
 # Extend this after reviewing the full class list.
@@ -62,6 +64,9 @@ COLLAPSE_MAP = {
     # hierarchy walks to uninformative metabolic enzyme roots due to shared folds
     "Quinoprotein alcohol dehydrogenase-like superfamily"                  : "AT-hook motif",
     "6-phosphogluconate dehydrogenase-like, C-terminal domain superfamily" : "AT-hook motif",
+
+    # SETBP1 — sole InterPro entry is IPR017956 (Conserved_site: AT hook, DNA-binding motif)
+    "AT hook, DNA-binding motif"                                           : "AT-hook motif",
 }
 
 # ── Step 1: Load entry.list ──────────────────────────────────────────────────

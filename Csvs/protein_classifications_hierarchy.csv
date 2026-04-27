@@ -502,7 +502,7 @@ Q9Y5R5,DMRT2,Doublesex- and mab-3-related transcription factor 2,DM DNA-binding 
 Q9Y5R6,DMRT1,Doublesex- and mab-3-related transcription factor 1,DM DNA-binding domain superfamily,IPR036407,Homologous_superfamily,4,1,False,False
 Q9Y5X4,NR2E3,Photoreceptor-specific nuclear receptor,Nuclear hormone receptor-like domain superfamily,IPR035500,Homologous_superfamily,7,2,False,False
 Q9Y603,ETV7,Transcription factor ETV7,Sterile alpha motif/pointed domain superfamily,IPR013761,Homologous_superfamily,6,3,False,False
-Q9Y6X0,SETBP1,SET-binding protein,No structural annotation,NONE,none,1,0,False,False
+Q9Y6X0,SETBP1,SET-binding protein,AT-hook motif,IPR017956,Conserved_site,1,1,False,False
 Q9Y6X8,ZHX2,Zinc fingers and homeoboxes protein 2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,2,False,False
 Q9Y6Y1,CAMTA1,Calmodulin-binding transcription activator 1,Ankyrin repeat-containing domain superfamily,IPR036770,Homologous_superfamily,8,4,False,False
 A2RU54,HMX2,Homeobox protein HMX2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
