@@ -1,5 +1,5 @@
 structural_class,n_proteins,percent
-Homeodomain-like superfamily,272,44.6
+Homeodomain-like superfamily,271,44.4
 Winged helix-like DNA-binding domain superfamily,87,14.3
 High mobility group box domain superfamily,46,7.5
 Nuclear hormone receptor-like domain superfamily,46,7.5
@@ -10,50 +10,51 @@ SMAD-like domain superfamily,9,1.5
 "Nucleic acid-binding, OB-fold",9,1.5
 ⚠ Transposable element / ERV,8,1.3
 DM DNA-binding domain superfamily,7,1.1
-"Transcription factor, MADS-box superfamily",5,0.8
 Zinc finger superfamily,5,0.8
+"Transcription factor, MADS-box superfamily",5,0.8
 Immunoglobulin-like fold,5,0.8
-Histone-fold,4,0.7
 Catenin binding domain superfamily,4,0.7
 "CTF transcription factor/nuclear factor 1, DNA-binding domain",4,0.7
+TEA/ATTS domain superfamily,4,0.7
+Histone-fold,4,0.7
 AT-hook motif,4,0.7
 Bromodomain-like superfamily,4,0.7
-TEA/ATTS domain superfamily,4,0.7
-P-loop containing nucleoside triphosphate hydrolase,2,0.3
-Nucleotide-binding alpha-beta plait domain superfamily,2,0.3
 EF-hand domain pair,2,0.3
 Bromo adjacent homology (BAH) domain superfamily,2,0.3
-Helix-loop-helix DNA-binding domain superfamily,2,0.3
 No structural annotation,2,0.3
-Ankyrin repeat-containing domain superfamily,2,0.3
-SKP1/BTB/POZ domain superfamily,2,0.3
+P-loop containing nucleoside triphosphate hydrolase,2,0.3
 "Hepatocyte nuclear factor 1, N-terminal domain superfamily",2,0.3
-GCM domain superfamily,2,0.3
 "NDT80, DNA-binding domain superfamily",2,0.3
-LEM/LEM-like domain superfamily,1,0.2
-Domain of unknown function DUF4683,1,0.2
-BOD1/SHG1 domain,1,0.2
-"DNTTIP1, dimerisation domain",1,0.2
-Regulator of DNA class I crossover intermediates 1-like,1,0.2
-"CST complex subunit Stn1, wHTH1 motif superfamily",1,0.2
-AKNA domain,1,0.2
-Armadillo-like helical,1,0.2
+Nucleotide-binding alpha-beta plait domain superfamily,2,0.3
+SKP1/BTB/POZ domain superfamily,2,0.3
+Ankyrin repeat-containing domain superfamily,2,0.3
+GCM domain superfamily,2,0.3
+Helix-loop-helix DNA-binding domain superfamily,2,0.3
 ARID DNA-binding domain superfamily,1,0.2
-"DEK, C-terminal",1,0.2
+AKNA domain,1,0.2
+LEM/LEM-like domain superfamily,1,0.2
+Regulator of DNA class I crossover intermediates 1-like,1,0.2
+BOD1/SHG1 domain,1,0.2
 Ribonuclease H superfamily,1,0.2
-Nuclear transcription factor Y subunit A,1,0.2
+"DNTTIP1, dimerisation domain",1,0.2
+"CST complex subunit Stn1, wHTH1 motif superfamily",1,0.2
+Armadillo-like helical,1,0.2
+Domain of unknown function DUF4683,1,0.2
+Protein kinase-like domain superfamily,1,0.2
+"Nuclear respiratory factor 1, NLS/DNA-binding, dimerisation domain",1,0.2
+DNA clamp superfamily,1,0.2
 R3H domain superfamily,1,0.2
 "Ataxin, AXH domain superfamily",1,0.2
+"Lambda repressor-like, DNA-binding domain superfamily",1,0.2
 Fibronectin type III superfamily,1,0.2
 "CENP-B, dimerisation domain superfamily",1,0.2
 Restriction endonuclease type II-like,1,0.2
-DNA clamp superfamily,1,0.2
-Protein kinase-like domain superfamily,1,0.2
-"Nuclear respiratory factor 1, NLS/DNA-binding, dimerisation domain",1,0.2
+Nuclear transcription factor Y subunit A,1,0.2
+"Vps72/YL1, C-terminal",1,0.2
+"DEK, C-terminal",1,0.2
 DNA repair protein Rad52/59/22 superfamily,1,0.2
 Basic-leucine zipper domain superfamily,1,0.2
 DNA-binding domain superfamily,1,0.2
 Histidine kinase/HSP90-like ATPase superfamily,1,0.2
 Chromo-like domain superfamily,1,0.2
-"Vps72/YL1, C-terminal",1,0.2
 Purine-rich element binding protein family,1,0.2

@@ -96,8 +96,12 @@ def recode(sig):
         return "VUS"
     return "Other/Conflicting"
 
-mapped["sig_group"] = mapped["ClinicalSignificance"].apply(recode)
-cv_dbp["sig_group"] = cv_dbp["ClinicalSignificance"].apply(recode)
+mapped["sig_group"]   = mapped["ClinicalSignificance"].apply(recode)
+cv_dbp["sig_group"]  = cv_dbp["ClinicalSignificance"].apply(recode)
+
+mapped["feature_type"] = "DNA binding"
+mapped.to_csv("Csvs/clinvar_domain_hits.csv", index=False)
+print("Saved: Csvs/clinvar_domain_hits.csv\n")
 
 in_domain_ids = set(mapped["#AlleleID"])
 in_sig  = mapped.drop_duplicates("#AlleleID")["sig_group"].value_counts()

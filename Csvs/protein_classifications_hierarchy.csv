@@ -47,7 +47,7 @@ O60479,DLX3,Homeobox protein DLX-3,Homeodomain-like superfamily,IPR009057,Homolo
 O60548,FOXD2,Forkhead box protein D2,Winged helix-like DNA-binding domain superfamily,IPR036388,Homologous_superfamily,6,2,False,False
 O60663,LMX1B,LIM homeobox transcription factor 1-beta,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
 O60806,TBX19,T-box transcription factor TBX19,"p53-like transcription factor, DNA-binding domain superfamily",IPR008967,Homologous_superfamily,6,2,False,False
-O60869,EDF1,Endothelial differentiation-related factor 1,Homeodomain-like superfamily,IPR010982,Homologous_superfamily,3,1,False,False
+O60869,EDF1,Endothelial differentiation-related factor 1,"Lambda repressor-like, DNA-binding domain superfamily",IPR010982,Homologous_superfamily,3,1,False,False
 O60902,SHOX2,Short stature homeobox protein 2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False
 O75360,PROP1,Homeobox protein prophet of Pit-1,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False
 O75364,PITX3,Pituitary homeobox 3,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False

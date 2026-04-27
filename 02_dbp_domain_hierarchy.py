@@ -54,9 +54,6 @@ COLLAPSE_MAP = {
     # SMAD — two separate roots in the hierarchy; both are SMAD proteins
     "SMAD/FHA domain superfamily"        : "SMAD-like domain superfamily",
 
-    # Lambda repressor HTH is structurally homeodomain-like (SCOP/InterPro)
-    "Lambda repressor-like, DNA-binding domain superfamily" : "Homeodomain-like superfamily",
-
     # HMGA proteins are often grouped with HMG proteins by name, but their
     # DNA-binding mechanism is via AT-hook motifs rather than HMG-box folds.
     "High mobility group protein HMGA"   : "AT-hook motif",
@@ -366,7 +363,7 @@ ax.set_xticks([0, 50, 100, 150, 200, 250, 300])
 for label in ax.get_yticklabels() + ax.get_xticklabels():
     label.set_fontfamily("Palatino")
 plt.tight_layout()
-plt.savefig("domain_class_hierarchy_bar.png", dpi=150, bbox_inches="tight")
+plt.savefig("Figures/domain_class_hierarchy_bar.png", dpi=150, bbox_inches="tight")
 print("  domain_class_hierarchy_bar.png")
 plt.show()
 
@@ -417,7 +414,7 @@ ax.set_xticks([0, 50, 100, 150, 200, 250, 300])
 for label in ax.get_yticklabels() + ax.get_xticklabels():
     label.set_fontfamily("Palatino")
 plt.tight_layout()
-plt.savefig("domain_class_hierarchy_bar_merged.png", dpi=150, bbox_inches="tight")
+plt.savefig("Figures/domain_class_hierarchy_bar_merged.png", dpi=150, bbox_inches="tight")
 print("  domain_class_hierarchy_bar_merged.png")
 plt.show()
 
@@ -460,7 +457,7 @@ ax2.set_title(
     fontsize=12, fontweight="bold"
 )
 plt.tight_layout()
-plt.savefig("domain_class_hierarchy_pie.png", dpi=150, bbox_inches="tight")
+plt.savefig("Figures/domain_class_hierarchy_pie.png", dpi=150, bbox_inches="tight")
 print("  domain_class_hierarchy_pie.png")
 plt.show()
 print("\nDone.")

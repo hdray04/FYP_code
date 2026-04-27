@@ -47,9 +47,8 @@ if missing_either:
 ##### ClinVar Analysis ####
 
 
-print(f'\n{"="*60}')
+
 print("CLINVAR VARIANT MAPPING ANALYSIS")
-print(f'{"="*60}')
 
 # Load ClinVar data
 clinvar_variants = {}
@@ -360,9 +359,8 @@ except Exception as e:
 
 #### Evidence Source Analysis ####
 
-print(f'\n{"="*60}')
 print("EVIDENCE SOURCE ANALYSIS")
-print(f'{"="*60}')
+
 
 # ECO code classification
 EXPERIMENTAL_CODES = {
