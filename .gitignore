@@ -22,6 +22,8 @@ __pycache__/
 
 # Project data files
 Data/*
+Csvs/
+Figures/
 
 # Generated plots
 *.png
