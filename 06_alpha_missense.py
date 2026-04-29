@@ -3,6 +3,7 @@ import itertools
 import matplotlib.pyplot as plt
 import pandas as pd
 from scipy.stats import chi2_contingency, kruskal, mannwhitneyu
+from sklearn.metrics import roc_auc_score
 
 FILTERED_PATH = "Csvs/alphamissense_dbp.csv"
 
@@ -180,6 +181,47 @@ plt.savefig("Figures/am_mean_by_structural_class.png", dpi=150, bbox_inches="tig
 plt.show()
 print("Saved Figures/am_mean_by_structural_class.png")
 
+# --- Lollipop: % AM pathogenic by structural class ---
+# This provides a more direct comparison to the ClinVar %P/LP plot
+sc_am_pct = (
+    sc.groupby("structural_class")["am_class"]
+    .value_counts(normalize=True)
+    .mul(100)
+    .unstack(fill_value=0)
+)
+if "pathogenic" not in sc_am_pct.columns:
+    sc_am_pct["pathogenic"] = 0
+sc_am_pct = sc_am_pct.rename(columns={"pathogenic": "pct_pathogenic"})
+
+sc_am_plot = sc_am_pct.join(sc_n).sort_values("pct_pathogenic")
+labels_am  = [f"{c}  (n={int(sc_n[c]):,})" for c in sc_am_plot.index]
+
+# Calculate overall % pathogenic for the reference line
+overall_pct_pathogenic = 100 * (concordance_df["am_class"] == "pathogenic").sum() / len(concordance_df)
+
+fig, ax = plt.subplots(figsize=(9, 7))
+y_am = range(len(sc_am_plot))
+
+ax.hlines(y_am, 0, sc_am_plot["pct_pathogenic"], color="#ccc", linewidth=1.5, zorder=1)
+dot_colors_am = ["#d62728" if v > overall_pct_pathogenic else "#2171b5" for v in sc_am_plot["pct_pathogenic"]]
+ax.scatter(sc_am_plot["pct_pathogenic"], y_am, color=dot_colors_am, s=60, zorder=2)
+
+ax.axvline(overall_pct_pathogenic, color="#555", linestyle="--", linewidth=1)
+ax.text(overall_pct_pathogenic + 0.5, len(sc_am_plot) - 0.5, f"Overall mean\n({overall_pct_pathogenic:.1f}%)", fontsize=7.5, color="#555", va="top")
+
+ax.set_yticks(y_am)
+ax.set_yticklabels(labels_am, fontsize=8)
+ax.set_xlabel("% of variants classified as 'pathogenic' by AlphaMissense")
+ax.set_xlim(0, max(sc_am_plot["pct_pathogenic"]) * 1.1)
+ax.spines[["top", "right"]].set_visible(False)
+ax.xaxis.grid(True, linestyle="--", linewidth=0.7, color="#eee", zorder=0)
+ax.set_axisbelow(True)
+
+plt.tight_layout()
+plt.savefig("Figures/am_pct_pathogenic_by_structural_class.png", dpi=150, bbox_inches="tight")
+plt.show()
+print("Saved Figures/am_pct_pathogenic_by_structural_class.png")
+
 # --- Statistics: Kruskal-Wallis + pairwise Mann-Whitney U (Bonferroni) ---
 # Use the concordance_df which is already filtered for matched variants
 group_data = {sg: concordance_df.loc[concordance_df["sig_group"] == sg, "am_pathogenicity"].dropna()
@@ -260,15 +302,111 @@ plt.savefig("Figures/am_score_by_sig_group_boxplot.png", dpi=150, bbox_inches="t
 plt.show()
 print("Saved Figures/am_score_by_sig_group_boxplot.png")
 
-# --- Spearman correlation: %P/LP per structural class vs median AM score ---
+
+# --- VUS Analysis: What proportion does AM call pathogenic? ---
+in_domain_vus = merged_dedup[merged_dedup["sig_group"] == "VUS"].copy()
+in_domain_vus["location"] = "In DNA-binding domain"
+
+# Build out-of-domain VUS by loading, converting, and merging with AM separately
+cv_out_cols = {"#AlleleID", "canonical_residue", "residue_seq", "modified_residue", "uniprot", "sig_group"}
+cv_out = pd.read_csv("Csvs/clinvar_out_of_domain_hits.csv", usecols=lambda c: c in cv_out_cols)
+cv_out["ref_aa_1"] = cv_out["canonical_residue"].map(aa3_to_1)
+cv_out["alt_aa_1"] = cv_out["modified_residue"].map(aa3_to_1)
+cv_out["pos"] = pd.to_numeric(cv_out["residue_seq"], errors="coerce")
+merged_out = cv_out.merge(
+    am,
+    left_on=["uniprot", "ref_aa_1", "pos", "alt_aa_1"],
+    right_on=["uniprot_id", "ref_aa_1", "pos", "alt_aa_1"],
+    how="left",
+)
+out_domain_vus = merged_out[merged_out["sig_group"] == "VUS"].drop_duplicates(subset=["#AlleleID"]).copy()
+out_domain_vus["location"] = "Outside DNA-binding domain"
+
+vus_df = pd.concat([in_domain_vus, out_domain_vus], ignore_index=True)
+print(f"\n\n=== VUS Analysis ({len(vus_df):,} variants: {len(in_domain_vus):,} in-domain, {len(out_domain_vus):,} out-of-domain) ===")
+
+# 1. In-domain vs. Out-of-domain
+vus_location_summary = (
+    vus_df.groupby("location")["am_class"]
+    .value_counts(normalize=True)
+    .mul(100)
+    .unstack(fill_value=0)
+    .rename(columns={"pathogenic": "pct_pathogenic"})
+    .round(1)
+)
+vus_location_counts = vus_df.groupby("location").size().rename("n_vus")
+vus_location_summary = vus_location_summary.join(vus_location_counts)
+
+print("\n--- Proportion of VUS called 'pathogenic' by AlphaMissense ---")
+print(vus_location_summary[["n_vus", "pct_pathogenic"]].to_string())
+
+vus_ct = pd.crosstab(vus_df["location"], vus_df["am_class"])
+chi2_vus, p_vus, dof_vus, _ = chi2_contingency(vus_ct)
+print(f"\nChi-squared (in- vs out-of-domain AM class distribution): χ²={chi2_vus:.2f}, df={dof_vus}, p={p_vus:.2e}")
+
+
+# 2. Breakdown by structural class (for in-domain VUS only)
+
+vus_sc_summary = (
+    in_domain_vus.groupby("structural_class")["am_class"]
+    .value_counts(normalize=True)
+    .mul(100)
+    .unstack(fill_value=0)
+    .rename(columns={"pathogenic": "pct_pathogenic"})
+)
+vus_sc_counts = in_domain_vus.groupby("structural_class").size().rename("n_vus")
+vus_sc_summary = vus_sc_summary.join(vus_sc_counts)
+vus_sc_summary = vus_sc_summary[vus_sc_summary["n_vus"] >= 10] # Filter for classes with at least 10 VUS
+vus_sc_summary = vus_sc_summary.sort_values("pct_pathogenic", ascending=False)
+
+print("\n--- Proportion of IN-DOMAIN VUS called 'pathogenic' by Structural Class (n>=10 VUS) ---")
+print(vus_sc_summary[["n_vus", "pct_pathogenic"]].round(1).to_string())
+
+
+# --- AUC per structural class ---
+auc_results = []
+# Filter for binary classification: P/LP vs B/LB
+auc_df = concordance_df[concordance_df["sig_group"].isin(["Pathogenic/LP", "Benign/LB"])].copy()
+
+for s_class, group_df in auc_df.groupby("structural_class"):
+    n_plp = (group_df["sig_group"] == "Pathogenic/LP").sum()
+    n_blb = (group_df["sig_group"] == "Benign/LB").sum()
+
+    # Need at least one of each class to calculate AUC
+    if n_plp > 0 and n_blb > 0:
+        y_true = (group_df["sig_group"] == "Pathogenic/LP").astype(int)
+        y_score = group_df["am_pathogenicity"]
+        
+        auc = roc_auc_score(y_true, y_score)
+        auc_results.append({
+            "structural_class": s_class,
+            "auc": auc,
+            "n_plp": n_plp,
+            "n_blb": n_blb,
+            "n_total": n_plp + n_blb,
+        })
+
+if auc_results:
+    auc_summary_df = pd.DataFrame(auc_results).sort_values("auc", ascending=False)
+    print("\n=== AUC per Structural Class (AM score predicting P/LP vs B/LB) ===")
+    print(auc_summary_df.to_string(index=False))
+else:
+    print("\nCould not compute AUC for any structural class (requires at least one P/LP and one B/LB variant per class).")
+
+
+# --- Spearman correlation: % AM Pathogenic vs % ClinVar P/LP per structural class ---
 # Uses full datasets (not just merged) so the two estimates are independent.
 
 from scipy.stats import spearmanr
 
-# Median AM score per structural class across ALL DBP predictions
-am_full = pd.read_csv("Csvs/alphamissense_dbp.csv", usecols=["uniprot_id", "am_pathogenicity"])
+# % AM pathogenic per structural class across ALL DBP predictions
+am_full = pd.read_csv("Csvs/alphamissense_dbp.csv", usecols=["uniprot_id", "am_class"])
 am_full = am_full.merge(dbp_df[["uniprot_id", "structural_class"]], on="uniprot_id", how="left")
-am_by_class = am_full.groupby("structural_class")["am_pathogenicity"].median().rename("median_am")
+pct_am_path = (
+    am_full.groupby("structural_class")["am_class"]
+    .apply(lambda x: (x == "pathogenic").mean() * 100)
+    .rename("pct_am_path")
+)
 
 # %P/LP per structural class from full ClinVar data
 cv_full = pd.read_csv("Csvs/clinvar_domain_hits.csv", usecols=["#AlleleID", "uniprot", "sig_group"])
@@ -280,25 +418,9 @@ pct_plp = (
     .rename("pct_plp")
 )
 
-spear = am_by_class.reset_index().merge(pct_plp.reset_index(), on="structural_class").dropna()
-rho, p_spear = spearmanr(spear["median_am"], spear["pct_plp"])
-print(f"\n=== Spearman correlation: median AM score vs %P/LP (n={len(spear)} classes) ===")
+spear = pct_am_path.reset_index().merge(pct_plp.reset_index(), on="structural_class").dropna()
+rho, p_spear = spearmanr(spear["pct_am_path"], spear["pct_plp"])
+print(f"\n=== Spearman correlation: % AM pathogenic vs % ClinVar P/LP (n={len(spear)} classes) ===")
 print(f"rho={rho:.3f}, p={p_spear:.2e}")
 
-# --- Scatter plot for Spearman correlation ---
-fig, ax = plt.subplots(figsize=(12, 10))
-ax.scatter(spear["median_am"], spear["pct_plp"], alpha=0.6, s=50)
-
-# Annotate points
-for i, row in spear.iterrows():
-    ax.text(row["median_am"] + 0.005, row["pct_plp"], row["structural_class"], fontsize=8, ha='left', va='center', alpha=0.9)
-
-ax.set_xlabel("Median AlphaMissense Score per Structural Class")
-ax.set_ylabel("% Pathogenic/Likely Pathogenic Variants per Structural Class")
-ax.set_title(f"Spearman Correlation: rho={rho:.3f}, p={p_spear:.2e} (n={len(spear)})")
-ax.grid(True, linestyle='--', alpha=0.6)
-plt.tight_layout()
-plt.savefig("Figures/am_spearman_correlation_scatter.png", dpi=150)
-plt.show()
-print("Saved Figures/am_spearman_correlation_scatter.png")
 

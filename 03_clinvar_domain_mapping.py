@@ -48,7 +48,8 @@ print(f"{len(cv_dbp)} ClinVar variants in DBP proteins\n map to {cv_dbp['uniprot
 #Map onto domains 
 domains_dbp = domains[domains["uniprot_id"].isin(dbp_ids)].copy()
 
-hits = []
+# 1. Get IN-DOMAIN variants
+hits_in_domain = []
 for accession, prot_vars in cv_dbp.groupby("uniprot"):
     prot_domains = domains_dbp[domains_dbp["uniprot_id"] == accession]
     if prot_domains.empty:
@@ -62,23 +63,17 @@ for accession, prot_vars in cv_dbp.groupby("uniprot"):
             continue
         in_domain["domain_start"] = dom["domain_start"]
         in_domain["domain_end"] = dom["domain_end"]
-        hits.append(in_domain)
+        in_domain["feature_type"] = "DNA binding" # Add feature_type for consistency
+        hits_in_domain.append(in_domain)
 
+# The original logic could create duplicate rows for a single variant if it hit multiple domain definitions.
+# We must deduplicate by AlleleID to ensure each variant appears once.
+mapped_in_domain = pd.concat(hits_in_domain, ignore_index=True).drop_duplicates(subset=["#AlleleID"])
+print(f"{mapped_in_domain['#AlleleID'].nunique():,} unique variants mapped to a DNA-binding domain.")
 
-mapped = pd.concat(hits, ignore_index=True)
-print(f"{len(mapped)} variant-domain hits\n")
-print(f"{mapped['#AlleleID'].nunique()} unique variants mapped to domains\n")
-print(f"{mapped['uniprot'].nunique()} unique proteins with domain-mapped variants\n")
-print(f"{cv_dbp['#AlleleID'].nunique() - mapped['#AlleleID'].nunique():,} variants not mapped to any domain")
-
-proteins_no_domain = set(cv_dbp["uniprot"]) - set(domains["uniprot_id"])
-missing = cv_dbp[cv_dbp["uniprot"].isin(proteins_no_domain)]
-print(f"{len(proteins_no_domain)} DBPs with no DNA binding domain annotation")
-print(f"{len(missing):,} variants on those proteins")
-
-# Find the 50 variants that appear more than once in mapped
-dup_ids = mapped[mapped.duplicated("#AlleleID", keep=False)]["#AlleleID"].unique()
-print(mapped[mapped["#AlleleID"].isin(dup_ids)][["#AlleleID", "uniprot", "residue_seq", "domain_start", "domain_end"]].sort_values(["#AlleleID"]))
+# 2. Get OUT-OF-DOMAIN variants
+in_domain_allele_ids = set(mapped_in_domain["#AlleleID"])
+mapped_out_of_domain = cv_dbp[~cv_dbp["#AlleleID"].isin(in_domain_allele_ids)].copy()
 
 # Recode clinical significance
 def recode(sig):
@@ -96,17 +91,21 @@ def recode(sig):
         return "VUS"
     return "Other/Conflicting"
 
-mapped["sig_group"]   = mapped["ClinicalSignificance"].apply(recode)
+mapped_in_domain["sig_group"]   = mapped_in_domain["ClinicalSignificance"].apply(recode)
+mapped_out_of_domain["sig_group"] = mapped_out_of_domain["ClinicalSignificance"].apply(recode)
 cv_dbp["sig_group"]  = cv_dbp["ClinicalSignificance"].apply(recode)
 
-mapped["feature_type"] = "DNA binding"
-mapped.to_csv("Csvs/clinvar_domain_hits.csv", index=False)
-print("Saved: Csvs/clinvar_domain_hits.csv\n")
+mapped_in_domain.to_csv("Csvs/clinvar_domain_hits.csv", index=False)
+print("Saved IN-DOMAIN variants to Csvs/clinvar_domain_hits.csv")
 
-in_domain_ids = set(mapped["#AlleleID"])
-in_sig  = mapped.drop_duplicates("#AlleleID")["sig_group"].value_counts()
+print(f"\n{mapped_out_of_domain['#AlleleID'].nunique():,} unique variants are outside a DNA-binding domain.")
+mapped_out_of_domain.to_csv("Csvs/clinvar_out_of_domain_hits.csv", index=False)
+print("Saved OUT-OF-DOMAIN variants to Csvs/clinvar_out_of_domain_hits.csv\n")
 
-out_domain = cv_dbp[~cv_dbp["#AlleleID"].isin(in_domain_ids)]
+in_domain_ids = set(mapped_in_domain["#AlleleID"])
+in_sig  = mapped_in_domain.drop_duplicates("#AlleleID")["sig_group"].value_counts()
+
+out_domain = mapped_out_of_domain
 out_sig = out_domain.drop_duplicates("#AlleleID")["sig_group"].value_counts()
 
 print("In-domain variants:")

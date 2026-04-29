@@ -385,4 +385,33 @@ plt.savefig("Figures/clinvar_domain_plp_dotplot.png", dpi=150, bbox_inches="tigh
 print("Saved: Figures/clinvar_domain_plp_dotplot.png")
 plt.show()
 
-print("\nDone.")
+# --- Lollipop plot: % P/LP per structural class (n > 50 variants) ---
+plot_df = results2_df.merge(pivot[["total_variants"]], on="structural_class")
+plot_df = plot_df[plot_df["total_variants"] > 50].sort_values("cls_pct_path")
+
+fig, ax = plt.subplots(figsize=(9, 7))
+y = range(len(plot_df))
+labels = [f"{c}  (n={int(v):,})" for c, v in zip(plot_df["structural_class"], plot_df["total_variants"])]
+
+# Calculate overall %P/LP to use as a reference line
+overall_pct_plp = 100 * pivot["Pathogenic/LP"].sum() / pivot[SIG_GROUPS].sum().sum()
+
+ax.hlines(y, 0, plot_df["cls_pct_path"], color="#ccc", linewidth=1.5, zorder=1)
+dot_colors = ["#d62728" if v > overall_pct_plp else "#2171b5" for v in plot_df["cls_pct_path"]]
+ax.scatter(plot_df["cls_pct_path"], y, color=dot_colors, s=60, zorder=2)
+
+ax.axvline(overall_pct_plp, color="#555", linestyle="--", linewidth=1)
+ax.text(overall_pct_plp + 0.5, len(plot_df) - 0.5, f"Overall mean\n({overall_pct_plp:.1f}%)", fontsize=7.5, color="#555", va="top")
+
+ax.set_yticks(y)
+ax.set_yticklabels(labels, fontsize=8)
+ax.set_xlabel("% Pathogenic/Likely Pathogenic variants")
+ax.set_xlim(0, max(plot_df["cls_pct_path"]) * 1.1)
+ax.spines[["top", "right"]].set_visible(False)
+ax.xaxis.grid(True, linestyle="--", linewidth=0.7, color="#eee", zorder=0)
+ax.set_axisbelow(True)
+
+plt.tight_layout()
+plt.savefig("Figures/clinvar_pct_plp_by_structural_class.png", dpi=150, bbox_inches="tight")
+plt.show()
+print("Saved Figures/clinvar_pct_plp_by_structural_class.png")
