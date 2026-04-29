@@ -41,8 +41,11 @@ merged = hits.merge(
     right_on="uniprot_id",
     how="left",
 )
-merged = merged[merged["structural_class"] != "No structural annotation"]
-merged = merged[merged["structural_class"] != "⚠ Transposable element / ERV"]
+merged = merged[~merged["structural_class"].isin([
+    "No structural annotation",
+    "⚠ Transposable element / ERV",
+    "Fibronectin type III superfamily",
+])]
 
 # ── Helpers ─────────────────────────────────────────────────────────────────────
 
@@ -90,6 +93,8 @@ pivot["total_variants"] = pivot[SIG_GROUPS].sum(axis=1)
 pivot = pivot.join(proteins_per_class)
 pivot["variants_per_protein"] = (pivot["total_variants"] / pivot["n_proteins"]).round(1)
 pivot = pivot.sort_values("total_variants", ascending=False)
+
+print(f"Classes with variants: {int((pivot['total_variants'] > 0).sum())}")
 
 print("=" * 85)
 print("IN-DOMAIN VARIANT BURDEN BY STRUCTURAL CLASS  (DNA-binding domain residues only)")

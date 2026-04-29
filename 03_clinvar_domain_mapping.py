@@ -43,7 +43,7 @@ classif = classif[~classif["is_te"]]  # Exclude TEs
 dbp_ids = set(classif["uniprot_id"])
 
 cv_dbp = cv[cv["uniprot"].isin(dbp_ids)].copy()
-print(f"{len(cv_dbp)} ClinVar variants in DBP proteins\n")
+print(f"{len(cv_dbp)} ClinVar variants in DBP proteins\n map to {cv_dbp['uniprot'].nunique()} unique DBP proteins\n")
 
 #Map onto domains 
 domains_dbp = domains[domains["uniprot_id"].isin(dbp_ids)].copy()

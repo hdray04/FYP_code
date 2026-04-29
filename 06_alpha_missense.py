@@ -1,5 +1,8 @@
 import os
+import itertools
+import matplotlib.pyplot as plt
 import pandas as pd
+from scipy.stats import chi2_contingency, kruskal, mannwhitneyu
 
 FILTERED_PATH = "Csvs/alphamissense_dbp.csv"
 
@@ -26,8 +29,8 @@ else:
     am_dbp.to_csv(FILTERED_PATH, index=False)
     print(f"Saved {len(am_dbp):,} variants across {am_dbp['uniprot_id'].nunique()} DBPs to {FILTERED_PATH}")
 
-dbp_df = pd.read_csv("Csvs/protein_classifications_hierarchy.csv", usecols=["uniprot_id"])
-am = pd.read_csv(FILTERED_PATH, usecols=["uniprot_id", "protein_variant"])
+dbp_df = pd.read_csv("Csvs/protein_classifications_hierarchy.csv", usecols=["uniprot_id", "structural_class"]).drop_duplicates(subset=["uniprot_id"])
+am = pd.read_csv(FILTERED_PATH, usecols=["uniprot_id", "protein_variant", "am_pathogenicity", "am_class"])
 
 mapped = set(am["uniprot_id"].dropna().unique())
 missing_dbps = dbp_df[~dbp_df["uniprot_id"].isin(mapped)].drop_duplicates(subset=["uniprot_id"])
@@ -36,7 +39,7 @@ print(f"DBPs with no AlphaMissense variants mapped: {len(missing_dbps)}")
 print(missing_dbps[["uniprot_id"]])
 
 # Merge with ClinVar variants
-cv_required = {"#AlleleID", "canonical_residue", "residue_seq", "modified_residue", "uniprot", "uniprot_id"}
+cv_required = {"#AlleleID", "canonical_residue", "residue_seq", "modified_residue", "uniprot", "uniprot_id", "ClinicalSignificance", "feature_type", "domain_name", "sig_group"}
 cv = pd.read_csv(
     "Csvs/clinvar_domain_hits.csv",
     usecols=lambda c: c in cv_required,
@@ -62,20 +65,240 @@ cv["ref_aa_1"] = cv["canonical_residue"].map(aa3_to_1)
 cv["alt_aa_1"] = cv["modified_residue"].map(aa3_to_1)
 cv["pos"] = pd.to_numeric(cv["residue_seq"], errors="coerce")
 
-# Inner join = variants found in both datasets
+# Left join to keep all ClinVar variants and see what matches from AlphaMissense
 merged = cv.merge(
     am,
     left_on=["uniprot", "ref_aa_1", "pos", "alt_aa_1"],
     right_on=["uniprot_id", "ref_aa_1", "pos", "alt_aa_1"],
-    how="inner",
+    how="left",
     suffixes=("_clinvar", "_am")
 )
 
-print("Matched variants:", len(merged))
-print("Unique matched AlleleID:", merged["#AlleleID"].nunique())
+# Add structural class information
+merged = merged.merge(dbp_df, left_on="uniprot", right_on="uniprot_id", how="left", suffixes=("", "_dbp")).drop(columns=["uniprot_id_dbp"], errors="ignore")
 
-merged_dedup = merged.drop_duplicates(subset=["#AlleleID"])
-print(f"After deduplication: {len(merged_dedup):,} variants")
+# Analyze the result of the left join
+total_variants = len(merged)
+matched_variants = merged["am_pathogenicity"].notna().sum()
+print(f"Total ClinVar variants processed: {total_variants:,}")
+print(f"Variants with a match in AlphaMissense: {matched_variants:,} ({matched_variants/total_variants:.1%})")
+print(f"Variants without a match: {total_variants - matched_variants:,}")
+
+print("\nMatched variants (deduplicated by AlleleID):", merged.drop_duplicates(subset=['#AlleleID'])['am_pathogenicity'].notna().sum())
+
+merged_dedup = merged.drop_duplicates(subset=["#AlleleID"]).copy()
+print(f"After deduplication: {len(merged_dedup):,} total unique variants")
 
 merged.to_csv("Csvs/clinvar_alphamissense_merged.csv", index=False)
 merged_dedup.to_csv("Csvs/clinvar_alphamissense_merged_dedup.csv", index=False)
+
+print(merged_dedup["sig_group"].value_counts())
+print(merged_dedup["structural_class"].value_counts())
+
+# --- Concordance ---
+# For concordance analysis, filter to rows that have a match in AlphaMissense
+concordance_df = merged_dedup[merged_dedup["am_pathogenicity"].notna()].copy()
+print(f"\nPerforming concordance analysis on {len(concordance_df):,} variants with both ClinVar and AM data.")
+
+sig_order = ["Pathogenic/LP", "VUS", "Benign/LB"]
+am_order  = ["pathogenic", "ambiguous", "benign"]
+
+concordance_df = concordance_df[concordance_df["sig_group"].isin(sig_order)].copy()
+concordance_df["sig_group"] = pd.Categorical(concordance_df["sig_group"], categories=sig_order, ordered=True)
+concordance_df["am_class"]  = pd.Categorical(concordance_df["am_class"],  categories=am_order,  ordered=True)
+
+ct     = pd.crosstab(concordance_df["sig_group"], concordance_df["am_class"])[am_order].reindex(sig_order)
+ct_pct = ct.div(ct.sum(axis=1), axis=0) * 100
+
+print("\n=== Concordance counts ===")
+print(ct.to_string())
+print("\n=== Row % ===")
+print(ct_pct.round(1).to_string())
+
+chi2, p, dof, _ = chi2_contingency(ct)
+print(f"\nChi-squared: {chi2:.1f}, df={dof}, p={p:.2e}")
+print("Interpretation: tests whether AM classification is independent of ClinVar sig group.")
+print("A significant result means AM class distribution differs across sig groups,")
+print("i.e. AM scores are not random with respect to clinical significance.")
+
+n_plp     = ct.loc["Pathogenic/LP", "pathogenic"];  tot_plp = ct.loc["Pathogenic/LP"].sum()
+n_blb     = ct.loc["Benign/LB",     "benign"];       tot_blb = ct.loc["Benign/LB"].sum()
+print(f"\nPathogenic/LP called pathogenic by AM: {n_plp}/{tot_plp} ({100*n_plp/tot_plp:.1f}%)")
+print(f"Benign/LB called benign by AM:         {n_blb}/{tot_blb} ({100*n_blb/tot_blb:.1f}%)")
+
+# --- Breakdown by structural class (n > 50) ---
+# Use the concordance_df which is already filtered for matched variants
+sc_n_all        = concordance_df.groupby("structural_class").size().rename("n")
+sc_proteins_all = concordance_df.groupby("structural_class")["uniprot"].nunique()
+valid_classes   = sc_n_all[(sc_n_all > 50) & (sc_proteins_all >= 3)].index
+sc = concordance_df[concordance_df["structural_class"].isin(valid_classes)].copy()
+
+sc_sig = (
+    sc.groupby("structural_class")["sig_group"]
+    .value_counts(normalize=True)
+    .mul(100)
+    .unstack(fill_value=0)
+    .reindex(columns=sig_order, fill_value=0)
+    .round(1)
+)
+sc_stats = sc.groupby("structural_class")["am_pathogenicity"].agg(
+    median="median", q1=lambda x: x.quantile(0.25), q3=lambda x: x.quantile(0.75)
+)
+sc_n  = sc_n_all[valid_classes]
+
+sc_summary = sc_sig.join(sc_stats).join(sc_n).sort_values("median", ascending=False)
+
+print(f"\n=== Structural class breakdown (n > 50, {len(sc_summary)} classes) ===")
+print("Sig group % (row) + median AM pathogenicity score (IQR):")
+print(sc_summary.to_string())
+
+# --- Lollipop: median AM score by structural class ---
+sc_plot = sc_summary.sort_values("median")
+labels  = [f"{c}  (n={int(sc_n[c]):,})" for c in sc_plot.index]
+
+fig, ax = plt.subplots(figsize=(9, 7))
+y = range(len(sc_plot))
+
+ax.hlines(y, 0, sc_plot["median"], color="#ccc", linewidth=1.5, zorder=1)
+dot_colors = ["#d62728" if v >= 0.564 else "#2171b5" for v in sc_plot["median"]]
+ax.scatter(sc_plot["median"], y, color=dot_colors, s=60, zorder=2)
+ax.hlines(y, sc_plot["q1"].clip(lower=0), sc_plot["q3"].clip(upper=1), color=dot_colors, linewidth=3, alpha=0.4, zorder=1)
+
+ax.axvline(0.564, color="#555", linestyle="--", linewidth=1)
+ax.text(0.564 + 0.005, len(sc_plot) - 0.5, "Pathogenic\nthreshold", fontsize=7.5, color="#555", va="top")
+
+ax.set_yticks(y)
+ax.set_yticklabels(labels, fontsize=8)
+ax.set_xlabel("Median AlphaMissense pathogenicity score (bar = IQR)")
+ax.set_xlim(0, 1)
+ax.spines[["top", "right"]].set_visible(False)
+ax.xaxis.grid(True, linestyle="--", linewidth=0.7, color="#eee", zorder=0)
+ax.set_axisbelow(True)
+
+plt.tight_layout()
+plt.savefig("Figures/am_mean_by_structural_class.png", dpi=150, bbox_inches="tight")
+plt.show()
+print("Saved Figures/am_mean_by_structural_class.png")
+
+# --- Statistics: Kruskal-Wallis + pairwise Mann-Whitney U (Bonferroni) ---
+# Use the concordance_df which is already filtered for matched variants
+group_data = {sg: concordance_df.loc[concordance_df["sig_group"] == sg, "am_pathogenicity"].dropna()
+              for sg in sig_order}
+
+kw_stat, kw_p = kruskal(*group_data.values())
+print(f"\n=== Kruskal-Wallis (overall) ===")
+print(f"H={kw_stat:.1f}, p={kw_p:.2e}")
+print("Tests whether any group differs in AM score distribution.\n")
+
+pairs = list(itertools.combinations(sig_order, 2))
+n_comparisons = len(pairs)
+print("=== Pairwise Mann-Whitney U (Bonferroni-corrected) ===")
+mw_results = {}
+for a, b in pairs:
+    stat, p_raw = mannwhitneyu(group_data[a], group_data[b], alternative="two-sided")
+    p_corr = min(p_raw * n_comparisons, 1.0)
+    mw_results[(a, b)] = p_corr
+    stars = "***" if p_corr < 0.001 else "**" if p_corr < 0.01 else "*" if p_corr < 0.05 else "ns"
+    print(f"  {a} vs {b}: U={stat:.0f}, p_raw={p_raw:.2e}, p_corr={p_corr:.2e} {stars}")
+
+def stars(p):
+    return "***" if p < 0.001 else "**" if p < 0.01 else "*" if p < 0.05 else "ns"
+
+# --- Box plot ---
+import seaborn as sns
+# Define the color palette as a list in the correct order for Seaborn
+palette_colors = ["#d62728", "grey", "#2171b5"] 
+
+fig, ax = plt.subplots(figsize=(8, 6))
+
+# Boxplot
+sns.boxplot(
+    x="sig_group",
+    y="am_pathogenicity",
+    data=concordance_df,
+    order=sig_order,
+    palette=palette_colors,
+    hue="sig_group",
+    legend=False,
+    showfliers=False,  # Correct parameter to hide outliers
+    ax=ax,
+    width=0.5,
+    medianprops=dict(color="black", linewidth=2),
+    whiskerprops=dict(linewidth=1.2, color="#444"),
+    capprops=dict(linewidth=1.2, color="#444"),
+    boxprops=dict(alpha=0.75),
+)
+
+# Stripplot to show individual points
+# Use a dictionary for the stripplot palette to ensure points match boxes
+stripplot_palette = {"Pathogenic/LP": "#d62728", "VUS": "grey", "Benign/LB": "#2171b5"}
+sns.stripplot(x="sig_group", y="am_pathogenicity", data=concordance_df, order=sig_order,
+              palette=stripplot_palette, size=2, jitter=0.2, alpha=0.2, ax=ax)
+ax.set_xlabel("") # Remove redundant x-axis label
+ax.set_ylabel("AlphaMissense pathogenicity score")
+ax.set_ylim(0, 1.0)
+ax.yaxis.grid(True, linestyle="--", linewidth=0.7, color="#ddd", zorder=0)
+ax.set_axisbelow(True)
+ax.axhline(0.564, color="#555", linestyle="--", linewidth=1)
+ax.axhline(0.34,  color="#555", linestyle=":",  linewidth=1)
+ax.text(2.28, 0.574, "Pathogenic threshold (0.564)", fontsize=7.5, color="#555", va="bottom")
+ax.text(2.28, 0.350, "Benign threshold (0.34)",      fontsize=7.5, color="#555", va="bottom")
+ax.spines[["top", "right"]].set_visible(False)
+
+# Significance brackets (drawn above axes with clip_on=False)
+bracket_y = [1.03, 1.09, 1.15]
+pos = {sg: i for i, sg in enumerate(sig_order)}
+for (a, b), y in zip(pairs, bracket_y):
+    x1, x2 = pos[a], pos[b]
+    ax.plot([x1, x1, x2, x2], [y, y + 0.01, y + 0.01, y],
+            color="black", linewidth=1, clip_on=False)
+    ax.text((x1 + x2) / 2, y + 0.015, stars(mw_results[(a, b)]),
+            ha="center", va="bottom", fontsize=10, clip_on=False)
+
+plt.tight_layout()
+plt.savefig("Figures/am_score_by_sig_group_boxplot.png", dpi=150, bbox_inches="tight")
+plt.show()
+print("Saved Figures/am_score_by_sig_group_boxplot.png")
+
+# --- Spearman correlation: %P/LP per structural class vs median AM score ---
+# Uses full datasets (not just merged) so the two estimates are independent.
+
+from scipy.stats import spearmanr
+
+# Median AM score per structural class across ALL DBP predictions
+am_full = pd.read_csv("Csvs/alphamissense_dbp.csv", usecols=["uniprot_id", "am_pathogenicity"])
+am_full = am_full.merge(dbp_df[["uniprot_id", "structural_class"]], on="uniprot_id", how="left")
+am_by_class = am_full.groupby("structural_class")["am_pathogenicity"].median().rename("median_am")
+
+# %P/LP per structural class from full ClinVar data
+cv_full = pd.read_csv("Csvs/clinvar_domain_hits.csv", usecols=["#AlleleID", "uniprot", "sig_group"])
+cv_full = cv_full.drop_duplicates(subset=["#AlleleID"])  # one row per variant
+cv_full = cv_full.merge(dbp_df.rename(columns={"uniprot_id": "uniprot"}), on="uniprot", how="left")
+pct_plp = (
+    cv_full.groupby("structural_class")["sig_group"]
+    .apply(lambda x: (x == "Pathogenic/LP").mean() * 100)
+    .rename("pct_plp")
+)
+
+spear = am_by_class.reset_index().merge(pct_plp.reset_index(), on="structural_class").dropna()
+rho, p_spear = spearmanr(spear["median_am"], spear["pct_plp"])
+print(f"\n=== Spearman correlation: median AM score vs %P/LP (n={len(spear)} classes) ===")
+print(f"rho={rho:.3f}, p={p_spear:.2e}")
+
+# --- Scatter plot for Spearman correlation ---
+fig, ax = plt.subplots(figsize=(12, 10))
+ax.scatter(spear["median_am"], spear["pct_plp"], alpha=0.6, s=50)
+
+# Annotate points
+for i, row in spear.iterrows():
+    ax.text(row["median_am"] + 0.005, row["pct_plp"], row["structural_class"], fontsize=8, ha='left', va='center', alpha=0.9)
+
+ax.set_xlabel("Median AlphaMissense Score per Structural Class")
+ax.set_ylabel("% Pathogenic/Likely Pathogenic Variants per Structural Class")
+ax.set_title(f"Spearman Correlation: rho={rho:.3f}, p={p_spear:.2e} (n={len(spear)})")
+ax.grid(True, linestyle='--', alpha=0.6)
+plt.tight_layout()
+plt.savefig("Figures/am_spearman_correlation_scatter.png", dpi=150)
+plt.show()
+print("Saved Figures/am_spearman_correlation_scatter.png")
+

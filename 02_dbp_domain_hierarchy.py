@@ -163,6 +163,18 @@ NONCANONICAL_IDS = {
                 # heparin-binding domain, not transcriptional regulation
 }
 
+# Structural classes excluded from the class-comparison summary and downstream
+# plots because they are not canonical sequence-specific DNA-binding classes.
+CLASSES_TO_EXCLUDE = {
+    "⚠ Transposable element / ERV",
+    "No structural annotation",
+    "Fibronectin type III superfamily",      # was "FN3-like"
+    "Immunoglobulin-like fold",              # was "FN3 / Ig-like"
+    "Histidine kinase/HSP90-like ATPase superfamily",
+    "Ribonuclease H superfamily",
+    "Basic-leucine zipper domain superfamily",  # single protein, known gap
+}
+
 def is_transposable_element(protein):
     """Return True if the protein carries the 'Transposable element' UniProt keyword."""
     return any(k.get("name") == "Transposable element" for k in protein.get("keywords", []))
@@ -257,10 +269,20 @@ print("=" * 65)
 class_counts = df["structural_class"].value_counts()
 total        = len(df)
 
+summary_counts = class_counts.drop(labels=SUMMARY_EXCLUDE_CLASSES, errors="ignore")
+summary_total  = int(summary_counts.sum())
+
+excluded_counts = class_counts[class_counts.index.isin(SUMMARY_EXCLUDE_CLASSES)]
+
 print(f"\n{'Class':<50} {'N':>5}  {'%':>6}")
 print("-" * 65)
-for cls, n in class_counts.head(30).items():
-    print(f"{cls:<50} {n:>5}  {100*n/total:>5.1f}%")
+for cls, n in summary_counts.head(30).items():
+    print(f"{cls:<50} {n:>5}  {100*n/summary_total:>5.1f}%")
+
+if not excluded_counts.empty:
+    print("\nExcluded from class summary:")
+    for cls, n in excluded_counts.items():
+        print(f"  {cls:<50} {n}")
 
 te_count           = df["is_te"].sum()
 noncanonical_count = df["is_noncanonical"].sum()
@@ -270,6 +292,7 @@ print(f"  of which TE/ERV     : {te_count}  (retained in CSV, excluded from plot
 print(f"  of which non-canonical: {noncanonical_count}  (FN1; flagged in CSV)")
 print(f"Structurally annotated: {total - unannotated - te_count}")
 print(f"No structural entry   : {unannotated}")
+print(f"Class summary entries : {len(summary_counts)} classes across {summary_total} proteins")
 
 # ── Multi-domain subgroup ─────────────────────────────────────────────────────
 
@@ -300,7 +323,8 @@ df.to_csv("Csvs/protein_classifications_hierarchy.csv", index=False)
 
 summary = class_counts.reset_index()
 summary.columns = ["structural_class", "n_proteins"]
-summary["percent"] = (summary["n_proteins"] / total * 100).round(1)
+summary = summary[~summary["structural_class"].isin(SUMMARY_EXCLUDE_CLASSES)].copy()
+summary["percent"] = (summary["n_proteins"] / summary_total * 100).round(1)
 summary.to_csv("Csvs/class_summary_hierarchy.csv", index=False)
 
 print("\nFiles saved:")
@@ -330,10 +354,7 @@ def display_name(s):
         return s.replace(" classes)", ")")
     return s
 
-plot_df = (summary[~summary["structural_class"].isin(
-               ["No structural annotation", "⚠ Transposable element / ERV"])]
-           .head(20)
-           .sort_values("n_proteins", ascending=True))
+plot_df = summary.head(20).sort_values("n_proteins", ascending=True)
 
 fig, ax = plt.subplots(figsize=(11, 8))
 GREY = plt.cm.tab10.colors[7]  # reserved for "Other"
@@ -374,8 +395,7 @@ plt.show()
 
 # ── Bar chart (merged: classes ≤9 proteins → "Other") ────────────────────────
 
-EXCLUDE_FROM_BAR = {"No structural annotation", "⚠ Transposable element / ERV"}
-bar_data = summary[~summary["structural_class"].isin(EXCLUDE_FROM_BAR)].copy()
+bar_data = summary.copy()
 annotated_total = bar_data["n_proteins"].sum()
 
 main_classes  = bar_data[bar_data["n_proteins"] > THRESHOLD].copy()
@@ -426,8 +446,7 @@ plt.show()
 # ── Pie chart ─────────────────────────────────────────────────────────────────
 # Top 8 classes shown individually; everything else collapsed into "Other"
 
-EXCLUDE_FROM_PIE = {"No structural annotation", "⚠ Transposable element / ERV"}
-pie_data = summary[~summary["structural_class"].isin(EXCLUDE_FROM_PIE)].copy()
+pie_data = summary.copy()
 
 top_n    = 8
 top      = pie_data.head(top_n)
@@ -458,7 +477,7 @@ ax2.legend(
     title_fontsize=9,
 )
 ax2.set_title(
-    "Structural class distribution\namong 610 DNA-binding proteins",
+    f"Structural class distribution\namong {summary_total} DNA-binding proteins",
     fontsize=12, fontweight="bold"
 )
 plt.tight_layout()
