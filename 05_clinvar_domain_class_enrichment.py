@@ -59,7 +59,7 @@ SIG_COLORS = {
 
 
 def odds_ratio_ci_95(a, b, c, d, continuity=0.5):
-    """OR with 95 % CI using log(OR) ± 1.96·SE; Haldane-Anscombe if any cell zero."""
+    """OR with 95 % CI using log(OR) ± 1.96·SE;"""
     corrected = min(a, b, c, d) == 0
     if corrected:
         a, b, c, d = a + continuity, b + continuity, c + continuity, d + continuity
@@ -159,7 +159,6 @@ for _, row in results_df.iterrows():
     print(f"  {row['structural_class']:<50} {row['or_path_vs_benign']:>6.2f}{cc}  "
           f"[{row['ci95_lo']:>6.2f}, {row['ci95_hi']:>6.2f}]  "
           f"{row['p_raw']:>10.3e}  {row['p_bonf']:>10.3e}{sig}")
-print("  † Haldane-Anscombe continuity correction applied\n")
 
 results_df.to_csv("Csvs/clinvar_domain_enrichment_stats.csv", index=False)
 print("Saved: Csvs/clinvar_domain_enrichment_stats.csv\n")
@@ -216,6 +215,92 @@ for _, row in results2_df.sort_values("or_plp_vs_all", ascending=False).iterrows
 
 results2_df.to_csv("Csvs/clinvar_domain_enrichment_stats_plp_vs_all.csv", index=False)
 print("\nSaved: Csvs/clinvar_domain_enrichment_stats_plp_vs_all.csv\n")
+
+
+# ── In-domain vs out-of-domain P/LP enrichment per class ─────────────────────
+# 2x2: [in-domain P/LP, out-of-domain P/LP] x [in-domain not-P/LP, out-of-domain not-P/LP]
+# OR > 1 means domain variants are more pathogenic than non-domain variants
+# in the same proteins — a within-protein control.
+
+out = pd.read_csv("Csvs/clinvar_out_of_domain_hits.csv", low_memory=False)
+out = out.drop_duplicates("#AlleleID")
+
+out_merged = out.merge(
+    classif[["uniprot_id", "structural_class"]],
+    left_on="uniprot", right_on="uniprot_id", how="left",
+)
+out_merged = out_merged[~out_merged["structural_class"].isin([
+    "No structural annotation",
+    "⚠ Transposable element / ERV",
+    "Fibronectin type III superfamily",
+])]
+
+out_pivot = (
+    out_merged.groupby(["structural_class", "sig_group"])
+    .size()
+    .unstack(fill_value=0)
+)
+for col in SIG_GROUPS:
+    if col not in out_pivot.columns:
+        out_pivot[col] = 0
+out_pivot["total_out"] = out_pivot[SIG_GROUPS].sum(axis=1)
+
+all_classes = pivot.index.union(out_pivot.index)
+inout_results = []
+for cls in all_classes:
+    in_plp    = int(pivot.loc[cls, "Pathogenic/LP"])    if cls in pivot.index    else 0
+    in_total  = int(pivot.loc[cls, "total_variants"])   if cls in pivot.index    else 0
+    out_plp   = int(out_pivot.loc[cls, "Pathogenic/LP"]) if cls in out_pivot.index else 0
+    out_total = int(out_pivot.loc[cls, "total_out"])     if cls in out_pivot.index else 0
+
+    in_notplp  = in_total  - in_plp
+    out_notplp = out_total - out_plp
+
+    if in_total == 0 or out_total == 0 or in_plp == 0 or out_plp == 0:
+        continue
+
+    _, p_raw = scipy.stats.fisher_exact(
+        [[in_plp, out_plp], [in_notplp, out_notplp]],
+        alternative="two-sided",
+    )
+    or_hat, ci_lo, ci_hi, corrected = odds_ratio_ci_95(
+        in_plp, out_plp, in_notplp, out_notplp
+    )
+    inout_results.append({
+        "structural_class"       : cls,
+        "or_in_vs_out"           : or_hat,
+        "ci95_lo"                : ci_lo,
+        "ci95_hi"                : ci_hi,
+        "p_raw"                  : p_raw,
+        "ci_continuity_corrected": corrected,
+        "in_plp"                 : in_plp,
+        "in_total"               : in_total,
+        "in_pct_plp"             : round(100 * in_plp / in_total, 1),
+        "out_plp"                : out_plp,
+        "out_total"              : out_total,
+        "out_pct_plp"            : round(100 * out_plp / out_total, 1),
+    })
+
+inout_df = pd.DataFrame(inout_results)
+inout_df["p_bonf"] = (inout_df["p_raw"] * len(inout_df)).clip(upper=1.0)
+inout_df = inout_df.sort_values("or_in_vs_out", ascending=False)
+
+print(f"\nIn-domain vs out-of-domain P/LP enrichment per class (Bonferroni n={len(inout_df)})\n")
+print(f"  {'Class':<50} {'OR':>6}  {'95% CI':>18}  {'in%PLP':>7}  {'out%PLP':>8}  {'p_bonf':>10}")
+print(f"  {'-'*107}")
+for _, row in inout_df.iterrows():
+    cc  = "†" if row["ci_continuity_corrected"] else ""
+    sig = " *" if row["p_bonf"] < 0.05 else ""
+    print(
+        f"  {row['structural_class']:<50} {row['or_in_vs_out']:>6.2f}{cc}  "
+        f"[{row['ci95_lo']:>6.2f}, {row['ci95_hi']:>6.2f}]  "
+        f"{row['in_pct_plp']:>6.1f}%  {row['out_pct_plp']:>7.1f}%  "
+        f"{row['p_bonf']:>10.3e}{sig}"
+    )
+
+
+inout_df.to_csv("Csvs/clinvar_inout_domain_enrichment.csv", index=False)
+print("Saved: Csvs/clinvar_inout_domain_enrichment.csv\n")
 
 NAME_SHORT = {
     "Hepatocyte nuclear factor 1, N-terminal domain superfamily"         : "HNF1",
@@ -298,7 +383,7 @@ ax.spines[["top", "right"]].set_visible(False)
 plt.tight_layout()
 plt.savefig("Figures/clinvar_domain_stacked_bar.png", dpi=150, bbox_inches="tight")
 print("Saved: Figures/clinvar_domain_stacked_bar.png")
-plt.show()
+
 
 # ── Per-protein P/LP fraction dot plot ───────────────────────────────────────
 
@@ -383,7 +468,7 @@ ax.spines[["top", "right"]].set_visible(False)
 plt.tight_layout()
 plt.savefig("Figures/clinvar_domain_plp_dotplot.png", dpi=150, bbox_inches="tight")
 print("Saved: Figures/clinvar_domain_plp_dotplot.png")
-plt.show()
+
 
 # --- Lollipop plot: % P/LP per structural class (n > 50 variants) ---
 plot_df = results2_df.merge(pivot[["total_variants"]], on="structural_class")
@@ -413,5 +498,4 @@ ax.set_axisbelow(True)
 
 plt.tight_layout()
 plt.savefig("Figures/clinvar_pct_plp_by_structural_class.png", dpi=150, bbox_inches="tight")
-plt.show()
 print("Saved Figures/clinvar_pct_plp_by_structural_class.png")

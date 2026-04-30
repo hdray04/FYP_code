@@ -34,6 +34,16 @@ cv = cv[~((cv["canonical_residue"] == "Met") & (cv["residue_seq"] == 1))].copy()
 cv = cv.dropna(subset=["uniprot", "residue_seq"]).copy()
 cv["residue_seq"] = cv["residue_seq"].astype(int)
 
+ONE_STAR_STATUSES = {
+    "criteria provided, single submitter",
+    "criteria provided, multiple submitters, no conflicts",
+    "criteria provided, conflicting classifications",
+    "reviewed by expert panel",
+    "practice guideline",
+}
+cv = cv[cv["ReviewStatus"].isin(ONE_STAR_STATUSES)].copy()
+print(f"After ≥1-star review filter: {len(cv):,} variants")
+
 print(f"{len(cv)} ClinVar variants with valid UniProt ID and residue position\n")
 print(cv["uniprot"].nunique(), "unique proteins in ClinVar\n")
 
@@ -77,13 +87,9 @@ mapped_out_of_domain = cv_dbp[~cv_dbp["#AlleleID"].isin(in_domain_allele_ids)].c
 
 # Recode clinical significance
 def recode(sig):
-    if sig in {"Pathogenic", "Likely pathogenic", "Pathogenic/Likely pathogenic",
-               "Pathogenic; other", "Pathogenic; drug response",
-               "Likely pathogenic; drug response",
-               "Likely pathogenic/Likely risk allele"}:
+    if sig in {"Pathogenic", "Likely pathogenic", "Pathogenic/Likely pathogenic"}:
         return "Pathogenic/LP"
-    if sig in {"Benign", "Likely benign", "Benign/Likely benign",
-               "Benign; risk factor", "Benign; other"}:
+    if sig in {"Benign", "Likely benign", "Benign/Likely benign"}:
         return "Benign/LB"
     if sig in {"Uncertain significance",
                "Uncertain significance/Uncertain risk allele",
@@ -158,8 +164,6 @@ for sig in SIG_GROUPS:
 # Test robustness by shrinking (±3, ±5) and expanding (±3, ±5) all intervals.
 
 def classify_with_offset(cv_dbp, domains_dbp, offset):
-    """Re-run in/out classification with domain boundaries shifted by `offset`
-    residues (positive = expand, negative = shrink). Returns (in_sig, out_sig)."""
     hits = []
     for accession, prot_vars in cv_dbp.groupby("uniprot"):
         prot_domains = domains_dbp[domains_dbp["uniprot_id"] == accession]
@@ -184,7 +188,6 @@ def classify_with_offset(cv_dbp, domains_dbp, offset):
     out_s  = cv_dbp[~cv_dbp["#AlleleID"].isin(in_ids)]["sig_group"].value_counts()
     return in_s, out_s
 
-# Baseline ORs for Pathogenic/LP (primary outcome)
 def path_or(in_s, out_s):
     a = int(in_s.get("Pathogenic/LP", 0))
     b = int(out_s.get("Pathogenic/LP", 0))
