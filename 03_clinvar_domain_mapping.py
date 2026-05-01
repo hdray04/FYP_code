@@ -133,30 +133,28 @@ def odds_ratio_ci_95(a, b, c, d, continuity=0.5):
     hi = np.exp(np.log(or_hat) + z * se)
     return or_hat, lo, hi, corrected
 
-n_in  = in_sig.sum()
-n_out = out_sig.sum()
+# ── Primary enrichment test: P/LP vs B/LB (in-domain vs out-of-domain) ──────
+# Using only confidently classified variants as comparator groups.
+# VUS and Other/Conflicting are excluded from this test.
+a = int(in_sig.get("Pathogenic/LP", 0))   # P/LP in-domain
+b = int(out_sig.get("Pathogenic/LP", 0))  # P/LP out-of-domain
+c = int(in_sig.get("Benign/LB", 0))       # B/LB in-domain
+d = int(out_sig.get("Benign/LB", 0))      # B/LB out-of-domain
 
-SIG_GROUPS = ["Pathogenic/LP", "VUS", "Benign/LB", "Other/Conflicting"]
-n_tests = len(SIG_GROUPS)
-print(f"  Bonferroni correction: n_tests={n_tests}")
-print(f"{'Sig group':<20} {'In-dom%':>8}  {'Out-dom%':>9}  {'OR':>6}  {'95% CI':>18}  {'p_raw':>10}  {'p_bonf':>10}")
-print("-" * 95)
+_, p_raw = scipy.stats.fisher_exact([[a, c], [b, d]], alternative="greater")
+or_hat, lo, hi, corrected = odds_ratio_ci_95(a, b, c, d)
+fmt_p = lambda p: f"< {np.finfo(float).tiny:.2e}" if p == 0.0 else f"{p:.3e}"
 
-for sig in SIG_GROUPS:
-    a = int(in_sig.get(sig, 0))   # in domain, this sig
-    b = int(out_sig.get(sig, 0))  # out of domain, this sig
-    c = n_in  - a                  # in domain, other sigs
-    d = n_out - b                  # out of domain, other sigs
+print(f"\n── Primary enrichment: P/LP vs B/LB (in-domain vs out-of-domain) ──")
+print(f"  P/LP:  in-domain={a:,}  out-of-domain={b:,}")
+print(f"  B/LB:  in-domain={c:,}  out-of-domain={d:,}")
+print(f"  OR = {or_hat:.2f}  [{lo:.2f}, {hi:.2f}]  p={fmt_p(p_raw)}")
 
-    _, p_raw = scipy.stats.fisher_exact([[a, b], [c, d]])
-    or_hat, lo, hi, corrected = odds_ratio_ci_95(a, c, b, d)
-    p_bonf = min(p_raw * n_tests, 1.0)
-
-    cc    = "†" if corrected else ""
-    stars = " ***" if p_bonf < 0.001 else (" **" if p_bonf < 0.01 else (" *" if p_bonf < 0.05 else ""))
-    fmt_p = lambda p: f"< {np.finfo(float).tiny:.2e}" if p == 0.0 else f"{p:.3e}"
-    print(f"{sig:<20} {100*a/n_in:>7.1f}%  {100*b/n_out:>8.1f}%  "
-          f"{or_hat:>6.2f}{cc}  [{lo:>6.2f}, {hi:>6.2f}]  {fmt_p(p_raw):>14}  {fmt_p(p_bonf):>14}{stars}")
+print(f"\n── Variant counts by significance group ──")
+for grp in ["Pathogenic/LP", "Benign/LB", "VUS", "Other/Conflicting"]:
+    n_in_g  = int(in_sig.get(grp, 0))
+    n_out_g = int(out_sig.get(grp, 0))
+    print(f"  {grp:<25} in={n_in_g:>6,}  out={n_out_g:>7,}")
 
 # ── CHECKING: boundary precision sensitivity ──────────────────────────────────
 # Domain boundaries are hard integer positions from UniProt. Variants near the

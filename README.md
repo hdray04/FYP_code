@@ -13,7 +13,7 @@ FYP_code/
 ├── Figures/                 Generated figures (PNG)
 ├── Initial_stuff/           Exploratory/developmental scripts (not part of final pipeline)
 ├── venv/                    Python virtual environment
-└── 01_*.py – 08_*.py       Main analysis pipeline (run in order from repo root)
+└── 01_*.py – 07_*.py       Main analysis pipeline (run in order from repo root)
 ```
 
 ---
@@ -26,6 +26,7 @@ FYP_code/
 | `Data/uniprotkb_organism_id_9606_AND_reviewed_2026_03_06.json` | UniProt Swiss-Prot, human (*Homo sapiens*, taxon 9606), reviewed only | 06 March 2026 |
 | `Data/entry.list.txt` | InterPro — maps every IPR accession to its entry type and name | Downloaded alongside ParentChildTreeFile |
 | `Data/ParentChildTreeFile.txt` | InterPro — parent-child hierarchy of all IPR entries | Same release as entry.list.txt |
+| `Data/AlphaMissense_aa_substitutions.tsv.gz` | AlphaMissense predicted pathogenicity scores for all human missense variants | Google DeepMind release |
 
 All data files are used read-only. No data file was manually edited.
 
@@ -36,13 +37,14 @@ All data files are used read-only. No data file was manually edited.
 Run all scripts from the repository root (`FYP_code/`) so that relative paths (`Data/`, `Csvs/`) resolve correctly.
 
 ```
-Step 1  01_data_checking.py                    Quality-check annotation coverage
-Step 2  02_dbp_domain_hierarchy.py             Classify 611 DBPs by structural domain → protein_classifications_hierarchy.csv
-Step 3  03_clinvar_domain_mapping.py           Map ClinVar variants to DNA-binding domain intervals → clinvar_domain_hits.csv
-Step 4  04_clinvar_variant_landscape.py        DBP vs non-DBP enrichment; variant burden summary and skew plots
-Step 5  06_clinvar_domain_class_enrichment.py  Enrichment restricted to in-domain variants by structural class
-Step 6  07_enrichment_by_domain.py             [Draft — to be reviewed]
-Step 7  08_sensitivity_sim_only_check.py       Sensitivity: remove similarity-only proteins, recheck ORs
+Step 1   01_data_checking.py                   Quality-check annotation coverage
+Step 1b  01b_sensitivity_sim_only_check.py     Sensitivity: remove similarity-only proteins, recheck ORs
+Step 2   02_dbp_domain_hierarchy.py            Classify 611 DBPs by structural domain → protein_classifications_hierarchy.csv
+Step 3   03_clinvar_domain_mapping.py          Map ClinVar variants to DNA-binding domain intervals → clinvar_domain_hits.csv
+Step 4   04_clinvar_variant_landscape.py       DBP vs non-DBP enrichment; variant burden summary and skew plots
+Step 5   05_clinvar_domain_class_enrichment.py Enrichment restricted to in-domain variants by structural class
+Step 6   06_Residue_class_analysis.py          Residue-level position analysis within HMG box domain (SOX family)
+Step 7   07_alpha_missense.py                  AlphaMissense pathogenicity score analysis across DBP structural classes
 ```
 
 ---
@@ -67,6 +69,18 @@ Step 7  08_sensitivity_sim_only_check.py       Sensitivity: remove similarity-on
 
 ---
 
+### Step 1b — `01b_sensitivity_sim_only_check.py`
+
+**Purpose:** Test whether enrichment results are robust to annotation quality concerns.
+
+**Background:** 52 of the 611 DBPs have DNA-binding annotations derived solely from sequence similarity (no direct experimental evidence; ECO:0000250, ECO:0000255, ECO:0000256).
+
+**Method:** Recalculate ClinVar enrichment odds ratios after removing these 52 proteins and their associated variants. Report absolute and percentage change in OR per significance group.
+
+**Output:** Console report only.
+
+---
+
 ### Step 2 — `02_dbp_domain_hierarchy.py`
 
 **Purpose:** Classify all 611 human DNA-binding proteins into structural domain families using the InterPro ontology hierarchy.
@@ -86,7 +100,7 @@ Step 7  08_sensitivity_sim_only_check.py       Sensitivity: remove similarity-on
 
 The raw hierarchy produces >40 distinct root classes, several of which contain InterPro naming inconsistencies or reflect shared fold topology rather than DNA-binding mechanism. The following manual merges were applied after inspecting the initial classification output:
 
-| Raw class name(s) | Collapsed into | Rationale |
+| Raw class nam'\''e(s) | Collapsed into | Rationale |
 |---|---|---|
 | `"Zinc finger C2H2 superfamily"`, `"Zinc finger, FYVE/PHD-type"`, `"Zinc finger, RING/FYVE/PHD-type"` | `"Zinc finger superfamily"` | Closely related structural variants of the zinc-coordinating finger fold; merging increases statistical power without losing biological meaning |
 | `"Homedomain-like superfamily"` | `"Homeodomain-like superfamily"` | Corrects an InterPro spelling error (missing 'e') |
@@ -148,7 +162,7 @@ The raw hierarchy produces >40 distinct root classes, several of which contain I
 
 ---
 
-### Step 5 — `06_clinvar_domain_class_enrichment.py`
+### Step 5 — `05_clinvar_domain_class_enrichment.py`
 
 **Purpose:** Test whether pathogenic variants are enriched in specific structural classes, using only variants that fall within annotated DNA-binding domain intervals.
 
@@ -170,21 +184,32 @@ The raw hierarchy produces >40 distinct root classes, several of which contain I
 
 ---
 
-### Step 6 — `07_enrichment_by_domain.py`
+### Step 6 — `06_Residue_class_analysis.py`
 
-**Status:** Earlier draft of Step 5 — to be reviewed and either updated or retired.
+**Purpose:** Residue-level position analysis within the HMG box domain superfamily (SOX family proteins).
+
+**Sections:**
+1. **Domain length QC** — distribution check to identify and filter outlier domain lengths; retains the canonical 190–192 aa interval
+2. **Relative position distribution** — histograms of P/LP, VUS, and B/LB variant positions within the normalised HMG box (0 = domain start, 1 = domain end), with known DNA-contact positions annotated from SRY (PDB 1J46) and SOX2/SOX4 crystal structures
+3. **Hotspot analysis** — positions with ≥2 P/LP variants per gene
+4. **Contact region enrichment** — chi-square test comparing P/LP vs B/LB variant rates in known DNA-contact windows (positions 8–20 and 40–48)
+5. **Substitution analysis** — charge-change frequency for P/LP vs B/LB variants
+
+**Output:** `Figures/hmg_position_distribution.png`
 
 ---
 
-### Step 7 — `08_sensitivity_sim_only_check.py`
+### Step 7 — `07_alpha_missense.py`
 
-**Purpose:** Test whether enrichment results are robust to annotation quality concerns.
+**Purpose:** Integrate AlphaMissense predicted pathogenicity scores with the DBP structural class framework.
 
-**Background:** 52 of the 611 DBPs have DNA-binding annotations derived solely from sequence similarity (no direct experimental evidence; ECO:0000250, ECO:0000255, ECO:0000256).
+**Processing:** Filters the full AlphaMissense human proteome dataset (`AlphaMissense_aa_substitutions.tsv.gz`) to DBP proteins only; result cached to `Csvs/alphamissense_dbp.csv` for subsequent runs.
 
-**Method:** Recalculate ClinVar enrichment odds ratios after removing these 52 proteins and their associated variants. Report absolute and percentage change in OR per significance group.
+**Analyses include:** Score distributions per structural class, comparison with ClinVar-derived P/LP enrichment, and ROC-AUC evaluation of AlphaMissense predictions against ClinVar labels within DBPs.
 
-**Output:** Console report only.
+**Outputs:**
+- `Csvs/alphamissense_dbp.csv` — filtered AlphaMissense scores for DBP proteins
+- Figures saved to `Figures/`
 
 ---
 
@@ -197,19 +222,20 @@ The following filters are applied consistently across all scripts that load Clin
 | Germline variants only | `cv[cv["OriginSimple"] == "germline"]` | Somatic variants have fundamentally different clinical significance patterns and are not the subject of this analysis |
 | Remove start-lost variants | `~((cv["canonical_residue"] == "Met") & (cv["residue_seq"] == 1))` | Variants at the initiator methionine represent translation initiation loss, not missense substitution; their pathogenicity mechanism is distinct and would confound the analysis |
 | Remove variants missing UniProt ID or residue position | `dropna(subset=["uniprot", "residue_seq"])` | Variants without a protein accession or amino acid position cannot be mapped to a domain or assigned to a structural class |
+| ≥1 ClinVar review star | `cv["ReviewStatus"].isin(ONE_STAR_STATUSES)` | Excludes entries with no assertion criteria provided; retains single-submitter and above. The one-star threshold was chosen to retain the majority of variants while excluding entirely unreviewed submissions (~30K removed of ~1.65M total) |
 | Exclude transposable element proteins | `classif[~classif["is_te"]]` | TE-derived proteins (flagged `is_te == True` in Step 2 output) are not canonical DNA-binding proteins |
 | Deduplicate on AlleleID | `drop_duplicates("#AlleleID")` | 82 variants in ClinVar map to more than one DBP protein; each variant is counted once to avoid inflating class counts |
 
 ### Clinical significance recoding
 
-ClinVar's detailed classification strings are collapsed to four groups:
+ClinVar's detailed classification strings are collapsed to four groups. Only unambiguous core labels are assigned to Pathogenic/LP and Benign/LB; qualified or context-dependent labels (e.g. "Pathogenic; drug response", "Likely pathogenic/Likely risk allele", "Benign; risk factor") are placed in Other/Conflicting to avoid diluting the primary groups with lower-confidence assertions.
 
 | Group | ClinVar terms included |
 |---|---|
-| `Pathogenic/LP` | Pathogenic; Likely pathogenic; Pathogenic/Likely pathogenic; Pathogenic; other; Pathogenic; drug response; Likely pathogenic; drug response; Likely pathogenic/Likely risk allele |
-| `Benign/LB` | Benign; Likely benign; Benign/Likely benign; Benign; risk factor; Benign; other |
+| `Pathogenic/LP` | Pathogenic; Likely pathogenic; Pathogenic/Likely pathogenic |
+| `Benign/LB` | Benign; Likely benign; Benign/Likely benign |
 | `VUS` | Uncertain significance; Uncertain significance/Uncertain risk allele; Uncertain significance; drug response |
-| `Other/Conflicting` | Conflicting classifications of pathogenicity (all subtypes); all remaining terms |
+| `Other/Conflicting` | All remaining terms, including qualified pathogenic/benign labels and conflicting classifications |
 
 ---
 

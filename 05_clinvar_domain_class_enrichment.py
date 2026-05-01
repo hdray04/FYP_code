@@ -164,57 +164,6 @@ results_df.to_csv("Csvs/clinvar_domain_enrichment_stats.csv", index=False)
 print("Saved: Csvs/clinvar_domain_enrichment_stats.csv\n")
 
 
-# ── Option 2: P/LP vs all other variants (higher power) ──────────────────────
-# 2x2 table: [P/LP, not-P/LP] x [this class, all others]
-# Uses the full variant pool so power is much better than P/LP vs B/LB alone.
-
-total_path2    = pivot["Pathogenic/LP"].sum()
-total_notpath2 = pivot["total_variants"].sum() - total_path2
-
-results2 = []
-for cls, row in test_classes.iterrows():
-    cls_path    = int(row.get("Pathogenic/LP", 0))
-    cls_total   = int(row["total_variants"])
-    cls_notpath = cls_total - cls_path
-    other_path    = int(total_path2)    - cls_path
-    other_notpath = int(total_notpath2) - cls_notpath
-
-    _, p_raw2 = scipy.stats.fisher_exact(
-        [[cls_path, cls_notpath], [other_path, other_notpath]],
-        alternative="two-sided",
-    )
-    or_hat2, ci_lo2, ci_hi2, corrected2 = odds_ratio_ci_95(
-        cls_path, other_path, cls_notpath, other_notpath
-    )
-    results2.append({
-        "structural_class"        : cls,
-        "or_plp_vs_all"           : or_hat2,
-        "ci95_lo"                 : ci_lo2,
-        "ci95_hi"                 : ci_hi2,
-        "p_raw"                   : p_raw2,
-        "ci_continuity_corrected" : corrected2,
-        "cls_path"                : cls_path,
-        "cls_total"               : cls_total,
-        "cls_pct_path"            : round(100 * cls_path / cls_total, 1) if cls_total else 0,
-    })
-
-results2_df = pd.DataFrame(results2)
-results2_df["p_bonf"] = (results2_df["p_raw"] * n_tests).clip(upper=1.0)
-results2_df = results2_df.sort_values("or_plp_vs_all", ascending=True)
-
-sig_classes2 = set(results2_df[results2_df["p_bonf"] < 0.05]["structural_class"])
-
-print(f"Fisher's exact: P/LP vs all other variants per class (Bonferroni n_tests={n_tests})\n")
-print(f"  {'Class':<50} {'OR':>6}  {'95% CI':>18}  {'%P/LP':>6}  {'p_bonf':>10}")
-print(f"  {'-'*100}")
-for _, row in results2_df.sort_values("or_plp_vs_all", ascending=False).iterrows():
-    sig = " *" if row["p_bonf"] < 0.05 else ""
-    print(f"  {row['structural_class']:<50} {row['or_plp_vs_all']:>6.2f}  "
-          f"[{row['ci95_lo']:>6.2f}, {row['ci95_hi']:>6.2f}]  "
-          f"{row['cls_pct_path']:>5.1f}%  {row['p_bonf']:>10.3e}{sig}")
-
-results2_df.to_csv("Csvs/clinvar_domain_enrichment_stats_plp_vs_all.csv", index=False)
-print("\nSaved: Csvs/clinvar_domain_enrichment_stats_plp_vs_all.csv\n")
 
 
 # ── In-domain vs out-of-domain P/LP enrichment per class ─────────────────────
@@ -346,7 +295,7 @@ bar_data = bar_data.sort_values("pct_path", ascending=True)
 overall_pct_path = 100 * pivot["Pathogenic/LP"].sum() / pivot["total_variants"].sum()
 
 y_labels = [
-    f"{NAME_SHORT.get(c, c[:18])}{'*' if c in sig_classes2 else ''}  "
+    f"{NAME_SHORT.get(c, c[:18])}{'*' if c in sig_classes else ''}  "
     f"(n={int(row['total_variants']):,})"
     for c, row in bar_data.iterrows()
 ]
@@ -369,7 +318,7 @@ ax.axvline(overall_pct_path, color="black", linestyle="--", linewidth=1.2,
 ax.set_yticks(range(len(bar_data)))
 ax.set_yticklabels(y_labels, fontsize=9)
 for lbl_obj, cls in zip(ax.get_yticklabels(), bar_data.index):
-    if cls in sig_classes2:
+    if cls in sig_classes:
         lbl_obj.set_fontweight("bold")
 ax.set_xlabel("% of in-domain ClinVar variants", fontsize=11)
 ax.set_xlim(0, 100)
@@ -471,8 +420,9 @@ print("Saved: Figures/clinvar_domain_plp_dotplot.png")
 
 
 # --- Lollipop plot: % P/LP per structural class (n > 50 variants) ---
-plot_df = results2_df.merge(pivot[["total_variants"]], on="structural_class")
-plot_df = plot_df[plot_df["total_variants"] > 50].sort_values("cls_pct_path")
+plot_df = pivot[pivot["total_variants"] > 50].copy().reset_index()
+plot_df["cls_pct_path"] = 100 * plot_df["Pathogenic/LP"] / plot_df["total_variants"]
+plot_df = plot_df.sort_values("cls_pct_path")
 
 fig, ax = plt.subplots(figsize=(9, 7))
 y = range(len(plot_df))
