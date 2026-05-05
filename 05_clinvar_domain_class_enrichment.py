@@ -231,10 +231,12 @@ for cls in all_classes:
     })
 
 inout_df = pd.DataFrame(inout_results)
+inout_df = inout_df.join(proteins_per_class, on="structural_class")
+inout_df = inout_df[inout_df["n_proteins"] >= 2]
 inout_df["p_bonf"] = (inout_df["p_raw"] * len(inout_df)).clip(upper=1.0)
 inout_df = inout_df.sort_values("or_in_vs_out", ascending=False)
 
-print(f"\nIn-domain vs out-of-domain P/LP enrichment per class (Bonferroni n={len(inout_df)})\n")
+print(f"\nIn-domain vs out-of-domain P/LP enrichment per class (Bonferroni n={len(inout_df)}, ≥2 proteins)\n")
 print(f"  {'Class':<50} {'OR':>6}  {'95% CI':>18}  {'in%PLP':>7}  {'out%PLP':>8}  {'p_bonf':>10}")
 print(f"  {'-'*107}")
 for _, row in inout_df.iterrows():
@@ -252,35 +254,36 @@ inout_df.to_csv("Csvs/clinvar_inout_domain_enrichment.csv", index=False)
 print("Saved: Csvs/clinvar_inout_domain_enrichment.csv\n")
 
 NAME_SHORT = {
-    "Hepatocyte nuclear factor 1, N-terminal domain superfamily"         : "HNF1",
-    "Nuclear hormone receptor-like domain superfamily"                   : "NHR",
-    "CTF transcription factor/nuclear factor 1, DNA-binding domain"     : "CTF",
-    "Transcription factor, MADS-box superfamily"                        : "MADS",
-    "p53-like transcription factor, DNA-binding domain superfamily"     : "p53",
-    "High mobility group box domain superfamily"                        : "HMG",
-    "Winged helix-like DNA-binding domain superfamily"                  : "WH",
-    "Homeodomain-like superfamily"                                      : "HD",
-    "SMAD-like domain superfamily"                                      : "SMAD",
-    "E2F-DP heterodimerization region"                                  : "E2F",
-    "Nucleic acid-binding, OB-fold"                                     : "OB",
-    "Zinc finger superfamily"                                           : "ZF",
-    "Bromodomain-like superfamily"                                      : "Bromo",
-    "Sterile alpha motif/pointed domain superfamily"                    : "SAM/ETS",
-    "Histone-fold"                                                      : "Histone",
-    "DM DNA-binding domain superfamily"                                 : "DM",
+    "Hepatocyte nuclear factor 1, N-terminal domain superfamily"         : "HNF1 N-terminal",
+    "Nuclear hormone receptor-like domain superfamily"                   : "Nuclear hormone receptor",
+    "CTF transcription factor/nuclear factor 1, DNA-binding domain"     : "CTF/NF-1",
+    "Transcription factor, MADS-box superfamily"                        : "MADS-box",
+    "p53-like transcription factor, DNA-binding domain superfamily"     : "p53-like TF",
+    "High mobility group box domain superfamily"                        : "HMG box",
+    "Winged helix-like DNA-binding domain superfamily"                  : "Winged helix",
+    "Homeodomain-like superfamily"                                      : "Homeodomain",
+    "SMAD-like domain superfamily"                                      : "SMAD-like",
+    "E2F-DP heterodimerization region"                                  : "E2F/DP",
+    "Nucleic acid-binding, OB-fold"                                     : "OB-fold",
+    "Zinc finger superfamily"                                           : "Zinc finger",
+    "Bromodomain-like superfamily"                                      : "Bromodomain",
+    "Sterile alpha motif/pointed domain superfamily"                    : "SAM/Pointed",
+    "Basic-leucine zipper domain superfamily"                           : "bZIP",
+    "Histone-fold"                                                      : "Histone-fold",
+    "DM DNA-binding domain superfamily"                                 : "DM domain",
     "Immunoglobulin-like fold"                                          : "Ig-like",
-    "Ankyrin repeat-containing domain superfamily"                      : "Ankyrin",
-    "GCM domain superfamily"                                            : "GCM",
-    "Bromo adjacent homology (BAH) domain superfamily"                  : "BAH",
-    "Nucleotide-binding alpha-beta plait domain superfamily"            : "RRM",
-    "SKP1/BTB/POZ domain superfamily"                                   : "BTB",
+    "Ankyrin repeat-containing domain superfamily"                      : "Ankyrin repeat",
+    "GCM domain superfamily"                                            : "GCM domain",
+    "Bromo adjacent homology (BAH) domain superfamily"                  : "BAH domain",
+    "Nucleotide-binding alpha-beta plait domain superfamily"            : "RRM/alpha-beta plait",
+    "SKP1/BTB/POZ domain superfamily"                                   : "BTB/POZ",
     "AT-hook motif"                                                     : "AT-hook",
     "NDT80, DNA-binding domain superfamily"                             : "NDT80",
-    "TEA/ATTS domain superfamily"                                       : "TEAD",
-    "Catenin binding domain superfamily"                                : "Catenin",
+    "TEA/ATTS domain superfamily"                                       : "TEA/ATTS",
+    "Catenin binding domain superfamily"                                : "Catenin-binding",
     "EF-hand domain pair"                                               : "EF-hand",
-    "P-loop containing nucleoside triphosphate hydrolase"               : "P-loop",
-    "Fibronectin type III superfamily"                                  : "FN3",
+    "P-loop containing nucleoside triphosphate hydrolase"               : "P-loop NTPase",
+    "Fibronectin type III superfamily"                                  : "Fibronectin III",
 }
 
 # ── Stacked bar chart: variant classification proportions by structural class ──
@@ -449,3 +452,120 @@ ax.set_axisbelow(True)
 plt.tight_layout()
 plt.savefig("Figures/clinvar_pct_plp_by_structural_class.png", dpi=150, bbox_inches="tight")
 print("Saved Figures/clinvar_pct_plp_by_structural_class.png")
+
+
+# ── Forest plot: in-domain vs out-of-domain OR per structural class ───────────
+
+# inout_df already filtered to n_proteins >= 2
+forest_df = inout_df.copy()
+forest_df = forest_df.sort_values("or_in_vs_out", ascending=True).reset_index(drop=True)
+forest_df["label"] = forest_df["structural_class"].map(NAME_SHORT).fillna(forest_df["structural_class"])
+forest_df["sig"] = forest_df["p_bonf"] < 0.05
+
+# Cap CIs at a display maximum and flag with arrow
+CI_CAP = 300
+forest_df["ci_hi_plot"] = forest_df["ci95_hi"].clip(upper=CI_CAP)
+forest_df["ci_capped"]  = forest_df["ci95_hi"] > CI_CAP
+
+n_rows = len(forest_df)
+fig, ax = plt.subplots(figsize=(9, max(5, n_rows * 0.42)))
+
+for i, row in forest_df.iterrows():
+    color = "#d62728" if row["sig"] else "#2171b5"
+    ax.hlines(i, row["ci95_lo"], row["ci_hi_plot"], color=color, linewidth=1.8, alpha=0.6)
+    if row["ci_capped"]:
+        ax.annotate("", xy=(CI_CAP, i), xytext=(CI_CAP * 0.85, i),
+                    arrowprops=dict(arrowstyle="->", color=color, lw=1.2))
+    ax.scatter(row["or_in_vs_out"], i, color=color, s=45, zorder=3)
+
+ax.axvline(1, color="#555", linestyle="--", linewidth=1)
+ax.set_xscale("log")
+
+# Explicit xlim to cover all plotted CI bars
+x_lo = forest_df["ci95_lo"].min() * 0.7
+ax.set_xlim(x_lo, CI_CAP * 1.05)
+
+ax.set_yticks(range(n_rows))
+ax.set_yticklabels(
+    [f"{r['label']}  (n={int(r['in_total'])}/{int(r['out_total'])})"
+     for _, r in forest_df.iterrows()],
+    fontsize=8,
+)
+
+# in% / out% as a text column in axes-fraction space so it never overlaps the plot
+for i, row in forest_df.iterrows():
+    ax.text(1.02, (i + 0.5) / n_rows,
+            f"{row['in_pct_plp']:.0f}% / {row['out_pct_plp']:.0f}%",
+            transform=ax.transAxes, va="center", ha="left", fontsize=7, color="#444")
+ax.text(1.02, 1.01, "in% / out%", transform=ax.transAxes,
+        va="bottom", ha="left", fontsize=7, color="#444", fontweight="bold")
+
+ax.set_xlabel("Odds ratio (in-domain vs out-of-domain P/LP), log scale")
+ax.set_title(
+    "In-domain vs out-of-domain P/LP enrichment by structural class\n"
+    "Red = Bonferroni-significant  ·  → CI extends beyond axis",
+    fontsize=9,
+)
+
+from matplotlib.lines import Line2D as _L2D
+ax.legend(handles=[
+    _L2D([0], [0], color="#d62728", lw=2, label="Bonferroni-significant"),
+    _L2D([0], [0], color="#2171b5", lw=2, label="Not significant"),
+], fontsize=8, loc="lower right")
+
+ax.spines[["top", "right"]].set_visible(False)
+plt.tight_layout()
+plt.savefig("Figures/clinvar_inout_domain_forest.png", dpi=150, bbox_inches="tight")
+print("Saved Figures/clinvar_inout_domain_forest.png")
+
+
+# ── Forest plot: Fisher's exact P/LP vs B/LB enrichment per class ────────────
+
+forest_plpb = results_df[
+    (results_df["cls_path"] > 0) & (results_df["cls_benign"] > 0)
+].copy()
+forest_plpb = forest_plpb.sort_values("or_path_vs_benign", ascending=True).reset_index(drop=True)
+forest_plpb["label"] = forest_plpb["structural_class"].map(NAME_SHORT).fillna(forest_plpb["structural_class"])
+forest_plpb["sig"] = forest_plpb["p_bonf"] < 0.05
+
+CI_CAP_PB = 300
+forest_plpb["ci_hi_plot"] = forest_plpb["ci95_hi"].clip(upper=CI_CAP_PB)
+forest_plpb["ci_capped"]  = forest_plpb["ci95_hi"] > CI_CAP_PB
+
+n_rows_pb = len(forest_plpb)
+fig, ax = plt.subplots(figsize=(9, max(5, n_rows_pb * 0.42)))
+
+for i, row in forest_plpb.iterrows():
+    color = "#d62728" if row["sig"] else "#2171b5"
+    ax.hlines(i, row["ci95_lo"], row["ci_hi_plot"], color=color, linewidth=1.8, alpha=0.6)
+    if row["ci_capped"]:
+        ax.annotate("", xy=(CI_CAP_PB, i), xytext=(CI_CAP_PB * 0.85, i),
+                    arrowprops=dict(arrowstyle="->", color=color, lw=1.2))
+    ax.scatter(row["or_path_vs_benign"], i, color=color, s=45, zorder=3)
+
+ax.axvline(1, color="#555", linestyle="--", linewidth=1)
+ax.set_xscale("log")
+ax.set_xlim(forest_plpb["ci95_lo"].min() * 0.7, CI_CAP_PB * 1.05)
+
+ax.set_yticks(range(n_rows_pb))
+ax.set_yticklabels(
+    [f"{r['label']}  (P/LP={int(r['cls_path'])}, B/LB={int(r['cls_benign'])})"
+     for _, r in forest_plpb.iterrows()],
+    fontsize=8,
+)
+
+ax.set_xlabel("Odds ratio (P/LP vs B/LB, this class vs all others), log scale")
+ax.set_title(
+    f"Fisher's exact: P/LP vs B/LB enrichment by structural class\n"
+    f"Bonferroni n_tests={n_tests}  ·  Red = significant  ·  → CI extends beyond axis",
+    fontsize=9,
+)
+ax.legend(handles=[
+    Line2D([0], [0], color="#d62728", lw=2, label="Bonferroni-significant"),
+    Line2D([0], [0], color="#2171b5", lw=2, label="Not significant"),
+], fontsize=8, loc="lower right")
+
+ax.spines[["top", "right"]].set_visible(False)
+plt.tight_layout()
+plt.savefig("Figures/clinvar_plpb_enrichment_forest.png", dpi=150, bbox_inches="tight")
+print("Saved Figures/clinvar_plpb_enrichment_forest.png")

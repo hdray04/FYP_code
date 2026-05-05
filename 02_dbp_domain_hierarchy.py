@@ -134,7 +134,7 @@ def get_root(ipr_id, max_depth=30):
 
 # ── Step 3: Load proteins ────────────────────────────────────────────────────
 
-print("Loading proteins...")
+
 with open(JSON_FILE) as f:
     data = json.load(f)
 proteins = data["results"]

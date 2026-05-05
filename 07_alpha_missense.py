@@ -178,7 +178,7 @@ ax.set_axisbelow(True)
 
 plt.tight_layout()
 plt.savefig("Figures/am_mean_by_structural_class.png", dpi=150, bbox_inches="tight")
-plt.show()
+
 print("Saved Figures/am_mean_by_structural_class.png")
 
 # --- Lollipop: % AM pathogenic by structural class ---
@@ -219,7 +219,6 @@ ax.set_axisbelow(True)
 
 plt.tight_layout()
 plt.savefig("Figures/am_pct_pathogenic_by_structural_class.png", dpi=150, bbox_inches="tight")
-plt.show()
 print("Saved Figures/am_pct_pathogenic_by_structural_class.png")
 
 # --- Statistics: Kruskal-Wallis + pairwise Mann-Whitney U (Bonferroni) ---
@@ -299,7 +298,6 @@ for (a, b), y in zip(pairs, bracket_y):
 
 plt.tight_layout()
 plt.savefig("Figures/am_score_by_sig_group_boxplot.png", dpi=150, bbox_inches="tight")
-plt.show()
 print("Saved Figures/am_score_by_sig_group_boxplot.png")
 
 
@@ -422,5 +420,257 @@ spear = pct_am_path.reset_index().merge(pct_plp.reset_index(), on="structural_cl
 rho, p_spear = spearmanr(spear["pct_am_path"], spear["pct_plp"])
 print(f"\n=== Spearman correlation: % AM pathogenic vs % ClinVar P/LP (n={len(spear)} classes) ===")
 print(f"rho={rho:.3f}, p={p_spear:.2e}")
+
+
+# --- AM in-domain vs out-of-domain pathogenicity enrichment per structural class ---
+import numpy as np
+from scipy.stats import fisher_exact
+
+proteins_per_class_am = dbp_df.groupby("structural_class")["uniprot_id"].nunique().rename("n_proteins")
+
+# In-domain: merged_dedup already has am_class + structural_class
+in_dom = merged_dedup[merged_dedup["am_class"].notna()].copy()
+in_dom["location"] = "in"
+
+# Out-of-domain: merged_out already exists from the VUS section; add structural class
+merged_out_dedup = merged_out.drop_duplicates(subset=["#AlleleID"]).copy()
+merged_out_dedup = merged_out_dedup.merge(
+    dbp_df.rename(columns={"uniprot_id": "uniprot"}), on="uniprot", how="left"
+)
+merged_out_dedup = merged_out_dedup[merged_out_dedup["am_class"].notna()].copy()
+merged_out_dedup["location"] = "out"
+
+combined = pd.concat([
+    in_dom[["#AlleleID", "structural_class", "am_class", "location"]],
+    merged_out_dedup[["#AlleleID", "structural_class", "am_class", "location"]],
+], ignore_index=True)
+combined["am_path"] = (combined["am_class"] == "pathogenic").astype(int)
+
+am_enrich_results = []
+for sc in combined["structural_class"].dropna().unique():
+    in_sc  = combined[(combined["structural_class"] == sc) & (combined["location"] == "in")]
+    out_sc = combined[(combined["structural_class"] == sc) & (combined["location"] == "out")]
+    a, b = (in_sc["am_path"] == 1).sum(),  (in_sc["am_path"] == 0).sum()
+    c, d = (out_sc["am_path"] == 1).sum(), (out_sc["am_path"] == 0).sum()
+    if (a + b) < 5 or (c + d) < 5:
+        continue
+    or_val, p_raw = fisher_exact([[a, b], [c, d]], alternative="two-sided")
+    # Continuity correction when any cell is zero
+    cc = min(a, b, c, d) == 0
+    ac, bc, cc_n, dc = (a+0.5, b+0.5, c+0.5, d+0.5) if cc else (a, b, c, d)
+    or_cc = (ac * dc) / (bc * cc_n)
+    se = np.sqrt(1/ac + 1/bc + 1/cc_n + 1/dc)
+    ci_lo = np.exp(np.log(or_cc) - 1.96 * se)
+    ci_hi = np.exp(np.log(or_cc) + 1.96 * se)
+    am_enrich_results.append({
+        "structural_class": sc,
+        "OR": or_cc,
+        "ci_lo": ci_lo,
+        "ci_hi": ci_hi,
+        "continuity_corrected": cc,
+        "in%AM_path":  100 * a / (a + b),
+        "out%AM_path": 100 * c / (c + d),
+        "p_raw": p_raw,
+        "n_in": a + b,
+        "n_out": c + d,
+    })
+
+am_enrich_df = pd.DataFrame(am_enrich_results)
+am_enrich_df = am_enrich_df.join(proteins_per_class_am, on="structural_class")
+am_enrich_df = am_enrich_df[am_enrich_df["n_proteins"] >= 2]
+am_enrich_df["p_bonf"] = (am_enrich_df["p_raw"] * len(am_enrich_df)).clip(upper=1.0)
+am_enrich_df = am_enrich_df.sort_values("OR", ascending=False)
+
+n_tests = len(am_enrich_df)
+print(f"\n=== AM in-domain vs out-of-domain pathogenicity enrichment per class (Bonferroni n={n_tests}) ===")
+print(f"{'Class':<55} {'OR':>8}  {'95% CI':>20}  {'in%AM':>7}  {'out%AM':>7}  {'p_bonf':>12}")
+print("-" * 115)
+for _, row in am_enrich_df.iterrows():
+    sig    = "*" if row["p_bonf"] < 0.05 else ""
+    ci_str = f"[{row['ci_lo']:6.2f}, {row['ci_hi']:6.2f}]"
+    print(f"{row['structural_class']:<55} {row['OR']:>8.2f}  {ci_str:>20}  {row['in%AM_path']:>6.1f}%  {row['out%AM_path']:>6.1f}%  {row['p_bonf']:>12.3e} {sig}")
+
+am_enrich_df.to_csv("Csvs/am_inout_domain_enrichment.csv", index=False)
+print("Saved: Csvs/am_inout_domain_enrichment.csv")
+
+
+# --- Spearman: AM OR vs ClinVar OR per structural class ---
+from scipy.stats import spearmanr
+
+cv_enrich = pd.read_csv("Csvs/clinvar_inout_domain_enrichment.csv")[["structural_class", "or_in_vs_out"]].rename(columns={"or_in_vs_out": "OR_cv"})
+am_enrich_clean = am_enrich_df[["structural_class", "OR"]].rename(columns={"OR": "OR_am"})
+or_merged = am_enrich_clean.merge(cv_enrich, on="structural_class").replace([np.inf, -np.inf], np.nan).dropna()
+
+rho_or, p_or = spearmanr(or_merged["OR_am"], or_merged["OR_cv"])
+print(f"\n=== Spearman: AM OR vs ClinVar OR per structural class (n={len(or_merged)}) ===")
+print(f"rho={rho_or:.3f}, p={p_or:.2e}")
+
+
+# --- Plot 1: Scatter of log OR_am vs log OR_cv ---
+fig, ax = plt.subplots(figsize=(7, 6))
+
+ax.scatter(np.log2(or_merged["OR_cv"]), np.log2(or_merged["OR_am"]),
+           s=55, color="#2171b5", alpha=0.85, zorder=3)
+
+for _, row in or_merged.iterrows():
+    ax.annotate(row["structural_class"], (np.log2(row["OR_cv"]), np.log2(row["OR_am"])),
+                fontsize=6.5, xytext=(4, 3), textcoords="offset points", color="#333")
+
+ax.axline((0, 0), slope=1, color="#aaa", linestyle="--", linewidth=1, label="x = y")
+ax.set_xlabel("log₂ OR (ClinVar P/LP: in vs out of domain)")
+ax.set_ylabel("log₂ OR (AM pathogenic: in vs out of domain)")
+ax.set_title(f"Spearman ρ={rho_or:.3f}, p={p_or:.2e} (n={len(or_merged)} classes)", fontsize=10)
+ax.spines[["top", "right"]].set_visible(False)
+ax.xaxis.grid(True, linestyle="--", linewidth=0.6, color="#eee", zorder=0)
+ax.yaxis.grid(True, linestyle="--", linewidth=0.6, color="#eee", zorder=0)
+ax.set_axisbelow(True)
+
+plt.tight_layout()
+plt.savefig("Figures/am_vs_clinvar_or_scatter.png", dpi=150, bbox_inches="tight")
+
+print("Saved Figures/am_vs_clinvar_or_scatter.png")
+
+
+# --- Plot 2: Slope / bump chart comparing class rank ---so what 
+or_merged["rank_cv"] = or_merged["OR_cv"].rank(ascending=False).astype(int)
+or_merged["rank_am"] = or_merged["OR_am"].rank(ascending=False).astype(int)
+or_merged_slope = or_merged.sort_values("rank_cv")
+
+# Shorten long class names for readability
+def shorten(name):
+    replacements = {
+        " superfamily": "", " domain": "", "transcription factor": "TF",
+        "DNA-binding": "DBD", "Transcription factor, ": "",
+        "containing": "cont.", "Nuclear hormone receptor-like": "NHR-like",
+        "Hepatocyte nuclear factor 1, N-terminal": "HNF1 N-term",
+    }
+    for k, v in replacements.items():
+        name = name.replace(k, v)
+    return name.strip(", ")
+
+or_merged_slope["label"] = or_merged_slope["structural_class"].apply(shorten)
+
+fig, ax = plt.subplots(figsize=(10, 7))
+n = len(or_merged_slope)
+
+for _, row in or_merged_slope.iterrows():
+    rank_change = row["rank_am"] - row["rank_cv"]
+    color = "#d62728" if rank_change > 2 else "#2171b5" if rank_change < -2 else "#888"
+    ax.plot([0, 1], [row["rank_cv"], row["rank_am"]], color=color, linewidth=1.4, alpha=0.75)
+    ax.text(-0.02, row["rank_cv"], row["label"], ha="right", va="center", fontsize=7, color=color)
+    ax.text(1.02,  row["rank_am"], row["label"], ha="left",  va="center", fontsize=7, color=color)
+
+ax.set_xlim(-0.5, 1.5)
+ax.set_ylim(n + 0.5, 0.5)
+ax.set_xticks([0, 1])
+ax.set_xticklabels(["ClinVar OR rank\n(in vs out)", "AM OR rank\n(in vs out)"], fontsize=10)
+ax.set_ylabel("Rank (1 = highest OR)")
+ax.set_title("Class ranking: ClinVar P/LP enrichment vs AM pathogenic enrichment\n(in-domain vs out-of-domain)", fontsize=10)
+
+from matplotlib.lines import Line2D
+legend_elements = [
+    Line2D([0], [0], color="#d62728", lw=1.5, label="Ranks higher in AM"),
+    Line2D([0], [0], color="#2171b5", lw=1.5, label="Ranks higher in ClinVar"),
+    Line2D([0], [0], color="#888",    lw=1.5, label="Similar rank"),
+]
+ax.legend(handles=legend_elements, fontsize=8, loc="upper center")
+ax.spines[["top", "right", "left", "bottom"]].set_visible(False)
+ax.yaxis.set_visible(False)
+
+plt.tight_layout()
+plt.savefig("Figures/am_vs_clinvar_rank_slope.png", dpi=150, bbox_inches="tight")
+
+print("Saved Figures/am_vs_clinvar_rank_slope.png")
+
+
+# --- Forest plot: AM in-domain vs out-of-domain pathogenicity enrichment ---
+NAME_SHORT = {
+    "Hepatocyte nuclear factor 1, N-terminal domain superfamily"         : "HNF1 N-terminal",
+    "Nuclear hormone receptor-like domain superfamily"                   : "Nuclear hormone receptor",
+    "CTF transcription factor/nuclear factor 1, DNA-binding domain"     : "CTF/NF-1",
+    "Transcription factor, MADS-box superfamily"                        : "MADS-box",
+    "p53-like transcription factor, DNA-binding domain superfamily"     : "p53-like TF",
+    "High mobility group box domain superfamily"                        : "HMG box",
+    "Winged helix-like DNA-binding domain superfamily"                  : "Winged helix",
+    "Homeodomain-like superfamily"                                      : "Homeodomain",
+    "SMAD-like domain superfamily"                                      : "SMAD-like",
+    "E2F-DP heterodimerization region"                                  : "E2F/DP",
+    "Nucleic acid-binding, OB-fold"                                     : "OB-fold",
+    "Zinc finger superfamily"                                           : "Zinc finger",
+    "Bromodomain-like superfamily"                                      : "Bromodomain",
+    "Sterile alpha motif/pointed domain superfamily"                    : "SAM/Pointed",
+    "Basic-leucine zipper domain superfamily"                           : "bZIP",
+    "Histone-fold"                                                      : "Histone-fold",
+    "DM DNA-binding domain superfamily"                                 : "DM domain",
+    "Immunoglobulin-like fold"                                          : "Ig-like",
+    "Ankyrin repeat-containing domain superfamily"                      : "Ankyrin repeat",
+    "GCM domain superfamily"                                            : "GCM domain",
+    "Bromo adjacent homology (BAH) domain superfamily"                  : "BAH domain",
+    "Nucleotide-binding alpha-beta plait domain superfamily"            : "RRM/alpha-beta plait",
+    "SKP1/BTB/POZ domain superfamily"                                   : "BTB/POZ",
+    "AT-hook motif"                                                     : "AT-hook",
+    "NDT80, DNA-binding domain superfamily"                             : "NDT80",
+    "TEA/ATTS domain superfamily"                                       : "TEA/ATTS",
+    "Catenin binding domain superfamily"                                : "Catenin-binding",
+    "EF-hand domain pair"                                               : "EF-hand",
+    "P-loop containing nucleoside triphosphate hydrolase"               : "P-loop NTPase",
+    "Fibronectin type III superfamily"                                  : "Fibronectin III",
+}
+
+# am_enrich_df already filtered to n_proteins >= 2; sort for plot
+am_forest = am_enrich_df.copy()
+am_forest = am_forest.sort_values("OR", ascending=True).reset_index(drop=True)
+am_forest["label"] = am_forest["structural_class"].map(NAME_SHORT).fillna(am_forest["structural_class"])
+am_forest["sig"] = am_forest["p_bonf"] < 0.05
+
+CI_CAP_AM = 200
+am_forest["ci_hi_plot"] = am_forest["ci_hi"].clip(upper=CI_CAP_AM)
+am_forest["ci_capped"]  = am_forest["ci_hi"] > CI_CAP_AM
+
+n_rows = len(am_forest)
+fig, ax = plt.subplots(figsize=(9, max(5, n_rows * 0.42)))
+
+for i, row in am_forest.iterrows():
+    color = "#d62728" if row["sig"] else "#2171b5"
+    ax.hlines(i, row["ci_lo"], row["ci_hi_plot"], color=color, linewidth=1.8, alpha=0.6)
+    if row["ci_capped"]:
+        ax.annotate("", xy=(CI_CAP_AM, i), xytext=(CI_CAP_AM * 0.85, i),
+                    arrowprops=dict(arrowstyle="->", color=color, lw=1.2))
+    ax.scatter(row["OR"], i, color=color, s=45, zorder=3)
+
+ax.axvline(1, color="#555", linestyle="--", linewidth=1)
+ax.set_xscale("log")
+x_lo = am_forest["ci_lo"].min() * 0.7
+ax.set_xlim(x_lo, CI_CAP_AM * 1.05)
+
+ax.set_yticks(range(n_rows))
+ax.set_yticklabels(
+    [f"{r['label']}  (n={int(r['n_in'])}/{int(r['n_out'])})" for _, r in am_forest.iterrows()],
+    fontsize=8,
+)
+
+for i, row in am_forest.iterrows():
+    ax.text(1.02, i,
+            f"{row['in%AM_path']:.0f}% / {row['out%AM_path']:.0f}%",
+            transform=ax.get_yaxis_transform(), va="center", ha="left", fontsize=7, color="#444")
+ax.text(1.02, 1.01, "in% / out%", transform=ax.transAxes,
+        va="bottom", ha="left", fontsize=7, color="#444", fontweight="bold")
+
+ax.set_xlabel("Odds ratio (in-domain vs out-of-domain AM pathogenic), log scale")
+ax.set_title(
+    "AM pathogenic enrichment: in-domain vs out-of-domain by structural class\n"
+    "Red = Bonferroni-significant  ·  → CI extends beyond axis",
+    fontsize=9,
+)
+from matplotlib.lines import Line2D as _L2D_am
+ax.legend(handles=[
+    _L2D_am([0], [0], color="#d62728", lw=2, label="Bonferroni-significant"),
+    _L2D_am([0], [0], color="#2171b5", lw=2, label="Not significant"),
+], fontsize=8, loc="lower right")
+
+ax.spines[["top", "right"]].set_visible(False)
+plt.tight_layout()
+plt.savefig("Figures/am_inout_domain_forest.png", dpi=150, bbox_inches="tight")
+print("Saved Figures/am_inout_domain_forest.png")
 
 

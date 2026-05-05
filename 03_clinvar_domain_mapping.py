@@ -189,9 +189,9 @@ def classify_with_offset(cv_dbp, domains_dbp, offset):
 def path_or(in_s, out_s):
     a = int(in_s.get("Pathogenic/LP", 0))
     b = int(out_s.get("Pathogenic/LP", 0))
-    c = in_s.sum() - a
-    d = out_s.sum() - b
-    or_hat, _, _, _ = odds_ratio_ci_95(a, c, b, d)
+    c = int(in_s.get("Benign/LB", 0))
+    d = int(out_s.get("Benign/LB", 0))
+    or_hat, _, _, _ = odds_ratio_ci_95(a, b, c, d)
     return or_hat
 
 base_or = path_or(in_sig, out_sig)
