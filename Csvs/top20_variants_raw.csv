@@ -4,7 +4,6 @@ Q6ZRS2,SRCAP,P-loop containing nucleoside triphosphate hydrolase,1202
 Q9UMN6,KMT2B,Bromodomain-like superfamily,1185
 P04637,TP53,"p53-like transcription factor, DNA-binding domain superfamily",1140
 Q9Y6X0,SETBP1,AT-hook motif,1025
-P02751,FN1,Fibronectin type III superfamily,893
 Q03164,KMT2A,Bromodomain-like superfamily,717
 Q9UGU0,TCF20,Zinc finger superfamily,654
 O60315,ZEB2,Homeodomain-like superfamily,644
@@ -19,3 +18,4 @@ Q15911,ZFHX3,Homeodomain-like superfamily,418
 Q9H2P0,ADNP,Homeodomain-like superfamily,416
 Q9Y6Y1,CAMTA1,Ankyrin repeat-containing domain superfamily,415
 P15918,RAG1,Zinc finger superfamily,414
+Q9Y2U8,LEMD3,LEM/LEM-like domain superfamily,408

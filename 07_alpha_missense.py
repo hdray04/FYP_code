@@ -11,7 +11,8 @@ if os.path.exists(FILTERED_PATH):
     print("Loading existing filtered AlphaMissense data...")
     am_dbp = pd.read_csv(FILTERED_PATH)
 else:
-    dbp_df = pd.read_csv("Csvs/protein_classifications_hierarchy.csv", usecols=["uniprot_id"])
+    dbp_df = pd.read_csv("Csvs/protein_classifications_hierarchy.csv", usecols=["uniprot_id", "is_te", "is_noncanonical"])
+    dbp_df = dbp_df[~dbp_df["is_te"] & ~dbp_df["is_noncanonical"]]
     dbp_ids = set(dbp_df["uniprot_id"])
     print(f"Filtering for {len(dbp_ids)} DBP UniProt accessions...")
 
@@ -30,7 +31,8 @@ else:
     am_dbp.to_csv(FILTERED_PATH, index=False)
     print(f"Saved {len(am_dbp):,} variants across {am_dbp['uniprot_id'].nunique()} DBPs to {FILTERED_PATH}")
 
-dbp_df = pd.read_csv("Csvs/protein_classifications_hierarchy.csv", usecols=["uniprot_id", "structural_class"]).drop_duplicates(subset=["uniprot_id"])
+dbp_df = pd.read_csv("Csvs/protein_classifications_hierarchy.csv", usecols=["uniprot_id", "structural_class", "is_te", "is_noncanonical"]).drop_duplicates(subset=["uniprot_id"])
+dbp_df = dbp_df[~dbp_df["is_te"] & ~dbp_df["is_noncanonical"]]
 am = pd.read_csv(FILTERED_PATH, usecols=["uniprot_id", "protein_variant", "am_pathogenicity", "am_class"])
 
 mapped = set(am["uniprot_id"].dropna().unique())
@@ -333,10 +335,12 @@ vus_location_summary = (
     .round(1)
 )
 vus_location_counts = vus_df.groupby("location").size().rename("n_vus")
-vus_location_summary = vus_location_summary.join(vus_location_counts)
+vus_location_path_n = vus_df[vus_df["am_class"] == "pathogenic"].groupby("location").size().rename("n_pathogenic")
+vus_location_summary = vus_location_summary.join(vus_location_counts).join(vus_location_path_n).fillna({"n_pathogenic": 0})
+vus_location_summary["n_pathogenic"] = vus_location_summary["n_pathogenic"].astype(int)
 
 print("\n--- Proportion of VUS called 'pathogenic' by AlphaMissense ---")
-print(vus_location_summary[["n_vus", "pct_pathogenic"]].to_string())
+print(vus_location_summary[["n_vus", "n_pathogenic", "pct_pathogenic"]].to_string())
 
 vus_ct = pd.crosstab(vus_df["location"], vus_df["am_class"])
 chi2_vus, p_vus, dof_vus, _ = chi2_contingency(vus_ct)
@@ -353,12 +357,14 @@ vus_sc_summary = (
     .rename(columns={"pathogenic": "pct_pathogenic"})
 )
 vus_sc_counts = in_domain_vus.groupby("structural_class").size().rename("n_vus")
-vus_sc_summary = vus_sc_summary.join(vus_sc_counts)
-vus_sc_summary = vus_sc_summary[vus_sc_summary["n_vus"] >= 10] # Filter for classes with at least 10 VUS
+vus_sc_path_n = in_domain_vus[in_domain_vus["am_class"] == "pathogenic"].groupby("structural_class").size().rename("n_pathogenic")
+vus_sc_summary = vus_sc_summary.join(vus_sc_counts).join(vus_sc_path_n).fillna({"n_pathogenic": 0})
+vus_sc_summary["n_pathogenic"] = vus_sc_summary["n_pathogenic"].astype(int)
+vus_sc_summary = vus_sc_summary[vus_sc_summary["n_vus"] >= 10]
 vus_sc_summary = vus_sc_summary.sort_values("pct_pathogenic", ascending=False)
 
 print("\n--- Proportion of IN-DOMAIN VUS called 'pathogenic' by Structural Class (n>=10 VUS) ---")
-print(vus_sc_summary[["n_vus", "pct_pathogenic"]].round(1).to_string())
+print(vus_sc_summary[["n_vus", "n_pathogenic", "pct_pathogenic"]].round(1).to_string())
 
 
 # --- AUC per structural class ---

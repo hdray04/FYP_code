@@ -49,7 +49,7 @@ print(cv["uniprot"].nunique(), "unique proteins in ClinVar\n")
 
 #Merge with domain info 
 classif = pd.read_csv("Csvs/protein_classifications_hierarchy.csv")
-classif = classif[~classif["is_te"]]  # Exclude TEs
+classif = classif[~classif["is_te"] & ~classif["is_noncanonical"]]  # Exclude TEs and non-canonical DBPs (e.g. FN1)
 dbp_ids = set(classif["uniprot_id"])
 
 cv_dbp = cv[cv["uniprot"].isin(dbp_ids)].copy()

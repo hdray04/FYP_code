@@ -253,6 +253,75 @@ for _, row in inout_df.iterrows():
 inout_df.to_csv("Csvs/clinvar_inout_domain_enrichment.csv", index=False)
 print("Saved: Csvs/clinvar_inout_domain_enrichment.csv\n")
 
+
+# ── Per-protein in-domain vs out-of-domain P/LP rate ─────────────────────────
+
+in_prot = (
+    merged.groupby("uniprot")["sig_group"]
+    .agg(in_total="size", in_plp=lambda s: (s == "Pathogenic/LP").sum())
+    .reset_index()
+)
+out_prot = (
+    out_merged.groupby("uniprot")["sig_group"]
+    .agg(out_total="size", out_plp=lambda s: (s == "Pathogenic/LP").sum())
+    .reset_index()
+)
+
+prot_inout = (
+    in_prot.merge(out_prot, on="uniprot", how="inner")
+    .merge(classif[["uniprot_id", "structural_class", "gene"]],
+           left_on="uniprot", right_on="uniprot_id", how="left")
+    .drop(columns="uniprot_id")
+)
+prot_inout = prot_inout[~prot_inout["structural_class"].isin(
+    ["No structural annotation", "⚠ Transposable element / ERV", "Fibronectin type III superfamily"]
+)]
+
+prot_inout["in_pct_plp"]  = 100 * prot_inout["in_plp"]  / prot_inout["in_total"]
+prot_inout["out_pct_plp"] = 100 * prot_inout["out_plp"] / prot_inout["out_total"]
+prot_inout["delta_pct"]   = prot_inout["in_pct_plp"] - prot_inout["out_pct_plp"]
+
+prot_inout_results = []
+for _, row in prot_inout.iterrows():
+    a, b = int(row["in_plp"]),  int(row["in_total"]  - row["in_plp"])
+    c, d = int(row["out_plp"]), int(row["out_total"] - row["out_plp"])
+    if (a + b) < 3 or (c + d) < 3:
+        continue
+    _, p_raw = scipy.stats.fisher_exact([[a, c], [b, d]], alternative="two-sided")
+    or_hat, ci_lo, ci_hi, corrected = odds_ratio_ci_95(a, c, b, d)
+    prot_inout_results.append({
+        **row.to_dict(),
+        "or_in_vs_out": or_hat,
+        "ci95_lo": ci_lo,
+        "ci95_hi": ci_hi,
+        "p_raw": p_raw,
+        "ci_continuity_corrected": corrected,
+    })
+
+prot_inout_df = pd.DataFrame(prot_inout_results)
+n_prot_tests = len(prot_inout_df)
+prot_inout_df["p_bonf"] = (prot_inout_df["p_raw"] * n_prot_tests).clip(upper=1.0)
+prot_inout_df = prot_inout_df.sort_values("delta_pct", ascending=False)
+
+print(f"Per-protein in-domain vs out-of-domain P/LP rate (n={n_prot_tests} proteins with ≥3 variants in both):")
+print(f"{'Gene':<12} {'UniProt':<10} {'in%PLP':>7}  {'out%PLP':>8}  {'delta':>7}  {'OR':>6}  {'p_bonf':>10}  Structural class")
+print("-" * 110)
+for _, row in prot_inout_df.head(30).iterrows():
+    gene = row["gene"] if pd.notna(row.get("gene")) and row["gene"] else "—"
+    sig  = " *" if row["p_bonf"] < 0.05 else ""
+    print(f"{gene:<12} {row['uniprot']:<10} {row['in_pct_plp']:>6.1f}%  {row['out_pct_plp']:>7.1f}%  "
+          f"{row['delta_pct']:>+6.1f}%  {row['or_in_vs_out']:>6.2f}  {row['p_bonf']:>10.3e}{sig}  "
+          f"{row['structural_class']}")
+
+n_sig = (prot_inout_df["p_bonf"] < 0.05).sum()
+n_higher_in = (prot_inout_df["in_pct_plp"] > prot_inout_df["out_pct_plp"]).sum()
+print(f"\n  {n_higher_in}/{n_prot_tests} proteins have higher P/LP rate in-domain vs out-of-domain")
+print(f"  {n_sig} Bonferroni-significant (p_bonf < 0.05)")
+
+prot_inout_df.to_csv("Csvs/per_protein_inout_plp_rate.csv", index=False)
+print("Saved: Csvs/per_protein_inout_plp_rate.csv\n")
+
+
 NAME_SHORT = {
     "Hepatocyte nuclear factor 1, N-terminal domain superfamily"         : "HNF1 N-terminal",
     "Nuclear hormone receptor-like domain superfamily"                   : "Nuclear hormone receptor",

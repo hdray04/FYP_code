@@ -17,9 +17,9 @@ CLASSIF_CSV = "Csvs/protein_classifications_hierarchy.csv"
 
 print("Loading protein classifications...")
 classif = pd.read_csv(CLASSIF_CSV)
-classif = classif[~classif["is_te"]]
+classif = classif[~classif["is_te"] & ~classif["is_noncanonical"]]
 dbp_ids = set(classif["uniprot_id"])
-print(f"  {len(classif)} proteins (TEs excluded)\n")
+print(f"  {len(classif)} proteins (TEs and non-canonical excluded)\n")
 
 # ── Load ClinVar and filter ────────────────────────────────────────────────────
 
@@ -164,6 +164,49 @@ prot_counts.head(20)[["uniprot", "gene", "structural_class", "n_variants"]].to_c
     "Csvs/top20_variants_raw.csv", index=False
 )
 print("\nSaved: Csvs/top20_variants_raw.csv\n")
+
+# ── Per-protein sig_group breakdown ───────────────────────────────────────────
+
+sig_pivot = (
+    cv_dbp_uniq.groupby(["uniprot", "sig_group"])
+    .size()
+    .unstack(fill_value=0)
+    .reindex(columns=SIG_GROUPS, fill_value=0)
+)
+sig_pivot["total"] = sig_pivot.sum(axis=1)
+for col in SIG_GROUPS:
+    sig_pivot[f"pct_{col.lower().replace('/', '_').replace(' ', '_')}"] = (
+        100 * sig_pivot[col] / sig_pivot["total"]
+    )
+
+prot_sig = (
+    sig_pivot.reset_index()
+    .merge(classif[["uniprot_id", "gene", "structural_class"]],
+           left_on="uniprot", right_on="uniprot_id", how="left")
+    .drop(columns="uniprot_id")
+    .sort_values("VUS", ascending=False)
+    .reset_index(drop=True)
+)
+
+print("Top 20 DBPs by VUS count:")
+print(f"{'Gene':<12} {'UniProt':<10} {'VUS':>6}  {'%VUS':>6}  {'P/LP':>6}  {'B/LB':>6}  {'Total':>7}  Structural class")
+print("-" * 100)
+for _, row in prot_sig.head(20).iterrows():
+    gene = row["gene"] if pd.notna(row.get("gene")) and row["gene"] else "—"
+    cls  = row["structural_class"] if pd.notna(row.get("structural_class")) else "—"
+    print(f"{gene:<12} {row['uniprot']:<10} {int(row['VUS']):>6,}  "
+          f"{row['pct_vus']:>5.1f}%  {int(row['Pathogenic/LP']):>6,}  "
+          f"{int(row['Benign/LB']):>6,}  {int(row['total']):>7,}  {cls}")
+
+vus_counts = sig_pivot["VUS"]
+print(f"\nVUS burden summary across {len(sig_pivot)} DBPs with variants:")
+print(f"  Proteins with ≥1 VUS:      {(vus_counts > 0).sum()}")
+print(f"  Median VUS/protein:        {vus_counts.median():.0f}")
+print(f"  Top 10% of proteins account for "
+      f"{100 * vus_counts.nlargest(max(1, len(vus_counts)//10)).sum() / vus_counts.sum():.1f}% of all VUS")
+
+prot_sig.to_csv("Csvs/per_protein_sig_breakdown.csv", index=False)
+print("Saved: Csvs/per_protein_sig_breakdown.csv\n")
 
 # ── Variant skew plots ─────────────────────────────────────────────────────────
 
