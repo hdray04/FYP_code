@@ -25,6 +25,7 @@ print("Loading data...")
 hits    = pd.read_csv(DOMAIN_HITS_CSV, low_memory=False)
 classif = pd.read_csv(CLASSIF_CSV)
 classif = classif[~classif["is_te"]]
+classif = classif[classif["n_uniprot_domain_types"] <= 1]  # exclude multi-domain proteins
 
 # A variant can map to multiple DNA-binding domain intervals (e.g. multi-domain
 # proteins).  Keep one row per unique variant — sig_group is the same for all

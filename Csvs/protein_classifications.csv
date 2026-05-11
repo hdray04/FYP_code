@@ -76,7 +76,6 @@ O95936,EOMES,Eomesodermin homolog,T-box,6,p53-like_TF_DNA-bd_sf; T-box_assoc; T-
 O95947,TBX6,T-box transcription factor TBX6,T-box,6,p53-like_TF_DNA-bd_sf; T-box_DNA-bd; T-box_sf; TF_Brachyury; TF_T-box; TF_T-box_CS
 O95948,ONECUT2,One cut domain family member 2,Homeodomain,5,CUT_dom; CUT_Homeobox; HD; Homeodomain-like_sf; Lambda_DNA-bd_dom_sf
 O96028,NSD2,Histone-lysine N-methyltransferase NSD2,Homeodomain,26,AWS_dom; C5HCH; HMG-box_NSD2; HMG_box_dom; HMG_box_dom_sf; NSD_PHD; NSD_PHD-1st; PHD1_NSD1_2; PHD2_NSD2; PHD3_NSD2; PHD5_NSD2; PHDvar_NSD; Post-SET_dom; PWWP_dom; PWWP_NSD2_rpt1; PWWP_NSD2_rpt2; SET2_Histone-Lys_MeTrsfase; SET_dom; SET_dom_sf; SET_NSD2; Zinc_finger_PHD-type_CS; Znf_FYVE_PHD; Znf_PHD; Znf_PHD-finger; Znf_RING; Znf_RING/FYVE/PHD
-P01011,SERPINA3,Alpha-1-antichymotrypsin,Unclassified,6,Serpin_CS; Serpin_dom; Serpin_fam; Serpin_sf; Serpin_sf_1; Serpin_sf_2
 P02751,FN1,Fibronectin,Unclassified,8,ECM_Regulatory_Proteins; Fibronectin_type1; FN3_dom; FN3_sf; FN_type2_dom; FN_type2_sf; Ig-like_fold; Kringle-like
 P03372,ESR1,Estrogen receptor,Nuclear receptor,10,Est_rcpt/est-rel_rcp; Estr_rcpt; Estr_rcpt_N; NHR-like_dom_sf; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR3; Nuclear_hrmn_rcpt; Oestrogen-typ_rcpt_final_C_dom; Znf_hrmn_rcpt; Znf_NHR/GATA
 P04150,NR3C1,Glucocorticoid receptor,Nuclear receptor,7,Glcrtcd_rcpt; NHR-like_dom_sf; Nucl_hrmn_rcpt_lig-bd; Nuclear_hormone_rcpt_NR3; Nuclear_hrmn_rcpt; Znf_hrmn_rcpt; Znf_NHR/GATA
@@ -428,7 +427,6 @@ Q9BQ15,NABP2,SOSS complex subunit B1,Unclassified,3,NA-bd_OB-fold; OB_Ssb-like; 
 Q9BQY4,RHOXF2,Rhox homeobox family member 2,Homeodomain,3,HD; Homeobox_CS; Homeodomain-like_sf
 Q9BT81,SOX7,Transcription factor SOX-7,HMG box,5,HMG_box_dom; HMG_box_dom_sf; Sox7/17/18_central; Sox_C; SRY-related_HMG-box_TF-like
 Q9BVI0,PHF20,PHD finger protein 20,Homeodomain,9,Crb2_Tudor; PHF20-like; PHF20_AT-hook; Tudor; Zinc_finger_PHD-type_CS; Znf_C2H2_type; Znf_FYVE_PHD; Znf_PHD; Znf_RING/FYVE/PHD
-Q9BXR3,ERVK-6,Endogenous retrovirus group K member 6 Pol protein,⚠ Transposable element,12,DNA/RNA_pol_sf; Integrase-like_N; Integrase_C_dom_sf_retrovir; Integrase_C_retrovir; Integrase_cat-core; Integrase_Zn-bd_dom_N; Rev_trsase/Diguanyl_cyclase; RNaseH-like_sf; RNaseH_domain; RNaseH_sf; RT_dom; RVT_thumb
 Q9BYU1,PBX4,Pre-B-cell leukemia transcription factor 4,Homeodomain,5,HD; Homeodomain-like_sf; KN_HD; PBX_PBC_dom; TALE_homeobox
 Q9BZM3,GSX2,GS homeobox 2,Homeodomain,5,GSH1/2; HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf
 Q9BZS1,FOXP3,Forkhead box protein P3,Winged-helix / Forkhead,8,FH_FOXP3; Fork_head_dom; FOXP; FOXP-CC; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf; Znf_C2H2_type
@@ -491,7 +489,6 @@ Q9UN79,SOX13,Transcription factor SOX-13,HMG box,3,HMG_box_dom; HMG_box_dom_sf; 
 Q9UPM6,LHX6,LIM/homeobox protein Lhx6,Homeodomain,5,HD; Homeobox_CS; Homeodomain-like_sf; LIM_Homeobox_TF; Znf_LIM
 Q9UPW0,FOXJ3,Forkhead box protein J3,Winged-helix / Forkhead,6,Fork_head_dom; FOXJ2/3-like; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
 Q9UPW6,SATB2,DNA-binding protein SATB2,Homeodomain,9,CUT_dom; CUTL; HD; Homeodomain-like_sf; Lambda_DNA-bd_dom_sf; SATB1/SATB2; SATB_CUTL_sf; SATB_ULD_sf; ULD
-Q9WJR5,ERVK-19,Endogenous retrovirus group K member 19 Pol protein,⚠ Transposable element,12,DNA/RNA_pol_sf; Integrase-like_N; Integrase_C_dom_sf_retrovir; Integrase_C_retrovir; Integrase_cat-core; Integrase_Zn-bd_dom_N; Rev_trsase/Diguanyl_cyclase; RNaseH-like_sf; RNaseH_domain; RNaseH_sf; RT_dom; RVT_thumb
 Q9Y222,DMTF1,Cyclin-D-binding Myb-like transcription factor 1,Homeodomain,5,DMTF1_DNA-bind_reg; DMTF1_N; Homeodomain-like_sf; Myb_dom; SANT/Myb
 Q9Y261,FOXA2,Hepatocyte nuclear factor 3-beta,Winged-helix / Forkhead,8,Fork-head_N; Fork_head_dom; Forkhead_box_C; FOX_domain-containing; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
 Q9Y2G1,MYRF,Myelin regulatory factor,p53-like,7,MRF-like; MYRF_C2; MYRF_ICA; NDT80_DNA-bd_dom; NDT80_DNA-bd_dom_sf; p53-like_TF_DNA-bd_sf; S74_ICA
@@ -518,14 +515,9 @@ O60422,ONECUT3,One cut domain family member 3,Homeodomain,5,CUT_dom; CUT_Homeobo
 O95076,ALX3,Homeobox protein aristaless-like 3,Homeodomain,4,HD; Homeobox_CS; Homeodomain-like_sf; Paired_Homeobox_TFs
 P09630,HOXC6,Homeobox protein Hox-C6,Homeodomain,6,Antp_homeobox; HD; HD_metazoa; Homeobox_Antennapedia_CS; Homeobox_CS; Homeodomain-like_sf
 P0C7M4,RHOXF2B,Rhox homeobox family member 2B,Homeodomain,3,HD; Homeobox_CS; Homeodomain-like_sf
-P10266,ERVK-10,Endogenous retrovirus group K member 10 Pol protein,⚠ Transposable element,13,DNA/RNA_pol_sf; HERV-K_env; Integrase-like_N; Integrase_C_dom_sf_retrovir; Integrase_C_retrovir; Integrase_cat-core; Integrase_Zn-bd_dom_N; Rev_trsase/Diguanyl_cyclase; RNaseH-like_sf; RNaseH_domain; RNaseH_sf; RT_dom; RVT_thumb
 P31267,HOXA6,Homeobox protein Hox-A6,Homeodomain,7,Antp_homeobox; HD; HD_metazoa; Homeobox_antennapedia; Homeobox_Antennapedia_CS; Homeobox_CS; Homeodomain-like_sf
 P31277,HOXD11,Homeobox protein Hox-D11,Homeodomain,5,DUF3528; HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf
 P32314,FOXN2,Forkhead box protein N2,Winged-helix / Forkhead,7,FH_FOXN2; Fork_head_dom; FOXN2/3-like; TF_fork_head_CS_1; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
-P63132,HERVK_113,Endogenous retrovirus group K member 113 Pol protein,⚠ Transposable element,12,DNA/RNA_pol_sf; Integrase-like_N; Integrase_C_dom_sf_retrovir; Integrase_C_retrovir; Integrase_cat-core; Integrase_Zn-bd_dom_N; Rev_trsase/Diguanyl_cyclase; RNaseH-like_sf; RNaseH_domain; RNaseH_sf; RT_dom; RVT_thumb
-P63133,ERVK-8,Endogenous retrovirus group K member 8 Pol protein,⚠ Transposable element,12,DNA/RNA_pol_sf; Integrase-like_N; Integrase_C_dom_sf_retrovir; Integrase_C_retrovir; Integrase_cat-core; Integrase_Zn-bd_dom_N; Rev_trsase/Diguanyl_cyclase; RNaseH-like_sf; RNaseH_domain; RNaseH_sf; RT_dom; RVT_thumb
-P63135,ERVK-7,Endogenous retrovirus group K member 7 Pol protein,⚠ Transposable element,14,DNA/RNA_pol_sf; GP41-like; HERV-K_env; Integrase-like_N; Integrase_C_dom_sf_retrovir; Integrase_C_retrovir; Integrase_cat-core; Integrase_Zn-bd_dom_N; Rev_trsase/Diguanyl_cyclase; RNaseH-like_sf; RNaseH_domain; RNaseH_sf; RT_dom; RVT_thumb
-P63136,ERVK-25,Endogenous retrovirus group K member 25 Pol protein,⚠ Transposable element,12,DNA/RNA_pol_sf; Integrase-like_N; Integrase_C_dom_sf_retrovir; Integrase_C_retrovir; Integrase_cat-core; Integrase_Zn-bd_dom_N; Rev_trsase/Diguanyl_cyclase; RNaseH-like_sf; RNaseH_domain; RNaseH_sf; RT_dom; RVT_thumb
 P78414,IRX1,Iroquois-class homeodomain protein IRX-1,Homeodomain,5,HD; Homeobox_CS; Homeodomain-like_sf; Iroquois_homeo; KN_HD
 Q03828,EVX2,Homeobox even-skipped homolog protein 2,Homeodomain,5,Even-skipped_HD; HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf
 Q12950,FOXD4,Forkhead box protein D4,Winged-helix / Forkhead,5,Fork_head_dom; FOX_domain-containing; TF_fork_head_CS_2; WH-like_DNA-bd_sf; WH_DNA-bd_sf
@@ -551,7 +543,6 @@ Q9C009,FOXQ1,Forkhead box protein Q1,Winged-helix / Forkhead,7,FH_FOXQ1; Fork_he
 Q9GZZ0,HOXD1,Homeobox protein Hox-D1,Homeodomain,5,HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; HXA1/B1/D1
 Q9NY43,BARHL2,BarH-like 2 homeobox protein,Homeodomain,5,HD; HD_metazoa; Homeobox_CS; Homeodomain-like_sf; Mediator/Homeobox_domain
 Q9UJV8,PURG,Purine-rich element-binding protein gamma,Unclassified,1,PUR-bd_fam
-Q9UQG0,ERVK-11,Endogenous retrovirus group K member 11 Pol protein,⚠ Transposable element,13,DNA/RNA_pol_sf; HERV-K_env; Integrase-like_N; Integrase_C_dom_sf_retrovir; Integrase_C_retrovir; Integrase_cat-core; Integrase_Zn-bd_dom_N; Rev_trsase/Diguanyl_cyclase; RNaseH-like_sf; RNaseH_domain; RNaseH_sf; RT_dom; RVT_thumb
 Q9Y651,SOX21,Transcription factor SOX-21,HMG box,4,HMG_box_dom; HMG_box_dom_sf; SOX_fam; SRY-related_HMG-box_TF-like
 A0A1W2PPM1,CPHXL,Cytoplasmic polyadenylated homeobox-like protein,Homeodomain,3,Engrailed_Homeobox_TFs; HD; Homeodomain-like_sf
 A0A2Z4LIS9,FOXO3B,Forkhead box protein O3B,Winged-helix / Forkhead,3,Fork_head_dom; WH-like_DNA-bd_sf; WH_DNA-bd_sf

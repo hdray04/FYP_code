@@ -47,6 +47,8 @@ cv = pd.read_csv(
     "Csvs/clinvar_domain_hits.csv",
     usecols=lambda c: c in cv_required,
 )
+print(f"ClinVar variants loaded: {len(cv):,}")
+print(cv["sig_group"].value_counts())
 
 # Support either column name used for UniProt accession
 if "uniprot" not in cv.columns and "uniprot_id" in cv.columns:
@@ -128,6 +130,70 @@ n_plp     = ct.loc["Pathogenic/LP", "pathogenic"];  tot_plp = ct.loc["Pathogenic
 n_blb     = ct.loc["Benign/LB",     "benign"];       tot_blb = ct.loc["Benign/LB"].sum()
 print(f"\nPathogenic/LP called pathogenic by AM: {n_plp}/{tot_plp} ({100*n_plp/tot_plp:.1f}%)")
 print(f"Benign/LB called benign by AM:         {n_blb}/{tot_blb} ({100*n_blb/tot_blb:.1f}%)")
+
+# --- B/LB Discordance: variants ClinVar calls benign but AM calls pathogenic ---
+blb_am = concordance_df[concordance_df["sig_group"] == "Benign/LB"].copy()
+blb_discordant = blb_am[blb_am["am_class"] == "pathogenic"].copy()
+
+n_blb_total = len(blb_am)
+n_blb_disc  = len(blb_discordant)
+print(f"\n=== B/LB Discordance: ClinVar Benign/LB called pathogenic by AM ===")
+print(f"B/LB variants with AM data: {n_blb_total}")
+print(f"AM calls pathogenic:        {n_blb_disc} ({100*n_blb_disc/n_blb_total:.1f}%)")
+print(f"AM calls ambiguous:         {(blb_am['am_class']=='ambiguous').sum()} ({100*(blb_am['am_class']=='ambiguous').sum()/n_blb_total:.1f}%)")
+print(f"AM calls benign:            {(blb_am['am_class']=='benign').sum()} ({100*(blb_am['am_class']=='benign').sum()/n_blb_total:.1f}%)")
+print(f"\nAM score distribution for discordant B/LB variants (median, IQR):")
+print(f"  median={blb_discordant['am_pathogenicity'].median():.3f}, "
+      f"IQR=[{blb_discordant['am_pathogenicity'].quantile(0.25):.3f}, "
+      f"{blb_discordant['am_pathogenicity'].quantile(0.75):.3f}], "
+      f"min={blb_discordant['am_pathogenicity'].min():.3f}, max={blb_discordant['am_pathogenicity'].max():.3f}")
+
+print("\n--- Structural class breakdown (discordant B/LB) ---")
+sc_blb_total = blb_am.groupby("structural_class").size().rename("n_blb")
+sc_blb_disc  = blb_discordant.groupby("structural_class").size().rename("n_discordant")
+sc_blb_summary = sc_blb_total.to_frame().join(sc_blb_disc, how="left").fillna(0)
+sc_blb_summary["n_discordant"] = sc_blb_summary["n_discordant"].astype(int)
+sc_blb_summary["pct_discordant"] = 100 * sc_blb_summary["n_discordant"] / sc_blb_summary["n_blb"]
+sc_blb_summary = sc_blb_summary[sc_blb_summary["n_discordant"] > 0].sort_values("n_discordant", ascending=False)
+print(sc_blb_summary.round(1).to_string())
+
+print("\n--- Discordant B/LB variants: protein and position detail ---")
+print(blb_discordant[["uniprot", "protein_variant", "am_pathogenicity", "structural_class"]]
+      .sort_values(["structural_class", "am_pathogenicity"], ascending=[True, False])
+      .to_string(index=False))
+
+# --- P/LP Discordance: variants ClinVar calls pathogenic but AM calls benign ---
+plp_am = concordance_df[concordance_df["sig_group"] == "Pathogenic/LP"].copy()
+plp_discordant = plp_am[plp_am["am_class"] == "benign"].copy()
+
+n_plp_total = len(plp_am)
+n_plp_disc  = len(plp_discordant)
+print(f"\n=== P/LP Discordance: ClinVar Pathogenic/LP called benign by AM ===")
+print(f"P/LP variants with AM data: {n_plp_total}")
+print(f"AM calls benign:            {n_plp_disc} ({100*n_plp_disc/n_plp_total:.1f}%)")
+print(f"AM calls ambiguous:         {(plp_am['am_class']=='ambiguous').sum()} ({100*(plp_am['am_class']=='ambiguous').sum()/n_plp_total:.1f}%)")
+print(f"AM calls pathogenic:        {(plp_am['am_class']=='pathogenic').sum()} ({100*(plp_am['am_class']=='pathogenic').sum()/n_plp_total:.1f}%)")
+
+if n_plp_disc > 0:
+    print(f"\nAM score distribution for discordant P/LP variants (median, IQR):")
+    print(f"  median={plp_discordant['am_pathogenicity'].median():.3f}, "
+          f"IQR=[{plp_discordant['am_pathogenicity'].quantile(0.25):.3f}, "
+          f"{plp_discordant['am_pathogenicity'].quantile(0.75):.3f}], "
+          f"min={plp_discordant['am_pathogenicity'].min():.3f}, max={plp_discordant['am_pathogenicity'].max():.3f}")
+
+    print("\n--- Structural class breakdown (discordant P/LP) ---")
+    sc_plp_total = plp_am.groupby("structural_class").size().rename("n_plp")
+    sc_plp_disc  = plp_discordant.groupby("structural_class").size().rename("n_discordant")
+    sc_plp_summary = sc_plp_total.to_frame().join(sc_plp_disc, how="left").fillna(0)
+    sc_plp_summary["n_discordant"] = sc_plp_summary["n_discordant"].astype(int)
+    sc_plp_summary["pct_discordant"] = 100 * sc_plp_summary["n_discordant"] / sc_plp_summary["n_plp"]
+    sc_plp_summary = sc_plp_summary[sc_plp_summary["n_discordant"] > 0].sort_values("n_discordant", ascending=False)
+    print(sc_plp_summary.round(1).to_string())
+
+    print("\n--- Discordant P/LP variants: protein and position detail ---")
+    print(plp_discordant[["uniprot", "protein_variant", "am_pathogenicity", "structural_class"]]
+          .sort_values(["structural_class", "am_pathogenicity"])
+          .to_string(index=False))
 
 # --- Breakdown by structural class (n > 50) ---
 # Use the concordance_df which is already filtered for matched variants

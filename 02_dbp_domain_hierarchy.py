@@ -56,6 +56,10 @@ COLLAPSE_MAP = {
     # SMAD — two separate roots in the hierarchy; both are SMAD proteins
     "SMAD/FHA domain superfamily"        : "SMAD-like domain superfamily",
 
+    # FOXK1/FOXK2 are the only proteins reaching the SMAD/FHA root — they are
+    # forkhead proteins and belong in winged-helix, not SMAD-like.
+    # Override handled in MANUAL_CLASS_OVERRIDE below (applied after this map).
+
     # HMGA proteins are often grouped with HMG proteins by name, but their
     # DNA-binding mechanism is via AT-hook motifs rather than HMG-box folds.
     "High mobility group protein HMGA"   : "AT-hook motif",
@@ -67,6 +71,53 @@ COLLAPSE_MAP = {
 
     # SETBP1 — sole InterPro entry is IPR017956 (Conserved_site: AT hook, DNA-binding motif)
     "AT hook, DNA-binding motif"                                           : "AT-hook motif",
+}
+
+# Protein-specific class overrides applied after the InterPro hierarchy walk.
+# Used where multiple proteins share the same pre-collapse root name so the
+# COLLAPSE_MAP cannot distinguish them, or where the hierarchy walk reaches a
+# root unrelated to the actual DNA-binding domain.
+#
+# Multi-domain proteins (PAX3/4/6/7, CUX1/2, SATB1/2, ONECUT1/2/3, DNTTIP1)
+# are NOT listed here — they are flagged for a separate coordinate-level fix.
+MANUAL_CLASS_OVERRIDE = {
+    # ── PAX proteins (Paired domain only, no Homeobox in UniProt) ────────────
+    # InterPro hierarchy assigns these to Homeodomain-like because the homeobox
+    # superfamily root dominates their IPR entry count. Their sole UniProt
+    # DNA-binding annotation is "Paired", a structurally distinct fold.
+    "P15863": "Paired domain superfamily",   # PAX1
+    "Q02962": "Paired domain superfamily",   # PAX2
+    "Q02548": "Paired domain superfamily",   # PAX5
+    "Q06710": "Paired domain superfamily",   # PAX8
+    "P55771": "Paired domain superfamily",   # PAX9
+
+    # ── IRF proteins ─────────────────────────────────────────────────────────
+    # Land in SMAD-like because the FHA/SMAD root dominates their IPR walk.
+    # Their UniProt DNA-binding annotation is "IRF tryptophan pentad repeat",
+    # a winged-helix variant warranting its own structural class.
+    "Q14653": "IRF domain superfamily",      # IRF3
+    "Q15306": "IRF domain superfamily",      # IRF4
+    "Q13568": "IRF domain superfamily",      # IRF5
+    "O14896": "IRF domain superfamily",      # IRF6
+    "Q92985": "IRF domain superfamily",      # IRF7
+    "Q02556": "IRF domain superfamily",      # IRF8
+    "Q00978": "IRF domain superfamily",      # IRF9
+
+    # ── FOXK proteins ────────────────────────────────────────────────────────
+    # Only proteins reaching the SMAD/FHA root; are forkhead-family proteins.
+    # COLLAPSE_MAP cannot distinguish them from real SMAD/FHA proteins, so
+    # overridden here directly.
+    "P85037": "Winged helix-like DNA-binding domain superfamily",  # FOXK1
+    "Q01167": "Winged helix-like DNA-binding domain superfamily",  # FOXK2
+
+    # ── Proteins retained in their InterPro-derived structural class ─────────
+    # ASH1L, BAZ2A, CBX2, KMT2A, KMT2B, MECP2, PATZ1, PDS5B, SRCAP, ZBTB24,
+    # AKNA, BOD1L1, AHDC1 all have AT-hook UniProt DNA-binding annotations but
+    # their primary structural identity (bromodomain, chromo, BTB-ZF, MBD etc.)
+    # is mechanistically distinct from canonical AT-hook proteins. Collapsing
+    # them into AT-hook motif would create a heterogeneous class. They are
+    # therefore kept under their InterPro-derived structural class; this is
+    # noted as a limitation of the hierarchy-based classification approach.
 }
 
 # ── Step 1: Load entry.list ──────────────────────────────────────────────────
@@ -165,7 +216,7 @@ NONCANONICAL_IDS = {
 
 # Structural classes excluded from the class-comparison summary and downstream
 # plots because they are not canonical sequence-specific DNA-binding classes.
-CLASSES_TO_EXCLUDE = {
+SUMMARY_EXCLUDE_CLASSES = {
     "⚠ Transposable element / ERV",
     "No structural annotation",
     "Fibronectin type III superfamily",      # was "FN3-like"
@@ -242,8 +293,9 @@ for p in proteins:
         selected_type  = "none"
         n_unique_roots = 0
 
-    # Apply manual collapse
+    # Apply manual collapse, then protein-specific overrides
     primary_name = COLLAPSE_MAP.get(primary_name, primary_name)
+    primary_name = MANUAL_CLASS_OVERRIDE.get(pid, primary_name)
 
     rows.append({
         "uniprot_id"         : pid,
@@ -294,23 +346,49 @@ print(f"Structurally annotated: {total - unannotated - te_count}")
 print(f"No structural entry   : {unannotated}")
 print(f"Class summary entries : {len(summary_counts)} classes across {summary_total} proteins")
 
-# ── Multi-domain subgroup ─────────────────────────────────────────────────────
+# ── Multi-domain subgroup (UniProt DNA-binding annotations) ──────────────────
+# Identifies proteins with more than one structurally distinct DNA-binding
+# domain type annotated in UniProt. "Distinct type" means the base description
+# differs (e.g. "Homeobox" vs "Paired"), ignoring numbered suffixes.
 
-multi = df[df["n_unique_roots"] >= 2].sort_values("n_unique_roots", ascending=False)
+def base_desc(d):
+    """Normalise e.g. 'HMG box 1', 'HMG box 2' → 'HMG box'."""
+    import re
+    return re.sub(r'\s+\d+$', '', d.strip()).split(';')[0].strip()
+
+uniprot_domain_descs = {}
+for entry in proteins:
+    acc = entry["primaryAccession"]
+    feats = [f for f in entry.get("features", []) if f["type"] == "DNA binding"]
+    bases = set(base_desc(f.get("description", "")) for f in feats)
+    bases.discard("")
+    uniprot_domain_descs[acc] = bases
+
+df["uniprot_domain_types"] = df["uniprot_id"].map(
+    lambda a: uniprot_domain_descs.get(a, set())
+)
+df["n_uniprot_domain_types"] = df["uniprot_domain_types"].apply(len)
+
+multi_uniprot = (
+    df[df["n_uniprot_domain_types"] > 1]
+    .sort_values("n_uniprot_domain_types", ascending=False)
+)
+
 print(f"\n{'=' * 65}")
-print(f"MULTI-DOMAIN DBPs  (≥2 distinct structural root families)")
+print(f"MULTI-DOMAIN DBPs  (≥2 distinct UniProt DNA-binding domain types)")
 print(f"{'=' * 65}")
-print(f"{len(multi)} proteins ({100*len(multi)/total:.1f}% of {total})\n")
-print("Breakdown by number of distinct structural root families:")
-for n, count in df["n_unique_roots"].value_counts().sort_index().items():
-    label = "no annotation" if n == 0 else f"{n} structural familie{'s' if n > 1 else ''}"
-    print(f"  {n} roots  →  {count:>4} proteins  ({100*count/total:.1f}%)  [{label}]")
+print(f"{len(multi_uniprot)} proteins ({100*len(multi_uniprot)/total:.1f}% of {total})\n")
+
+for n, count in df["n_uniprot_domain_types"].value_counts().sort_index().items():
+    label = "no description" if n == 0 else f"{n} domain type{'s' if n > 1 else ''}"
+    print(f"  {n} types  →  {count:>4} proteins  ({100*count/total:.1f}%)  [{label}]")
+
 print()
-print(f"{'Gene':<12} {'UniProt':<12} {'Roots':>6}  {'Primary class':<40}  Protein name")
+print(f"{'Gene':<12} {'UniProt':<12} {'Assigned class':<45}  Domain types")
 print("-" * 110)
-for _, row in multi.iterrows():
-    print(f"{row['gene']:<12} {row['uniprot_id']:<12} {row['n_unique_roots']:>6}  "
-          f"{row['structural_class']:<40}  {row['protein_name'][:50]}")
+for _, row in multi_uniprot.iterrows():
+    types = ", ".join(sorted(row["uniprot_domain_types"]))
+    print(f"{row['gene']:<12} {row['uniprot_id']:<12} {row['structural_class']:<45}  {types}")
 
 type_breakdown = df["entry_type_used"].value_counts()
 print("\nEntry type used for classification:")

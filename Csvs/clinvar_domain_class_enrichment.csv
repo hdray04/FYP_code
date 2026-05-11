@@ -1,11 +1,12 @@
 structural_class,Benign/LB,Other/Conflicting,Pathogenic/LP,VUS,total_variants,n_proteins,variants_per_protein
-Homeodomain-like superfamily,65,64,307,1806,2242,271,8.3
+Homeodomain-like superfamily,37,46,159,1455,1697,255,6.7
 "p53-like transcription factor, DNA-binding domain superfamily",54,208,190,806,1258,18,69.9
-Winged helix-like DNA-binding domain superfamily,16,34,205,755,1010,87,11.6
+Winged helix-like DNA-binding domain superfamily,16,34,205,769,1024,89,11.5
 High mobility group box domain superfamily,12,11,125,300,448,46,9.7
 Nuclear hormone receptor-like domain superfamily,4,23,99,243,369,46,8.0
-SMAD-like domain superfamily,8,1,28,168,205,9,22.8
+IRF domain superfamily,8,1,28,154,191,7,27.3
 "Hepatocyte nuclear factor 1, N-terminal domain superfamily",1,15,77,77,170,2,85.0
+Paired domain superfamily,2,6,39,117,164,5,32.8
 "CTF transcription factor/nuclear factor 1, DNA-binding domain",2,7,38,89,136,4,34.0
 Sterile alpha motif/pointed domain superfamily,2,6,11,50,69,11,6.3
 Nucleotide-binding alpha-beta plait domain superfamily,7,2,0,52,61,2,30.5
