@@ -1,7 +1,9 @@
-import json 
-import pandas as pd 
+import json
+import pandas as pd
 import scipy.stats
 import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.patches import Patch
 UNIPROT_JSON = "data/uniprotkb_organism_id_9606_AND_reviewed_2026_03_06.json"
 CLINVAR_CSV = "data/clinvar_variants_28_08_2025.csv"
 
@@ -156,11 +158,11 @@ for grp in ["Pathogenic/LP", "Benign/LB", "VUS", "Other/Conflicting"]:
     n_out_g = int(out_sig.get(grp, 0))
     print(f"  {grp:<25} in={n_in_g:>6,}  out={n_out_g:>7,}")
 
-# ── Domain coverage vs variant density (per-protein Wilcoxon) ────────────────
-# For each protein, compare the fraction of variants observed in-domain against
-# the fraction of the protein sequence covered by a DNA-binding domain.
-# A Wilcoxon signed-rank test on per-protein differences avoids the pooled-
-# probability assumption and operates at the natural unit of the question.
+# ── Positional enrichment: all variants, domain vs non-domain ────────────────
+# Tests whether variants fall in DNA-binding domains more than expected from
+# sequence coverage alone, using ALL variants regardless of pathogenicity.
+# 2x2 table: [variants_in, variants_out] vs [residues_in, residues_out]
+# OR = variant density in-domain / variant density out-of-domain
 
 prot_lengths = {
     entry["primaryAccession"]: entry["sequence"]["length"]
@@ -173,7 +175,10 @@ in_domain_counts = (
     .groupby("uniprot")["#AlleleID"].count()
 )
 
-per_protein_rows = []
+total_domain_res    = 0
+total_nondomain_res = 0
+per_protein_or_rows = []
+
 for accession, prot_vars in cv_dbp.groupby("uniprot"):
     prot_domains = domains_dbp[domains_dbp["uniprot_id"] == accession]
     if prot_domains.empty or accession not in prot_lengths:
@@ -187,43 +192,50 @@ for accession, prot_vars in cv_dbp.groupby("uniprot"):
             merged[-1][1] = max(merged[-1][1], e)
         else:
             merged.append([s, e])
-    domain_residues = sum(e - s + 1 for s, e in merged)
-    coverage_frac   = min(domain_residues / length, 1.0)
+    domain_res    = min(sum(e - s + 1 for s, e in merged), length)
+    nondomain_res = length - domain_res
 
-    n_total       = prot_vars["#AlleleID"].nunique()
-    n_in          = in_domain_counts.get(accession, 0)
-    observed_frac = n_in / n_total
+    total_domain_res    += domain_res
+    total_nondomain_res += nondomain_res
 
-    per_protein_rows.append({
+    n_total = prot_vars["#AlleleID"].nunique()
+    n_in    = int(in_domain_counts.get(accession, 0))
+    n_out   = n_total - n_in
+
+    or_hat, lo, hi, _ = odds_ratio_ci_95(n_in, n_out, domain_res, nondomain_res)
+    per_protein_or_rows.append({
         "uniprot_id":    accession,
-        "coverage_frac": coverage_frac,
-        "observed_frac": observed_frac,
-        "diff":          observed_frac - coverage_frac,
         "n_variants":    n_total,
         "n_in_domain":   n_in,
+        "n_out_domain":  n_out,
+        "domain_res":    domain_res,
+        "nondomain_res": nondomain_res,
+        "or":            or_hat,
+        "or_lo":         lo,
+        "or_hi":         hi,
     })
 
-per_protein_df = pd.DataFrame(per_protein_rows)
-diffs = per_protein_df["diff"].values
+per_protein_or_df = pd.DataFrame(per_protein_or_rows)
 
-wilcox_stat, wilcox_p = scipy.stats.wilcoxon(diffs, alternative="greater")
-median_cov = float(np.median(per_protein_df["coverage_frac"]))
-median_obs = float(np.median(per_protein_df["observed_frac"]))
-median_diff = float(np.median(diffs))
+v_in  = mapped_in_domain["#AlleleID"].nunique()
+v_out = mapped_out_of_domain["#AlleleID"].nunique()
 
-observed_in_pos  = mapped_in_domain["#AlleleID"].nunique()
-total_variants_pos = per_protein_df["n_variants"].sum()
-observed_out_pos = total_variants_pos - observed_in_pos
+_, pos_p = scipy.stats.fisher_exact(
+    [[v_in, v_out], [total_domain_res, total_nondomain_res]],
+    alternative="greater",
+)
+pos_or, pos_lo, pos_hi, _ = odds_ratio_ci_95(v_in, v_out, total_domain_res, total_nondomain_res)
 
-print("\n── Domain coverage vs variant density (per-protein) ──")
-print(f"  Proteins included:         {len(per_protein_df)}")
-print(f"  Total variants:            {total_variants_pos:,}")
-print(f"  In-domain variants:        {observed_in_pos:,}  ({100*observed_in_pos/total_variants_pos:.1f}%)")
-print(f"  Out-of-domain variants:    {observed_out_pos:,}  ({100*observed_out_pos/total_variants_pos:.1f}%)")
-print(f"\n  Median domain coverage:    {100*median_cov:.1f}%")
-print(f"  Median observed fraction:  {100*median_obs:.1f}%")
-print(f"  Median difference:         {100*median_diff:+.1f}pp")
-print(f"  Wilcoxon signed-rank p:    {wilcox_p:.3e}  (one-sided: observed > coverage)")
+median_or = float(np.median(per_protein_or_df["or"]))
+q1_or     = float(np.percentile(per_protein_or_df["or"], 25))
+q3_or     = float(np.percentile(per_protein_or_df["or"], 75))
+
+print("\n── Positional enrichment: all variants (domain vs non-domain) ──")
+print(f"  {'':20}  {'In-domain':>12}  {'Out-of-domain':>14}")
+print(f"  {'Variants':20}  {v_in:>12,}  {v_out:>14,}")
+print(f"  {'Residues':20}  {total_domain_res:>12,}  {total_nondomain_res:>14,}")
+print(f"  Pooled OR = {pos_or:.2f}  [{pos_lo:.2f}, {pos_hi:.2f}]  p={fmt_p(pos_p)}")
+print(f"  Per-protein OR: median={median_or:.2f}  IQR=[{q1_or:.2f}, {q3_or:.2f}]  (n={len(per_protein_or_df)} proteins)")
 
 # ── CHECKING: boundary precision sensitivity ──────────────────────────────────
 # Domain boundaries are hard integer positions from UniProt. Variants near the
@@ -279,3 +291,64 @@ for offset in [-5, -3, 3, 5]:
     pct    = 100 * delta / base_or
     label  = f"{offset:+d} residues"
     print(f"{label:>10}  {int(in_s.sum()):>8,}  {or_off:>6.3f}  {delta:>+8.3f}  {pct:>+7.1f}%")
+
+
+# ── Stacked proportion bar: in-domain vs out-of-domain (P/LP and B/LB only) ──
+# Denominators are P/LP + B/LB only — VUS and Other/Conflicting excluded.
+
+_SIG_ORDER  = ["Pathogenic/LP", "Benign/LB"]
+_SIG_COLORS = {"Pathogenic/LP": "#d62728", "Benign/LB": "#2ca02c"}
+_SIG_LABELS = {
+    "Pathogenic/LP": "Pathogenic / Likely pathogenic",
+    "Benign/LB":     "Benign / Likely benign",
+}
+
+_in_total  = int(in_sig.get("Pathogenic/LP", 0) + in_sig.get("Benign/LB", 0))
+_out_total = int(out_sig.get("Pathogenic/LP", 0) + out_sig.get("Benign/LB", 0))
+
+_tbl = {
+    "In-domain":     [int(in_sig.get(g, 0))  for g in _SIG_ORDER],
+    "Out-of-domain": [int(out_sig.get(g, 0)) for g in _SIG_ORDER],
+}
+_pct = {
+    "In-domain":     [100 * v / _in_total  for v in _tbl["In-domain"]],
+    "Out-of-domain": [100 * v / _out_total for v in _tbl["Out-of-domain"]],
+}
+
+_bars    = ["In-domain", "Out-of-domain"]
+_totals  = [_in_total, _out_total]
+_bottoms = [0.0, 0.0]
+
+fig, ax = plt.subplots(figsize=(4, 5.5))
+
+for j, grp in enumerate(_SIG_ORDER):
+    _vals  = [_pct[b][j] for b in _bars]
+    _rects = ax.bar(_bars, _vals, bottom=_bottoms,
+                    color=_SIG_COLORS[grp], width=0.5, linewidth=0)
+    for i, rect in enumerate(_rects):
+        raw_n = _tbl[_bars[i]][j]
+        ax.text(
+            rect.get_x() + rect.get_width() / 2,
+            rect.get_y() + rect.get_height() / 2,
+            f"{raw_n:,}",
+            ha="center", va="center", fontsize=9,
+            color="white", fontweight="bold",
+        )
+        _bottoms[i] += _pct[_bars[i]][j]
+
+for i, (b, tot) in enumerate(zip(_bars, _totals)):
+    ax.text(i, 101.5, f"n = {tot:,}", ha="center", va="bottom", fontsize=9)
+
+ax.set_ylim(0, 110)
+ax.set_ylabel("% of classified variants (P/LP + B/LB)", fontsize=10)
+ax.set_yticks(range(0, 101, 20))
+ax.spines[["top", "right"]].set_visible(False)
+
+_handles = [Patch(facecolor=_SIG_COLORS[g], label=_SIG_LABELS[g]) for g in _SIG_ORDER]
+ax.legend(handles=_handles, fontsize=8,
+          bbox_to_anchor=(0.5, 1.08), loc="lower center", ncol=1,
+          framealpha=0.9, edgecolor="none")
+
+plt.tight_layout()
+plt.savefig("Figures/clinvar_inout_stacked_bar.png", dpi=150, bbox_inches="tight")
+print("\nSaved Figures/clinvar_inout_stacked_bar.png")

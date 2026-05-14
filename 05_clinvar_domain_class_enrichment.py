@@ -557,7 +557,7 @@ ax.set_xlim(x_lo, CI_CAP * 1.05)
 
 ax.set_yticks(range(n_rows))
 ax.set_yticklabels(
-    [f"{r['label']}  (n={int(r['in_total'])}/{int(r['out_total'])})"
+    [f"{r['label']}  (in={int(r['in_total'])}, out={int(r['out_total'])})"
      for _, r in forest_df.iterrows()],
     fontsize=8,
 )
@@ -639,3 +639,110 @@ ax.spines[["top", "right"]].set_visible(False)
 plt.tight_layout()
 plt.savefig("Figures/clinvar_plpb_enrichment_forest.png", dpi=150, bbox_inches="tight")
 print("Saved Figures/clinvar_plpb_enrichment_forest.png")
+
+
+# ── Per-protein scatter: in-domain vs out-of-domain pathogenicity ratio ──────
+# Each point = one protein.  X = fraction of in-domain ClinVar variants that are
+# P/LP; Y = fraction of out-of-domain variants that are P/LP.
+# Points below the diagonal have higher in-domain P/LP enrichment.
+# Proteins with <5 in-domain variants are shown in grey (too sparse to trust).
+
+_scatter_df = pd.read_csv("Csvs/per_protein_inout_plp_rate.csv")
+_scatter_df["x"] = _scatter_df["in_pct_plp"]  / 100
+_scatter_df["y"] = _scatter_df["out_pct_plp"] / 100
+
+LOW_N_THRESHOLD = 5  # minimum in-domain variants to receive a class colour
+
+# Explicit colour mapping for the five largest structural classes
+_CLASS_COLORS = {
+    "Homeodomain-like superfamily"                                   : "#1f77b4",
+    "Winged helix-like DNA-binding domain superfamily"               : "#ff7f0e",
+    "High mobility group box domain superfamily"                     : "#2ca02c",
+    "Nuclear hormone receptor-like domain superfamily"               : "#9467bd",
+    "p53-like transcription factor, DNA-binding domain superfamily"  : "#d62728",
+}
+_OTHER_COLOR = "#aec7e8"
+_GREY_COLOR  = "#cccccc"
+
+def _point_color(row):
+    if row["in_total"] < LOW_N_THRESHOLD:
+        return _GREY_COLOR
+    return _CLASS_COLORS.get(row["structural_class"], _OTHER_COLOR)
+
+_scatter_df["color"]       = _scatter_df.apply(_point_color, axis=1)
+_scatter_df["is_colored"]  = _scatter_df["in_total"] >= LOW_N_THRESHOLD
+
+_colored = _scatter_df[_scatter_df["is_colored"]]
+_n_below  = (_colored["x"] > _colored["y"]).sum()   # in-domain enriched
+_n_above  = (_colored["x"] < _colored["y"]).sum()   # out-of-domain enriched
+
+_ax_max = max(_scatter_df["x"].max(), _scatter_df["y"].max()) * 1.08
+_ax_max = round(_ax_max * 10) / 10 + 0.05  # round to nearest 0.05 above
+
+fig, ax = plt.subplots(figsize=(5.5, 5.5))
+
+# Grey (low-N) layer first
+_grey = _scatter_df[~_scatter_df["is_colored"]]
+ax.scatter(_grey["x"], _grey["y"], c=_GREY_COLOR, s=14, alpha=0.55, linewidths=0, zorder=1)
+
+# Coloured layers: "Other" as one group, then named classes on top
+_other_mask = _scatter_df["is_colored"] & ~_scatter_df["structural_class"].isin(_CLASS_COLORS)
+ax.scatter(
+    _scatter_df.loc[_other_mask, "x"],
+    _scatter_df.loc[_other_mask, "y"],
+    c=_OTHER_COLOR, s=18, alpha=0.7, linewidths=0, zorder=2, label="Other",
+)
+for _cls, _col in _CLASS_COLORS.items():
+    _sub = _scatter_df[_scatter_df["structural_class"] == _cls]
+    if _sub.empty:
+        continue
+    _lbl = NAME_SHORT.get(_cls, _cls)
+    ax.scatter(_sub["x"], _sub["y"], c=_col, s=18, alpha=0.75, linewidths=0,
+               zorder=3, label=_lbl)
+
+# Diagonal reference line
+ax.plot([0, _ax_max], [0, _ax_max], color="red", linewidth=1.2, zorder=0)
+
+# Corner annotations (count each side, like panel E)
+ax.text(0.97, 0.03, str(_n_below), transform=ax.transAxes,
+        ha="right", va="bottom", fontsize=12, fontfamily="Palatino")
+ax.text(0.03, 0.97, str(_n_above), transform=ax.transAxes,
+        ha="left", va="top", fontsize=12, fontfamily="Palatino")
+
+ax.set_xlim(0, _ax_max)
+ax.set_ylim(0, _ax_max)
+ax.set_aspect("equal")
+ax.set_xlabel("In-domain P/LP fraction", fontsize=11, fontfamily="Palatino")
+ax.set_ylabel("Out-of-domain P/LP fraction", fontsize=11, fontfamily="Palatino")
+ax.spines[["top", "right"]].set_visible(False)
+for lbl in ax.get_xticklabels() + ax.get_yticklabels():
+    lbl.set_fontfamily("Palatino")
+
+# Annotate the two most extreme outliers
+_to_label = _scatter_df.nlargest(2, "x")[["gene", "x", "y"]]
+for _, _row in _to_label.iterrows():
+    ax.annotate(
+        _row["gene"], xy=(_row["x"], _row["y"]),
+        xytext=(4, 4), textcoords="offset points",
+        fontsize=7, fontfamily="Palatino", color="#333",
+    )
+
+_legend_handles = [
+    Line2D([0], [0], marker="o", color="w", markerfacecolor=_col,
+           markersize=7, label=NAME_SHORT.get(_cls, _cls))
+    for _cls, _col in _CLASS_COLORS.items()
+] + [
+    Line2D([0], [0], marker="o", color="w", markerfacecolor=_OTHER_COLOR,
+           markersize=7, label="Other"),
+    Line2D([0], [0], marker="o", color="w", markerfacecolor=_GREY_COLOR,
+           markersize=7, label=f"<{LOW_N_THRESHOLD} in-domain variants"),
+]
+ax.legend(handles=_legend_handles, fontsize=7.5,
+          bbox_to_anchor=(1.01, 1), loc="upper left",
+          framealpha=0.9, edgecolor="none")
+
+plt.tight_layout()
+plt.savefig("Figures/clinvar_inout_scatter.png", dpi=150, bbox_inches="tight")
+print("Saved Figures/clinvar_inout_scatter.png")
+print(f"  {_n_below} proteins below diagonal (in-domain enriched)")
+print(f"  {_n_above} proteins above diagonal (out-of-domain enriched)")
