@@ -24,41 +24,35 @@ print(f"  {len(classif)} proteins (TEs and non-canonical excluded)\n")
 # ── Load ClinVar and filter ────────────────────────────────────────────────────
 
 print("Loading ClinVar...")
+ONE_STAR_STATUSES = {
+    "criteria provided, single submitter",
+    "criteria provided, multiple submitters, no conflicts",
+    "criteria provided, conflicting classifications",
+    "reviewed by expert panel",
+    "practice guideline",
+}
+
 cv = pd.read_csv(CLINVAR_CSV, low_memory=False)
 cv = cv[cv["OriginSimple"] == "germline"].copy()
 cv = cv[~((cv["canonical_residue"] == "Met") & (cv["residue_seq"] == 1))].copy()  # remove start-lost
 cv = cv.dropna(subset=["uniprot", "residue_seq"]).copy()
-print(f"  {len(cv):,} total variants (germline, start-lost removed)")
+cv = cv[cv["ReviewStatus"].isin(ONE_STAR_STATUSES)].copy()
+print(f"  {len(cv):,} total variants (germline, start-lost removed, ≥1-star)")
 
 cv_dbp = cv[cv["uniprot"].isin(dbp_ids)].copy()
 print(f"  {len(cv_dbp):,} variants mapping to {cv_dbp['uniprot'].nunique()} DBPs\n")
 
 # ── Recode clinical significance ───────────────────────────────────────────────
 
-PATHOGENIC_TERMS = {
-    "Pathogenic", "Likely pathogenic", "Pathogenic/Likely pathogenic",
-    "Pathogenic; other", "Pathogenic; drug response",
-    "Likely pathogenic; drug response", "Likely pathogenic/Likely risk allele",
-}
-BENIGN_TERMS = {
-    "Benign", "Likely benign", "Benign/Likely benign",
-    "Benign; risk factor", "Benign; other",
-}
-VUS_TERMS = {
-    "Uncertain significance", "Uncertain significance/Uncertain risk allele",
-    "Uncertain significance; drug response",
-}
-CONFLICTING_TERMS = {
-    "Conflicting classifications of pathogenicity",
-    "Conflicting classifications of pathogenicity; other",
-    "Conflicting classifications of pathogenicity; risk factor",
-}
-
 def recode(sig):
-    if sig in PATHOGENIC_TERMS: return "Pathogenic/LP"
-    if sig in BENIGN_TERMS:     return "Benign/LB"
-    if sig in VUS_TERMS:        return "VUS"
-    if sig in CONFLICTING_TERMS: return "Other/Conflicting"
+    if sig in {"Pathogenic", "Likely pathogenic", "Pathogenic/Likely pathogenic"}:
+        return "Pathogenic/LP"
+    if sig in {"Benign", "Likely benign", "Benign/Likely benign"}:
+        return "Benign/LB"
+    if sig in {"Uncertain significance",
+               "Uncertain significance/Uncertain risk allele",
+               "Uncertain significance; drug response"}:
+        return "VUS"
     return "Other/Conflicting"
 
 def odds_ratio_ci_95(a, b, c, d, continuity=0.5):
@@ -93,48 +87,46 @@ for grp, n in cv_dbp_uniq["sig_group"].value_counts().items():
     print(f"  {grp:<20} {n:>8,}  ({100 * n / len(cv_dbp_uniq):.1f}%)")
 print()
 
-# ── DBP vs non-DBP enrichment (Fisher's exact) ────────────────────────────────
+# ── DBP vs non-DBP enrichment (Fisher's exact, P/LP vs B/LB only) ─────────────
 
-SIG_GROUPS = ["Pathogenic/LP", "VUS", "Benign/LB", "Other/Conflicting"]
-
-n_dbp      = len(cv_dbp_uniq)
-n_non_dbp  = len(cv_uniq) - n_dbp
-dbp_counts = cv_dbp_uniq["sig_group"].value_counts()
-all_counts = cv_uniq["sig_group_all"].value_counts()
+dbp_counts     = cv_dbp_uniq["sig_group"].value_counts()
+all_counts     = cv_uniq["sig_group_all"].value_counts()
 non_dbp_counts = (all_counts - dbp_counts).fillna(all_counts)
 
-n_tests = len(SIG_GROUPS)
-print("DBP vs non-DBP enrichment (Fisher's exact, Bonferroni corrected):")
+a = int(dbp_counts.get("Pathogenic/LP", 0))
+b = int(non_dbp_counts.get("Pathogenic/LP", 0))
+c = int(dbp_counts.get("Benign/LB", 0))
+d = int(non_dbp_counts.get("Benign/LB", 0))
+
+n_dbp_classified     = a + c
+n_nondbp_classified  = b + d
+
+_, p_raw = scipy.stats.fisher_exact([[a, b], [c, d]])
+or_hat, ci_lo, ci_hi, corrected = odds_ratio_ci_95(a, c, b, d)
+
+pct_plp_dbp    = 100 * a / n_dbp_classified    if n_dbp_classified    else 0
+pct_plp_nondbp = 100 * b / n_nondbp_classified if n_nondbp_classified else 0
+cc = "†" if corrected else ""
+
+print("DBP vs non-DBP enrichment (Fisher's exact, P/LP vs B/LB):")
 print(f"  Note: ascertainment bias likely inflates enrichment for well-studied genes.")
-print(f"  Bonferroni correction: n_tests={n_tests}")
-print(f"  {'Sig group':<20} {'DBP n':>8} {'DBP%':>6}  {'nonDBP n':>9} {'nonDBP%':>8}  {'OR':>6}  {'95% CI':>18}  {'p_raw':>10}  {'p_bonf':>10}")
-print(f"  {'-'*115}")
+print(f"  {'':20} {'DBP n':>8} {'DBP%':>6}  {'nonDBP n':>9} {'nonDBP%':>8}")
+print(f"  {'Pathogenic/LP':<20} {a:>8,} {pct_plp_dbp:>6.1f}%  {b:>9,} {pct_plp_nondbp:>6.1f}%")
+print(f"  {'Benign/LB':<20} {c:>8,} {100-pct_plp_dbp:>6.1f}%  {d:>9,} {100-pct_plp_nondbp:>6.1f}%")
+print(f"  OR = {or_hat:.2f}{cc}  [{ci_lo:.2f}, {ci_hi:.2f}]  p = {p_raw:.3e}")
+print(f"  † Haldane-Anscombe continuity correction applied\n")
 
-rows = []
-for sig in SIG_GROUPS:
-    a = int(dbp_counts.get(sig, 0))
-    b = int(non_dbp_counts.get(sig, 0))
-    c = n_dbp - a
-    d = n_non_dbp - b
+rows = [
+    {"sig_group": "Pathogenic/LP", "n_dbp": a, "n_non_dbp": b,
+     "pct_dbp": round(pct_plp_dbp, 2), "pct_non_dbp": round(pct_plp_nondbp, 2),
+     "odds_ratio": round(or_hat, 3), "ci95_lo": round(ci_lo, 3), "ci95_hi": round(ci_hi, 3),
+     "p_raw": p_raw, "continuity_corrected": corrected},
+    {"sig_group": "Benign/LB", "n_dbp": c, "n_non_dbp": d,
+     "pct_dbp": round(100 - pct_plp_dbp, 2), "pct_non_dbp": round(100 - pct_plp_nondbp, 2),
+     "odds_ratio": round(or_hat, 3), "ci95_lo": round(ci_lo, 3), "ci95_hi": round(ci_hi, 3),
+     "p_raw": p_raw, "continuity_corrected": corrected},
+]
 
-    _, p_raw = scipy.stats.fisher_exact([[a, b], [c, d]])
-    or_hat, ci_lo, ci_hi, corrected = odds_ratio_ci_95(a, c, b, d)
-    p_bonf = min(p_raw * n_tests, 1.0)
-
-    pct_dbp    = 100 * a / n_dbp     if n_dbp     else 0
-    pct_nondbp = 100 * b / n_non_dbp if n_non_dbp else 0
-    cc    = "†" if corrected else ""
-    stars = " ***" if p_bonf < 0.001 else (" **" if p_bonf < 0.01 else (" *" if p_bonf < 0.05 else ""))
-    print(f"  {sig:<20} {a:>8,} {pct_dbp:>6.1f}%  {b:>9,} {pct_nondbp:>7.1f}%  "
-          f"{or_hat:>6.2f}{cc}  [{ci_lo:>6.2f}, {ci_hi:>6.2f}]  {p_raw:>10.3e}  {p_bonf:>10.3e}{stars}")
-    rows.append({
-        "sig_group": sig, "n_dbp": a, "n_non_dbp": b,
-        "pct_dbp": round(pct_dbp, 2), "pct_non_dbp": round(pct_nondbp, 2),
-        "odds_ratio": round(or_hat, 3), "ci95_lo": round(ci_lo, 3), "ci95_hi": round(ci_hi, 3),
-        "p_raw": p_raw, "p_bonf": p_bonf, "continuity_corrected": corrected,
-    })
-
-print("  † Haldane-Anscombe continuity correction applied\n")
 pd.DataFrame(rows).to_csv("Csvs/clinvar_dbp_sig_enrichment.csv", index=False)
 print("Saved: Csvs/clinvar_dbp_sig_enrichment.csv\n")
 

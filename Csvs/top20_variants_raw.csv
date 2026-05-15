@@ -1,21 +1,21 @@
 uniprot,gene,structural_class,n_variants
-Q8NEZ4,KMT2C,High mobility group box domain superfamily,1299
-Q6ZRS2,SRCAP,P-loop containing nucleoside triphosphate hydrolase,1202
-Q9UMN6,KMT2B,Bromodomain-like superfamily,1185
-P04637,TP53,"p53-like transcription factor, DNA-binding domain superfamily",1140
-Q9Y6X0,SETBP1,AT-hook motif,1025
-Q03164,KMT2A,Bromodomain-like superfamily,717
-Q9UGU0,TCF20,Zinc finger superfamily,654
-O60315,ZEB2,Homeodomain-like superfamily,644
-Q92826,HOXB13,Homeodomain-like superfamily,603
+Q8NEZ4,KMT2C,High mobility group box domain superfamily,1254
+Q6ZRS2,SRCAP,P-loop containing nucleoside triphosphate hydrolase,1191
+Q9UMN6,KMT2B,Bromodomain-like superfamily,1168
+P04637,TP53,"p53-like transcription factor, DNA-binding domain superfamily",1128
+Q9Y6X0,SETBP1,AT-hook motif,1016
+Q03164,KMT2A,Bromodomain-like superfamily,708
+Q9UGU0,TCF20,Zinc finger superfamily,650
+O60315,ZEB2,Homeodomain-like superfamily,636
+Q92826,HOXB13,Homeodomain-like superfamily,602
 P49715,CEBPA,Basic-leucine zipper domain superfamily,565
-Q99453,PHOX2B,Homeodomain-like superfamily,546
-Q96T58,SPEN,Nucleotide-binding alpha-beta plait domain superfamily,502
-Q969G3,SMARCE1,High mobility group box domain superfamily,479
-P20823,HNF1A,"Hepatocyte nuclear factor 1, N-terminal domain superfamily",469
-Q96RK0,CIC,High mobility group box domain superfamily,447
-Q15911,ZFHX3,Homeodomain-like superfamily,418
-Q9H2P0,ADNP,Homeodomain-like superfamily,416
-Q9Y6Y1,CAMTA1,Ankyrin repeat-containing domain superfamily,415
-P15918,RAG1,Zinc finger superfamily,414
-Q9Y2U8,LEMD3,LEM/LEM-like domain superfamily,408
+Q99453,PHOX2B,Homeodomain-like superfamily,544
+Q969G3,SMARCE1,High mobility group box domain superfamily,478
+Q96T58,SPEN,Nucleotide-binding alpha-beta plait domain superfamily,473
+P20823,HNF1A,"Hepatocyte nuclear factor 1, N-terminal domain superfamily",464
+P15918,RAG1,Zinc finger superfamily,409
+Q9Y2U8,LEMD3,LEM/LEM-like domain superfamily,407
+Q96RK0,CIC,High mobility group box domain superfamily,406
+Q9H2P0,ADNP,Homeodomain-like superfamily,403
+Q9Y6Y1,CAMTA1,Ankyrin repeat-containing domain superfamily,399
+Q15911,ZFHX3,Homeodomain-like superfamily,391

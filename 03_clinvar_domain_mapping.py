@@ -144,13 +144,13 @@ c = int(in_sig.get("Benign/LB", 0))       # B/LB in-domain
 d = int(out_sig.get("Benign/LB", 0))      # B/LB out-of-domain
 
 _, p_raw = scipy.stats.fisher_exact([[a, b], [c, d]], alternative="greater")
-or_hat, lo, hi, corrected = odds_ratio_ci_95(a, b, c, d)
+primary_or, primary_lo, primary_hi, corrected = odds_ratio_ci_95(a, b, c, d)
 fmt_p = lambda p: f"< {np.finfo(float).tiny:.2e}" if p == 0.0 else f"{p:.3e}"
 
 print(f"\n── Primary enrichment: P/LP vs B/LB (in-domain vs out-of-domain) ──")
 print(f"  P/LP:  in-domain={a:,}  out-of-domain={b:,}")
 print(f"  B/LB:  in-domain={c:,}  out-of-domain={d:,}")
-print(f"  OR = {or_hat:.2f}  [{lo:.2f}, {hi:.2f}]  p={fmt_p(p_raw)}")
+print(f"  OR = {primary_or:.2f}  [{primary_lo:.2f}, {primary_hi:.2f}]  p={fmt_p(p_raw)}")
 
 print(f"\n── Variant counts by significance group ──")
 for grp in ["Pathogenic/LP", "Benign/LB", "VUS", "Other/Conflicting"]:
@@ -237,6 +237,14 @@ print(f"  {'Residues':20}  {total_domain_res:>12,}  {total_nondomain_res:>14,}")
 print(f"  Pooled OR = {pos_or:.2f}  [{pos_lo:.2f}, {pos_hi:.2f}]  p={fmt_p(pos_p)}")
 print(f"  Per-protein OR: median={median_or:.2f}  IQR=[{q1_or:.2f}, {q3_or:.2f}]  (n={len(per_protein_or_df)} proteins)")
 
+pd.DataFrame([{
+    "v_in": v_in, "v_out": v_out,
+    "total_domain_res": total_domain_res, "total_nondomain_res": total_nondomain_res,
+    "pos_or": pos_or, "pos_p": pos_p,
+    "primary_or": primary_or, "primary_p": p_raw,
+}]).to_csv("Csvs/domain_enrichment_summary.csv", index=False)
+print("  Saved Csvs/domain_enrichment_summary.csv")
+
 # ── CHECKING: boundary precision sensitivity ──────────────────────────────────
 # Domain boundaries are hard integer positions from UniProt. Variants near the
 # edge of a domain may be misclassified if boundaries are off by a few residues.
@@ -293,7 +301,7 @@ for offset in [-5, -3, 3, 5]:
     print(f"{label:>10}  {int(in_s.sum()):>8,}  {or_off:>6.3f}  {delta:>+8.3f}  {pct:>+7.1f}%")
 
 
-# ── Stacked proportion bar: in-domain vs out-of-domain (P/LP and B/LB only) ──
+# ── Stacked proportion bar: in-domain vs out-of-domain vs non-DBP ─────────────
 # Denominators are P/LP + B/LB only — VUS and Other/Conflicting excluded.
 
 _SIG_ORDER  = ["Pathogenic/LP", "Benign/LB"]
@@ -306,20 +314,27 @@ _SIG_LABELS = {
 _in_total  = int(in_sig.get("Pathogenic/LP", 0) + in_sig.get("Benign/LB", 0))
 _out_total = int(out_sig.get("Pathogenic/LP", 0) + out_sig.get("Benign/LB", 0))
 
+_enrich    = pd.read_csv("Csvs/clinvar_dbp_sig_enrichment.csv").set_index("sig_group")
+_nondbp_plp   = int(_enrich.loc["Pathogenic/LP", "n_non_dbp"])
+_nondbp_blb   = int(_enrich.loc["Benign/LB",     "n_non_dbp"])
+_nondbp_total = _nondbp_plp + _nondbp_blb
+
 _tbl = {
-    "In-domain":     [int(in_sig.get(g, 0))  for g in _SIG_ORDER],
+    "In-domain":     [int(in_sig.get(g, 0)) for g in _SIG_ORDER],
     "Out-of-domain": [int(out_sig.get(g, 0)) for g in _SIG_ORDER],
+    "Non-DBP":       [_nondbp_plp, _nondbp_blb],
 }
-_pct = {
-    "In-domain":     [100 * v / _in_total  for v in _tbl["In-domain"]],
-    "Out-of-domain": [100 * v / _out_total for v in _tbl["Out-of-domain"]],
-}
+_totals_map = {"In-domain": _in_total, "Out-of-domain": _out_total, "Non-DBP": _nondbp_total}
+_pct = {bar: [100 * v / _totals_map[bar] for v in vals] for bar, vals in _tbl.items()}
 
-_bars    = ["In-domain", "Out-of-domain"]
-_totals  = [_in_total, _out_total]
-_bottoms = [0.0, 0.0]
+_bars    = ["In-domain", "Out-of-domain", "Non-DBP"]
+_totals  = [_totals_map[b] for b in _bars]
+_bottoms = [0.0, 0.0, 0.0]
 
-fig, ax = plt.subplots(figsize=(4, 5.5))
+_stars = "***" if p_raw < 0.001 else ("**" if p_raw < 0.01 else ("*" if p_raw < 0.05 else "ns"))
+or_hat = primary_or
+
+fig, ax = plt.subplots(figsize=(5.5, 5.5))
 
 for j, grp in enumerate(_SIG_ORDER):
     _vals  = [_pct[b][j] for b in _bars]
@@ -331,21 +346,29 @@ for j, grp in enumerate(_SIG_ORDER):
             rect.get_x() + rect.get_width() / 2,
             rect.get_y() + rect.get_height() / 2,
             f"{raw_n:,}",
-            ha="center", va="center", fontsize=9,
+            ha="center", va="center", fontsize=7.5,
             color="white", fontweight="bold",
         )
         _bottoms[i] += _pct[_bars[i]][j]
 
 for i, (b, tot) in enumerate(zip(_bars, _totals)):
-    ax.text(i, 101.5, f"n = {tot:,}", ha="center", va="bottom", fontsize=9)
+    ax.text(i, 101.5, f"n = {tot:,}", ha="center", va="bottom", fontsize=7.5)
 
-ax.set_ylim(0, 110)
-ax.set_ylabel("% of classified variants (P/LP + B/LB)", fontsize=10)
+# OR bracket between In-domain and Out-of-domain
+_bracket_y = 108
+ax.plot([0, 0, 1, 1], [_bracket_y, _bracket_y + 1, _bracket_y + 1, _bracket_y],
+        color="black", lw=1.2, clip_on=False)
+ax.text(0.5, _bracket_y + 1.5, f"OR = {or_hat:.2f} {_stars}",
+        ha="center", va="bottom", fontsize=8, fontweight="bold")
+
+ax.set_ylim(0, 120)
+ax.set_ylabel("% of classified variants (P/LP + B/LB)", fontsize=9)
 ax.set_yticks(range(0, 101, 20))
+ax.tick_params(labelsize=7.5)
 ax.spines[["top", "right"]].set_visible(False)
 
 _handles = [Patch(facecolor=_SIG_COLORS[g], label=_SIG_LABELS[g]) for g in _SIG_ORDER]
-ax.legend(handles=_handles, fontsize=8,
+ax.legend(handles=_handles, fontsize=7.5,
           bbox_to_anchor=(0.5, 1.08), loc="lower center", ncol=1,
           framealpha=0.9, edgecolor="none")
 

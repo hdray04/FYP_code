@@ -1,8 +1,8 @@
 """
 RSA accessibility-class enrichment: P/LP vs B/LB.
 Restricted to in-domain residues with pLDDT >= 70.
-Three-way classification: Buried / Intermediate / Surface.
-Three Fisher's exact tests with Bonferroni correction (n=3).
+Binary classification: Buried (RSA < 0.25) / Exposed (RSA >= 0.25).
+Fisher's exact test, no correction needed for binary comparison.
 """
 
 import pandas as pd
@@ -12,8 +12,8 @@ MERGED_CSV = "Csvs/clinvar_am_m3d_dssp_merged.csv"
 OUTPUT_CSV = "Csvs/rsa_accessibility_enrichment.csv"
 
 PLDDT_THRESHOLD = 70
-RSA_BINS = [-0.001, 0.20, 0.50, 999]
-RSA_LABELS = ["Buried", "Intermediate", "Surface"]
+RSA_BINS = [-0.001, 0.25, 999]
+RSA_LABELS = ["Buried", "Exposed"]
 
 
 def load_analysis_set(path):
@@ -69,7 +69,7 @@ def main():
     print()
 
     results = run_enrichment(df)
-    print("Enrichment results (Bonferroni n=3):")
+    print("Enrichment results (binary: Buried vs Exposed):")
     print(results.to_string(index=False))
 
     results.to_csv(OUTPUT_CSV, index=False)

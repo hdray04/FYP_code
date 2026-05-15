@@ -434,7 +434,7 @@ Q9BZS1,FOXP3,Forkhead box protein P3,Winged helix-like DNA-binding domain superf
 Q9C056,NKX6-2,Homeobox protein Nkx-6.2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,6,1,False,False,{'Homeobox'},1
 Q9C0A1,ZFHX2,Zinc finger homeobox protein 2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,2,False,False,{'Homeobox'},1
 Q9GZN2,TGIF2,Homeobox protein TGIF2,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,4,1,False,False,{'Homeobox'},1
-Q9H147,DNTTIP1,Deoxynucleotidyltransferase terminal-interacting protein 1,"DNTTIP1, dimerisation domain",IPR041384,Domain,3,2,False,False,"{'A.T hook', 'H-T-H motif'}",2
+Q9H147,DNTTIP1,Deoxynucleotidyltransferase terminal-interacting protein 1,"DNTTIP1, dimerisation domain",IPR041384,Domain,3,2,False,False,"{'H-T-H motif', 'A.T hook'}",2
 Q9H161,ALX4,Homeobox protein aristaless-like 4,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False,{'Homeobox'},1
 Q9H2C1,LHX5,LIM/homeobox protein Lhx5,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,7,1,False,False,{'Homeobox'},1
 Q9H2P0,ADNP,Activity-dependent neuroprotector homeobox protein,Homeodomain-like superfamily,IPR009057,Homologous_superfamily,5,1,False,False,{'Homeobox'},1
