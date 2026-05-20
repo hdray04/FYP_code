@@ -8,11 +8,14 @@ filtered to feature_type == "DNA binding").
 Variants falling outside a DNA-binding domain interval are excluded entirely.
 """
 
+import matplotlib as mpl
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 import scipy.stats
 from matplotlib.lines import Line2D
+
+mpl.rcParams["font.family"] = "Arial"
 
 # ── Paths ───────────────────────────────────────────────────────────────────────
 
@@ -115,7 +118,7 @@ print("\nSaved: Csvs/clinvar_domain_class_enrichment.csv\n")
 total_path   = pivot["Pathogenic/LP"].sum()
 total_benign = pivot["Benign/LB"].sum()
 
-test_classes = pivot[(pivot["n_proteins"] >= 2) & (pivot["total_variants"] > 0)].copy()
+test_classes = pivot[(pivot["n_proteins"] >= 2) & (pivot["total_variants"] >= 10)].copy()
 n_tests      = len(test_classes)
 
 results = []
@@ -206,7 +209,7 @@ for cls in all_classes:
     in_notplp  = in_total  - in_plp
     out_notplp = out_total - out_plp
 
-    if in_total == 0 or out_total == 0 or in_plp == 0 or out_plp == 0:
+    if in_total < 10 or out_total == 0 or in_plp == 0 or out_plp == 0:
         continue
 
     _, p_raw = scipy.stats.fisher_exact(
@@ -368,8 +371,7 @@ bar_data = bar_data.sort_values("pct_path", ascending=True)
 overall_pct_path = 100 * pivot["Pathogenic/LP"].sum() / pivot["total_variants"].sum()
 
 y_labels = [
-    f"{NAME_SHORT.get(c, c[:18])}{'*' if c in sig_classes else ''}  "
-    f"(n={int(row['total_variants']):,})"
+    f"{NAME_SHORT.get(c, c[:18])}{'*' if c in sig_classes else ''}"
     for c, row in bar_data.iterrows()
 ]
 
@@ -557,8 +559,7 @@ ax.set_xlim(x_lo, CI_CAP * 1.05)
 
 ax.set_yticks(range(n_rows))
 ax.set_yticklabels(
-    [f"{r['label']}  (in={int(r['in_total'])}, out={int(r['out_total'])})"
-     for _, r in forest_df.iterrows()],
+    [r['label'] for _, r in forest_df.iterrows()],
     fontsize=8,
 )
 
@@ -571,11 +572,8 @@ ax.text(1.02, 1.01, "in% / out%", transform=ax.transAxes,
         va="bottom", ha="left", fontsize=7, color="#444", fontweight="bold")
 
 ax.set_xlabel("Odds ratio (in-domain vs out-of-domain P/LP), log scale")
-ax.set_title(
-    "In-domain vs out-of-domain P/LP enrichment by structural class\n"
-    "Red = Bonferroni-significant  ·  → CI extends beyond axis",
-    fontsize=9,
-)
+ax.set_ylabel("Structural class", fontsize=10)
+
 
 from matplotlib.lines import Line2D as _L2D
 ax.legend(handles=[
@@ -705,18 +703,18 @@ ax.plot([0, _ax_max], [0, _ax_max], color="red", linewidth=1.2, zorder=0)
 
 # Corner annotations (count each side, like panel E)
 ax.text(0.97, 0.03, str(_n_below), transform=ax.transAxes,
-        ha="right", va="bottom", fontsize=12, fontfamily="Palatino")
+        ha="right", va="bottom", fontsize=12, fontfamily="Arial")
 ax.text(0.03, 0.97, str(_n_above), transform=ax.transAxes,
-        ha="left", va="top", fontsize=12, fontfamily="Palatino")
+        ha="left", va="top", fontsize=12, fontfamily="Arial")
 
 ax.set_xlim(0, _ax_max)
 ax.set_ylim(0, _ax_max)
 ax.set_aspect("equal")
-ax.set_xlabel("In-domain P/LP fraction", fontsize=11, fontfamily="Palatino")
-ax.set_ylabel("Out-of-domain P/LP fraction", fontsize=11, fontfamily="Palatino")
+ax.set_xlabel("In-domain P/LP fraction", fontsize=11, fontfamily="Arial")
+ax.set_ylabel("Out-of-domain P/LP fraction", fontsize=11, fontfamily="Arial")
 ax.spines[["top", "right"]].set_visible(False)
 for lbl in ax.get_xticklabels() + ax.get_yticklabels():
-    lbl.set_fontfamily("Palatino")
+    lbl.set_fontfamily("Arial")
 
 # Annotate the two most extreme outliers
 _to_label = _scatter_df.nlargest(2, "x")[["gene", "x", "y"]]
@@ -724,7 +722,7 @@ for _, _row in _to_label.iterrows():
     ax.annotate(
         _row["gene"], xy=(_row["x"], _row["y"]),
         xytext=(4, 4), textcoords="offset points",
-        fontsize=7, fontfamily="Palatino", color="#333",
+        fontsize=7, fontfamily="Arial", color="#333",
     )
 
 _legend_handles = [

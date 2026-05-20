@@ -26,7 +26,7 @@ out_plp    = int((out_hits["sig_group"] == "Pathogenic/LP").sum())
 out_blb    = int((out_hits["sig_group"] == "Benign/LB").sum())
 
 C_PATH = "#d62728"
-C_BEN  = "#2ca02c"
+C_BEN  = "#1f77b4"
 BH     = 0.10   # bar height in figure coords — thicker
 
 # Bar rects [left, bottom, width, height]
@@ -35,8 +35,8 @@ R = {
     "gw":     [0.175, 0.80, 0.65,  BH],
     "dbp":    [0.11,  0.54, 0.38,  BH],
     "nondbp": [0.55,  0.54, 0.38,  BH],
-    "ind":    [0.025, 0.22, 0.275, BH],   # centre 0.1625 → 0.30 - 0.1375 ✓
-    "out":    [0.325, 0.22, 0.275, BH],   # centre 0.4625 → 0.30 + 0.1625 ✓
+    "ind":    [0.025, 0.22, 0.275, BH],
+    "out":    [0.325, 0.22, 0.275, BH],
 }
 
 # ── Figure ────────────────────────────────────────────────────────────────────

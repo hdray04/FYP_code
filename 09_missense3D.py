@@ -510,10 +510,9 @@ mech_flags = both_vus[[c for c in MECH_COLS if c in both_vus.columns]].apply(
 both_vus = both_vus.copy()
 both_vus["m3d_mechanisms"] = mech_flags
 
-print(f"\n--- Candidate variants (AM pathogenic + M3D damaging, n={len(both_vus)}) ---")
-print(both_vus[["uniprot", "am_pathogenicity", "structural_class", "m3d_mechanisms"]]
-      .sort_values(["structural_class", "am_pathogenicity"], ascending=[True, False])
-      .to_string(index=False))
+candidate_vus = both_vus[["uniprot", "am_pathogenicity", "structural_class", "m3d_mechanisms"]]
+candidate_vus = candidate_vus.sort_values(["structural_class", "am_pathogenicity"], ascending=[True, False])
+candidate_vus.to_csv("Csvs/dual_flagged_candidate_variants.csv", index=False)
 
 # --- Lollipop: % dual-flagged by structural class ---
 sc_plot = sc_vus_sum[sc_vus_sum["n_vus"] >= 10].sort_values("pct_both")

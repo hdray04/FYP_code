@@ -133,6 +133,9 @@ def merge_variants_with_dssp(
         "secondary_structure_altered", "buried_charge_switch",
         "buried_H_bond_breakage", "buried_salt_bridge_breakage",
         "buried_exposed_switch", "clash",
+        "cavity_altered", "gly_in_a_bend", "buried_Pro_introduced",
+        "disulphide_breakage", "disallowed_phi_psi", "buried_charge_replaced",
+        "buried_Gly_replaced", "cis_pro_replaced",
     ]
     merged = clinvar.merge(
         m3d[m3d_cols],

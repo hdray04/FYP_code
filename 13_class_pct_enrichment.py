@@ -160,10 +160,67 @@ print(f"Overall ClinVar:        {overall_pct_path:.1f}% P/LP  |  {overall_pct_be
 print(f"Overall AlphaMissense:  {overall_am_path:.1f}% pathogenic  |  {overall_am_benign:.1f}% benign\n")
 
 
+# ── Fisher's exact: per-class enrichment tests (one-sided, Bonferroni) ────────
+# ClinVar: is this class enriched for P/LP vs B/LB relative to all other classes?
+_cv_total_path   = int(cv_pivot["Pathogenic/LP"].sum())
+_cv_total_benign = int(cv_pivot["Benign/LB"].sum())
+_cv_test_idx     = cv_pivot[cv_pivot["n_cv_classified"] >= 10].index
+
+_cv_fisher = []
+for _cls in _cv_test_idx:
+    a = int(cv_pivot.loc[_cls, "Pathogenic/LP"])
+    b = int(cv_pivot.loc[_cls, "Benign/LB"])
+    c = _cv_total_path   - a
+    d = _cv_total_benign - b
+    _, _p = scipy.stats.fisher_exact([[a, b], [c, d]], alternative="greater")
+    _cv_fisher.append({"structural_class": _cls, "cv_p_raw": _p})
+
+_cv_fisher_df = pd.DataFrame(_cv_fisher).set_index("structural_class")
+_n_cv_tests   = len(_cv_fisher_df)
+_cv_fisher_df["cv_p_bonf"] = (_cv_fisher_df["cv_p_raw"] * _n_cv_tests).clip(upper=1.0)
+sig_cv_classes = set(_cv_fisher_df[_cv_fisher_df["cv_p_bonf"] < 0.05].index)
+
+print(f"ClinVar Fisher's exact (one-sided P/LP vs B/LB, Bonferroni n={_n_cv_tests}):")
+for _cls, _row in _cv_fisher_df.sort_values("cv_p_bonf").iterrows():
+    _sig = " *" if _row["cv_p_bonf"] < 0.05 else ""
+    print(f"  {_cls:<55} p_raw={_row['cv_p_raw']:.2e}  p_bonf={_row['cv_p_bonf']:.2e}{_sig}")
+print()
+
+# AlphaMissense: is this class enriched for pathogenic vs benign relative to all others?
+_am_total_path   = int(am_pivot["pathogenic"].sum())
+_am_total_benign = int(am_pivot["benign"].sum())
+_am_test_idx     = am_pivot[am_pivot["n_am_classified"] >= 100].index
+
+_am_fisher = []
+for _cls in _am_test_idx:
+    a = int(am_pivot.loc[_cls, "pathogenic"])
+    b = int(am_pivot.loc[_cls, "benign"])
+    c = _am_total_path   - a
+    d = _am_total_benign - b
+    _, _p = scipy.stats.fisher_exact([[a, b], [c, d]], alternative="greater")
+    _am_fisher.append({"structural_class": _cls, "am_p_raw": _p})
+
+_am_fisher_df = pd.DataFrame(_am_fisher).set_index("structural_class")
+_n_am_tests   = len(_am_fisher_df)
+_am_fisher_df["am_p_bonf"] = (_am_fisher_df["am_p_raw"] * _n_am_tests).clip(upper=1.0)
+sig_am_classes = set(_am_fisher_df[_am_fisher_df["am_p_bonf"] < 0.05].index)
+
+print(f"AlphaMissense Fisher's exact (one-sided pathogenic vs benign, Bonferroni n={_n_am_tests}):")
+for _cls, _row in _am_fisher_df.sort_values("am_p_bonf").iterrows():
+    _sig = " *" if _row["am_p_bonf"] < 0.05 else ""
+    print(f"  {_cls:<55} p_raw={_row['am_p_raw']:.2e}  p_bonf={_row['am_p_bonf']:.2e}{_sig}")
+print()
+
+summary = summary.join(_cv_fisher_df[["cv_p_raw", "cv_p_bonf"]], how="left")
+summary = summary.join(_am_fisher_df[["am_p_raw", "am_p_bonf"]], how="left")
+summary.to_csv("Csvs/class_pct_enrichment.csv")
+print("Updated: Csvs/class_pct_enrichment.csv (includes Fisher's exact p-values)\n")
+
+
 # ── Plot 1: Lollipop — % P/LP per class (ClinVar, n_cv >= 30) ──────────────────
 plot_cv = summary[summary["n_cv"] >= 30].sort_values("pct_path").copy()
 plot_cv["label"] = [
-    f"{NAME_SHORT.get(c, c[:35])}  (n={int(row['n_cv']):,})"
+    f"{NAME_SHORT.get(c, c[:35])}{'*' if c in sig_cv_classes else ''}  (n={int(row['n_cv']):,})"
     for c, row in plot_cv.iterrows()
 ]
 
@@ -190,7 +247,7 @@ print("Saved Figures/pct_plp_by_class_clinvar.png")
 # ── Plot 2: Lollipop — % AM pathogenic per class (n_am >= 1000) ───────────────
 plot_am = summary[summary["n_am"].fillna(0) >= 1000].sort_values("pct_am_path").copy()
 plot_am["label"] = [
-    f"{NAME_SHORT.get(c, c[:35])}  (n={int(row['n_am']):,})"
+    f"{NAME_SHORT.get(c, c[:35])}{'*' if c in sig_am_classes else ''}  (n={int(row['n_am']):,})"
     for c, row in plot_am.iterrows()
 ]
 
@@ -219,14 +276,31 @@ print("Saved Figures/pct_pathogenic_by_class_am.png")
 # Classes with both enough ClinVar (n>=30) and AM (n>=1000) data
 both = summary[(summary["n_cv"] >= 30) & (summary["n_am"].fillna(0) >= 1000)].copy()
 both["short"] = [NAME_SHORT.get(c, c[:30]) for c in both.index]
-both = both.sort_values("pct_path", ascending=True).reset_index()
+
+# Colour by Bonferroni significance status across both tests
+C_BOTH    = "#2ca02c"   # green  — significant in both ClinVar and AM
+C_CV_ONLY = "#9467bd"   # purple — ClinVar significant only
+C_AM_ONLY = "#f5c518"   # yellow — AM significant only
+C_NEITHER = "#7f7f7f"   # grey   — neither significant
+
+_GROUP_ORDER = {C_BOTH: 0, C_CV_ONLY: 1, C_AM_ONLY: 2, C_NEITHER: 3}
+
+def _sig_color(cls):
+    cv = cls in sig_cv_classes
+    am = cls in sig_am_classes
+    if cv and am:   return C_BOTH
+    if cv:          return C_CV_ONLY
+    if am:          return C_AM_ONLY
+    return C_NEITHER
+
+both["_color"] = [_sig_color(c) for c in both.index]
+both["_group"] = both["_color"].map(_GROUP_ORDER)
+both = both.sort_values(["_group", "pct_path"], ascending=[False, True]).reset_index()
 
 n = len(both)
 fig, axes = plt.subplots(1, 2, figsize=(14, max(5, n * 0.45)), sharey=True)
 
-# Colour determined solely by ClinVar P/LP enrichment so it's consistent across panels.
-cv_enriched_colors = ["#d62728" if v > overall_pct_path else "#2171b5"
-                      for v in both["pct_path"]]
+sig_colors = list(both["_color"])
 
 for ax, col, overall, xlabel in [
     (axes[0], "pct_path",    overall_pct_path, "% P/LP (ClinVar in-domain)"),
@@ -235,12 +309,12 @@ for ax, col, overall, xlabel in [
     vals = both[col].values
     y = range(n)
     ax.hlines(y, 0, vals, color="#ccc", linewidth=1.5, zorder=1)
-    ax.scatter(vals, y, color=cv_enriched_colors, s=55, zorder=2)
+    ax.scatter(vals, y, color=sig_colors, s=55, zorder=2)
     ax.axvline(overall, color="#555", linestyle="--", linewidth=1)
     ax.text(overall + 0.3, n - 0.5,
             f"Overall ({overall:.1f}%)", fontsize=7, color="#555", va="top")
     ax.set_xlabel(xlabel, fontsize=10)
-    ax.set_xlim(0, max(vals) * 1.2)
+    ax.set_xlim(50, 100)
     ax.spines[["top", "right"]].set_visible(False)
     ax.xaxis.grid(True, linestyle="--", linewidth=0.7, color="#eee", zorder=0)
     ax.set_axisbelow(True)
@@ -251,29 +325,20 @@ axes[0].set_yticklabels(
     fontsize=8,
 )
 
-from scipy.stats import spearmanr as _spearmanr
-rho_side, p_side = _spearmanr(both["pct_path"], both["pct_am_path"])
-p_str = f"{p_side:.2e}" if p_side < 0.001 else f"{p_side:.3f}"
-axes[1].text(
-    0.97, 0.03,
-    f"Spearman ρ = {rho_side:.2f}\np = {p_str}  (n = {n})",
-    transform=axes[1].transAxes,
-    ha="right", va="bottom", fontsize=8.5,
-    bbox=dict(boxstyle="round,pad=0.3", facecolor="white", edgecolor="#ccc", alpha=0.8),
-)
-
 legend_elements = [
-    Line2D([0], [0], marker="o", color="w", markerfacecolor="#d62728",
-           markersize=8, label=f"Above overall ClinVar % P/LP ({overall_pct_path:.1f}%)"),
-    Line2D([0], [0], marker="o", color="w", markerfacecolor="#2171b5",
-           markersize=8, label=f"Below overall ClinVar % P/LP ({overall_pct_path:.1f}%)"),
+    Line2D([0], [0], marker="o", color="w", markerfacecolor=C_BOTH,
+           markersize=8, label="Significant: ClinVar and AM"),
+    Line2D([0], [0], marker="o", color="w", markerfacecolor=C_CV_ONLY,
+           markersize=8, label="Significant: ClinVar only"),
+    Line2D([0], [0], marker="o", color="w", markerfacecolor=C_AM_ONLY,
+           markersize=8, label="Significant: AM only"),
+    Line2D([0], [0], marker="o", color="w", markerfacecolor=C_NEITHER,
+           markersize=8, label="Not significant"),
 ]
-axes[0].legend(handles=legend_elements, fontsize=8, loc="lower right")
+fig.legend(handles=legend_elements, fontsize=8, ncol=4,
+           loc="upper center", bbox_to_anchor=(0.5, -0.02),
+           framealpha=0.9, edgecolor="#ccc")
 
-fig.suptitle(
-    "% Pathogenic per structural class: ClinVar in-domain variants vs AlphaMissense in-domain predictions",
-    fontsize=11, fontweight="bold", y=1.01,
-)
 plt.tight_layout()
 plt.savefig("Figures/pct_path_cv_vs_am_side_by_side.png", dpi=150, bbox_inches="tight")
 print("Saved Figures/pct_path_cv_vs_am_side_by_side.png")
@@ -298,15 +363,16 @@ for col, color, lbl in [
 ax.axvline(overall_pct_path, color="black", linestyle="--", linewidth=1.2,
            label=f"Overall % P/LP ({overall_pct_path:.1f}%)")
 y_labels = [
-    f"{row['short']}  (n={int(row['n_cv']):,})"
-    for _, row in bar_cv.iterrows()
+    f"{row['short']}{'*' if cls in sig_cv_classes else ''}  (n={int(row['n_cv']):,})"
+    for cls, row in bar_cv.iterrows()
 ]
 ax.set_yticks(range(len(bar_cv)))
 ax.set_yticklabels(y_labels, fontsize=9)
 ax.set_xlabel("% of in-domain ClinVar variants", fontsize=11)
 ax.set_xlim(0, 100)
 ax.set_title(
-    "ClinVar variant classification by structural class (in-domain, ≥30 variants)\nordered by % P/LP",
+    "ClinVar variant classification by structural class (in-domain, ≥30 variants)\n"
+    "* Bonferroni-significant P/LP enrichment (Fisher's exact, class vs all others)  ·  ordered by % P/LP",
     fontsize=10, fontweight="bold",
 )
 ax.legend(loc="lower right", fontsize=9)
@@ -334,15 +400,16 @@ for col, color, lbl in [
 ax.axvline(overall_am_path, color="black", linestyle="--", linewidth=1.2,
            label=f"Overall % pathogenic ({overall_am_path:.1f}%)")
 y_labels_am = [
-    f"{row['short']}  (n={int(row['n_am']):,})"
-    for _, row in bar_am.iterrows()
+    f"{row['short']}{'*' if cls in sig_am_classes else ''}  (n={int(row['n_am']):,})"
+    for cls, row in bar_am.iterrows()
 ]
 ax.set_yticks(range(len(bar_am)))
 ax.set_yticklabels(y_labels_am, fontsize=9)
 ax.set_xlabel("% of AlphaMissense predictions", fontsize=11)
 ax.set_xlim(0, 100)
 ax.set_title(
-    "AlphaMissense classification by structural class (≥1,000 predictions)\nordered by % pathogenic",
+    "AlphaMissense classification by structural class (≥1,000 predictions)\n"
+    "* Bonferroni-significant pathogenic enrichment (Fisher's exact, class vs all others)  ·  ordered by % pathogenic",
     fontsize=10, fontweight="bold",
 )
 ax.legend(loc="lower right", fontsize=9)

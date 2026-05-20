@@ -229,7 +229,7 @@ fig, ax = plt.subplots(figsize=(9, 7))
 y = range(len(sc_plot))
 
 ax.hlines(y, 0, sc_plot["median"], color="#ccc", linewidth=1.5, zorder=1)
-dot_colors = ["#d62728" if v >= 0.564 else "#2171b5" for v in sc_plot["median"]]
+dot_colors = ["#d62728" if v >= 0.564 else "#1f77b4" for v in sc_plot["median"]]
 ax.scatter(sc_plot["median"], y, color=dot_colors, s=60, zorder=2)
 ax.hlines(y, sc_plot["q1"].clip(lower=0), sc_plot["q3"].clip(upper=1), color=dot_colors, linewidth=3, alpha=0.4, zorder=1)
 
@@ -271,7 +271,7 @@ fig, ax = plt.subplots(figsize=(9, 7))
 y_am = range(len(sc_am_plot))
 
 ax.hlines(y_am, 0, sc_am_plot["pct_pathogenic"], color="#ccc", linewidth=1.5, zorder=1)
-dot_colors_am = ["#d62728" if v > overall_pct_pathogenic else "#2171b5" for v in sc_am_plot["pct_pathogenic"]]
+dot_colors_am = ["#d62728" if v > overall_pct_pathogenic else "#1f77b4" for v in sc_am_plot["pct_pathogenic"]]
 ax.scatter(sc_am_plot["pct_pathogenic"], y_am, color=dot_colors_am, s=60, zorder=2)
 
 ax.axvline(overall_pct_pathogenic, color="#555", linestyle="--", linewidth=1)
@@ -316,7 +316,7 @@ def stars(p):
 # --- Box plot ---
 import seaborn as sns
 # Define the color palette as a list in the correct order for Seaborn
-palette_colors = ["#d62728", "grey", "#2171b5"] 
+palette_colors = ["#d62728", "grey", "#1f77b4"] 
 
 fig, ax = plt.subplots(figsize=(8, 6))
 
@@ -340,7 +340,7 @@ sns.boxplot(
 
 # Stripplot to show individual points
 # Use a dictionary for the stripplot palette to ensure points match boxes
-stripplot_palette = {"Pathogenic/LP": "#d62728", "VUS": "grey", "Benign/LB": "#2171b5"}
+stripplot_palette = {"Pathogenic/LP": "#d62728", "VUS": "grey", "Benign/LB": "#1f77b4"}
 sns.stripplot(x="sig_group", y="am_pathogenicity", data=concordance_df, order=sig_order,
               palette=stripplot_palette, size=2, jitter=0.2, alpha=0.2, ax=ax)
 ax.set_xlabel("") # Remove redundant x-axis label
@@ -582,7 +582,7 @@ print(f"rho={rho_or:.3f}, p={p_or:.2e}")
 fig, ax = plt.subplots(figsize=(7, 6))
 
 ax.scatter(np.log2(or_merged["OR_cv"]), np.log2(or_merged["OR_am"]),
-           s=55, color="#2171b5", alpha=0.85, zorder=3)
+           s=55, color="#1f77b4", alpha=0.85, zorder=3)
 
 for _, row in or_merged.iterrows():
     ax.annotate(row["structural_class"], (np.log2(row["OR_cv"]), np.log2(row["OR_am"])),
@@ -627,7 +627,7 @@ n = len(or_merged_slope)
 
 for _, row in or_merged_slope.iterrows():
     rank_change = row["rank_am"] - row["rank_cv"]
-    color = "#d62728" if rank_change > 2 else "#2171b5" if rank_change < -2 else "#888"
+    color = "#d62728" if rank_change > 2 else "#1f77b4" if rank_change < -2 else "#888"
     ax.plot([0, 1], [row["rank_cv"], row["rank_am"]], color=color, linewidth=1.4, alpha=0.75)
     ax.text(-0.02, row["rank_cv"], row["label"], ha="right", va="center", fontsize=7, color=color)
     ax.text(1.02,  row["rank_am"], row["label"], ha="left",  va="center", fontsize=7, color=color)
@@ -642,7 +642,7 @@ ax.set_title("Class ranking: ClinVar P/LP enrichment vs AM pathogenic enrichment
 from matplotlib.lines import Line2D
 legend_elements = [
     Line2D([0], [0], color="#d62728", lw=1.5, label="Ranks higher in AM"),
-    Line2D([0], [0], color="#2171b5", lw=1.5, label="Ranks higher in ClinVar"),
+    Line2D([0], [0], color="#1f77b4", lw=1.5, label="Ranks higher in ClinVar"),
     Line2D([0], [0], color="#888",    lw=1.5, label="Similar rank"),
 ]
 ax.legend(handles=legend_elements, fontsize=8, loc="upper center")
@@ -703,7 +703,7 @@ n_rows = len(am_forest)
 fig, ax = plt.subplots(figsize=(9, max(5, n_rows * 0.42)))
 
 for i, row in am_forest.iterrows():
-    color = "#d62728" if row["sig"] else "#2171b5"
+    color = "#d62728" if row["sig"] else "#1f77b4"
     ax.hlines(i, row["ci_lo"], row["ci_hi_plot"], color=color, linewidth=1.8, alpha=0.6)
     if row["ci_capped"]:
         ax.annotate("", xy=(CI_CAP_AM, i), xytext=(CI_CAP_AM * 0.85, i),
@@ -737,7 +737,7 @@ ax.set_title(
 from matplotlib.lines import Line2D as _L2D_am
 ax.legend(handles=[
     _L2D_am([0], [0], color="#d62728", lw=2, label="Bonferroni-significant"),
-    _L2D_am([0], [0], color="#2171b5", lw=2, label="Not significant"),
+    _L2D_am([0], [0], color="#1f77b4", lw=2, label="Not significant"),
 ], fontsize=8, loc="lower right")
 
 ax.spines[["top", "right"]].set_visible(False)

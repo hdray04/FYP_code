@@ -26,8 +26,11 @@ import json
 import re
 from collections import Counter
 
+import matplotlib as mpl
 import pandas as pd
 import matplotlib.pyplot as plt
+
+mpl.rcParams["font.family"] = "Arial"
 
 # ── Paths ────────────────────────────────────────────────────────────────────
 
@@ -436,14 +439,15 @@ plot_df = summary.head(20).sort_values("n_proteins", ascending=True)
 
 fig, ax = plt.subplots(figsize=(11, 8))
 GREY = plt.cm.tab10.colors[7]  # reserved for "Other"
-_t = [c for i, c in enumerate(plt.cm.tab10.colors) if i != 7]  # tab10 minus grey
-# Swap blue (pos 0) and brown (pos 5) so Homeodomain-like (6th above threshold) = blue,
-# and SAM/pointed domain (1st above threshold) = brown
-_t[0], _t[5] = _t[5], _t[0]
-MAIN_COLORS = _t
+# Remove blue (0), red (3), grey (7) — reserved for P/LP and B/LB in adjacent figures
+# Order: orange, green, purple, yellow(NHR), pink, teal(Homeodomain), cyan
+MAIN_COLORS = [c for i, c in enumerate(plt.cm.tab10.colors) if i not in {0, 3, 7}]
+MAIN_COLORS = list(MAIN_COLORS)
+MAIN_COLORS[3] = "#f5c518"   # yellow — NHR
+MAIN_COLORS[5] = "#17a2b8"   # teal  — Homeodomain-like
 THRESHOLD = 9
-# tab20 interleaves dark/light pairs — odd indices are the light versions, distinct from MAIN_COLORS
-SMALL_COLORS = [plt.cm.tab20.colors[i] for i in range(1, 20, 2) if i != 15]  # skip light grey
+# tab20 odd indices are light variants; skip light blue (1), light red (7), light grey (15)
+SMALL_COLORS = [plt.cm.tab20.colors[i] for i in range(1, 20, 2) if i not in {1, 7, 15}]
 main_classes_plot = [r for _, r in plot_df.iterrows() if r["n_proteins"] > THRESHOLD]
 small_classes_plot = [r for _, r in plot_df.iterrows() if r["n_proteins"] <= THRESHOLD]
 color_iter_main  = iter(MAIN_COLORS  * ((len(main_classes_plot)  // len(MAIN_COLORS)  + 1)))
@@ -456,16 +460,16 @@ bars   = ax.barh(plot_df["structural_class"].map(display_name), plot_df["n_prote
 for bar, (_, row) in zip(bars, plot_df.iterrows()):
     ax.text(row["n_proteins"] + 0.5, bar.get_y() + bar.get_height() / 2,
             f'{row["n_proteins"]}  ({row["percent"]}%)',
-            va="center", fontsize=14, fontfamily="Palatino")
+            va="center", fontsize=14, fontfamily="Arial")
 
-ax.set_xlabel("Number of proteins", fontsize=14, fontfamily="Palatino")
+ax.set_xlabel("Number of proteins", fontsize=14, fontfamily="Arial")
 ax.set_xlim(0, 300)
 ax.spines[["top", "right"]].set_visible(False)
 ax.tick_params(axis="y", labelsize=14)
 ax.tick_params(axis="x", labelsize=12)
 ax.set_xticks([0, 50, 100, 150, 200, 250, 300])
 for label in ax.get_yticklabels() + ax.get_xticklabels():
-    label.set_fontfamily("Palatino")
+    label.set_fontfamily("Arial")
 plt.tight_layout()
 plt.savefig("Figures/domain_class_hierarchy_bar.png", dpi=150, bbox_inches="tight")
 print("  domain_class_hierarchy_bar.png")
@@ -506,16 +510,16 @@ bars = ax.barh(merged_bar["structural_class"].map(display_name), merged_bar["n_p
 for bar, (_, row) in zip(bars, merged_bar.iterrows()):
     ax.text(row["n_proteins"] + 0.5, bar.get_y() + bar.get_height() / 2,
             f'{row["n_proteins"]}  ({row["percent"]}%)',
-            va="center", fontsize=14, fontfamily="Palatino")
+            va="center", fontsize=14, fontfamily="Arial")
 
-ax.set_xlabel("Number of proteins", fontsize=14, fontfamily="Palatino")
+ax.set_xlabel("Number of proteins", fontsize=14, fontfamily="Arial")
 ax.set_xlim(0, 300)
 ax.spines[["top", "right"]].set_visible(False)
 ax.tick_params(axis="y", labelsize=14)
 ax.tick_params(axis="x", labelsize=12)
 ax.set_xticks([0, 50, 100, 150, 200, 250, 300])
 for label in ax.get_yticklabels() + ax.get_xticklabels():
-    label.set_fontfamily("Palatino")
+    label.set_fontfamily("Arial")
 plt.tight_layout()
 plt.savefig("Figures/domain_class_hierarchy_bar_merged.png", dpi=150, bbox_inches="tight")
 print("  domain_class_hierarchy_bar_merged.png")
