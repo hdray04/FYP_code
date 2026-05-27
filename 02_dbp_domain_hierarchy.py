@@ -443,6 +443,7 @@ GREY = plt.cm.tab10.colors[7]  # reserved for "Other"
 # Order: orange, green, purple, yellow(NHR), pink, teal(Homeodomain), cyan
 MAIN_COLORS = [c for i, c in enumerate(plt.cm.tab10.colors) if i not in {0, 3, 7}]
 MAIN_COLORS = list(MAIN_COLORS)
+MAIN_COLORS[1] = "#276327"   # dark green — p53-like
 MAIN_COLORS[3] = "#f5c518"   # yellow — NHR
 MAIN_COLORS[5] = "#17a2b8"   # teal  — Homeodomain-like
 THRESHOLD = 9

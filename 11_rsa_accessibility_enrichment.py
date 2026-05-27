@@ -455,6 +455,59 @@ def plot_rsa_by_class(df, min_n=75, n_bootstrap=2000,
     print(f"Saved: {out_path}")
 
 
+def plot_rsa_zone_bars(plp_rsa, blb_rsa, mw_p=None,
+                       out_path="Figures/rsa_zone_stacked_bar.png"):
+    """Stacked bar: % Buried / Intermediate / Exposed for P/LP vs B/LB."""
+    plt.rcParams["font.family"] = "Arial"
+    zone_colours = {"Buried": "#9e7fbd", "Intermediate": "#aaaaaa", "Exposed": "#e8a87c"}
+
+    def fracs(arr):
+        n = len(arr)
+        return (
+            100 * (arr < 0.25).sum() / n,
+            100 * ((arr >= 0.25) & (arr < 0.75)).sum() / n,
+            100 * (arr >= 0.75).sum() / n,
+        )
+
+    groups   = ["P/LP", "B/LB"]
+    arrays   = [plp_rsa, blb_rsa]
+    zones    = ["Buried", "Intermediate", "Exposed"]
+    data     = [fracs(a) for a in arrays]
+
+    fig, ax = plt.subplots(figsize=(4, 4.5))
+    bottoms = [0.0, 0.0]
+
+    for zi, zone in enumerate(zones):
+        vals = [data[gi][zi] for gi in range(len(groups))]
+        bars = ax.bar(groups, vals, bottom=bottoms, color=zone_colours[zone],
+                      label=zone, width=0.5, edgecolor="white", linewidth=0.8)
+        for bar, val, bot in zip(bars, vals, bottoms):
+            if val >= 1:
+                ax.text(bar.get_x() + bar.get_width() / 2,
+                        bot + val / 2, f"{val:.1f}%",
+                        ha="center", va="center", fontsize=7, color="black", fontweight="bold")
+        bottoms = [b + v for b, v in zip(bottoms, vals)]
+
+    ax.set_ylabel("Percentage of variants (%)", fontsize=10)
+    ax.set_ylim(0, 100)
+    ax.spines[["top", "right"]].set_visible(False)
+    ax.legend(title="RSA zone", fontsize=9, title_fontsize=9,
+              frameon=False, loc="upper left", bbox_to_anchor=(1.05, 1))
+
+    ns = [len(a) for a in arrays]
+    ax.set_xticks(range(len(groups)))
+    ax.set_xticklabels([f"{g}\n(n={n:,})" for g, n in zip(groups, ns)], fontsize=10)
+
+    if mw_p is not None:
+        p_str = f"p = {mw_p:.2e}" if mw_p < 0.001 else f"p = {mw_p:.3f}"
+        ax.text(0.5, -0.18, f"Mann-Whitney U  {p_str}",
+                ha="center", va="top", fontsize=8, transform=ax.transAxes)
+
+    plt.tight_layout()
+    plt.savefig(out_path, dpi=300, bbox_inches="tight")
+    print(f"Saved: {out_path}")
+
+
 def main():
     df = load_analysis_set(MERGED_CSV)
 
@@ -463,6 +516,7 @@ def main():
 
     stat, p = report_stats(plp_rsa, blb_rsa)
     plot_rsa_distribution(plp_rsa, blb_rsa, stat, p, FIGURE_PATH)
+    plot_rsa_zone_bars(plp_rsa, blb_rsa, mw_p=p)
 
     # --- Median RSA per structural class ---
     plot_rsa_by_class(df)

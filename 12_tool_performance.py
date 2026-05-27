@@ -365,3 +365,474 @@ ax_roc.spines[["top", "right"]].set_visible(False)
 plt.tight_layout()
 plt.savefig("Figures/am_roc_curve_inout.png", dpi=150, bbox_inches="tight")
 print("Saved Figures/am_roc_curve_inout.png")
+
+
+# ============================================================
+# 6. M3D performance stratified by predicted mechanism
+#    Mechanism flags are only Y when damaging=Y, so per-mechanism
+#    performance is expressed as precision (PPV): of all variants
+#    M3D flags via mechanism X, what fraction are truly P/LP?
+# ============================================================
+MECHANISMS = [
+    "disulphide_breakage", "buried_Pro_introduced", "clash",
+    "buried_hydrophilic_introduced", "buried_charge_introduced",
+    "secondary_structure_altered", "buried_charge_switch",
+    "disallowed_phi_psi", "buried_charge_replaced", "buried_Gly_replaced",
+    "buried_H_bond_breakage", "buried_salt_bridge_breakage",
+    "cavity_altered", "buried_exposed_switch", "cis_pro_replaced",
+    "gly_in_a_bend",
+]
+
+MECH_LABELS = {
+    "disulphide_breakage":          "Disulphide breakage",
+    "buried_Pro_introduced":        "Buried Pro introduced",
+    "clash":                        "Clash",
+    "buried_hydrophilic_introduced":"Buried hydrophilic introduced",
+    "buried_charge_introduced":     "Buried charge introduced",
+    "secondary_structure_altered":  "Secondary structure altered",
+    "buried_charge_switch":         "Buried charge switch",
+    "disallowed_phi_psi":           "Disallowed φ/ψ",
+    "buried_charge_replaced":       "Buried charge replaced",
+    "buried_Gly_replaced":          "Buried Gly replaced",
+    "buried_H_bond_breakage":       "Buried H-bond breakage",
+    "buried_salt_bridge_breakage":  "Buried salt-bridge breakage",
+    "cavity_altered":               "Cavity altered",
+    "buried_exposed_switch":        "Buried/exposed switch",
+    "cis_pro_replaced":             "Cis-Pro replaced",
+    "gly_in_a_bend":                "Gly in a bend",
+}
+
+MIN_N = 5  # exclude mechanisms with too few variants for reliable precision
+
+gt_m3d = gt[gt["damaging"].isin(["Y", "N"])].copy()
+gt_m3d["is_plp"] = (gt_m3d["sig_group"] == "Pathogenic/LP").astype(int)
+
+overall_prec = gt_m3d["is_plp"][gt_m3d["damaging"] == "Y"].mean()
+
+mech_rows = []
+for mech in MECHANISMS:
+    flagged = gt_m3d[gt_m3d[mech] == "Y"]
+    n = len(flagged)
+    if n < MIN_N:
+        continue
+    plp = flagged["is_plp"].sum()
+    precision = plp / n
+    mech_rows.append(dict(
+        mechanism=mech,
+        label=MECH_LABELS[mech],
+        n=n,
+        plp=plp,
+        blb=n - plp,
+        precision=precision,
+    ))
+
+mech_df = pd.DataFrame(mech_rows).sort_values("precision", ascending=True)
+
+print("\n" + "="*70)
+print("6. M3D precision by predicted mechanism (mechanism flag = Y)")
+print(f"   Overall M3D precision (all damaging=Y): {overall_prec:.3f}")
+print(f"   Excluded mechanisms with n < {MIN_N}")
+print("="*70)
+print(f"\n  {'Mechanism':<35} {'n':>5}  {'P/LP':>5}  {'B/LB':>5}  {'Precision':>10}")
+print("  " + "-" * 65)
+for _, r in mech_df.sort_values("precision", ascending=False).iterrows():
+    _, p_mech = fisher_exact([[r["plp"], r["blb"]],
+                               [int(gt_m3d["is_plp"].sum()) - r["plp"],
+                                int((gt_m3d["is_plp"] == 0).sum()) - r["blb"]]])
+    print(f"  {r['label']:<35} {r['n']:>5}  {r['plp']:>5}  {r['blb']:>5}  {r['precision']:>10.3f}")
+
+fig6, ax6 = plt.subplots(figsize=(8, max(4, len(mech_df) * 0.5 + 1.5)))
+
+colors = ["#d62728" if p < overall_prec else "#2171b5" for p in mech_df["precision"]]
+bars6 = ax6.barh(mech_df["label"], mech_df["precision"] * 100,
+                 color=colors, alpha=0.82, height=0.65)
+
+ax6.axvline(overall_prec * 100, color="#555", linestyle="--", linewidth=1.2,
+            label=f"Overall M3D precision ({overall_prec*100:.1f}%)")
+
+for bar, (_, r) in zip(bars6, mech_df.iterrows()):
+    ax6.text(bar.get_width() + 0.8, bar.get_y() + bar.get_height() / 2,
+             f"n={r['n']}", va="center", fontsize=8, color="#444")
+
+ax6.set_xlabel("Precision — % of flagged variants truly P/LP")
+ax6.set_xlim(0, 115)
+ax6.set_title(
+    "M3D precision by predicted mechanism\n"
+    "(blue = above overall precision, red = below; mechanism flags only set for damaging=Y)",
+    fontsize=10,
+)
+ax6.legend(fontsize=9)
+ax6.spines[["top", "right"]].set_visible(False)
+ax6.xaxis.grid(True, linestyle="--", linewidth=0.7, color="#eee", zorder=0)
+ax6.set_axisbelow(True)
+
+plt.tight_layout()
+plt.savefig("Figures/m3d_precision_by_mechanism.png", dpi=150, bbox_inches="tight")
+print("\nSaved Figures/m3d_precision_by_mechanism.png")
+
+
+# ============================================================
+# 7. M3D and AM performance stratified by RSA zone
+#    (buried < 0.25 | intermediate 0.25–0.75 | exposed >= 0.75)
+#    Uses the merged CSV which carries rsa, plddt, in_domain.
+#    Restricted to in-domain, pLDDT >= 70, P/LP or B/LB.
+# ============================================================
+PLDDT_THRESH = 70
+
+rsa_base = pd.read_csv("Csvs/clinvar_am_m3d_dssp_merged.csv")
+rsa_base = rsa_base[
+    rsa_base["in_domain"]
+    & (rsa_base["plddt"] >= PLDDT_THRESH)
+    & rsa_base["sig_group"].isin(["Pathogenic/LP", "Benign/LB"])
+    & rsa_base["rsa"].notna()
+].copy()
+rsa_base["true_pos"] = (rsa_base["sig_group"] == "Pathogenic/LP").astype(int)
+
+def rsa_zone(rsa):
+    if rsa < 0.25:
+        return "Buried"
+    if rsa < 0.75:
+        return "Intermediate"
+    return "Exposed"
+
+rsa_base["zone"] = rsa_base["rsa"].map(rsa_zone)
+
+ZONES      = ["Buried", "Intermediate", "Exposed"]
+ZONE_COLS  = {"Buried": "#9e7fbd", "Intermediate": "#555555", "Exposed": "#e8a87c"}
+METRIC_KEYS_7 = ["sensitivity", "specificity", "mcc"]
+METRIC_LABELS_7 = ["Sensitivity", "Specificity", "MCC"]
+
+def perf_zone(df, tool, pred_col, pos_val):
+    """Metrics for one tool × one RSA zone."""
+    if tool == "AM":
+        sub = df[df[pred_col].isin(["pathogenic", "benign"])].copy()
+    else:
+        sub = df[df[pred_col].isin(["Y", "N"])].copy()
+    if len(sub) == 0:
+        return None
+    y_true = sub["true_pos"]
+    y_pred = (sub[pred_col] == pos_val).astype(int)
+    tp, fp, tn, fn = confusion(y_true, y_pred)
+    m = metrics(tp, fp, tn, fn)
+    return dict(tool=tool, TP=tp, FP=fp, TN=tn, FN=fn, n=tp+fp+tn+fn, **m)
+
+zone_rows = []
+for zone in ZONES:
+    z_df = rsa_base[rsa_base["zone"] == zone]
+    for tool, pred_col, pos_val in [("AM", "am_class", "pathogenic"), ("M3D", "damaging", "Y")]:
+        r = perf_zone(z_df, tool, pred_col, pos_val)
+        if r:
+            r["zone"] = zone
+            zone_rows.append(r)
+
+zone_df = pd.DataFrame(zone_rows)
+
+print("\n" + "=" * 75)
+print("7. M3D and AM performance stratified by RSA zone")
+print(f"   (in-domain, pLDDT >= {PLDDT_THRESH}, ClinVar P/LP vs B/LB)")
+print("=" * 75)
+for tool in ["AM", "M3D"]:
+    print(f"\n  {tool}")
+    t_df = zone_df[zone_df["tool"] == tool]
+    print(f"  {'Zone':<14} {'n':>6}  {'TP':>5} {'FP':>5} {'TN':>5} {'FN':>5}  "
+          f"{'Sens':>7} {'Spec':>7} {'Acc':>7} {'MCC':>7}")
+    print("  " + "-" * 72)
+    for zone in ZONES:
+        row = t_df[t_df["zone"] == zone]
+        if row.empty:
+            continue
+        r = row.iloc[0]
+        print(f"  {zone:<14} {r['n']:>6}  {r['TP']:>5} {r['FP']:>5} {r['TN']:>5} {r['FN']:>5}  "
+              f"{r['sensitivity']:>7.3f} {r['specificity']:>7.3f} {r['accuracy']:>7.3f} {r['mcc']:>7.3f}")
+    print()
+
+# Pairwise Fisher's exact: all 3 zone pairs × sensitivity + specificity = 6 tests
+# Bonferroni correction: alpha_corr = 0.05 / 6
+N_ZONE_TESTS  = 6
+ALPHA_CORR    = 0.05 / N_ZONE_TESTS   # 0.00833...
+ZONE_PAIRS    = [("Buried", "Intermediate"), ("Buried", "Exposed"), ("Intermediate", "Exposed")]
+
+print(f"  Fisher's exact (pairwise zone comparisons, M3D, Bonferroni n={N_ZONE_TESTS}, α_corr={ALPHA_CORR:.4f})")
+print(f"  {'Comparison':<30} {'Metric':>12}  {'Zone A %':>9}  {'Zone B %':>9}  {'p_raw':>10}  {'p_bonf':>10}  sig")
+print("  " + "-" * 90)
+
+m3d_z = zone_df[zone_df["tool"] == "M3D"]
+for zone_a, zone_b in ZONE_PAIRS:
+    ra = m3d_z[m3d_z["zone"] == zone_a]
+    rb = m3d_z[m3d_z["zone"] == zone_b]
+    if ra.empty or rb.empty:
+        continue
+    ra, rb = ra.iloc[0], rb.iloc[0]
+    _, p_sens = fisher_exact([[ra["TP"], ra["FN"]], [rb["TP"], rb["FN"]]])
+    _, p_spec = fisher_exact([[ra["TN"], ra["FP"]], [rb["TN"], rb["FP"]]])
+    p_sens_bonf = min(p_sens * N_ZONE_TESTS, 1.0)
+    p_spec_bonf = min(p_spec * N_ZONE_TESTS, 1.0)
+    label = f"{zone_a} vs {zone_b}"
+    for metric, pct_a, pct_b, p_raw, p_bonf in [
+        ("Sensitivity", ra["sensitivity"]*100, rb["sensitivity"]*100, p_sens, p_sens_bonf),
+        ("Specificity", ra["specificity"]*100, rb["specificity"]*100, p_spec, p_spec_bonf),
+    ]:
+        sig = "*" if p_bonf < 0.05 else ""
+        print(f"  {label:<30} {metric:>12}  {pct_a:>8.1f}%  {pct_b:>8.1f}%  "
+              f"{p_raw:>10.2e}  {p_bonf:>10.2e}  {sig}")
+
+print()
+
+# Bias check: among ALL M3D-assessed variants (any ClinVar sig),
+# what fraction of buried vs exposed are called damaging?
+rsa_all_m3d = pd.read_csv("Csvs/clinvar_am_m3d_dssp_merged.csv")
+rsa_all_m3d = rsa_all_m3d[
+    rsa_all_m3d["in_domain"]
+    & (rsa_all_m3d["plddt"] >= PLDDT_THRESH)
+    & rsa_all_m3d["damaging"].isin(["Y", "N"])
+    & rsa_all_m3d["rsa"].notna()
+].copy()
+rsa_all_m3d["zone"] = rsa_all_m3d["rsa"].map(rsa_zone)
+
+print("  M3D damaging-call rate by RSA zone (all ClinVar sig groups)")
+print(f"  {'Zone':<14} {'n total':>9}  {'n damaging':>11}  {'% damaging':>11}")
+print("  " + "-" * 50)
+for zone in ZONES:
+    z_all = rsa_all_m3d[rsa_all_m3d["zone"] == zone]
+    n_tot = len(z_all)
+    n_dam = int((z_all["damaging"] == "Y").sum())
+    pct   = 100 * n_dam / n_tot if n_tot > 0 else float("nan")
+    print(f"  {zone:<14} {n_tot:>9}  {n_dam:>11}  {pct:>10.1f}%")
+print()
+
+# ── Figure: grouped bar per zone, one panel per metric ──────
+import matplotlib.patches as mpatches
+import matplotlib.font_manager as fm
+
+FONT_PROP = {"fontname": "Arial"}
+
+# n per zone (AM and M3D share the same denominator within zone_df)
+zone_n = {zone: int(zone_df[(zone_df["tool"] == "AM") & (zone_df["zone"] == zone)]["n"].values[0])
+          for zone in ZONES}
+x_labels = [f"{z}\n(n={zone_n[z]})" for z in ZONES]
+
+AM_COLOR_7  = "#b0b0b0"       # light grey, solid (clear)
+M3D_COLOR_7 = "#777777"       # darker grey, hatched
+
+fig7, axes7 = plt.subplots(1, len(METRIC_KEYS_7), figsize=(11, 5), sharey=False)
+
+x     = np.arange(len(ZONES))
+width = 0.35
+
+for ax, metric, label in zip(axes7, METRIC_KEYS_7, METRIC_LABELS_7):
+    for i, (tool, col, hatch) in enumerate([("AM", AM_COLOR_7, ""), ("M3D", M3D_COLOR_7, "///")]):
+        vals = []
+        for zone in ZONES:
+            row = zone_df[(zone_df["tool"] == tool) & (zone_df["zone"] == zone)]
+            vals.append(row.iloc[0][metric] * 100 if not row.empty else 0)
+        ax.bar(x + (i - 0.5) * width, vals, width,
+               label=tool, color=col, hatch=hatch,
+               edgecolor="#888888" if hatch == "" else "#444444", linewidth=0.8)
+    ax.set_xticks(x)
+    ax.set_xticklabels(x_labels, fontsize=9, **FONT_PROP)
+    ax.set_title(label, fontsize=10, **FONT_PROP)
+    ax.set_ylim(-10 if metric == "mcc" else 0, 105)
+    if metric == "mcc":
+        ax.axhline(0, color="black", linewidth=0.8, zorder=0)
+    ax.set_ylabel("%", fontsize=9, **FONT_PROP) if ax is axes7[0] else ax.set_ylabel("")
+    ax.spines[["top", "right"]].set_visible(False)
+    ax.yaxis.grid(False)
+    ax.xaxis.grid(False)
+    for tick in ax.get_xticklabels() + ax.get_yticklabels():
+        tick.set_fontname("Arial")
+        tick.set_fontsize(9)
+
+legend_handles = [
+    mpatches.Patch(facecolor=AM_COLOR_7,  edgecolor="#888888", linewidth=0.8, label="AM"),
+    mpatches.Patch(facecolor=M3D_COLOR_7, edgecolor="#444444", linewidth=0.8, hatch="///", label="M3D"),
+]
+fig7.legend(handles=legend_handles, loc="upper center", ncol=2,
+            fontsize=9, frameon=False, bbox_to_anchor=(0.5, 1.04),
+            prop={"family": "Arial", "size": 9})
+
+plt.tight_layout()
+plt.savefig("Figures/tool_performance_rsa_zone.png", dpi=150, bbox_inches="tight")
+print("Saved Figures/tool_performance_rsa_zone.png")
+
+
+# ============================================================
+# 8. M3D and AM performance stratified by structural class
+#    Uses the merged CSV (P/LP vs B/LB, structural_class not null).
+#    Only classes where M3D has ≥ MIN_N_CLASS ground-truth variants
+#    are shown; AM is plotted for the same class set.
+# ============================================================
+MIN_N_CLASS = 30
+
+CLASS_SHORT = {
+    "Homeodomain-like superfamily":
+        "Homeodomain-like",
+    "p53-like transcription factor, DNA-binding domain superfamily":
+        "p53-like TF",
+    "Winged helix-like DNA-binding domain superfamily":
+        "Winged helix-like",
+    "High mobility group box domain superfamily":
+        "HMG box",
+    "Nuclear hormone receptor-like domain superfamily":
+        "NHR-like",
+    "Hepatocyte nuclear factor 1, N-terminal domain superfamily":
+        "HNF1 N-terminal",
+    "Paired domain superfamily":
+        "Paired domain",
+    "CTF transcription factor/nuclear factor 1, DNA-binding domain":
+        "CTF/NF1",
+    "IRF domain superfamily":
+        "IRF domain",
+}
+
+def shorten_class(name):
+    return CLASS_SHORT.get(name, name.split(",")[0].replace(" superfamily", ""))
+
+sc_base = pd.read_csv("Csvs/clinvar_am_m3d_dssp_merged.csv")
+sc_base = sc_base[
+    sc_base["sig_group"].isin(["Pathogenic/LP", "Benign/LB"])
+    & sc_base["structural_class"].notna()
+].copy()
+sc_base["true_pos"] = (sc_base["sig_group"] == "Pathogenic/LP").astype(int)
+
+# Identify classes with sufficient M3D ground-truth coverage
+m3d_sc_all = sc_base[sc_base["damaging"].isin(["Y", "N"])].copy()
+m3d_sc_all["pred"] = (m3d_sc_all["damaging"] == "Y").astype(int)
+valid_classes_8 = (
+    m3d_sc_all["structural_class"]
+    .value_counts()
+    .pipe(lambda s: s[s >= MIN_N_CLASS])
+    .index.tolist()
+)
+
+sc_rows_8 = []
+for tool, pred_col, pos_val in [("M3D", "damaging", "Y"), ("AM", "am_class", "pathogenic")]:
+    if tool == "AM":
+        sub_df = sc_base[sc_base["am_class"].isin(["pathogenic", "benign"])].copy()
+    else:
+        sub_df = m3d_sc_all.copy()
+    for cls in valid_classes_8:
+        sub = sub_df[sub_df["structural_class"] == cls]
+        if len(sub) < 5:
+            continue
+        y_true = sub["true_pos"]
+        y_pred = (sub[pred_col] == pos_val).astype(int)
+        tp, fp, tn, fn = confusion(y_true, y_pred)
+        m = metrics(tp, fp, tn, fn)
+        sc_rows_8.append(dict(
+            tool=tool, structural_class=cls, short_label=shorten_class(cls),
+            n=len(sub), TP=tp, FP=fp, TN=tn, FN=fn, **m,
+        ))
+
+sc_df_8 = pd.DataFrame(sc_rows_8)
+
+print("\n" + "=" * 75)
+print("8. M3D and AM performance stratified by structural class")
+print(f"   (ClinVar P/LP vs B/LB; classes with M3D n ≥ {MIN_N_CLASS})")
+print("=" * 75)
+for tool in ["M3D", "AM"]:
+    t_df = sc_df_8[sc_df_8["tool"] == tool].sort_values("sensitivity", ascending=False)
+    print(f"\n  {tool}")
+    print(f"  {'Class':<22} {'n':>5}  {'TP':>5} {'FP':>5} {'TN':>5} {'FN':>5}  "
+          f"{'Sens':>7} {'Spec':>7} {'MCC':>7}")
+    print("  " + "-" * 72)
+    for _, r in t_df.iterrows():
+        print(f"  {r['short_label']:<22} {r['n']:>5}  {r['TP']:>5} {r['FP']:>5} "
+              f"{r['TN']:>5} {r['FN']:>5}  "
+              f"{r['sensitivity']:>7.3f} {r['specificity']:>7.3f} {r['mcc']:>7.3f}")
+
+# Fisher's exact: each class vs rest of valid-class M3D variants
+m3d_valid_all = m3d_sc_all[m3d_sc_all["structural_class"].isin(valid_classes_8)]
+all_tp8 = int(((m3d_valid_all["true_pos"] == 1) & (m3d_valid_all["pred"] == 1)).sum())
+all_fn8 = int(((m3d_valid_all["true_pos"] == 1) & (m3d_valid_all["pred"] == 0)).sum())
+all_tn8 = int(((m3d_valid_all["true_pos"] == 0) & (m3d_valid_all["pred"] == 0)).sum())
+all_fp8 = int(((m3d_valid_all["true_pos"] == 0) & (m3d_valid_all["pred"] == 1)).sum())
+
+m3d_8 = sc_df_8[sc_df_8["tool"] == "M3D"].sort_values("sensitivity", ascending=False)
+n_tests_8 = len(m3d_8) * 2
+alpha_8 = 0.05 / n_tests_8
+
+print(f"\n  M3D — Fisher's exact: each class vs rest (Bonferroni n={n_tests_8}, α_corr={alpha_8:.4f})")
+print(f"  {'Class':<22} {'Metric':>12}  {'Class %':>9}  {'Rest %':>9}  "
+      f"{'p_raw':>10}  {'p_bonf':>10}  sig")
+print("  " + "-" * 90)
+
+for _, r in m3d_8.iterrows():
+    rest_tp = all_tp8 - r["TP"];  rest_fn = all_fn8 - r["FN"]
+    rest_tn = all_tn8 - r["TN"];  rest_fp = all_fp8 - r["FP"]
+    _, p_sens = fisher_exact([[r["TP"], r["FN"]], [rest_tp, rest_fn]])
+    _, p_spec = fisher_exact([[r["TN"], r["FP"]], [rest_tn, rest_fp]])
+    p_sens_b = min(p_sens * n_tests_8, 1.0)
+    p_spec_b = min(p_spec * n_tests_8, 1.0)
+    rest_sens = rest_tp / (rest_tp + rest_fn) if (rest_tp + rest_fn) > 0 else float("nan")
+    rest_spec = rest_tn / (rest_tn + rest_fp) if (rest_tn + rest_fp) > 0 else float("nan")
+    for metric, cls_pct, rest_pct, p_raw, p_bonf in [
+        ("Sensitivity", r["sensitivity"] * 100, rest_sens * 100, p_sens, p_sens_b),
+        ("Specificity", r["specificity"] * 100, rest_spec * 100, p_spec, p_spec_b),
+    ]:
+        sig = "*" if p_bonf < 0.05 else ""
+        print(f"  {r['short_label']:<22} {metric:>12}  {cls_pct:>8.1f}%  {rest_pct:>8.1f}%  "
+              f"{p_raw:>10.2e}  {p_bonf:>10.2e}  {sig}")
+
+# ── Figure: horizontal grouped bars, one panel per metric ───
+METRICS_8       = ["sensitivity", "specificity", "mcc"]
+METRIC_LABELS_8 = ["Sensitivity", "Specificity", "MCC"]
+AM_COLOR_8      = "#b0b0b0"
+M3D_COLOR_8     = "#777777"
+
+# Sort classes by M3D sensitivity (lowest at top of chart)
+order_8 = (
+    m3d_8.sort_values("sensitivity", ascending=True)["structural_class"].tolist()
+)
+short_labels_8 = [shorten_class(c) for c in order_8]
+y_pos_8 = np.arange(len(order_8))
+height_8 = 0.35
+n_fig_rows = len(order_8)
+
+fig8, axes8 = plt.subplots(
+    1, len(METRICS_8),
+    figsize=(13, max(4, n_fig_rows * 0.6 + 2)),
+    sharey=True,
+)
+
+for ax, metric, mlabel in zip(axes8, METRICS_8, METRIC_LABELS_8):
+    for i, (tool, col, hatch) in enumerate([("AM", AM_COLOR_8, ""), ("M3D", M3D_COLOR_8, "///")]):
+        vals = []
+        for cls in order_8:
+            row = sc_df_8[(sc_df_8["tool"] == tool) & (sc_df_8["structural_class"] == cls)]
+            vals.append(row.iloc[0][metric] * 100 if not row.empty else np.nan)
+        ax.barh(y_pos_8 + (i - 0.5) * height_8, vals, height_8,
+                label=tool, color=col, hatch=hatch,
+                edgecolor="#888888" if hatch == "" else "#444444", linewidth=0.8)
+    ax.set_yticks(y_pos_8)
+    ax.set_yticklabels(short_labels_8 if ax is axes8[0] else [], fontsize=9, **FONT_PROP)
+    ax.set_title(mlabel, fontsize=10, **FONT_PROP)
+    if metric == "mcc":
+        ax.axvline(0, color="black", linewidth=0.8, zorder=0)
+        ax.set_xlim(-30, 110)
+    else:
+        ax.set_xlim(0, 115)
+    ax.set_xlabel("%", fontsize=9, **FONT_PROP)
+    ax.spines[["top", "right"]].set_visible(False)
+    ax.xaxis.grid(True, linestyle="--", linewidth=0.7, color="#eee", zorder=0)
+    ax.set_axisbelow(True)
+    for tick in ax.get_xticklabels() + ax.get_yticklabels():
+        tick.set_fontname("Arial")
+        tick.set_fontsize(9)
+
+legend_handles_8 = [
+    mpatches.Patch(facecolor=AM_COLOR_8,  edgecolor="#888888", linewidth=0.8, label="AM"),
+    mpatches.Patch(facecolor=M3D_COLOR_8, edgecolor="#444444", linewidth=0.8,
+                   hatch="///", label="M3D"),
+]
+fig8.legend(handles=legend_handles_8, loc="upper center", ncol=2,
+            fontsize=9, frameon=False, bbox_to_anchor=(0.5, 1.04),
+            prop={"family": "Arial", "size": 9})
+
+fig8.suptitle(
+    f"M3D and AM performance by structural class\n"
+    f"(ClinVar P/LP vs B/LB; M3D n ≥ {MIN_N_CLASS} per class; sorted by M3D sensitivity)",
+    fontsize=11, y=1.08,
+)
+plt.tight_layout()
+plt.savefig("Figures/tool_performance_structural_class.png", dpi=150, bbox_inches="tight")
+print("\nSaved Figures/tool_performance_structural_class.png")

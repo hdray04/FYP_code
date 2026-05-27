@@ -201,23 +201,23 @@ out_pivot["total_out"] = out_pivot[SIG_GROUPS].sum(axis=1)
 all_classes = pivot.index.union(out_pivot.index)
 inout_results = []
 for cls in all_classes:
-    in_plp    = int(pivot.loc[cls, "Pathogenic/LP"])    if cls in pivot.index    else 0
-    in_total  = int(pivot.loc[cls, "total_variants"])   if cls in pivot.index    else 0
+    in_plp    = int(pivot.loc[cls, "Pathogenic/LP"]) if cls in pivot.index    else 0
+    in_blb    = int(pivot.loc[cls, "Benign/LB"])     if cls in pivot.index    else 0
     out_plp   = int(out_pivot.loc[cls, "Pathogenic/LP"]) if cls in out_pivot.index else 0
-    out_total = int(out_pivot.loc[cls, "total_out"])     if cls in out_pivot.index else 0
+    out_blb   = int(out_pivot.loc[cls, "Benign/LB"])     if cls in out_pivot.index else 0
 
-    in_notplp  = in_total  - in_plp
-    out_notplp = out_total - out_plp
+    in_classified  = in_plp  + in_blb
+    out_classified = out_plp + out_blb
 
-    if in_total < 10 or out_total == 0 or in_plp == 0 or out_plp == 0:
+    if in_classified < 10 or out_classified < 10 or in_plp < 3 or out_plp < 3:
         continue
 
     _, p_raw = scipy.stats.fisher_exact(
-        [[in_plp, out_plp], [in_notplp, out_notplp]],
+        [[in_plp, out_plp], [in_blb, out_blb]],
         alternative="two-sided",
     )
     or_hat, ci_lo, ci_hi, corrected = odds_ratio_ci_95(
-        in_plp, out_plp, in_notplp, out_notplp
+        in_plp, out_plp, in_blb, out_blb
     )
     inout_results.append({
         "structural_class"       : cls,
@@ -227,11 +227,11 @@ for cls in all_classes:
         "p_raw"                  : p_raw,
         "ci_continuity_corrected": corrected,
         "in_plp"                 : in_plp,
-        "in_total"               : in_total,
-        "in_pct_plp"             : round(100 * in_plp / in_total, 1),
+        "in_blb"                 : in_blb,
+        "in_classified"          : in_classified,
         "out_plp"                : out_plp,
-        "out_total"              : out_total,
-        "out_pct_plp"            : round(100 * out_plp / out_total, 1),
+        "out_blb"                : out_blb,
+        "out_classified"         : out_classified,
     })
 
 inout_df = pd.DataFrame(inout_results)
@@ -241,15 +241,16 @@ inout_df["p_bonf"] = (inout_df["p_raw"] * len(inout_df)).clip(upper=1.0)
 inout_df = inout_df.sort_values("or_in_vs_out", ascending=False)
 
 print(f"\nIn-domain vs out-of-domain P/LP enrichment per class (Bonferroni n={len(inout_df)}, ≥2 proteins)\n")
-print(f"  {'Class':<50} {'OR':>6}  {'95% CI':>18}  {'in%PLP':>7}  {'out%PLP':>8}  {'p_bonf':>10}")
-print(f"  {'-'*107}")
+print(f"  {'Class':<50} {'OR':>6}  {'95% CI':>18}  {'in_plp':>6}  {'in_blb':>6}  {'out_plp':>7}  {'out_blb':>7}  {'p_bonf':>10}")
+print(f"  {'-'*117}")
 for _, row in inout_df.iterrows():
     cc  = "†" if row["ci_continuity_corrected"] else ""
     sig = " *" if row["p_bonf"] < 0.05 else ""
     print(
         f"  {row['structural_class']:<50} {row['or_in_vs_out']:>6.2f}{cc}  "
         f"[{row['ci95_lo']:>6.2f}, {row['ci95_hi']:>6.2f}]  "
-        f"{row['in_pct_plp']:>6.1f}%  {row['out_pct_plp']:>7.1f}%  "
+        f"{int(row['in_plp']):>6}  {int(row['in_blb']):>6}  "
+        f"{int(row['out_plp']):>7}  {int(row['out_blb']):>7}  "
         f"{row['p_bonf']:>10.3e}{sig}"
     )
 
@@ -535,7 +536,7 @@ forest_df["label"] = forest_df["structural_class"].map(NAME_SHORT).fillna(forest
 forest_df["sig"] = forest_df["p_bonf"] < 0.05
 
 # Cap CIs at a display maximum and flag with arrow
-CI_CAP = 300
+CI_CAP = 400
 forest_df["ci_hi_plot"] = forest_df["ci95_hi"].clip(upper=CI_CAP)
 forest_df["ci_capped"]  = forest_df["ci95_hi"] > CI_CAP
 
@@ -543,12 +544,11 @@ n_rows = len(forest_df)
 fig, ax = plt.subplots(figsize=(9, max(5, n_rows * 0.42)))
 
 for i, row in forest_df.iterrows():
-    color = "#d62728" if row["sig"] else "#2171b5"
-    ax.hlines(i, row["ci95_lo"], row["ci_hi_plot"], color=color, linewidth=1.8, alpha=0.6)
+    ax.hlines(i, row["ci95_lo"], row["ci_hi_plot"], color="black", linewidth=1.8, alpha=0.6)
     if row["ci_capped"]:
         ax.annotate("", xy=(CI_CAP, i), xytext=(CI_CAP * 0.85, i),
-                    arrowprops=dict(arrowstyle="->", color=color, lw=1.2))
-    ax.scatter(row["or_in_vs_out"], i, color=color, s=45, zorder=3)
+                    arrowprops=dict(arrowstyle="->", color="black", lw=1.2))
+    ax.scatter(row["or_in_vs_out"], i, color="black", s=45, zorder=3)
 
 ax.axvline(1, color="#555", linestyle="--", linewidth=1)
 ax.set_xscale("log")
@@ -559,27 +559,15 @@ ax.set_xlim(x_lo, CI_CAP * 1.05)
 
 ax.set_yticks(range(n_rows))
 ax.set_yticklabels(
-    [r['label'] for _, r in forest_df.iterrows()],
+    [f"{r['label']}  ({int(r['in_plp'])} P/LP, {int(r['in_blb'])} B/LB)"
+     for _, r in forest_df.iterrows()],
     fontsize=8,
 )
 
-# in% / out% as a text column in axes-fraction space so it never overlaps the plot
-for i, row in forest_df.iterrows():
-    ax.text(1.02, (i + 0.5) / n_rows,
-            f"{row['in_pct_plp']:.0f}% / {row['out_pct_plp']:.0f}%",
-            transform=ax.transAxes, va="center", ha="left", fontsize=7, color="#444")
-ax.text(1.02, 1.01, "in% / out%", transform=ax.transAxes,
-        va="bottom", ha="left", fontsize=7, color="#444", fontweight="bold")
-
-ax.set_xlabel("Odds ratio (in-domain vs out-of-domain P/LP), log scale")
+ax.set_xlabel("Odds ratio (log scale)")
 ax.set_ylabel("Structural class", fontsize=10)
 
 
-from matplotlib.lines import Line2D as _L2D
-ax.legend(handles=[
-    _L2D([0], [0], color="#d62728", lw=2, label="Bonferroni-significant"),
-    _L2D([0], [0], color="#2171b5", lw=2, label="Not significant"),
-], fontsize=8, loc="lower right")
 
 ax.spines[["top", "right"]].set_visible(False)
 plt.tight_layout()
